@@ -12,19 +12,17 @@ import RealmSwift
 class ViewController: UIViewController {
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
-        let dog = Dog();
-        dog.name = "Neil";
+        let urge = Urge();
+        urge.id = "Neil";
         
         let realm = try! Realm()
         
-        let puppies = realm.objects(Dog)
-        NSLog("%d", puppies.count)
+        let urges = realm.objects(Urge)
+        NSLog("%d", urges.count)
         
         try! realm.write {
-            realm.add(dog);
+            realm.add(urge);
         }
-        
-        
     }
 
     override func viewDidLoad() {
