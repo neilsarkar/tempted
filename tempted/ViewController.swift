@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
-
-    @IBAction func handleButtonTapped(sender: AnyObject) {
     
+    @IBAction func handleButtonTapped(sender: AnyObject) {
+        let dog = Dog();
+        dog.name = "Neil";
+        
+        let realm = try! Realm()
+        
+        let puppies = realm.objects(Dog)
+        NSLog("%d", puppies.count)
+        
+        try! realm.write {
+            realm.add(dog);
+        }
+        
+        
     }
 
     override func viewDidLoad() {
