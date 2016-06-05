@@ -20,7 +20,7 @@ class UrgesViewController : UICollectionViewController {
 
     override func viewDidLoad() {
         let realm = try! Realm()
-        urges = realm.objects(Urge)
+        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

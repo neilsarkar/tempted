@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
         try! realm.write {
             realm.add(urge);
-        }        
+        }
     }
 
     override func viewDidLoad() {

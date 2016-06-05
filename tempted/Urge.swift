@@ -19,7 +19,7 @@ class Urge:Object {
     
     func humanTime() -> String {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE, h a"
+        formatter.dateFormat = "EEEE, h:mm a"
         
         return formatter.stringFromDate(createdAt)
     }
