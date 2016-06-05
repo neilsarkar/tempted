@@ -13,16 +13,16 @@ class ViewController: UIViewController {
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
         let urge = Urge();
-        urge.id = "Neil";
+        urge.createdAt = NSDate();
         
         let realm = try! Realm()
-        
-        let urges = realm.objects(Urge)
-        NSLog("%d", urges.count)
-        
+
         try! realm.write {
             realm.add(urge);
         }
+        
+        let urges = realm.objects(Urge);
+        NSLog("%d", urges.count);
     }
 
     override func viewDidLoad() {
