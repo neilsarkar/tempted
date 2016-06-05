@@ -36,7 +36,7 @@ class UrgesViewController : UICollectionViewController {
         let urge = urgeForIndexPath(indexPath)
         
         cell.backgroundColor = UIColor.lightGrayColor()
-        cell.timeLabel.text = urge.id
+        cell.timeLabel.text = urge.humanTime()
         return cell
     }
 }
