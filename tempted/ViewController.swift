@@ -19,10 +19,7 @@ class ViewController: UIViewController {
 
         try! realm.write {
             realm.add(urge);
-        }
-        
-        let urges = realm.objects(Urge);
-        NSLog("%d", urges.count);
+        }        
     }
 
     override func viewDidLoad() {
