@@ -15,7 +15,7 @@ class UrgesViewController : UICollectionViewController {
     private var searches = ["Cool", "Nice", "Great"]
     
     func urgeForIndexPath(indexPath: NSIndexPath) -> String {
-        return searches[indexPath.item];
+        return searches[indexPath.row]
     }
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -27,8 +27,11 @@ class UrgesViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.blackColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
+        let urge = urgeForIndexPath(indexPath)
+        
+        cell.backgroundColor = UIColor.lightGrayColor()
+        cell.timeLabel.text = urge
         return cell
     }
 }
