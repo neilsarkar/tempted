@@ -7,31 +7,38 @@
 //
 
 import UIKit
+import RealmSwift
 
 class UrgesViewController : UICollectionViewController {
-    private let reuseIdentifier = "UrgeCell"
-    private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    let reuseIdentifier = "UrgeCell"
+    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
-    private var searches = ["Cool", "Nice", "Great"]
+    var searches = ["Cool", "Nice", "Great"]
+    var urge:Urge?
     
     func urgeForIndexPath(indexPath: NSIndexPath) -> String {
         return searches[indexPath.row]
     }
 
+    override func viewDidLoad() {
+        let realm = try! Realm()
+        urge = realm.objects(Urge).first
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searches.count
+        return urge == nil ? 0 : 1
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
-        let urge = urgeForIndexPath(indexPath)
+//        let urge = urgeForIndexPath(indexPath)
         
         cell.backgroundColor = UIColor.lightGrayColor()
-        cell.timeLabel.text = urge
+        cell.timeLabel.text = urge!.id
         return cell
     }
 }
