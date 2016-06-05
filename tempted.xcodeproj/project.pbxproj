@@ -12,6 +12,7 @@
 		3F6B9AAF1D04C0C5002CA04D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */; };
 		3F6B9AB01D04C0C5002CA04D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB41D04C1A3002CA04D /* Urge.swift */; };
+		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB41D04B02F0063CA80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB31D04B02F0063CA80 /* ViewController.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		3F6B9AAA1D04C0BE002CA04D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
+		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB31D04B02F0063CA80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		3F6B9AB81D04CFBD002CA04D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		3FF41EA51D04B02F0063CA80 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		3FF41EB01D04B02F0063CA80 /* tempted */ = {
 			isa = PBXGroup;
 			children = (
+				3F6B9AB81D04CFBD002CA04D /* UI */,
 				3F6B9AB31D04C194002CA04D /* Models */,
 				3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */,
 				3FF41EB31D04B02F0063CA80 /* ViewController.swift */,
@@ -195,6 +206,7 @@
 			files = (
 				3FF41EBA1D04B02F0063CA80 /* tempted.xcdatamodeld in Sources */,
 				3FF41EB41D04B02F0063CA80 /* ViewController.swift in Sources */,
+				3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */,
 				3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
 			);
