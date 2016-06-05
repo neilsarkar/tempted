@@ -16,6 +16,10 @@ class Urge:Object {
     dynamic var selfie: NSData? = nil
     dynamic var lat="39.833850"
     dynamic var lng="-8.437500"
+
+    override static func indexedProperties() -> [String] {
+        return ["createdAt"]
+    }
     
     func humanTime() -> String {
         let formatter = NSDateFormatter()
