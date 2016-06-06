@@ -39,7 +39,7 @@ class UrgesViewController : UICollectionViewController {
         cell.timeLabel.text = urge.humanTime()
         // TODO: try catch
         // TODO: deal with no map
-        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=400x400&sensor=false&markers=color:red|\(urge.lat)+\(urge.lng)"
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=100x100&sensor=false&markers=\(urge.lat)+\(urge.lng)"
         let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
         print(url)
         
