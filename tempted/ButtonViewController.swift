@@ -14,12 +14,17 @@ import CoreLocation
 class ButtonViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager:CLLocationManager!
+    var latlng:CLLocationCoordinate2D!
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
         let urge = Urge();
         
         // TODO: do this in initialization
         urge.createdAt = NSDate();
+        if( latlng != nil ) {
+            urge.lat = latlng.latitude.description
+            urge.lng = latlng.latitude.description
+        }
         
         let realm = try! Realm()
 
@@ -29,8 +34,8 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        latlng = manager.location!.coordinate
+        manager.stopUpdatingLocation()
     }
     
     override func viewDidLoad() {
