@@ -8,7 +8,7 @@
         <!--Button View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ButtonViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ButtonViewController" customModule="tempted" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,6 +21,7 @@
                                 <rect key="frame" x="282" y="285" width="36" height="30"/>
                                 <state key="normal" title="Help."/>
                                 <connections>
+                                    <action selector="handleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0s4-li-BFK"/>
                                     <segue destination="x0J-Yn-BzT" kind="show" id="Eib-fa-Stm"/>
                                 </connections>
                             </button>
