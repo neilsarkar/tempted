@@ -14,7 +14,6 @@ import CoreLocation
 class UrgesViewController : UICollectionViewController, CLLocationManagerDelegate {
     let topIdentifier   = "ButtonCell"
     let reuseIdentifier = "UrgeCell"
-    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var urges: Results<Urge>?
     var locationManager:CLLocationManager!
     var latlng:CLLocationCoordinate2D!
@@ -28,6 +27,8 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         
         // TODO: do this in initialization
         urge.createdAt = NSDate();
+        let uuid = NSUUID().UUIDString
+        urge.id = uuid
         if( latlng != nil ) {
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
@@ -40,7 +41,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             if let data = NSData(contentsOfURL: url) {
                 let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
                 let documentsDirectory = paths[0]
-                let filename = documentsDirectory.stringByAppendingString("/nope.png")
+                let filename = documentsDirectory.stringByAppendingString("/\(uuid)-map.png")
                 data.writeToFile(filename, atomically: true)
                 urge.mapFile = filename
             }
@@ -126,6 +127,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let urge = urgeForIndexPath(indexPath)
         
         cell.timeLabel.text = urge.humanTime()
+        // TODO: persist this between builds...does Documents directory get blown away?
         cell.mapImageView.image = UIImage(contentsOfFile: urge.mapFile)
         
         return cell
