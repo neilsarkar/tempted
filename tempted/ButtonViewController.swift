@@ -22,8 +22,8 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
         // TODO: do this in initialization
         urge.createdAt = NSDate();
         if( latlng != nil ) {
-            urge.lat = latlng.latitude.description
-            urge.lng = latlng.latitude.description
+            urge.lat = latlng.latitude
+            urge.lng = latlng.longitude
         }
         
         let realm = try! Realm()

@@ -14,8 +14,8 @@ class Urge:Object {
     dynamic var createdAt = NSDate(timeIntervalSince1970: 1)
     dynamic var photo: NSData? = nil
     dynamic var selfie: NSData? = nil
-    dynamic var lat="39.833850"
-    dynamic var lng="-8.437500"
+    dynamic var lat = 0.0
+    dynamic var lng = 0.0
 
     override static func indexedProperties() -> [String] {
         return ["createdAt"]
