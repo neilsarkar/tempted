@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m6t-CQ-PGv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ROM-AS-eoR">
+            <objects>
+                <navigationController id="m6t-CQ-PGv" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BHw-Li-u0F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ha7-JV-1dI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKK-TF-k5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-895" y="265"/>
+        </scene>
         <!--Button View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -33,6 +49,7 @@
                             <constraint firstItem="5MT-1U-2lk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kpa-c7-X7d"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wJh-EK-fpk"/>
                     <connections>
                         <outlet property="button" destination="5MT-1U-2lk" id="6jf-ZE-yWQ"/>
                     </connections>
@@ -58,7 +75,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="tempted" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="64" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -103,11 +120,10 @@
                             <outlet property="delegate" destination="x0J-Yn-BzT" id="Muv-sX-Xsr"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="utU-Hv-cvJ"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="265"/>
+            <point key="canvasLocation" x="697" y="265"/>
         </scene>
     </scenes>
 </document>
