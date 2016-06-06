@@ -9,8 +9,5 @@
 import UIKit
 
 class ButtonCell : UICollectionViewCell {
-    @IBAction func handleButtonTapped(sender: AnyObject) {
-        
-    }
     @IBOutlet weak var button: UIButton!
 }

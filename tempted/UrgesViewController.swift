@@ -8,13 +8,45 @@
 
 import UIKit
 import RealmSwift
+import RealmSwift
+import CoreLocation
 
-class UrgesViewController : UICollectionViewController {
+class UrgesViewController : UICollectionViewController, CLLocationManagerDelegate {
     let topIdentifier   = "ButtonCell"
     let reuseIdentifier = "UrgeCell"
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var urges: Results<Urge>?
+    var locationManager:CLLocationManager!
+    var latlng:CLLocationCoordinate2D!
     
+    @IBAction func handleButtonTapped(sender: AnyObject) {
+        let image = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let button = sender as! UIButton
+        button.setImage(image, forState: UIControlState.Normal)
+        
+        let urge = Urge();
+        
+        // TODO: do this in initialization
+        urge.createdAt = NSDate();
+        if( latlng != nil ) {
+            urge.lat = latlng.latitude
+            urge.lng = latlng.longitude
+        }
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(urge);
+        }
+        
+        print("Saved")
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latlng = manager.location!.coordinate
+        manager.stopUpdatingLocation()
+    }
+
     func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
         return urges![indexPath.row]
     }
@@ -22,6 +54,15 @@ class UrgesViewController : UICollectionViewController {
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        } else {
+            print("Location services not enabled")
+        }        
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
