@@ -44,6 +44,12 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        // TODO: do this better
+        let image = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        button.setImage(image, forState: UIControlState.Normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
@@ -57,9 +63,6 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         button.setTitle("", forState: UIControlState.Normal)
-        // TODO: do this better
-        let image = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        button.setImage(image, forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
