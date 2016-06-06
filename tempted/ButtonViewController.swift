@@ -17,6 +17,9 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
     var latlng:CLLocationCoordinate2D!
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
+        let image = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        button.setImage(image, forState: UIControlState.Normal)
+
         let urge = Urge();
         
         // TODO: do this in initialization
@@ -31,7 +34,10 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
         try! realm.write {
             realm.add(urge);
         }
+        
     }
+
+    @IBOutlet weak var button: UIButton!
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
@@ -46,10 +52,14 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
-            print("Listening")
         } else {
             print("Location services not enabled")
         }
+        
+        button.setTitle("", forState: UIControlState.Normal)
+        // TODO: do this better
+        let image = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        button.setImage(image, forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
