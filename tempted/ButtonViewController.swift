@@ -13,16 +13,11 @@ import CoreLocation
 
 class ButtonViewController: UIViewController, CLLocationManagerDelegate {
     
+    var locationManager:CLLocationManager?
+    
     @IBAction func handleButtonTapped(sender: AnyObject) {
         let urge = Urge();
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
         // TODO: do this in initialization
         urge.createdAt = NSDate();
         
@@ -40,7 +35,16 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        locationManager = CLLocationManager()
+        locationManager!.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager!.delegate = self
+            locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager!.startUpdatingLocation()
+            print("Listening")
+        } else {
+            print("Location services not enabled")
+        }
     }
 
     override func didReceiveMemoryWarning() {
