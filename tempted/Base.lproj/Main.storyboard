@@ -6,42 +6,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Button View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ButtonViewController" customModule="tempted" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MT-1U-2lk">
-                                <rect key="frame" x="282" y="285" width="36" height="30"/>
-                                <state key="normal" title="Help."/>
-                                <connections>
-                                    <action selector="handleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0s4-li-BFK"/>
-                                    <segue destination="x0J-Yn-BzT" kind="show" id="Eib-fa-Stm"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="5MT-1U-2lk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QA2-Jy-VFV"/>
-                            <constraint firstItem="5MT-1U-2lk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kpa-c7-X7d"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="wJh-EK-fpk"/>
-                    <connections>
-                        <outlet property="button" destination="5MT-1U-2lk" id="6jf-ZE-yWQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-161" y="289"/>
-        </scene>
         <!--Urges View Controller-->
         <scene sceneID="kn1-Iv-Mvt">
             <objects>
@@ -66,8 +30,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7r-RG-9pu">
-                                            <rect key="frame" x="77" y="85" width="46" height="30"/>
-                                            <state key="normal" title="Button"/>
+                                            <rect key="frame" x="66" y="85" width="69" height="30"/>
+                                            <state key="normal" title="Mosquitto"/>
                                             <connections>
                                                 <action selector="handleButtonTapped:" destination="x0J-Yn-BzT" eventType="touchUpInside" id="cjp-2c-5Mn"/>
                                             </connections>

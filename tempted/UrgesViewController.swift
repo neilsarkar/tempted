@@ -39,7 +39,11 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             realm.add(urge);
         }
         
-        print("Saved")
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.66 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            let indexPath = NSIndexPath(forItem: 0, inSection: 1)
+            self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
