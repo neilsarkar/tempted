@@ -15,6 +15,8 @@
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
 		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
+		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
+		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
 		3FF41EBA1D04B02F0063CA80 /* tempted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB81D04B02F0063CA80 /* tempted.xcdatamodeld */; };
@@ -44,6 +46,8 @@
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB61D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 			files = (
 				3F6B9AAF1D04C0C5002CA04D /* RealmSwift.framework in Frameworks */,
 				3F6B9AAB1D04C0BE002CA04D /* Realm.framework in Frameworks */,
+				3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */,
+				3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +93,8 @@
 		3FF41EA51D04B02F0063CA80 = {
 			isa = PBXGroup;
 			children = (
+				3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */,
+				3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */,
 				3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */,
 				3F6B9AAA1D04C0BE002CA04D /* Realm.framework */,
 				3FF41EB01D04B02F0063CA80 /* tempted */,
@@ -129,6 +137,7 @@
 				3FF41EAC1D04B02F0063CA80 /* Resources */,
 				3F6B9AAD1D04C0BE002CA04D /* Embed Frameworks */,
 				3F6B9AB21D04C164002CA04D /* ShellScript */,
+				3FD7D5AD1D055589000E98A9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -200,6 +209,19 @@
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
 		};
+		3FD7D5AD1D055589000E98A9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 6421088286a39d1b593400da0ac6819ff6dde0d0 879126e4df20c1addccd76129465972bb34c3beed5e4a6304a4bae12d6dc0195";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -256,6 +278,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Neil Sarkar (SL8THA84AW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -302,6 +325,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Neil Sarkar (SL8THA84AW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
