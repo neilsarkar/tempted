@@ -31,6 +31,19 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         if( latlng != nil ) {
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
+            
+            let width = Int(self.view.frame.width)
+            let height = Int(self.view.frame.height / 2)
+            let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
+            let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
+            
+            if let data = NSData(contentsOfURL: url) {
+                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let documentsDirectory = paths[0]
+                let filename = documentsDirectory.stringByAppendingString("/nope.png")
+                data.writeToFile(filename, atomically: true)
+                urge.mapFile = filename
+            }
         }
         
         let realm = try! Realm()
@@ -78,6 +91,8 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             return self.view.frame.size
         }
         // TODO: calculate this from real shit
+        // TODO: try catch
+        // TODO: deal with no internet
         let width = self.view.frame.width
         let height = self.view.frame.height / 2 + 20
         return CGSize(width: width, height: height)
@@ -111,18 +126,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let urge = urgeForIndexPath(indexPath)
         
         cell.timeLabel.text = urge.humanTime()
-
-        // TODO: try catch
-        // TODO: deal with no internet
-        let width = Int(self.view.frame.width)
-        let height = Int(self.view.frame.height / 2)
-        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
-        let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
-
-        if let data = NSData(contentsOfURL: url) {
-            let mapImage = UIImage(data: data)
-            cell.mapImageView.image = mapImage
-        }
+        cell.mapImageView.image = UIImage(contentsOfFile: urge.mapFile)
         
         return cell
     }

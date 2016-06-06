@@ -1,5 +1,5 @@
 //
-//  Dog.swift
+//  Urge.swift
 //  tempted
 //
 //  Created by Neil Sarkar on 6/5/16.
@@ -16,9 +16,16 @@ class Urge:Object {
     dynamic var selfie: NSData? = nil
     dynamic var lat = 0.0
     dynamic var lng = 0.0
-
+    dynamic var mapFile = ""
+    
     override static func indexedProperties() -> [String] {
         return ["createdAt"]
+    }
+    
+    func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
     func humanTime() -> String {
