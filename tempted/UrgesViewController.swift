@@ -23,6 +23,14 @@ class UrgesViewController : UICollectionViewController {
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return self.view.frame.size
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0,0,0,0)
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -35,11 +43,12 @@ class UrgesViewController : UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
         
-        cell.backgroundColor = UIColor.lightGrayColor()
         cell.timeLabel.text = urge.humanTime()
+
         // TODO: try catch
         // TODO: deal with no map
-        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=100x100&sensor=false&markers=\(urge.lat)+\(urge.lng)"
+        // TODO: resize map
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=420x420&sensor=false&markers=\(urge.lat)+\(urge.lng)"
         let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
         print(url)
         

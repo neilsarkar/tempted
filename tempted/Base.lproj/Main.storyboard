@@ -64,14 +64,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij">
                                             <rect key="frame" x="79" y="8" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="39" y="99" width="122" height="93"/>
+                                            <rect key="frame" x="39" y="32" width="122" height="93"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -80,9 +80,18 @@
                                 <constraints>
                                     <constraint firstAttribute="topMargin" secondItem="L3a-dE-5ij" secondAttribute="top" id="2wb-i2-1DH"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="6th-PL-oVT"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="3" id="PIu-3e-eUi"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="4At-iF-6AR" secondAttribute="bottom" id="avD-yW-AmV"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="i5i-Iq-f1a"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="L3a-dE-5ij" secondAttribute="leading" id="nSt-YO-mWT"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="avD-yW-AmV"/>
+                                        <exclude reference="nSt-YO-mWT"/>
+                                        <exclude reference="2wb-i2-1DH"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
                                     <outlet property="timeLabel" destination="L3a-dE-5ij" id="yXn-cH-xa9"/>
