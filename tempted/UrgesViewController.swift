@@ -40,14 +40,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         }
         
         if (self.urges == nil || self.urges!.count < 1 ) { return }
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.66 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            if( self.urges == nil || self.urges!.count < 1 ) { return }
-            
-            self.collectionView?.reloadData()
-            let indexPath = NSIndexPath(forItem: 0, inSection: 1)
-            self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
-        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
