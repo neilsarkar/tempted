@@ -44,7 +44,7 @@
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
-		3FF41EAE1D04B02F0063CA80 /* tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB61D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3FF41EB91D04B02F0063CA80 /* tempted.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tempted.xcdatamodel; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		3FF41EAF1D04B02F0063CA80 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FF41EAE1D04B02F0063CA80 /* tempted.app */,
+				3FF41EAE1D04B02F0063CA80 /* Tempted.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FF41EAD1D04B02F0063CA80 /* tempted */ = {
+		3FF41EAD1D04B02F0063CA80 /* Tempted */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FF41EC31D04B02F0063CA80 /* Build configuration list for PBXNativeTarget "tempted" */;
+			buildConfigurationList = 3FF41EC31D04B02F0063CA80 /* Build configuration list for PBXNativeTarget "Tempted" */;
 			buildPhases = (
 				3FF41EAA1D04B02F0063CA80 /* Sources */,
 				3FF41EAB1D04B02F0063CA80 /* Frameworks */,
@@ -134,9 +134,9 @@
 			);
 			dependencies = (
 			);
-			name = tempted;
+			name = Tempted;
 			productName = tempted;
-			productReference = 3FF41EAE1D04B02F0063CA80 /* tempted.app */;
+			productReference = 3FF41EAE1D04B02F0063CA80 /* Tempted.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -168,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FF41EAD1D04B02F0063CA80 /* tempted */,
+				3FF41EAD1D04B02F0063CA80 /* Tempted */,
 			);
 		};
 /* End PBXProject section */
@@ -371,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FF41EC31D04B02F0063CA80 /* Build configuration list for PBXNativeTarget "tempted" */ = {
+		3FF41EC31D04B02F0063CA80 /* Build configuration list for PBXNativeTarget "Tempted" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FF41EC41D04B02F0063CA80 /* Debug */,

@@ -39,10 +39,14 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             realm.add(urge);
         }
         
+        if (self.urges == nil || self.urges!.count < 1 ) { return }
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.66 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
+            if( self.urges == nil || self.urges!.count < 1 ) { return }
+            
+            self.collectionView?.reloadData()
             let indexPath = NSIndexPath(forItem: 0, inSection: 1)
-            self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
+            self.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
         }
     }
     
@@ -102,6 +106,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             
             return cell
         }
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
         
