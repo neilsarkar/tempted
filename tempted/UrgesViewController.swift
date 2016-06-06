@@ -37,6 +37,14 @@ class UrgesViewController : UICollectionViewController {
         
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.timeLabel.text = urge.humanTime()
+        // TODO: try catch
+        // TODO: deal with no map
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=400x400&sensor=false&markers=color:red|\(urge.lat)+\(urge.lng)"
+        let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
+        print(url)
+        
+        let mapImage = UIImage(data: NSData(contentsOfURL: url)!)
+        cell.mapImageView.image = mapImage
         return cell
     }
 }

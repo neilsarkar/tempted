@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Button View Controller-->
@@ -61,20 +62,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij">
-                                            <rect key="frame" x="79" y="89" width="42" height="21"/>
+                                            <rect key="frame" x="79" y="8" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
+                                            <rect key="frame" x="39" y="99" width="122" height="93"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="Hjj-Bs-mqw"/>
-                                    <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="FlK-65-c39" secondAttribute="centerY" id="YHS-Vb-J8Z"/>
+                                    <constraint firstAttribute="topMargin" secondItem="L3a-dE-5ij" secondAttribute="top" id="2wb-i2-1DH"/>
+                                    <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="6th-PL-oVT"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="4At-iF-6AR" secondAttribute="bottom" id="avD-yW-AmV"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="i5i-Iq-f1a"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
                                     <outlet property="timeLabel" destination="L3a-dE-5ij" id="yXn-cH-xa9"/>
                                 </connections>
                             </collectionViewCell>
