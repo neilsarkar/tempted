@@ -14,6 +14,7 @@
 		3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB41D04C1A3002CA04D /* Urge.swift */; };
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
+		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB41D04B02F0063CA80 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB31D04B02F0063CA80 /* ButtonViewController.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
+		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB31D04B02F0063CA80 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				3FF41EB31D04B02F0063CA80 /* ButtonViewController.swift */,
 				3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */,
 				3F6B9AB91D04D692002CA04D /* UrgeCell.swift */,
+				3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */,
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
+				3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

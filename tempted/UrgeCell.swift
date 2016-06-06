@@ -12,4 +12,5 @@ class UrgeCell : UICollectionViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var mapImageView: UIImageView!
+
 }
