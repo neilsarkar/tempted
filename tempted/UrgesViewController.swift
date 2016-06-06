@@ -24,7 +24,10 @@ class UrgesViewController : UICollectionViewController {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return self.view.frame.size
+        // TODO: calculate this from real shit
+        let width = self.view.frame.width
+        let height = self.view.frame.height / 2 + 20
+        return CGSize(width: width, height: height);
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
@@ -48,7 +51,9 @@ class UrgesViewController : UICollectionViewController {
         // TODO: try catch
         // TODO: deal with no map
         // TODO: resize map
-        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=420x420&sensor=false&markers=\(urge.lat)+\(urge.lng)"
+        let width = Int(self.view.frame.width)
+        let height = Int(self.view.frame.height / 2)
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
         let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
         print(url)
         
