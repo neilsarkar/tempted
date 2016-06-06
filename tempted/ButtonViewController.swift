@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ButtonViewController: UIViewController {
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
         let urge = Urge();
