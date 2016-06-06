@@ -38,8 +38,12 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         try! realm.write {
             realm.add(urge);
         }
-        
-        if (self.urges == nil || self.urges!.count < 1 ) { return }
+
+        let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
+        self.collectionView?.insertItemsAtIndexPaths([indexPath])
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+        })
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -67,6 +71,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if( indexPath.section == 0 ) {
+            return self.view.frame.size
+        }
+
+        if( indexPath.section == 1 && collectionView.numberOfItemsInSection(1) == 1 ) {
             return self.view.frame.size
         }
         // TODO: calculate this from real shit
@@ -110,7 +118,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let height = Int(self.view.frame.height / 2)
         let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
         let url = NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!
-        print(url)
 
         if let data = NSData(contentsOfURL: url) {
             let mapImage = UIImage(data: data)
