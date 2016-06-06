@@ -12,8 +12,8 @@ import RealmSwift
 import CoreLocation
 
 class ButtonViewController: UIViewController, CLLocationManagerDelegate {
-    
-    var locationManager:CLLocationManager?
+
+    var locationManager:CLLocationManager!
     
     @IBAction func handleButtonTapped(sender: AnyObject) {
         let urge = Urge();
@@ -36,11 +36,11 @@ class ButtonViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
-        locationManager!.requestWhenInUseAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            locationManager!.delegate = self
-            locationManager!.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager!.startUpdatingLocation()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
             print("Listening")
         } else {
             print("Location services not enabled")
