@@ -14,6 +14,8 @@
 		3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB41D04C1A3002CA04D /* Urge.swift */; };
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
+		3F7D03511D0736A7005158F8 /* Haneke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D03501D0736A7005158F8 /* Haneke.framework */; };
+		3F7D03521D0736A7005158F8 /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D03501D0736A7005158F8 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
@@ -33,6 +35,7 @@
 			files = (
 				3F6B9AB01D04C0C5002CA04D /* RealmSwift.framework in Embed Frameworks */,
 				3F6B9AAC1D04C0BE002CA04D /* Realm.framework in Embed Frameworks */,
+				3F7D03521D0736A7005158F8 /* Haneke.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
+		3F7D03501D0736A7005158F8 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 				3F6B9AAB1D04C0BE002CA04D /* Realm.framework in Frameworks */,
 				3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */,
 				3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */,
+				3F7D03511D0736A7005158F8 /* Haneke.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +98,7 @@
 		3FF41EA51D04B02F0063CA80 = {
 			isa = PBXGroup;
 			children = (
+				3F7D03501D0736A7005158F8 /* Haneke.framework */,
 				3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */,
 				3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */,
 				3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */,
@@ -138,6 +144,7 @@
 				3F6B9AAD1D04C0BE002CA04D /* Embed Frameworks */,
 				3F6B9AB21D04C164002CA04D /* ShellScript */,
 				3FD7D5AD1D055589000E98A9 /* ShellScript */,
+				3F7D03531D0736D6005158F8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -208,6 +215,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		3F7D03531D0736D6005158F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Haneke.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		3FD7D5AD1D055589000E98A9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -356,6 +377,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = tempted/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -374,6 +396,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = tempted/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
