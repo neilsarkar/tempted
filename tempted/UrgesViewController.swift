@@ -82,12 +82,27 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             print("Location services not enabled")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRotation), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
     }
     
     // re-render on rotation
-    @objc func rotated(obj: AnyObject!) {
+    @objc private func handleRotation(note: NSNotification) {
+        self.collectionView?.reloadData()
+    }
+    
+    @objc private func handleUrgeDelete(note:NSNotification) {
+        if( note.userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
+        let id = note.userInfo!["id"] as! String
+        
+        let realm = try! Realm()
+        let badUrge = realm.objectForPrimaryKey(Urge.self, key: id)!
+        try! realm.write {
+            realm.delete(badUrge)
+        }
+
+        // TODO: splice urges array instead of recalculating
+        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
     }
     
@@ -134,6 +149,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
         
+        cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
         // TODO: persist this between builds...does Documents directory get blown away?
         cell.mapImageView.image = UIImage(contentsOfFile: urge.mapFile)

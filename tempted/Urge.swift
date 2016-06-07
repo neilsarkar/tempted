@@ -18,8 +18,12 @@ class Urge:Object {
     dynamic var lng = 0.0
     dynamic var mapFile = ""
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
     override static func indexedProperties() -> [String] {
-        return ["createdAt"]
+        return ["createdAt", "id"]
     }
     
     func getDocumentsDirectory() -> NSString {

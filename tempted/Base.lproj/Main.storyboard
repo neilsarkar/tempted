@@ -54,15 +54,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij">
-                                            <rect key="frame" x="79" y="8" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij">
+                                            <rect key="frame" x="83" y="15" width="38" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="39" y="32" width="122" height="93"/>
+                                            <rect key="frame" x="39" y="53" width="122" height="93"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
+                                            <rect key="frame" x="162" y="8" width="30" height="30"/>
+                                            <state key="normal" title="x">
+                                                <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="handleDelete:" destination="FlK-65-c39" eventType="touchUpInside" id="E9K-A1-1ug"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -70,8 +79,10 @@
                                 <constraints>
                                     <constraint firstAttribute="topMargin" secondItem="L3a-dE-5ij" secondAttribute="top" id="2wb-i2-1DH"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="6th-PL-oVT"/>
+                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="centerY" secondItem="L3a-dE-5ij" secondAttribute="centerY" id="E4I-x2-qKx"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="3" id="PIu-3e-eUi"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="4At-iF-6AR" secondAttribute="bottom" id="avD-yW-AmV"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="WSN-Ww-DQT" secondAttribute="trailing" id="hUw-ps-GZX"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="i5i-Iq-f1a"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="L3a-dE-5ij" secondAttribute="leading" id="nSt-YO-mWT"/>
                                 </constraints>
@@ -83,6 +94,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
                                     <outlet property="timeLabel" destination="L3a-dE-5ij" id="yXn-cH-xa9"/>
                                 </connections>
