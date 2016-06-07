@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import RealmSwift
 import CoreLocation
+import Haneke
 
 class UrgesViewController : UICollectionViewController, CLLocationManagerDelegate {
     let topIdentifier   = "ButtonCell"
@@ -148,11 +149,13 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
+        let width = Int(self.view.frame.width)
+        let height = Int(self.view.frame.height / 2)
         
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
-        // TODO: persist this between builds...does Documents directory get blown away?
-        cell.mapImageView.image = UIImage(contentsOfFile: urge.mapFile)
+        cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
+        cell.mapImageView.frame = CGRectMake(cell.mapImageView.frame.origin.x, cell.mapImageView.frame.origin.y, CGFloat(width), CGFloat(height))
         
         return cell
     }

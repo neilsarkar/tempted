@@ -26,10 +26,15 @@ class Urge:Object {
         return ["createdAt", "id"]
     }
     
-    func getDocumentsDirectory() -> NSString {
+    func getDocumentsDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
         return documentsDirectory
+    }
+    
+    func mapImageUrl(width: Int, height: Int) -> NSURL? {
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(lat)+\(lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(lat)+\(lng)"
+        return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
     }
     
     func humanTime() -> String {
