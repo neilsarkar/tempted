@@ -80,7 +80,15 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             locationManager.startUpdatingLocation()
         } else {
             print("Location services not enabled")
-        }        
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(rotated), name: UIDeviceOrientationDidChangeNotification, object: nil)
+
+    }
+    
+    // re-render on rotation
+    @objc func rotated(obj: AnyObject!) {
+        self.collectionView?.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
