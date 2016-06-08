@@ -21,7 +21,6 @@
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
-		3FF41EBA1D04B02F0063CA80 /* tempted.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB81D04B02F0063CA80 /* tempted.xcdatamodeld */; };
 		3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */; };
 		3FF41EBF1D04B02F0063CA80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -62,8 +61,6 @@
 		3F1D51181D07CE6B00A9B230 /* Haneke.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Haneke.framework.dSYM; path = Carthage/Build/iOS/Haneke.framework.dSYM; sourceTree = "<group>"; };
 		3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
 		3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/iOS/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
-		3F6B9AAA1D04C0BE002CA04D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
@@ -74,7 +71,6 @@
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB61D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3FF41EB91D04B02F0063CA80 /* tempted.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tempted.xcdatamodel; sourceTree = "<group>"; };
 		3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FF41EBE1D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FF41EC01D04B02F0063CA80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,8 +120,6 @@
 				3F7D03501D0736A7005158F8 /* Haneke.framework */,
 				3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */,
 				3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */,
-				3F6B9AAE1D04C0C5002CA04D /* RealmSwift.framework */,
-				3F6B9AAA1D04C0BE002CA04D /* Realm.framework */,
 				3FF41EB01D04B02F0063CA80 /* tempted */,
 				3FF41EAF1D04B02F0063CA80 /* Products */,
 			);
@@ -149,7 +143,6 @@
 				3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */,
 				3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */,
 				3FF41EC01D04B02F0063CA80 /* Info.plist */,
-				3FF41EB81D04B02F0063CA80 /* tempted.xcdatamodeld */,
 			);
 			path = tempted;
 			sourceTree = "<group>";
@@ -262,7 +255,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF41EBA1D04B02F0063CA80 /* tempted.xcdatamodeld in Sources */,
 				3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */,
 				3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */,
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
@@ -440,19 +432,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3FF41EB81D04B02F0063CA80 /* tempted.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3FF41EB91D04B02F0063CA80 /* tempted.xcdatamodel */,
-			);
-			currentVersion = 3FF41EB91D04B02F0063CA80 /* tempted.xcdatamodel */;
-			path = tempted.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3FF41EA61D04B02F0063CA80 /* Project object */;
 }
