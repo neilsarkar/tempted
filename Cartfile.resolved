@@ -1,1 +1,2 @@
 github "Haneke/HanekeSwift" "v0.10.1"
+github "realm/realm-cocoa" "v1.0.0"
