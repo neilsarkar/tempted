@@ -113,12 +113,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             return self.view.frame.size
         }
 
-        if( indexPath.section == 1 && collectionView.numberOfItemsInSection(1) == 1 ) {
-            return self.view.frame.size
-        }
-        // TODO: calculate this from real shit
-        // TODO: try catch
-        // TODO: deal with no internet
         let width = self.view.frame.width
         let height = self.view.frame.height / 2 + 20
         return CGSize(width: width, height: height)
@@ -156,10 +150,9 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
         print(urge.mapImageUrl(width, height: height)!)
-        cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
-        cell.mapImageView.opaque = false
-        cell.mapImageView.frame = CGRectMake(cell.mapImageView.frame.origin.x, cell.mapImageView.frame.origin.y, CGFloat(width), CGFloat(height))
-        
+//        cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
+//        cell.mapImageView.opaque = false
+        cell.mapImageView.backgroundColor = UIColor.magentaColor()
         return cell
     }
 }

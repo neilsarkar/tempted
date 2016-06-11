@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rVk-G2-bxr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x0J-Yn-BzT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -119,9 +119,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="39" y="81" width="126" height="93"/>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
                                             <rect key="frame" x="162" y="37" width="30" height="30"/>
                                             <state key="normal" title="x">
@@ -131,20 +128,25 @@
                                                 <action selector="handleDelete:" destination="FlK-65-c39" eventType="touchUpInside" id="E9K-A1-1ug"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
+                                            <rect key="frame" x="8" y="99" width="184" height="93"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="bottom" secondItem="FlK-65-c39" secondAttribute="bottomMargin" constant="10" id="2bI-pL-jku"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="4At-iF-6AR" secondAttribute="trailing" id="2q6-QO-2Qc"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="WSN-Ww-DQT" secondAttribute="bottom" constant="10" id="3Uy-3V-nz1"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="Mg6-0i-cBf"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="4At-iF-6AR" secondAttribute="bottom" constant="18" id="Mis-zB-X8c"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
                                     <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="lfn-vL-oMS" secondAttribute="trailing" id="RRq-pH-Ygc"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="9" id="UsS-0S-RR7"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="WSN-Ww-DQT" secondAttribute="trailing" constant="77" id="l1h-Vr-goQ"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="lfn-vL-oMS" secondAttribute="centerX" id="oor-YC-1V4"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>

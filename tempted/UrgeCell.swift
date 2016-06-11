@@ -20,4 +20,8 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var mapImageView: UIImageView!
 
     @IBOutlet weak var deleteButton: UIButton!
+    
+    override func awakeFromNib() {
+        
+    }
 }
