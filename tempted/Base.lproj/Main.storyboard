@@ -4,59 +4,8 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Scratch View Controller-->
-        <scene sceneID="Ewv-zc-Y1K">
-            <objects>
-                <viewController id="rVk-G2-bxr" customClass="ScratchViewController" customModule="Tempted" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FiI-ng-q2o"/>
-                        <viewControllerLayoutGuide type="bottom" id="vwl-gO-56i"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wM2-fM-QH9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfx-PQ-oT5" userLabel="Line">
-                                <rect key="frame" x="181" y="29" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="gkj-iU-aLi"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHE-Gz-DSr">
-                                <rect key="frame" x="279" y="43" width="42" height="21"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HN-ya-wQq">
-                                <rect key="frame" x="20" y="236" width="560" height="344"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="vwl-gO-56i" firstAttribute="top" secondItem="0HN-ya-wQq" secondAttribute="bottom" constant="-36" id="4Kj-bL-Gcc"/>
-                            <constraint firstItem="cfx-PQ-oT5" firstAttribute="width" secondItem="wM2-fM-QH9" secondAttribute="width" multiplier="2" id="8G4-yR-C4Z"/>
-                            <constraint firstItem="cfx-PQ-oT5" firstAttribute="centerX" secondItem="wM2-fM-QH9" secondAttribute="centerX" id="K6G-v3-nyl"/>
-                            <constraint firstItem="cfx-PQ-oT5" firstAttribute="top" secondItem="FiI-ng-q2o" secondAttribute="bottom" constant="8" id="dwj-RY-UEx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0HN-ya-wQq" secondAttribute="trailing" id="izv-Y8-noQ"/>
-                            <constraint firstItem="0HN-ya-wQq" firstAttribute="leading" secondItem="wM2-fM-QH9" secondAttribute="leadingMargin" id="p2Y-ct-zLu"/>
-                            <constraint firstItem="lHE-Gz-DSr" firstAttribute="centerX" secondItem="cfx-PQ-oT5" secondAttribute="centerX" id="qi9-A9-KKw"/>
-                            <constraint firstItem="lHE-Gz-DSr" firstAttribute="centerY" secondItem="cfx-PQ-oT5" secondAttribute="centerY" id="vii-C6-T9Q"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="0HN-ya-wQq" id="CF2-LA-sNW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ilp-J0-UdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-16" y="265"/>
-        </scene>
         <!--Urges View Controller-->
         <scene sceneID="kn1-Iv-Mvt">
             <objects>
