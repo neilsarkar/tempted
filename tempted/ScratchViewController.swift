@@ -17,15 +17,16 @@ class ScratchViewController : UIViewController {
         imageView.contentMode = .ScaleAspectFill
 
         
-//        let constraint = NSLayoutConstraint(
-//            item: imageView,
-//            attribute: .Height,
-//            relatedBy: .Equal,
-//            toItem: self.view,
-//            attribute: .Height,
-//            multiplier: 0.5,
-//            constant: 0
-//        )
+        let constraint = NSLayoutConstraint(
+            item: imageView,
+            attribute: .Height,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Height,
+            multiplier: 0.5,
+            constant: 0
+        )
+        view.addConstraint(constraint)
 //        imageView.addConstraint(constraint)
 //        imageView.addConstraint(constraint)
 //        imageView.imageViewTop

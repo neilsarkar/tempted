@@ -34,11 +34,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0HN-ya-wQq">
-                                <rect key="frame" x="20" y="236" width="560" height="400"/>
+                                <rect key="frame" x="20" y="236" width="560" height="344"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vwl-gO-56i" firstAttribute="top" secondItem="0HN-ya-wQq" secondAttribute="bottom" constant="-36" id="4Kj-bL-Gcc"/>
                             <constraint firstItem="cfx-PQ-oT5" firstAttribute="width" secondItem="wM2-fM-QH9" secondAttribute="width" multiplier="2" id="8G4-yR-C4Z"/>
                             <constraint firstItem="cfx-PQ-oT5" firstAttribute="centerX" secondItem="wM2-fM-QH9" secondAttribute="centerX" id="K6G-v3-nyl"/>
                             <constraint firstItem="cfx-PQ-oT5" firstAttribute="top" secondItem="FiI-ng-q2o" secondAttribute="bottom" constant="8" id="dwj-RY-UEx"/>
