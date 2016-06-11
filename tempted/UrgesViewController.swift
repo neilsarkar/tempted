@@ -34,6 +34,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
             
+            // TODO: delete
             let width = Int(self.view.frame.width)
             let height = Int(self.view.frame.height / 2)
             let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
@@ -149,12 +150,14 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
-        let width = Int(self.view.frame.width)
-        let height = Int(self.view.frame.height / 2)
+        let width = Int(view.frame.width)
+        let height = Int(view.frame.height / 2)
         
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
+        print(urge.mapImageUrl(width, height: height)!)
         cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
+        cell.mapImageView.opaque = false
         cell.mapImageView.frame = CGRectMake(cell.mapImageView.frame.origin.x, cell.mapImageView.frame.origin.y, CGFloat(width), CGFloat(height))
         
         return cell
