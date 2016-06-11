@@ -147,11 +147,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let width = Int(view.frame.width)
         let height = Int(view.frame.height / 2)
         
+        cell.urge = urge
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
         print(urge.mapImageUrl(width, height: height)!)
-//        cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
-//        cell.mapImageView.opaque = false
         cell.mapImageView.backgroundColor = UIColor.magentaColor()
         return cell
     }

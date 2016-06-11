@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Crashlytics
 
 class UrgeCell : UICollectionViewCell {
     var urgeId = ""
-    
+    var urge: Urge!
     
     @IBAction func handleDelete(sender: AnyObject) {
         if( urgeId == "" ) { return print("UrgeID not set!") }
@@ -22,6 +23,21 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
+        // TODO: skip this unless it's the final layout
+        
+        // QUESTION: is this the right place for this?
+        if (urge == nil) {
+            NSLog("Urge not found for UrgeCell")
+            return
+        }
+
+        mapImageView.opaque = false
+        mapImageView.hnk_setImageFromURL(urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))!)
     }
 }
