@@ -34,6 +34,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
             
+            // TODO: delete
             let width = Int(self.view.frame.width)
             let height = Int(self.view.frame.height / 2)
             let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(urge.lat)+\(urge.lng)&zoom=15&size=\(width)x\(height)&sensor=false&markers=\(urge.lat)+\(urge.lng)"
@@ -112,12 +113,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
             return self.view.frame.size
         }
 
-        if( indexPath.section == 1 && collectionView.numberOfItemsInSection(1) == 1 ) {
-            return self.view.frame.size
-        }
-        // TODO: calculate this from real shit
-        // TODO: try catch
-        // TODO: deal with no internet
         let width = self.view.frame.width
         let height = self.view.frame.height / 2 + 20
         return CGSize(width: width, height: height)
@@ -149,14 +144,14 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
-        let width = Int(self.view.frame.width)
-        let height = Int(self.view.frame.height / 2)
+        let width = Int(view.frame.width)
+        let height = Int(view.frame.height / 2)
         
+        cell.urge = urge
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
-        cell.mapImageView.hnk_setImageFromURL(urge.mapImageUrl(width, height: height)!)
-        cell.mapImageView.frame = CGRectMake(cell.mapImageView.frame.origin.x, cell.mapImageView.frame.origin.y, CGFloat(width), CGFloat(height))
-        
+        print(urge.mapImageUrl(width, height: height)!)
+        cell.mapImageView.backgroundColor = UIColor.magentaColor()
         return cell
     }
 }
