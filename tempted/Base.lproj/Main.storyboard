@@ -144,7 +144,6 @@
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
                                     <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="lfn-vL-oMS" secondAttribute="trailing" id="RRq-pH-Ygc"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="9" id="UsS-0S-RR7"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="WSN-Ww-DQT" secondAttribute="trailing" constant="77" id="l1h-Vr-goQ"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="lfn-vL-oMS" secondAttribute="centerX" id="oor-YC-1V4"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
                                 </constraints>
