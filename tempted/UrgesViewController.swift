@@ -88,6 +88,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     // re-render on rotation
     @objc private func handleRotation(note: NSNotification) {
         self.collectionView?.reloadData()
