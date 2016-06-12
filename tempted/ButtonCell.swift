@@ -13,22 +13,24 @@ class ButtonCell : UICollectionViewCell {
     let releasedImage = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
     let pushedImage = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
     var isPushed = false
-    
+
+    @IBOutlet weak var scrollHint: UIImageView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
-    @IBAction func handleButtonTapped(sender: UIButton) {
-        if( isPushed ) { return }
-        isPushed = true
-        showPushed()
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         button.setTitle("", forState: .Normal)
         showReleased()
-        
+        scrollHint.hidden = true
         subscribe()
+    }
+    
+    @IBAction func handleButtonTapped(sender: UIButton) {
+        if( isPushed ) { return }
+        isPushed = true
+        showPushed()
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
     }
     
     private func subscribe() {
@@ -40,6 +42,7 @@ class ButtonCell : UICollectionViewCell {
         button.setImage(pushedImage, forState: .Normal)
         label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
         timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased), userInfo: nil, repeats: false)
+        scrollHint.hidden = false
     }
     
     internal func showReleased() {

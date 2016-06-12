@@ -60,6 +60,7 @@
                                 <connections>
                                     <outlet property="button" destination="O7r-RG-9pu" id="kZq-oU-TZy"/>
                                     <outlet property="label" destination="06V-fc-Zt5" id="zz8-L1-48c"/>
+                                    <outlet property="scrollHint" destination="Ffz-1a-IQJ" id="nTy-mz-5UO"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
