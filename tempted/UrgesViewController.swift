@@ -87,13 +87,16 @@ class UrgesViewController : UICollectionViewController {
     }
     
     internal func showPermissionNeeded() {
-
+// TODO: why is this needed, since NSThread.isMainThread() returns true
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("Halp", sender: self)
+        }
     }
 
     internal func handleUrgeCreateFailed() {
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
-        // TODO: how to skip block?
+        // TODO: how to provide nil block?
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in }
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) {}
