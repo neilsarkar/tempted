@@ -68,7 +68,6 @@ class UrgesViewController : UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
 
-// TODO: handle urge not found
         let urge = urges![indexPath.row]
         
         cell.urge = urge
@@ -88,7 +87,7 @@ class UrgesViewController : UICollectionViewController {
     internal func handleUrgeCreateFailed() {
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
-        // TODO: how to skip block
+        // TODO: how to skip block?
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in }
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) {}

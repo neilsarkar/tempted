@@ -36,7 +36,6 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         if( latlng != nil ) {
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
-            // TODO: remove mapFile
         }
         
         let realm = try! Realm()
@@ -45,7 +44,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             realm.add(urge);
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: self)
     }
     
     internal func handleForeground(note: NSNotification) {
