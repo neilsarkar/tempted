@@ -131,9 +131,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         let height = self.view.frame.height / 2 + 20
         return CGSize(width: width, height: height)
     }
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0,0,0,0)
+        if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
+        return UIEdgeInsetsMake(0, 0, 15, 0)
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

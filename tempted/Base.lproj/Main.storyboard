@@ -107,7 +107,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="4At-iF-6AR" secondAttribute="trailing" id="2q6-QO-2Qc"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="trailing" secondItem="FlK-65-c39" secondAttribute="trailingMargin" id="2q6-QO-2Qc"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="7" id="50i-Ak-dgH"/>
                                     <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="6" id="7hG-kA-rxP"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
