@@ -19,11 +19,33 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
     var locationManager:CLLocationManager!
     var latlng:CLLocationCoordinate2D!
     
-    @IBAction func handleButtonTapped(sender: AnyObject) {
-        let image = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        let button = sender as! UIButton
-        button.setImage(image, forState: UIControlState.Normal)
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latlng = manager.location!.coordinate
+        manager.stopUpdatingLocation()
+    }
+
+    func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
+        return urges![indexPath.row]
+    }
+
+    override func viewDidLoad() {
+        let realm = try! Realm()
+        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         
+        captureLocation()
+        
+        subscribe()
+        
+    }
+    
+    private func subscribe() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRotation), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(createUrge), name: "Button Tapped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
+    }
+    
+    @objc private func createUrge() {
         let urge = Urge();
         
         // TODO: do this in initialization
@@ -54,29 +76,9 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         try! realm.write {
             realm.add(urge);
         }
-
+        
         let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
         self.collectionView?.insertItemsAtIndexPaths([indexPath])
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latlng = manager.location!.coordinate
-        manager.stopUpdatingLocation()
-    }
-
-    func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
-        return urges![indexPath.row]
-    }
-
-    override func viewDidLoad() {
-        let realm = try! Realm()
-        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
-        
-        captureLocation()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRotation), name: UIDeviceOrientationDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -150,11 +152,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if( indexPath.section == 0 ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
-
-            let image = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-            cell.button.setTitle("", forState: UIControlState.Normal)
-            cell.button.setImage(image, forState: UIControlState.Normal)
-            
             return cell
         }
         
