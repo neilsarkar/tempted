@@ -12,10 +12,13 @@ class ButtonCell : UICollectionViewCell {
     var timer: NSTimer?
     let releasedImage = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
     let pushedImage = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
+    var isPushed = false
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBAction func handleButtonTapped(sender: UIButton) {
+        if( isPushed ) { return }
+        isPushed = true
         showPushed()
         NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
     }
@@ -40,6 +43,7 @@ class ButtonCell : UICollectionViewCell {
     }
     
     internal func showReleased() {
+        isPushed = false
         button.setImage(releasedImage, forState: UIControlState.Normal)
         label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
     }
