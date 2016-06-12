@@ -36,4 +36,21 @@ class Urge:Object {
         
         return formatter.stringFromDate(createdAt)
     }
+    
+    static func migrate() {
+        let config = Realm.Configuration(
+            schemaVersion: 2,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                if( oldSchemaVersion < 1 ) {
+                    migration.enumerate(Urge.className()) { oldObject, newObject in
+                        let oldId = oldObject!["id"]
+                        newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
+                    }
+                }
+            }
+        )
+        
+        Realm.Configuration.defaultConfiguration = config
+    }
 }

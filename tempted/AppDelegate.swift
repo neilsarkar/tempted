@@ -21,26 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Crashlytics.self])
-        migrateDb()
+        Urge.migrate()
         
         return true
-    }
-
-    private func migrateDb() {
-        let config = Realm.Configuration(
-            schemaVersion: 2,
-            
-            migrationBlock: { migration, oldSchemaVersion in
-                if( oldSchemaVersion < 1 ) {
-                    migration.enumerate(Urge.className()) { oldObject, newObject in
-                        let oldId = oldObject!["id"]
-                        newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
-                    }
-                }
-            }
-        )
-        
-        Realm.Configuration.defaultConfiguration = config
     }
     
     func applicationWillResignActive(application: UIApplication) {

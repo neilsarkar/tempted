@@ -67,7 +67,6 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     private func captureLocation() {
         if( CLLocationManager.locationServicesEnabled() ) {
             locationManager.startUpdatingLocation()
-            print("Starting to capture location")
         } else {
             print("Location services not enabled")
         }
