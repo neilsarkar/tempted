@@ -9,6 +9,7 @@
 import Foundation
 
 struct TPTNotification {
-    static let ButtonTap = "Button Tapped"
-    static let UrgeDeleted = "Delete Urge"
+    static let CreateUrge = "Create Urge"
+    static let UrgeCreated = "Urge Created"
+    static let UrgeDeleted = "Urge Deleted"
 }

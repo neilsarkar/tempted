@@ -8,8 +8,6 @@
 
 import UIKit
 import RealmSwift
-import RealmSwift
-import Haneke
 
 class UrgesViewController : UICollectionViewController {
     let topIdentifier   = "ButtonCell"
@@ -81,12 +79,11 @@ class UrgesViewController : UICollectionViewController {
     // MARK: Event Handling
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        noteCenter.addObserver(self, selector: #selector(createUrge), name: TPTNotification.ButtonTap, object: nil)
+        noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
     }
     
-    internal func createUrge() {
-        creator.save()
+    internal func handleUrgeAdded() {
         let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
         self.collectionView?.insertItemsAtIndexPaths([indexPath])
     }

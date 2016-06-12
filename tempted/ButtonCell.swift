@@ -12,7 +12,7 @@ class ButtonCell : UICollectionViewCell {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBAction func handleButtonTapped(sender: UIButton) {
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ButtonTap, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
     }
 
     override func awakeFromNib() {
@@ -26,7 +26,7 @@ class ButtonCell : UICollectionViewCell {
     
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        noteCenter.addObserver(self, selector: #selector(showPressed), name: TPTNotification.ButtonTap, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPressed), name: TPTNotification.CreateUrge, object: nil)
     }
     
     internal func showPressed() {

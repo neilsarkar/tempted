@@ -45,6 +45,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             realm.add(urge);
         }
         
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: nil)
     }
     
     internal func handleForeground(note: NSNotification) {
@@ -58,8 +59,9 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        // TODO: feels like a bad separation of concerns
+        // TODO: feels like a bad separation of concerns to have to include UIKit
         noteCenter.addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
     }
     
     private func captureLocation() {
