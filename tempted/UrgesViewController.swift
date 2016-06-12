@@ -24,6 +24,61 @@ class UrgesViewController : UICollectionViewController {
         subscribe()
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
+// MARK: CollectionView Layout
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        if( indexPath.section == 0 ) {
+            return self.view.frame.size
+        }
+
+        let width = self.view.frame.width
+        let height = self.view.frame.height / 2 + 20
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
+        if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
+        return UIEdgeInsetsMake(0, 0, 15, 0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
+        return 0.0
+    }
+
+// MARK: Section and Cell Count
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if( section == 0 ) { return 1; }
+        return urges == nil ? 0 : urges!.count
+    }
+
+// MARK: Cell Initialization
+
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if( indexPath.section == 0 ) {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
+            return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
+
+// TODO: handle urge not found
+        let urge = urges![indexPath.row]
+        
+        cell.urge = urge
+        cell.urgeId = urge.id
+        cell.timeLabel.text = urge.humanTime()
+        return cell
+    }
+
+    // MARK: Event Handling
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
         noteCenter.addObserver(self, selector: #selector(createUrge), name: TPTNotification.ButtonTap, object: nil)
@@ -49,57 +104,5 @@ class UrgesViewController : UICollectionViewController {
         // TODO: splice urges array instead of recalculating
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
-    }
-    
-    
-// MARK: CollectionView Layout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if( indexPath.section == 0 ) {
-            return self.view.frame.size
-        }
-
-        let width = self.view.frame.width
-        let height = self.view.frame.height / 2 + 20
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
-        if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
-        return UIEdgeInsetsMake(0, 0, 15, 0)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
-        return 0.0
-    }
-    
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if( section == 0 ) { return 1; }
-        return urges == nil ? 0 : urges!.count
-    }
-
-// MARK: Cell Initialization
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if( indexPath.section == 0 ) {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
-            return cell
-        }
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
-
-// TODO: handle urge not found
-        let urge = urges![indexPath.row]
-        
-        cell.urge = urge
-        cell.urgeId = urge.id
-        cell.timeLabel.text = urge.humanTime()
-        return cell
     }
 }

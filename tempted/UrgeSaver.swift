@@ -53,7 +53,6 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
-        print("Got location!")
         manager.stopUpdatingLocation()
     }
     
