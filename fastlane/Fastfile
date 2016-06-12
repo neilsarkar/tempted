@@ -18,13 +18,18 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
+
     carthage
   end
 
   desc "Runs all the tests"
   lane :test do
     scan
+  end
+
+  desc "Screenshots"
+  lane :screenshots do
+    snapshot
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -42,8 +47,8 @@ platform :ios do
   lane :appstore do
     # match(type: "appstore")
     # snapshot
-    gym(scheme: "tempted") # Build your app - more options available
-    deliver(force: true)
+    # gym(scheme: "tempted") # Build your app - more options available
+    deliver
     # frameit
   end
 
