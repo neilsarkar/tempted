@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -87,6 +88,9 @@
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
                                             <rect key="frame" x="50" y="92" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -94,7 +98,6 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="bottom" secondItem="FlK-65-c39" secondAttribute="bottomMargin" constant="10" id="2bI-pL-jku"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="4At-iF-6AR" secondAttribute="trailing" id="2q6-QO-2Qc"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="WSN-Ww-DQT" secondAttribute="bottom" constant="10" id="3Uy-3V-nz1"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
