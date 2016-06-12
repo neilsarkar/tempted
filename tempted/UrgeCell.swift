@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import Haneke
 
 class UrgeCell : UICollectionViewCell {
     var urgeId = ""
