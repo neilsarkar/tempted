@@ -16,9 +16,10 @@ class ButtonCell : UICollectionViewCell {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBAction func handleButtonTapped(sender: UIButton) {
+        showPushed()
         NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         button.setTitle("", forState: .Normal)
@@ -29,7 +30,7 @@ class ButtonCell : UICollectionViewCell {
     
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        noteCenter.addObserver(self, selector: #selector(showPushed), name: TPTNotification.CreateUrge, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showReleased), name: TPTNotification.UrgeCreateFailed, object: nil)
     }
     
     internal func showPushed() {

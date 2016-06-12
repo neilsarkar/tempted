@@ -81,6 +81,16 @@ class UrgesViewController : UICollectionViewController {
         let noteCenter = NSNotificationCenter.defaultCenter()
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
+        noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
+    }
+
+    internal func handleUrgeCreateFailed() {
+        let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
+
+        // TODO: how to skip block
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in }
+        alertController.addAction(cancelAction)
+        self.presentViewController(alertController, animated: true) {}
     }
     
     internal func handleUrgeAdded() {
