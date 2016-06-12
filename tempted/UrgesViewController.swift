@@ -57,9 +57,6 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
 
         let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
         self.collectionView?.insertItemsAtIndexPaths([indexPath])
-        dispatch_async(dispatch_get_main_queue(), {
-            self.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
-        })
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
