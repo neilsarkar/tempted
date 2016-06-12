@@ -77,8 +77,15 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
+                                            <rect key="frame" x="50" y="92" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
+                                            </constraints>
+                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
                                             <rect key="frame" x="162" y="37" width="30" height="30"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <state key="normal" title="x">
                                                 <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -86,12 +93,6 @@
                                                 <action selector="handleDelete:" destination="FlK-65-c39" eventType="touchUpInside" id="E9K-A1-1ug"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="50" y="92" width="100" height="100"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -99,13 +100,13 @@
                                 <constraints>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="4At-iF-6AR" secondAttribute="trailing" id="2q6-QO-2Qc"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="WSN-Ww-DQT" secondAttribute="bottom" constant="10" id="3Uy-3V-nz1"/>
+                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="6" id="7hG-kA-rxP"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
-                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="lfn-vL-oMS" secondAttribute="trailing" id="RRq-pH-Ygc"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="9" id="UsS-0S-RR7"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="lfn-vL-oMS" secondAttribute="centerX" id="oor-YC-1V4"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
+                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="4At-iF-6AR" secondAttribute="top" constant="6" id="xH5-qE-oyh"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
