@@ -15,7 +15,7 @@ class UrgeCell : UICollectionViewCell {
     
     @IBAction func handleDelete(sender: AnyObject) {
         if( urgeId == "" ) { return print("UrgeID not set!") }
-        NSNotificationCenter.defaultCenter().postNotificationName("Delete Urge", object: self, userInfo: ["id": urgeId])
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urgeId])
     }
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var mapImageView: UIImageView!

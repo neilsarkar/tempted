@@ -18,6 +18,7 @@
 		3F7D03521D0736A7005158F8 /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7D03501D0736A7005158F8 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */; };
 		3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */; };
+		3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B401D0CF0A1003F73C6 /* Constants.swift */; };
 		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
@@ -69,6 +70,7 @@
 		3F7D03501D0736A7005158F8 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
+		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */,
 				3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */,
 				3FF41EC01D04B02F0063CA80 /* Info.plist */,
+				3FD24B401D0CF0A1003F73C6 /* Constants.swift */,
 			);
 			path = tempted;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
 				3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
+				3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

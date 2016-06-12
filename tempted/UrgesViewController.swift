@@ -39,10 +39,11 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
     }
     
     private func subscribe() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRotation), name: UIDeviceOrientationDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(createUrge), name: "Button Tapped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
+        let noteCenter = NSNotificationCenter.defaultCenter()
+        noteCenter.addObserver(self, selector: #selector(handleRotation), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        noteCenter.addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        noteCenter.addObserver(self, selector: #selector(createUrge), name: TPTNotification.ButtonTap, object: nil)
+        noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
     }
     
     internal func createUrge() {
