@@ -158,13 +158,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
         let urge = urgeForIndexPath(indexPath)
-        let width = Int(view.frame.width)
-        let height = Int(view.frame.height / 2)
         
         cell.urge = urge
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
-        print(urge.mapImageUrl(width, height: height)!)
         cell.mapImageView.backgroundColor = UIColor.magentaColor()
         return cell
     }
