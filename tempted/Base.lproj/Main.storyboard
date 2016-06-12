@@ -37,8 +37,8 @@
                                                 <action selector="handleButtonTapped:" destination="hhc-pp-85I" eventType="touchUpInside" id="sVv-c4-YRJ"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="craving that thing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
-                                            <rect key="frame" x="29" y="8" width="143" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="craving that thing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
+                                            <rect key="frame" x="-25.5" y="43" width="252" height="41"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -86,17 +86,16 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="50" y="92" width="100" height="100"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
+                                            <rect key="frame" x="8" y="63.5" width="184" height="184"/>
                                             <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
-                                            <rect key="frame" x="162" y="37" width="30" height="30"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <state key="normal" title="x">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
+                                            <rect key="frame" x="144" y="24" width="66" height="56"/>
+                                            <state key="normal" image="Delete">
                                                 <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
@@ -110,14 +109,14 @@
                                 <constraints>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="trailing" secondItem="FlK-65-c39" secondAttribute="trailingMargin" id="2q6-QO-2Qc"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="7" id="50i-Ak-dgH"/>
-                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="6" id="7hG-kA-rxP"/>
+                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="22" id="50i-Ak-dgH"/>
+                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="-11" id="7hG-kA-rxP"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
-                                    <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="9" id="UsS-0S-RR7"/>
+                                    <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="24" id="UsS-0S-RR7"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="lfn-vL-oMS" secondAttribute="centerX" id="oor-YC-1V4"/>
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
-                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="4At-iF-6AR" secondAttribute="top" constant="6" id="xH5-qE-oyh"/>
+                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="4At-iF-6AR" secondAttribute="top" constant="11" id="xH5-qE-oyh"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
@@ -137,4 +136,7 @@
             <point key="canvasLocation" x="661" y="175"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Delete" width="56" height="56"/>
+    </resources>
 </document>

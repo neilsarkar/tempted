@@ -11,6 +11,7 @@ import Foundation
 struct TPTNotification {
     static let CreateUrge = "Create Urge"
     static let UrgeCreated = "Urge Created"
+    static let UrgeCreateFailed = "Urge Create Failed"
     static let UrgeDeleted = "Urge Deleted"
 }
 
