@@ -134,6 +134,10 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         return UIEdgeInsetsMake(0, 0, 15, 0)
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
+        return 0.0
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -160,7 +164,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         cell.urge = urge
         cell.urgeId = urge.id
         cell.timeLabel.text = urge.humanTime()
-        cell.mapImageView.backgroundColor = UIColor.magentaColor()
+        cell.mapImageView.backgroundColor = UIColor.tmpGreyd1Color()
         return cell
     }
 }
