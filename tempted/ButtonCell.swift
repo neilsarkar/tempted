@@ -10,6 +10,7 @@ import UIKit
 
 class ButtonCell : UICollectionViewCell {
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var label: UILabel!
     @IBAction func handleButtonTapped(sender: UIButton) {
         NSNotificationCenter.defaultCenter().postNotificationName("Button Tapped", object: self)
     }
@@ -28,8 +29,9 @@ class ButtonCell : UICollectionViewCell {
         noteCenter.addObserver(self, selector: #selector(showPressed), name: "Button Tapped", object: nil)
     }
     
-    @objc private func showPressed() {
+    internal func showPressed() {
         let image = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         button.setImage(image, forState: UIControlState.Normal)
+        label.text = "saved."
     }
 }

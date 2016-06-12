@@ -45,7 +45,7 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUrgeDelete), name: "Delete Urge", object: nil)
     }
     
-    @objc private func createUrge() {
+    internal func createUrge() {
         let urge = Urge();
         
         // TODO: do this in initialization
@@ -97,16 +97,16 @@ class UrgesViewController : UICollectionViewController, CLLocationManagerDelegat
         }
     }
     
-    @objc private func handleForeground(note: NSNotification) {
+    internal func handleForeground(note: NSNotification) {
         captureLocation()
     }
     
     // re-render on rotation
-    @objc private func handleRotation(note: NSNotification) {
+    internal func handleRotation(note: NSNotification) {
         self.collectionView?.reloadData()
     }
     
-    @objc private func handleUrgeDelete(note:NSNotification) {
+    internal func handleUrgeDelete(note:NSNotification) {
         if( note.userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
         let id = note.userInfo!["id"] as! String
         
