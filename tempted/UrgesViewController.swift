@@ -18,8 +18,8 @@ class UrgesViewController : UICollectionViewController {
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
-        creator = UrgeSaver()
         subscribe()
+        creator = UrgeSaver()
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -82,6 +82,12 @@ class UrgesViewController : UICollectionViewController {
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
+    }
+    
+    internal func showPermissionNeeded() {
+
     }
 
     internal func handleUrgeCreateFailed() {
