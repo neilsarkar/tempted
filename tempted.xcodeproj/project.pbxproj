@@ -195,8 +195,8 @@
 				3FF41EAC1D04B02F0063CA80 /* Resources */,
 				3F6B9AAD1D04C0BE002CA04D /* Embed Frameworks */,
 				3F1D51171D07CE4200A9B230 /* CopyFiles */,
-				3FD7D5AD1D055589000E98A9 /* ShellScript */,
 				3F7D03531D0736D6005158F8 /* ShellScript */,
+				3FD7D5AD1D055589000E98A9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -418,6 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Sarkar (98A3GYAKXR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Sarkar (98A3GYAKXR)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -24,7 +24,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ButtonCell" id="hhc-pp-85I" userLabel="ButtonCell" customClass="ButtonCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="28.5" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -58,21 +58,21 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="400" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="210" y="0.0" width="200" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="257"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-vL-oMS" userLabel="Line">
-                                            <rect key="frame" x="-22" y="17" width="242" height="4"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-vL-oMS" userLabel="Line">
+                                            <rect key="frame" x="0.0" y="32" width="200" height="1"/>
                                             <color key="backgroundColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="DjF-ug-J1p"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij" customClass="PaddedLabel" customModule="Tempted" customModuleProvider="target">
-                                            <rect key="frame" x="81" y="0.0" width="38" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij" customClass="PaddedLabel" customModule="Tempted" customModuleProvider="target">
+                                            <rect key="frame" x="78" y="23.5" width="44" height="18"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                             <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,8 +93,8 @@
                                                 <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
-                                            <rect key="frame" x="144" y="24" width="66" height="56"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
+                                            <rect key="frame" x="125" y="74.5" width="56" height="56"/>
                                             <state key="normal" image="Delete">
                                                 <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -118,6 +118,7 @@
                                     <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
                                     <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="4At-iF-6AR" secondAttribute="top" constant="11" id="xH5-qE-oyh"/>
                                 </constraints>
+                                <size key="customSize" width="200" height="257"/>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
