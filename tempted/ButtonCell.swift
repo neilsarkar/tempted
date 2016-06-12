@@ -41,6 +41,6 @@ class ButtonCell : UICollectionViewCell {
     
     internal func showReleased() {
         button.setImage(releasedImage, forState: UIControlState.Normal)
-        label.text = NSLocalizedString("Craving that thing?", comment: "Onboarding text to contextualize main button press")
+        label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
     }
 }
