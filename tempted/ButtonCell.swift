@@ -9,6 +9,10 @@
 import UIKit
 
 class ButtonCell : UICollectionViewCell {
+    var timer: NSTimer?
+    let releasedImage = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
+    let pushedImage = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
+    
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBAction func handleButtonTapped(sender: UIButton) {
@@ -17,21 +21,25 @@ class ButtonCell : UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        let image = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        button.setTitle("", forState: UIControlState.Normal)
-        button.setImage(image, forState: UIControlState.Normal)
+        button.setTitle("", forState: .Normal)
+        showReleased()
         
         subscribe()
     }
     
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        noteCenter.addObserver(self, selector: #selector(showPressed), name: TPTNotification.CreateUrge, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPushed), name: TPTNotification.CreateUrge, object: nil)
     }
     
-    internal func showPressed() {
-        let image = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        button.setImage(image, forState: UIControlState.Normal)
-        label.text = "saved."
+    internal func showPushed() {
+        button.setImage(pushedImage, forState: .Normal)
+        label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
+        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased), userInfo: nil, repeats: false)
+    }
+    
+    internal func showReleased() {
+        button.setImage(releasedImage, forState: UIControlState.Normal)
+        label.text = NSLocalizedString("Craving that thing?", comment: "Onboarding text to contextualize main button press")
     }
 }

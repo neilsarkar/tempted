@@ -13,3 +13,7 @@ struct TPTNotification {
     static let UrgeCreated = "Urge Created"
     static let UrgeDeleted = "Urge Deleted"
 }
+
+struct TPTInterval {
+    static let Respawn = 10.0
+}
