@@ -26,7 +26,7 @@ class Urge:Object {
     }
     
     func mapImageUrl(width: Int, height: Int) -> NSURL? {
-        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(lat)+\(lng)&zoom=15&size=\(width*2)x\(height*2)&sensor=false&markers=\(lat)+\(lng)"
+        let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(lat)+\(lng)&size=\(width*2)x\(height*2)&sensor=false&markers=\(lat)+\(lng)"
         return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
     }
     
