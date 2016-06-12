@@ -1,0 +1,3 @@
+* Visual Design
+* Better performance on map view loading
+* Contextual hints

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0ADC9A1D0D4FF00069D80B /* TemptedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */; };
+		3F0ADCA21D0D50300069D80B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADCA11D0D50300069D80B /* SnapshotHelper.swift */; };
 		3F1D51141D07CD7800A9B230 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1D51131D07CD7800A9B230 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F1D51161D07CD8700A9B230 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1D51151D07CD8700A9B230 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3F1D51191D07CE6B00A9B230 /* Haneke.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F1D51181D07CE6B00A9B230 /* Haneke.framework.dSYM */; };
@@ -28,6 +30,16 @@
 		3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */; };
 		3FF41EBF1D04B02F0063CA80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F0ADC9C1D0D4FF00069D80B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FF41EA61D04B02F0063CA80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FF41EAD1D04B02F0063CA80;
+			remoteInfo = Tempted;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3F1D51171D07CE4200A9B230 /* CopyFiles */ = {
@@ -58,6 +70,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F0ADC971D0D4FF00069D80B /* TemptedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemptedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemptedUITests.swift; sourceTree = "<group>"; };
+		3F0ADC9B1D0D4FF00069D80B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0ADCA11D0D50300069D80B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		3F1D510F1D07CD2300A9B230 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		3F1D51111D07CD4800A9B230 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		3F1D51131D07CD7800A9B230 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -85,6 +101,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3F0ADC941D0D4FF00069D80B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FF41EAB1D04B02F0063CA80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +120,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0ADC981D0D4FF00069D80B /* TemptedUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */,
+				3F0ADCA11D0D50300069D80B /* SnapshotHelper.swift */,
+				3F0ADC9B1D0D4FF00069D80B /* Info.plist */,
+			);
+			path = TemptedUITests;
+			sourceTree = "<group>";
+		};
 		3F1F6F9D1D0D05B300AD75BE /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +185,7 @@
 		3FF41EA51D04B02F0063CA80 = {
 			isa = PBXGroup;
 			children = (
+				3F0ADC981D0D4FF00069D80B /* TemptedUITests */,
 				3F1F6FA01D0D197400AD75BE /* Frameworks */,
 				3FF41EB01D04B02F0063CA80 /* tempted */,
 				3FF41EAF1D04B02F0063CA80 /* Products */,
@@ -162,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				3FF41EAE1D04B02F0063CA80 /* Tempted.app */,
+				3F0ADC971D0D4FF00069D80B /* TemptedUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +221,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3F0ADC961D0D4FF00069D80B /* TemptedUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F0ADCA01D0D4FF00069D80B /* Build configuration list for PBXNativeTarget "TemptedUITests" */;
+			buildPhases = (
+				3F0ADC931D0D4FF00069D80B /* Sources */,
+				3F0ADC941D0D4FF00069D80B /* Frameworks */,
+				3F0ADC951D0D4FF00069D80B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F0ADC9D1D0D4FF00069D80B /* PBXTargetDependency */,
+			);
+			name = TemptedUITests;
+			productName = TemptedUITests;
+			productReference = 3F0ADC971D0D4FF00069D80B /* TemptedUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		3FF41EAD1D04B02F0063CA80 /* Tempted */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FF41EC31D04B02F0063CA80 /* Build configuration list for PBXNativeTarget "Tempted" */;
@@ -217,6 +270,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Neil Sarkar";
 				TargetAttributes = {
+					3F0ADC961D0D4FF00069D80B = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 3FF41EAD1D04B02F0063CA80;
+					};
 					3FF41EAD1D04B02F0063CA80 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = SL8THA84AW;
@@ -237,11 +294,19 @@
 			projectRoot = "";
 			targets = (
 				3FF41EAD1D04B02F0063CA80 /* Tempted */,
+				3F0ADC961D0D4FF00069D80B /* TemptedUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3F0ADC951D0D4FF00069D80B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FF41EAC1D04B02F0063CA80 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +352,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3F0ADC931D0D4FF00069D80B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F0ADC9A1D0D4FF00069D80B /* TemptedUITests.swift in Sources */,
+				3F0ADCA21D0D50300069D80B /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FF41EAA1D04B02F0063CA80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +378,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F0ADC9D1D0D4FF00069D80B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FF41EAD1D04B02F0063CA80 /* Tempted */;
+			targetProxy = 3F0ADC9C1D0D4FF00069D80B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3FF41EB51D04B02F0063CA80 /* Main.storyboard */ = {
@@ -325,6 +407,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3F0ADC9E1D0D4FF00069D80B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TemptedUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.TemptedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Tempted;
+			};
+			name = Debug;
+		};
+		3F0ADC9F1D0D4FF00069D80B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TemptedUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.TemptedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Tempted;
+			};
+			name = Release;
+		};
 		3FF41EC11D04B02F0063CA80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -454,6 +560,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3F0ADCA01D0D4FF00069D80B /* Build configuration list for PBXNativeTarget "TemptedUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0ADC9E1D0D4FF00069D80B /* Debug */,
+				3F0ADC9F1D0D4FF00069D80B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3FF41EA91D04B02F0063CA80 /* Build configuration list for PBXProject "tempted" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
