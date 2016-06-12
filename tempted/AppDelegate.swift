@@ -28,17 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func migrateDb() {
         let config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 1 {
+                if( oldSchemaVersion < 1 ) {
                     migration.enumerate(Urge.className()) { oldObject, newObject in
-                        // TODO: make this ternary
-                        if( oldObject!["id"] != nil ) {
-                            newObject!["id"] = oldObject!["id"]
-                        } else {
-                            newObject!["id"] = NSUUID().UUIDString
-                        }
+                        let oldId = oldObject!["id"]
+                        newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
                     }
                 }
             }

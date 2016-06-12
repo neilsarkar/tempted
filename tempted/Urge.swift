@@ -16,7 +16,6 @@ class Urge:Object {
     dynamic var selfie: NSData? = nil
     dynamic var lat = 0.0
     dynamic var lng = 0.0
-    dynamic var mapFile = ""
     
     override class func primaryKey() -> String? {
         return "id"
