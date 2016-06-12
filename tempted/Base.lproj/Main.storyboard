@@ -38,18 +38,23 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="craving that thing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
-                                            <rect key="frame" x="-25.5" y="43" width="252" height="41"/>
+                                            <rect key="frame" x="-26" y="43" width="252" height="41"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
+                                            <rect key="frame" x="51" y="134" width="98" height="26"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="O7r-RG-9pu" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="16Y-wK-gII"/>
+                                    <constraint firstItem="Ffz-1a-IQJ" firstAttribute="bottom" secondItem="hhc-pp-85I" secondAttribute="bottomMargin" constant="-32" id="Nla-WB-P5Y"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="top" secondItem="hhc-pp-85I" secondAttribute="topMargin" constant="35" id="lD7-0g-fw1"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="mj0-nI-Rz2"/>
+                                    <constraint firstItem="Ffz-1a-IQJ" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="uu4-xv-FTk"/>
                                     <constraint firstItem="O7r-RG-9pu" firstAttribute="centerY" secondItem="hhc-pp-85I" secondAttribute="centerY" id="vZh-m1-vTF"/>
                                 </constraints>
                                 <connections>
@@ -139,5 +144,6 @@
     </scenes>
     <resources>
         <image name="Delete" width="56" height="56"/>
+        <image name="DownArrow" width="98" height="26"/>
     </resources>
 </document>
