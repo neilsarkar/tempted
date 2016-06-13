@@ -45,27 +45,38 @@ class ButtonCell : UICollectionViewCell {
         scrollHint.hidden = false
         scrollHint.alpha = 0.0
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased), userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased as Void -> Void), userInfo: nil, repeats: false)
 
         dispatch_async(dispatch_get_main_queue(), {
             UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                 self.label.textColor = UIColor.tmpGreyd5Color()
-            }, completion: { finished in
-                return true
-            })
+            }, completion: nil)
             
             UIView.animateWithDuration(TPTInterval.PushReaction, animations: {
                 self.scrollHint.alpha = 1.0
-            }, completion: { finished in
-                return true
-            })
+            }, completion: nil)
 
         })
     }
-    
+
     internal func showReleased() {
+        let wasPushed = isPushed
         isPushed = false
-        button.setImage(releasedImage, forState: UIControlState.Normal)
         label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+
+        if( wasPushed ) {
+            dispatch_async(dispatch_get_main_queue(), {
+                UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                    self.label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+                }, completion: nil)
+                
+                UIView.transitionWithView(self.button, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                    self.button.setImage(self.releasedImage, forState: .Normal)
+                }, completion: nil)                
+            })
+        } else {
+            self.label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+            self.button.setImage(self.releasedImage, forState: .Normal)
+        }
     }
 }
