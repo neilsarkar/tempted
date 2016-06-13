@@ -24,8 +24,7 @@ struct TPTNotification {
 
 struct TPTInterval {
     static let Respawn = 10.0
-    
-    static let PushReaction = 2.0
+    static let PushReaction = 1.0
 }
 
 struct TPTString {
