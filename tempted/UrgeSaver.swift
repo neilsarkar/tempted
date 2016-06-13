@@ -57,12 +57,9 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch(status) {
-        case .AuthorizedWhenInUse:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
-            break
-        default:
-            return
+        notifyLocationStatus(status)
+        if( status == .AuthorizedWhenInUse && latlng == nil ) {
+            captureLocation()
         }
     }
     
@@ -79,22 +76,26 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         }
 
         let authStatus = CLLocationManager.authorizationStatus()
-        switch(authStatus) {
+        if( authStatus == .AuthorizedWhenInUse) {
+            locationManager.startUpdatingLocation()
+        } else {
+            notifyLocationStatus(authStatus)
+        }
+    }
+    
+    private func notifyLocationStatus(status: CLAuthorizationStatus) {
+        switch(status) {
         case .Denied:
             NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
-            return
+            break
         case .Restricted:
             NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-            return
-        case .NotDetermined:
-            print("Error: location permissions not requested")
+            break
         case .AuthorizedWhenInUse:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
             break
         default:
-            print("Unknown state of location services!", authStatus)
             return
         }
-        
-        locationManager.startUpdatingLocation()
     }
 }
