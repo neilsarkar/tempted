@@ -276,7 +276,6 @@
                     <connections>
                         <outlet property="label" destination="iY6-jj-kKX" id="Kiz-nj-7zR"/>
                         <outlet property="settingsButton" destination="jQe-58-b7A" id="7Of-tB-Kjk"/>
-                        <segue destination="x0J-Yn-BzT" kind="show" identifier="ShowUrgesVC" id="ZkQ-8G-Lra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqK-QX-J6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

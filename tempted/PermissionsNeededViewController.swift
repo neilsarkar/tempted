@@ -32,9 +32,7 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     internal func dismiss() {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("ShowUrgesVC", sender: self)
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func settingsButtonTapped(sender: UIButton) {
