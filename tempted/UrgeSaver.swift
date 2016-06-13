@@ -16,6 +16,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager!
     var latlng:CLLocationCoordinate2D!
 
+    var isCapturingLocation = false
+    
     override init() {
         super.init()
         subscribe()
@@ -54,6 +56,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
         manager.stopUpdatingLocation()
+        isCapturingLocation = false
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -71,12 +74,15 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     private func captureLocation() {
+        if( isCapturingLocation ) { return }
+        
         if( !CLLocationManager.locationServicesEnabled() ) {
             return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
         }
 
         let authStatus = CLLocationManager.authorizationStatus()
         if( authStatus == .AuthorizedWhenInUse) {
+            isCapturingLocation = true
             locationManager.startUpdatingLocation()
         } else {
             notifyLocationStatus(authStatus)
