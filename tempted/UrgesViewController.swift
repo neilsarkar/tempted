@@ -18,8 +18,8 @@ class UrgesViewController : UICollectionViewController {
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
-        creator = UrgeSaver()
         subscribe()
+        creator = UrgeSaver()
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -82,12 +82,21 @@ class UrgesViewController : UICollectionViewController {
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
+    }
+    
+    internal func showPermissionNeeded() {
+// TODO: why is this needed, since NSThread.isMainThread() returns true
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("Halp", sender: self)
+        }
     }
 
     internal func handleUrgeCreateFailed() {
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
-        // TODO: how to skip block?
+        // TODO: how to provide nil block?
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in }
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) {}

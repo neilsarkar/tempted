@@ -64,10 +64,27 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     private func captureLocation() {
-        if( CLLocationManager.locationServicesEnabled() ) {
-            locationManager.startUpdatingLocation()
-        } else {
-            print("Location services not enabled")
+        if( !CLLocationManager.locationServicesEnabled() ) {
+            return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
         }
+
+        let authStatus = CLLocationManager.authorizationStatus()
+        switch(authStatus) {
+        case .Denied:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
+            return
+        case .Restricted:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
+            return
+        case .NotDetermined:
+            print("Error: location permissions not requested")
+        case .AuthorizedWhenInUse:
+            break
+        default:
+            print("Unknown state of location services!", authStatus)
+            return
+        }
+        
+        locationManager.startUpdatingLocation()
     }
 }
