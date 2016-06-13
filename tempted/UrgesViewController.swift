@@ -87,7 +87,7 @@ class UrgesViewController : UICollectionViewController {
     }
     
     internal func showPermissionNeeded() {
-// TODO: why is this needed, since NSThread.isMainThread() returns true
+        // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
         }

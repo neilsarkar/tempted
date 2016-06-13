@@ -41,8 +41,26 @@ class ButtonCell : UICollectionViewCell {
     internal func showPushed() {
         button.setImage(pushedImage, forState: .Normal)
         label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
-        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased), userInfo: nil, repeats: false)
+        label.textColor = UIColor.tmpGrey7DColor()
         scrollHint.hidden = false
+        scrollHint.alpha = 0.0
+
+        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased), userInfo: nil, repeats: false)
+
+        dispatch_async(dispatch_get_main_queue(), {
+            UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.label.textColor = UIColor.tmpGreyd5Color()
+            }, completion: { finished in
+                return true
+            })
+            
+            UIView.animateWithDuration(TPTInterval.PushReaction, animations: {
+                self.scrollHint.alpha = 1.0
+            }, completion: { finished in
+                return true
+            })
+
+        })
     }
     
     internal func showReleased() {
