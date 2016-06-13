@@ -17,12 +17,23 @@ class PermissionsNeededViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        subscribe()
 // TODO: center both label and button
         appSettings = NSURL(string: UIApplicationOpenSettingsURLString)
 
         if( appSettings == nil ) {
             settingsButton.hidden = true
+        }
+    }
+    
+    private func subscribe() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
+    }
+    
+    internal func dismiss() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("ShowUrgesVC", sender: self)
         }
     }
     

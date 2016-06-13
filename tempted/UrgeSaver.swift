@@ -56,6 +56,16 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch(status) {
+        case .AuthorizedWhenInUse:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
+            break
+        default:
+            return
+        }
+    }
+    
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
         // TODO: feels like a bad separation of concerns to have to include UIKit

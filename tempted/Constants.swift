@@ -14,10 +14,12 @@ struct TPTNotification {
     static let UrgeCreated = "Urge Created"
     static let UrgeCreateFailed = "Urge Create Failed"
     static let UrgeDeleted = "Urge Deleted"
-
-// MARK: Error States
+    
+// MARK: Location
+    static let MapPermissionsGranted = "Map permissions granted"
     static let ErrorLocationServicesDisabled = "Location Services Disabled"
     static let ErrorNoMapPermissions = "No map permissions"
+
 }
 
 struct TPTInterval {
