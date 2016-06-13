@@ -112,6 +112,22 @@
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="byr-w0-5Ue">
                                             <rect key="frame" x="90" y="153" width="20" height="20"/>
                                         </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Lf-0rp">
+                                            <rect key="frame" x="-1" y="152.5" width="201" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="9"/>
+                                            <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-iF-k1y">
+                                            <rect key="frame" x="85" y="169.5" width="30" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="6"/>
+                                            <state key="normal" title="RETRY">
+                                                <color key="titleColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="retryTapped:" destination="FlK-65-c39" eventType="touchUpInside" id="3nw-XA-RVp"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -125,8 +141,12 @@
                                     <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="-11" id="7hG-kA-rxP"/>
                                     <constraint firstItem="byr-w0-5Ue" firstAttribute="baseline" secondItem="4At-iF-6AR" secondAttribute="baseline" id="9Qv-rq-CUR"/>
                                     <constraint firstItem="byr-w0-5Ue" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="Bew-sk-f5W"/>
+                                    <constraint firstItem="iay-Lf-0rp" firstAttribute="centerY" secondItem="4At-iF-6AR" secondAttribute="centerY" id="But-Li-JWq"/>
                                     <constraint firstItem="byr-w0-5Ue" firstAttribute="centerX" secondItem="4At-iF-6AR" secondAttribute="centerX" id="ERd-8b-qKi"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
+                                    <constraint firstItem="eNu-iF-k1y" firstAttribute="centerX" secondItem="iay-Lf-0rp" secondAttribute="centerX" id="H8u-FA-rhJ"/>
+                                    <constraint firstItem="iay-Lf-0rp" firstAttribute="centerX" secondItem="4At-iF-6AR" secondAttribute="centerX" id="Ld5-wa-ZFT"/>
+                                    <constraint firstItem="eNu-iF-k1y" firstAttribute="top" secondItem="iay-Lf-0rp" secondAttribute="bottom" id="OkR-OM-BFu"/>
                                     <constraint firstItem="byr-w0-5Ue" firstAttribute="centerY" secondItem="4At-iF-6AR" secondAttribute="centerY" id="PcS-kg-K9O"/>
                                     <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
                                     <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="24" id="UsS-0S-RR7"/>
@@ -151,6 +171,8 @@
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="loadingSpinner" destination="byr-w0-5Ue" id="gh3-iH-Gz4"/>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
+                                    <outlet property="mapLoadFailedLabel" destination="iay-Lf-0rp" id="acN-b3-aVn"/>
+                                    <outlet property="retryButton" destination="eNu-iF-k1y" id="kuG-Mx-Fco"/>
                                     <outlet property="timeLabel" destination="L3a-dE-5ij" id="yXn-cH-xa9"/>
                                 </connections>
                             </collectionViewCell>
