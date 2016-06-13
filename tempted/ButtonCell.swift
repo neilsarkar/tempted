@@ -22,7 +22,6 @@ class ButtonCell : UICollectionViewCell {
         super.awakeFromNib()
         button.setTitle("", forState: .Normal)
         showReleased()
-        scrollHint.hidden = true
         subscribe()
     }
     
@@ -42,7 +41,6 @@ class ButtonCell : UICollectionViewCell {
         button.setImage(pushedImage, forState: .Normal)
         label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
         label.textColor = UIColor.tmpGrey7DColor()
-        scrollHint.hidden = false
         scrollHint.alpha = 0.0
 
         timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased as Void -> Void), userInfo: nil, repeats: false)
