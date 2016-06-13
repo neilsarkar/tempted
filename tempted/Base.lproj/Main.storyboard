@@ -180,33 +180,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-nd-vjV">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Nope." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY6-jj-kKX">
-                                        <rect key="frame" x="97" y="54" width="46" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQe-58-b7A">
-                                        <rect key="frame" x="71" y="78" width="98" height="30"/>
-                                        <state key="normal" title="Open Settings"/>
-                                        <connections>
-                                            <action selector="settingsButtonTapped:" destination="gml-0z-4pA" eventType="touchUpInside" id="2JO-d1-j6o"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="jQe-58-b7A" firstAttribute="top" secondItem="iY6-jj-kKX" secondAttribute="bottom" id="vTZ-3X-UJl"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tempted is useless without location services." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY6-jj-kKX">
+                                <rect key="frame" x="102" y="290" width="396" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQe-58-b7A">
+                                <rect key="frame" x="251" y="342" width="98" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Open Settings"/>
+                                <connections>
+                                    <action selector="settingsButtonTapped:" destination="gml-0z-4pA" eventType="touchUpInside" id="2JO-d1-j6o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7vG-nd-vjV" firstAttribute="centerX" secondItem="oxl-0v-ETg" secondAttribute="centerX" id="Dbm-H2-nbl"/>
-                            <constraint firstItem="7vG-nd-vjV" firstAttribute="centerY" secondItem="oxl-0v-ETg" secondAttribute="centerY" id="MWp-6B-eoJ"/>
+                            <constraint firstItem="iY6-jj-kKX" firstAttribute="centerX" secondItem="oxl-0v-ETg" secondAttribute="centerX" id="LFa-Bs-dI7"/>
+                            <constraint firstItem="jQe-58-b7A" firstAttribute="top" secondItem="iY6-jj-kKX" secondAttribute="bottom" id="PYa-gJ-HJY"/>
+                            <constraint firstItem="jQe-58-b7A" firstAttribute="centerX" secondItem="iY6-jj-kKX" secondAttribute="centerX" id="baI-dH-P3G"/>
+                            <constraint firstItem="iY6-jj-kKX" firstAttribute="centerY" secondItem="oxl-0v-ETg" secondAttribute="centerY" id="hf9-We-Xfq"/>
+                            <constraint firstItem="iY6-jj-kKX" firstAttribute="width" secondItem="oxl-0v-ETg" secondAttribute="width" multiplier="0.66" id="o4f-Zr-tKT"/>
                         </constraints>
                     </view>
                     <connections>
