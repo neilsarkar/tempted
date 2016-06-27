@@ -51,7 +51,7 @@
                                             <rect key="frame" x="85" y="130" width="30" height="30"/>
                                             <state key="normal" title="?"/>
                                             <connections>
-                                                <segue destination="iYg-7Y-e5f" kind="presentation" modalPresentationStyle="overCurrentContext" id="dhz-CN-K66"/>
+                                                <segue destination="iYg-7Y-e5f" kind="presentation" modalPresentationStyle="overFullScreen" id="dhz-CN-K66"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -295,7 +295,7 @@
         <!--Onboarding Controller-->
         <scene sceneID="XTl-KK-Hh7">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="iYg-7Y-e5f" userLabel="Onboarding Controller" sceneMemberID="viewController">
+                <viewController id="iYg-7Y-e5f" userLabel="Onboarding Controller" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j1U-u3-45P"/>
                         <viewControllerLayoutGuide type="bottom" id="VBI-Mr-LH6"/>
@@ -307,18 +307,40 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
                                 <rect key="frame" x="30" y="75" width="540" height="450"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
-                                        <rect key="frame" x="247" y="210" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
+                                        <rect key="frame" x="244" y="412" width="53" height="30"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="GOT IT!">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="12" name="Avenir-Black"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops/>
+                                                        </paragraphStyle>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                        <color key="NSUnderlineColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
                                         <connections>
                                             <segue destination="XRL-2n-PYG" kind="unwind" unwindAction="unwindToHome:" id="rRE-04-ORA"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how's it work?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
+                                        <rect key="frame" x="174.5" y="41" width="192.5" height="41"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ib3-17-t49" firstAttribute="centerY" secondItem="vaC-32-gys" secondAttribute="centerY" id="DXs-bF-dgR"/>
+                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="top" secondItem="vaC-32-gys" secondAttribute="top" constant="41" id="Mgt-Bh-nJj"/>
                                     <constraint firstItem="ib3-17-t49" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="Rqx-ba-jtf"/>
+                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="fPf-ys-bX9"/>
+                                    <constraint firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="bottom" constant="10" id="whe-9i-1Vd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
