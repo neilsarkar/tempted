@@ -329,18 +329,30 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how's it work?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
-                                        <rect key="frame" x="174.5" y="41" width="192.5" height="41"/>
+                                        <rect key="frame" x="174" y="41" width="192.5" height="41"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5N-Lf-DWu" userLabel="Lorem">
+                                        <rect key="frame" x="20" y="82" width="500" height="225"/>
+                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="O5N-Lf-DWu" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="8TG-eE-jEP"/>
+                                    <constraint firstItem="O5N-Lf-DWu" firstAttribute="top" secondItem="EyR-Hs-BzZ" secondAttribute="bottom" id="GPI-xA-Mk1"/>
                                     <constraint firstItem="EyR-Hs-BzZ" firstAttribute="top" secondItem="vaC-32-gys" secondAttribute="top" constant="41" id="Mgt-Bh-nJj"/>
                                     <constraint firstItem="ib3-17-t49" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="Rqx-ba-jtf"/>
                                     <constraint firstItem="EyR-Hs-BzZ" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="fPf-ys-bX9"/>
+                                    <constraint firstAttribute="trailing" secondItem="O5N-Lf-DWu" secondAttribute="trailing" constant="20" id="hOQ-yH-KHv"/>
+                                    <constraint firstItem="O5N-Lf-DWu" firstAttribute="height" secondItem="vaC-32-gys" secondAttribute="height" multiplier="0.5" id="rhr-ac-BBF"/>
                                     <constraint firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="bottom" constant="10" id="whe-9i-1Vd"/>
+                                    <constraint firstItem="O5N-Lf-DWu" firstAttribute="leading" secondItem="vaC-32-gys" secondAttribute="leading" constant="20" id="zT8-Hf-ysk"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
