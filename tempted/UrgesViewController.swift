@@ -84,7 +84,6 @@ class UrgesViewController : UICollectionViewController {
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
-        noteCenter.addObserver(self, selector: #selector(showOnboardingDialog), name: TPTNotification.ShowOnboardingDialog, object: nil)
     }
     
     internal func showPermissionNeeded() {
@@ -120,17 +119,5 @@ class UrgesViewController : UICollectionViewController {
         // TODO: splice urges array instead of recalculating
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
-    }
-    
-    internal func showOnboardingDialog(note:NSNotification) {
-        let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
-        
-        // FIXME: we have to undo this.
-        self.definesPresentationContext = true;
-        self.modalPresentationStyle = .OverFullScreen
-        
-        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
