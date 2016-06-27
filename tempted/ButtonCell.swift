@@ -35,6 +35,10 @@ class ButtonCell : UICollectionViewCell {
         NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
     }
     
+    @IBAction func handleInfoTapped(sender: UIButton) {
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ShowOnboardingDialog, object: self)
+    }
+
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
         noteCenter.addObserver(self, selector: #selector(showReleased), name: TPTNotification.UrgeCreateFailed, object: nil)

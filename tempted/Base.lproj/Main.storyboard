@@ -50,6 +50,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
                                             <rect key="frame" x="85" y="130" width="30" height="30"/>
                                             <state key="normal" title="?"/>
+                                            <connections>
+                                                <action selector="handleInfoTapped:" destination="hhc-pp-85I" eventType="touchUpInside" id="r7V-ZV-CJz"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

@@ -20,6 +20,8 @@ struct TPTNotification {
     static let ErrorLocationServicesDisabled = "Location Services Disabled"
     static let ErrorNoMapPermissions = "No map permissions"
 
+// MARK: Onboarding
+    static let ShowOnboardingDialog = "Show onboarding dialog"
 }
 
 struct TPTInterval {
