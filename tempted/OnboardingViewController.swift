@@ -9,4 +9,11 @@
 import UIKit
 
 class OnboardingViewController : UIViewController {
+    @IBOutlet weak var textView: UITextView!
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // http://stackoverflow.com/questions/26835944/uitextview-text-content-doesnt-start-from-the-top
+        textView.setContentOffset(CGPoint.zero, animated:false)
+    }
 }

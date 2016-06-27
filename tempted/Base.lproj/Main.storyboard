@@ -295,7 +295,7 @@
         <!--Onboarding Controller-->
         <scene sceneID="XTl-KK-Hh7">
             <objects>
-                <viewController id="iYg-7Y-e5f" userLabel="Onboarding Controller" sceneMemberID="viewController">
+                <viewController id="iYg-7Y-e5f" userLabel="Onboarding Controller" customClass="OnboardingViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j1U-u3-45P"/>
                         <viewControllerLayoutGuide type="bottom" id="VBI-Mr-LH6"/>
@@ -335,10 +335,11 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
-                                        <rect key="frame" x="20" y="82" width="500" height="329.5"/>
+                                        <rect key="frame" x="20" y="102" width="500" height="289.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -346,8 +347,8 @@
                                 <constraints>
                                     <constraint firstItem="EyR-Hs-BzZ" firstAttribute="top" secondItem="vaC-32-gys" secondAttribute="top" constant="41" id="Mgt-Bh-nJj"/>
                                     <constraint firstItem="ib3-17-t49" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="Rqx-ba-jtf"/>
-                                    <constraint firstItem="ib3-17-t49" firstAttribute="top" secondItem="E1l-4d-ZsX" secondAttribute="bottom" id="S6d-G3-Fry"/>
-                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="top" secondItem="EyR-Hs-BzZ" secondAttribute="bottom" id="eOL-m3-gEg"/>
+                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="top" constant="-20" id="S6d-G3-Fry"/>
+                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="top" secondItem="EyR-Hs-BzZ" secondAttribute="bottom" constant="20" id="eOL-m3-gEg"/>
                                     <constraint firstItem="EyR-Hs-BzZ" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="fPf-ys-bX9"/>
                                     <constraint firstItem="E1l-4d-ZsX" firstAttribute="leading" secondItem="vaC-32-gys" secondAttribute="leading" constant="20" id="oaU-2v-DkE"/>
                                     <constraint firstAttribute="trailing" secondItem="E1l-4d-ZsX" secondAttribute="trailing" constant="20" id="vv4-nD-uho"/>
@@ -368,6 +369,9 @@
                             <constraint firstItem="vaC-32-gys" firstAttribute="height" secondItem="ERi-dn-0KF" secondAttribute="height" multiplier="0.75" id="Z3q-MH-x01"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="E1l-4d-ZsX" id="STt-kD-DAf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1An-Tt-eKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="XRL-2n-PYG" userLabel="Exit" sceneMemberID="exit"/>
