@@ -305,10 +305,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <rect key="frame" x="30" y="75" width="540" height="450"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
-                                        <rect key="frame" x="127" y="135" width="46" height="30"/>
+                                        <rect key="frame" x="247" y="210" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <segue destination="XRL-2n-PYG" kind="unwind" unwindAction="unwindToHome:" id="rRE-04-ORA"/>
@@ -322,17 +322,17 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80369073275862069" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="centerX" secondItem="ERi-dn-0KF" secondAttribute="centerX" id="HVv-QN-N5O"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="trailing" secondItem="ERi-dn-0KF" secondAttribute="trailingMargin" constant="-10" id="TnN-cX-A6c"/>
                             <constraint firstItem="vaC-32-gys" firstAttribute="centerY" secondItem="ERi-dn-0KF" secondAttribute="centerY" id="Xhu-Yb-Rfc"/>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="height" secondItem="ERi-dn-0KF" secondAttribute="height" multiplier="0.5" id="gxh-ci-Ugx"/>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="width" secondItem="ERi-dn-0KF" secondAttribute="width" multiplier="0.5" id="y8z-g6-9QD"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="leading" secondItem="ERi-dn-0KF" secondAttribute="leadingMargin" constant="10" id="Xjj-AP-Pkd"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="height" secondItem="ERi-dn-0KF" secondAttribute="height" multiplier="0.75" id="Z3q-MH-x01"/>
                         </constraints>
                     </view>
                 </viewController>
