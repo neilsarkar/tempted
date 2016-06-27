@@ -47,12 +47,18 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
                                             <rect key="frame" x="51" y="134" width="98" height="26"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
+                                            <rect key="frame" x="85" y="130" width="30" height="30"/>
+                                            <state key="normal" title="?"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="O7r-RG-9pu" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="16Y-wK-gII"/>
+                                    <constraint firstItem="qIY-Ct-8Of" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="8Em-j2-JXf"/>
                                     <constraint firstItem="Ffz-1a-IQJ" firstAttribute="bottom" secondItem="hhc-pp-85I" secondAttribute="bottomMargin" constant="-32" id="Nla-WB-P5Y"/>
+                                    <constraint firstItem="qIY-Ct-8Of" firstAttribute="bottom" secondItem="hhc-pp-85I" secondAttribute="bottomMargin" constant="-32" id="j5E-Sl-26Z"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="top" secondItem="hhc-pp-85I" secondAttribute="topMargin" constant="42" id="lD7-0g-fw1"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="mj0-nI-Rz2"/>
                                     <constraint firstItem="Ffz-1a-IQJ" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="uu4-xv-FTk"/>
@@ -60,6 +66,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="button" destination="O7r-RG-9pu" id="kZq-oU-TZy"/>
+                                    <outlet property="infoButton" destination="qIY-Ct-8Of" id="cys-Tk-Jrt"/>
                                     <outlet property="label" destination="06V-fc-Zt5" id="zz8-L1-48c"/>
                                     <outlet property="scrollHint" destination="Ffz-1a-IQJ" id="nTy-mz-5UO"/>
                                 </connections>
