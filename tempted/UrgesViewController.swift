@@ -33,7 +33,7 @@ class UrgesViewController : UICollectionViewController {
         }
 
         let width = self.view.frame.width - 40
-//      TODO: don't set height explicitly
+        // TODO: don't set height explicitly
         let height = self.view.frame.width + 22
         return CGSize(width: width, height: height)
     }
@@ -76,7 +76,7 @@ class UrgesViewController : UICollectionViewController {
         return cell
     }
 
-    // MARK: Event Handling
+// MARK: Event Handling
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
@@ -119,5 +119,10 @@ class UrgesViewController : UICollectionViewController {
         // TODO: splice urges array instead of recalculating
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
+    }
+    
+// MARK: Unwind Segue
+    
+    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
 }
