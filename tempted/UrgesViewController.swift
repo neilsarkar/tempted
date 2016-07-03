@@ -72,7 +72,6 @@ class UrgesViewController : UICollectionViewController {
         
         cell.urge = urge
         cell.urgeId = urge.id
-        cell.timeLabel.text = urge.humanTime()
         return cell
     }
 

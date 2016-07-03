@@ -25,7 +25,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ButtonCell" id="hhc-pp-85I" userLabel="ButtonCell" customClass="ButtonCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28.5" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="39.5" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -38,8 +38,8 @@
                                                 <action selector="handleButtonTapped:" destination="hhc-pp-85I" eventType="touchUpInside" id="sVv-c4-YRJ"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
-                                            <rect key="frame" x="-26" y="50" width="252" height="41"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
+                                            <rect key="frame" x="13" y="50" width="173" height="41"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -47,8 +47,8 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
                                             <rect key="frame" x="51" y="134" width="98" height="26"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
-                                            <rect key="frame" x="85" y="130" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
+                                            <rect key="frame" x="85" y="107" width="30" height="53"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <state key="normal" title="?">
                                                 <color key="titleColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -78,162 +78,143 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="210" y="0.0" width="200" height="257"/>
+                                <rect key="frame" x="210" y="0.0" width="324" height="279"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="257"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="279"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-vL-oMS" userLabel="Line">
-                                            <rect key="frame" x="0.0" y="32" width="200" height="1"/>
-                                            <color key="backgroundColor" red="0.81960785388946533" green="0.81960785388946533" blue="0.81960785388946533" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-iF-ise" userLabel="SavedUrge">
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="279"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-yk-BsW" userLabel="Map">
+                                                    <rect key="frame" x="162" y="0.0" width="162" height="162"/>
+                                                    <subviews>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="byr-w0-5Ue">
+                                                            <rect key="frame" x="71" y="71" width="20" height="20"/>
+                                                        </activityIndicatorView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Lf-0rp">
+                                                            <rect key="frame" x="-2" y="71" width="165.5" height="19.5"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                            <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-iF-k1y">
+                                                            <rect key="frame" x="62" y="90" width="38" height="28.5"/>
+                                                            <state key="normal">
+                                                                <attributedString key="attributedTitle">
+                                                                    <fragment content="RETRY">
+                                                                        <attributes>
+                                                                            <font key="NSFont" size="12" name="Avenir-Black"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                                <tabStops>
+                                                                                    <textTab alignment="left" location="36">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="72">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="108">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="144">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="180">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="216">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="252">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="288">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="324">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="360">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="396">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                    <textTab alignment="left" location="432">
+                                                                                        <options/>
+                                                                                    </textTab>
+                                                                                </tabStops>
+                                                                            </paragraphStyle>
+                                                                            <integer key="NSUnderline" value="1"/>
+                                                                            <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="retryTapped:" destination="FlK-65-c39" eventType="touchUpInside" id="3nw-XA-RVp"/>
+                                                            </connections>
+                                                        </button>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                                                            <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
+                                                            <rect key="frame" x="106" y="0.0" width="56" height="56"/>
+                                                            <state key="normal" image="Delete">
+                                                                <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="handleDelete:" destination="FlK-65-c39" eventType="touchUpInside" id="E9K-A1-1ug"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="byr-w0-5Ue" firstAttribute="centerX" secondItem="YQ5-yk-BsW" secondAttribute="centerX" id="1kk-D5-BMq"/>
+                                                        <constraint firstItem="4At-iF-6AR" firstAttribute="height" secondItem="YQ5-yk-BsW" secondAttribute="height" id="4J4-D8-Lv2"/>
+                                                        <constraint firstItem="4At-iF-6AR" firstAttribute="width" secondItem="YQ5-yk-BsW" secondAttribute="width" id="5qF-fI-JYs"/>
+                                                        <constraint firstItem="4At-iF-6AR" firstAttribute="centerY" secondItem="YQ5-yk-BsW" secondAttribute="centerY" id="7CA-II-gGF"/>
+                                                        <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="YQ5-yk-BsW" secondAttribute="top" id="HEu-hf-M9f"/>
+                                                        <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="YQ5-yk-BsW" secondAttribute="centerX" id="HZX-Cb-TVn"/>
+                                                        <constraint firstItem="iay-Lf-0rp" firstAttribute="centerX" secondItem="YQ5-yk-BsW" secondAttribute="centerX" id="VoI-V3-U2G"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WSN-Ww-DQT" secondAttribute="trailing" id="ffG-VM-dux"/>
+                                                        <constraint firstAttribute="width" secondItem="YQ5-yk-BsW" secondAttribute="height" multiplier="1:1" id="gc3-7U-h8E"/>
+                                                        <constraint firstItem="iay-Lf-0rp" firstAttribute="centerY" secondItem="YQ5-yk-BsW" secondAttribute="centerY" id="hbs-wd-sEx"/>
+                                                        <constraint firstItem="byr-w0-5Ue" firstAttribute="centerY" secondItem="YQ5-yk-BsW" secondAttribute="centerY" id="jDe-Iu-jQp"/>
+                                                        <constraint firstItem="iay-Lf-0rp" firstAttribute="bottom" secondItem="eNu-iF-k1y" secondAttribute="top" id="jkb-Bt-2DP"/>
+                                                        <constraint firstItem="eNu-iF-k1y" firstAttribute="centerX" secondItem="YQ5-yk-BsW" secondAttribute="centerX" id="yHn-j1-WdD"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="1" id="DjF-ug-J1p"/>
+                                                <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="EqT-H0-Cer"/>
+                                                <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
+                                                <constraint firstAttribute="trailing" secondItem="YQ5-yk-BsW" secondAttribute="trailing" id="tM2-tA-0lz"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-dE-5ij" customClass="PaddedLabel" customModule="Tempted" customModuleProvider="target">
-                                            <rect key="frame" x="70" y="23" width="59" height="18"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
-                                            <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                    <real key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                    <real key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                            <rect key="frame" x="0.0" y="63" width="200" height="200"/>
-                                            <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
-                                            </constraints>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
-                                            <rect key="frame" x="133" y="74" width="56" height="56"/>
-                                            <state key="normal" image="Delete">
-                                                <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="handleDelete:" destination="FlK-65-c39" eventType="touchUpInside" id="E9K-A1-1ug"/>
-                                            </connections>
-                                        </button>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="byr-w0-5Ue">
-                                            <rect key="frame" x="90" y="153" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Lf-0rp">
-                                            <rect key="frame" x="-7" y="150" width="213" height="25"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                            <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-iF-k1y">
-                                            <rect key="frame" x="81" y="175.5" width="38" height="28.5"/>
-                                            <state key="normal">
-                                                <attributedString key="attributedTitle">
-                                                    <fragment content="RETRY">
-                                                        <attributes>
-                                                            <font key="NSFont" size="12" name="Avenir-Black"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                <tabStops>
-                                                                    <textTab alignment="left" location="36">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="72">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="108">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="144">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="180">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="216">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="252">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="288">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="324">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="360">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="396">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="432">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                </tabStops>
-                                                            </paragraphStyle>
-                                                            <integer key="NSUnderline" value="1"/>
-                                                            <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                            </state>
-                                            <connections>
-                                                <action selector="retryTapped:" destination="FlK-65-c39" eventType="touchUpInside" id="3nw-XA-RVp"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="lfn-vL-oMS" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="0xo-A0-TFA"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="2LN-gi-c4X"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="trailing" secondItem="FlK-65-c39" secondAttribute="trailingMargin" id="2q6-QO-2Qc"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="top" secondItem="L3a-dE-5ij" secondAttribute="bottom" constant="22" id="50i-Ak-dgH"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="height" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="0.5" id="6nD-os-IF8"/>
-                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="trailing" secondItem="4At-iF-6AR" secondAttribute="trailing" constant="-11" id="7hG-kA-rxP"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="baseline" secondItem="4At-iF-6AR" secondAttribute="baseline" id="9Qv-rq-CUR"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="Bew-sk-f5W"/>
-                                    <constraint firstItem="iay-Lf-0rp" firstAttribute="centerY" secondItem="4At-iF-6AR" secondAttribute="centerY" id="But-Li-JWq"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="centerX" secondItem="4At-iF-6AR" secondAttribute="centerX" id="ERd-8b-qKi"/>
-                                    <constraint firstItem="lfn-vL-oMS" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="GWt-oj-HaF"/>
-                                    <constraint firstItem="eNu-iF-k1y" firstAttribute="centerX" secondItem="iay-Lf-0rp" secondAttribute="centerX" id="H8u-FA-rhJ"/>
-                                    <constraint firstItem="iay-Lf-0rp" firstAttribute="centerX" secondItem="4At-iF-6AR" secondAttribute="centerX" id="Ld5-wa-ZFT"/>
-                                    <constraint firstItem="eNu-iF-k1y" firstAttribute="top" secondItem="iay-Lf-0rp" secondAttribute="bottom" id="OkR-OM-BFu"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="centerY" secondItem="4At-iF-6AR" secondAttribute="centerY" id="PcS-kg-K9O"/>
-                                    <constraint firstItem="L3a-dE-5ij" firstAttribute="centerY" secondItem="lfn-vL-oMS" secondAttribute="centerY" id="Qay-le-axX"/>
-                                    <constraint firstItem="lfn-vL-oMS" firstAttribute="top" secondItem="FlK-65-c39" secondAttribute="topMargin" constant="24" id="UsS-0S-RR7"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="dek-rP-sfT"/>
-                                    <constraint firstItem="L3a-dE-5ij" firstAttribute="centerX" secondItem="lfn-vL-oMS" secondAttribute="centerX" id="oor-YC-1V4"/>
-                                    <constraint firstItem="4At-iF-6AR" firstAttribute="leading" secondItem="FlK-65-c39" secondAttribute="leadingMargin" id="t6S-eF-How"/>
-                                    <constraint firstItem="byr-w0-5Ue" firstAttribute="centerY" secondItem="FlK-65-c39" secondAttribute="centerY" constant="24" id="u3h-iT-GId"/>
-                                    <constraint firstItem="WSN-Ww-DQT" firstAttribute="top" secondItem="4At-iF-6AR" secondAttribute="top" constant="11" id="xH5-qE-oyh"/>
+                                    <constraint firstItem="2w3-iF-ise" firstAttribute="centerY" secondItem="FlK-65-c39" secondAttribute="centerY" id="7qA-wd-Ei6"/>
+                                    <constraint firstItem="2w3-iF-ise" firstAttribute="height" secondItem="FlK-65-c39" secondAttribute="height" id="QPM-BN-nHx"/>
+                                    <constraint firstItem="2w3-iF-ise" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="Sr9-PE-fnQ"/>
+                                    <constraint firstItem="2w3-iF-ise" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="aXa-PJ-bXd"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="257"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="2q6-QO-2Qc"/>
-                                        <exclude reference="t6S-eF-How"/>
-                                        <exclude reference="6nD-os-IF8"/>
-                                        <exclude reference="9Qv-rq-CUR"/>
-                                        <exclude reference="Bew-sk-f5W"/>
-                                        <exclude reference="u3h-iT-GId"/>
-                                    </mask>
-                                </variation>
+                                <size key="customSize" width="324" height="279"/>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="loadingSpinner" destination="byr-w0-5Ue" id="gh3-iH-Gz4"/>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>
                                     <outlet property="mapLoadFailedLabel" destination="iay-Lf-0rp" id="acN-b3-aVn"/>
                                     <outlet property="retryButton" destination="eNu-iF-k1y" id="kuG-Mx-Fco"/>
-                                    <outlet property="timeLabel" destination="L3a-dE-5ij" id="yXn-cH-xa9"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -248,7 +229,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="151"/>
+            <point key="canvasLocation" x="645" y="159"/>
         </scene>
         <!--Permissions Needed View Controller-->
         <scene sceneID="4ZH-Le-Vms">
@@ -310,14 +291,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
                                 <rect key="frame" x="30" y="75" width="540" height="450"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
-                                        <rect key="frame" x="174" y="41" width="192.5" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
+                                        <rect key="frame" x="183" y="41" width="173" height="41"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
-                                        <rect key="frame" x="244" y="412" width="53" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
+                                        <rect key="frame" x="247" y="411" width="46" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="GOT IT!">
@@ -338,7 +319,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
-                                        <rect key="frame" x="20" y="102" width="500" height="289.5"/>
+                                        <rect key="frame" x="20" y="102" width="500" height="289"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
 

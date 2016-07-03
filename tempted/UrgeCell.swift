@@ -18,7 +18,6 @@ class UrgeCell : UICollectionViewCell {
         if( urgeId == "" ) { return print("UrgeID not set!") }
         NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urgeId])
     }
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
