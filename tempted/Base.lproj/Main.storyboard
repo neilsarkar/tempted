@@ -88,26 +88,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="324" height="324"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
-                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                     <color key="backgroundColor" red="0.49387463669999998" green="0.373169643" blue="0.59539019339999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="height" multiplier="1:1" id="lPQ-Bz-Uto"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-yk-BsW" userLabel="Map">
-                                                    <rect key="frame" x="162" y="0.0" width="162" height="162"/>
+                                                    <rect key="frame" x="167" y="0.0" width="157" height="157"/>
                                                     <subviews>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="byr-w0-5Ue">
-                                                            <rect key="frame" x="71" y="71" width="20" height="20"/>
+                                                            <rect key="frame" x="68.5" y="68.5" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Lf-0rp">
-                                                            <rect key="frame" x="-2" y="71" width="165.5" height="19.5"/>
+                                                            <rect key="frame" x="-4.5" y="68.5" width="165.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                             <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-iF-k1y">
-                                                            <rect key="frame" x="62" y="90" width="38" height="28.5"/>
+                                                            <rect key="frame" x="59.5" y="87.5" width="38" height="28.5"/>
                                                             <state key="normal">
                                                                 <attributedString key="attributedTitle">
                                                                     <fragment content="RETRY">
@@ -164,14 +164,14 @@
                                                             </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                             <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
                                                             </constraints>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
-                                                            <rect key="frame" x="106" y="0.0" width="56" height="56"/>
+                                                            <rect key="frame" x="101" y="0.0" width="56" height="56"/>
                                                             <state key="normal" image="Delete">
                                                                 <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
@@ -198,14 +198,14 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-u0-04f" userLabel="Photo">
-                                                    <rect key="frame" x="0.0" y="162" width="162" height="162"/>
+                                                    <rect key="frame" x="0.0" y="167" width="157" height="157"/>
                                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Fz6-u0-04f" secondAttribute="height" multiplier="1:1" id="Ajr-hV-dpN"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-WH-xaD" userLabel="Selfie">
-                                                    <rect key="frame" x="162" y="162" width="162" height="162"/>
+                                                    <rect key="frame" x="167" y="167" width="157" height="157"/>
                                                     <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Bal-WH-xaD" secondAttribute="height" multiplier="1:1" id="RId-6g-f3H"/>
@@ -214,12 +214,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="Bal-WH-xaD" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="44I-gv-1Wk"/>
+                                                <constraint firstItem="Bal-WH-xaD" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="44I-gv-1Wk"/>
                                                 <constraint firstItem="m2g-AK-OIW" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="7B1-yU-1kv"/>
                                                 <constraint firstItem="Fz6-u0-04f" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="Bgi-lx-hfZ"/>
-                                                <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="EqT-H0-Cer"/>
-                                                <constraint firstItem="m2g-AK-OIW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="QfB-zn-ww4"/>
-                                                <constraint firstItem="Fz6-u0-04f" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="Wd7-Lz-lJP"/>
+                                                <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="EqT-H0-Cer"/>
+                                                <constraint firstItem="m2g-AK-OIW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="QfB-zn-ww4"/>
+                                                <constraint firstItem="Fz6-u0-04f" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="Wd7-Lz-lJP"/>
                                                 <constraint firstItem="m2g-AK-OIW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="dpl-3a-Lqv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bal-WH-xaD" secondAttribute="trailing" id="dq4-pG-quP"/>
                                                 <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
