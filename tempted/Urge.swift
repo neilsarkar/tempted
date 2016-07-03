@@ -30,6 +30,16 @@ class Urge:Object {
         return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
     }
     
+    func photoImageUrl(width: Int, height: Int) -> NSURL? {
+        let str = "https://placeholdit.imgix.net/~text?txtsize=30&txt=Front+Photo&w=\(width*2)&h=\(height*2)"
+        return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+    }
+
+    func selfieImageUrl(width: Int, height: Int) -> NSURL? {
+        let str = "https://placeholdit.imgix.net/~text?txtsize=30&txt=Selfie&w=\(width*2)&h=\(height*2)"
+        return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+    }
+
     func humanTime() -> String {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEEE, h:mm a"
