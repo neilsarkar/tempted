@@ -25,7 +25,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ButtonCell" id="hhc-pp-85I" userLabel="ButtonCell" customClass="ButtonCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="39.5" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="62" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -78,14 +78,14 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="210" y="0.0" width="324" height="279"/>
+                                <rect key="frame" x="210" y="0.0" width="324" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="324" height="279"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="324"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-iF-ise" userLabel="SavedUrge">
-                                            <rect key="frame" x="0.0" y="0.0" width="324" height="279"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="324"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
@@ -198,14 +198,14 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-u0-04f" userLabel="Photo">
-                                                    <rect key="frame" x="0.0" y="117" width="162" height="162"/>
+                                                    <rect key="frame" x="0.0" y="162" width="162" height="162"/>
                                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Fz6-u0-04f" secondAttribute="height" multiplier="1:1" id="Ajr-hV-dpN"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-WH-xaD" userLabel="Selfie">
-                                                    <rect key="frame" x="162" y="117" width="162" height="162"/>
+                                                    <rect key="frame" x="162" y="162" width="162" height="162"/>
                                                     <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Bal-WH-xaD" secondAttribute="height" multiplier="1:1" id="RId-6g-f3H"/>
@@ -227,6 +227,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="Fz6-u0-04f" secondAttribute="bottom" id="zIS-9f-0iD"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bal-WH-xaD" secondAttribute="bottom" id="zv4-Ls-uWd"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -238,7 +243,7 @@
                                     <constraint firstItem="2w3-iF-ise" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="Sr9-PE-fnQ"/>
                                     <constraint firstItem="2w3-iF-ise" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="aXa-PJ-bXd"/>
                                 </constraints>
-                                <size key="customSize" width="324" height="279"/>
+                                <size key="customSize" width="324" height="324"/>
                                 <connections>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="loadingSpinner" destination="byr-w0-5Ue" id="gh3-iH-Gz4"/>

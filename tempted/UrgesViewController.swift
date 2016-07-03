@@ -33,8 +33,7 @@ class UrgesViewController : UICollectionViewController {
         }
 
         let width = self.view.frame.width - 40
-        // TODO: don't set height explicitly
-        let height = self.view.frame.width + 22
+        let height = width
         return CGSize(width: width, height: height)
     }
     
