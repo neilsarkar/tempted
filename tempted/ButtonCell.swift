@@ -17,11 +17,14 @@ class ButtonCell : UICollectionViewCell {
     @IBOutlet weak var scrollHint: UIImageView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         button.setTitle("", forState: .Normal)
         showReleased()
+        scrollHint.hidden = true
         subscribe()
     }
     
@@ -41,6 +44,8 @@ class ButtonCell : UICollectionViewCell {
         button.setImage(pushedImage, forState: .Normal)
         label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
         label.textColor = UIColor.tmpGrey7DColor()
+        scrollHint.hidden = false
+        infoButton.hidden = true
         scrollHint.alpha = 0.0
 
         timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased as Void -> Void), userInfo: nil, repeats: false)
@@ -59,13 +64,15 @@ class ButtonCell : UICollectionViewCell {
 
     internal func showReleased() {
         let wasPushed = isPushed
+        let defaultText = NSLocalizedString("catch a habit", comment: "Onboarding text to contextualize main button press")
+        
         isPushed = false
-        label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+        label.text = defaultText
 
         if( wasPushed ) {
             dispatch_async(dispatch_get_main_queue(), {
                 UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+                    self.label.text = defaultText
                 }, completion: nil)
                 
                 UIView.transitionWithView(self.button, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
@@ -73,7 +80,7 @@ class ButtonCell : UICollectionViewCell {
                 }, completion: nil)                
             })
         } else {
-            self.label.text = NSLocalizedString("craving that thing?", comment: "Onboarding text to contextualize main button press")
+            self.label.text = defaultText
             self.button.setImage(self.releasedImage, forState: .Normal)
         }
     }

@@ -38,7 +38,7 @@
                                                 <action selector="handleButtonTapped:" destination="hhc-pp-85I" eventType="touchUpInside" id="sVv-c4-YRJ"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="craving that thing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
                                             <rect key="frame" x="-26" y="50" width="252" height="41"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -47,12 +47,24 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
                                             <rect key="frame" x="51" y="134" width="98" height="26"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
+                                            <rect key="frame" x="85" y="130" width="30" height="30"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
+                                            <state key="normal" title="?">
+                                                <color key="titleColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="iYg-7Y-e5f" kind="presentation" modalPresentationStyle="overFullScreen" id="dhz-CN-K66"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="O7r-RG-9pu" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="16Y-wK-gII"/>
+                                    <constraint firstItem="qIY-Ct-8Of" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="8Em-j2-JXf"/>
                                     <constraint firstItem="Ffz-1a-IQJ" firstAttribute="bottom" secondItem="hhc-pp-85I" secondAttribute="bottomMargin" constant="-32" id="Nla-WB-P5Y"/>
+                                    <constraint firstItem="qIY-Ct-8Of" firstAttribute="bottom" secondItem="hhc-pp-85I" secondAttribute="bottomMargin" constant="-32" id="j5E-Sl-26Z"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="top" secondItem="hhc-pp-85I" secondAttribute="topMargin" constant="42" id="lD7-0g-fw1"/>
                                     <constraint firstItem="06V-fc-Zt5" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="mj0-nI-Rz2"/>
                                     <constraint firstItem="Ffz-1a-IQJ" firstAttribute="centerX" secondItem="hhc-pp-85I" secondAttribute="centerX" id="uu4-xv-FTk"/>
@@ -60,6 +72,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="button" destination="O7r-RG-9pu" id="kZq-oU-TZy"/>
+                                    <outlet property="infoButton" destination="qIY-Ct-8Of" id="cys-Tk-Jrt"/>
                                     <outlet property="label" destination="06V-fc-Zt5" id="zz8-L1-48c"/>
                                     <outlet property="scrollHint" destination="Ffz-1a-IQJ" id="nTy-mz-5UO"/>
                                 </connections>
@@ -281,6 +294,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqK-QX-J6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1403" y="151"/>
+        </scene>
+        <!--Onboarding Controller-->
+        <scene sceneID="XTl-KK-Hh7">
+            <objects>
+                <viewController id="iYg-7Y-e5f" userLabel="Onboarding Controller" customClass="OnboardingViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j1U-u3-45P"/>
+                        <viewControllerLayoutGuide type="bottom" id="VBI-Mr-LH6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ERi-dn-0KF" userLabel="Overlay">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
+                                <rect key="frame" x="30" y="75" width="540" height="450"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
+                                        <rect key="frame" x="174" y="41" width="192.5" height="41"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
+                                        <rect key="frame" x="244" y="412" width="53" height="30"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="GOT IT!">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="12" name="Avenir-Black"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops/>
+                                                        </paragraphStyle>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                        <color key="NSUnderlineColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <segue destination="XRL-2n-PYG" kind="unwind" unwindAction="unwindToHome:" id="rRE-04-ORA"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
+                                        <rect key="frame" x="20" y="102" width="500" height="289.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <mutableString key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
+
+1. Tap the button when you feel tempted.
+
+2. That’s it.
+
+Over time, you’ll find a pattern that triggers your urge. Once you’ve identified the pattern, choose a substitute action for that trigger. 
+
+Choose a substitute that’s creative or constructive. Text a friend, do a few pushups, write or draw, freestyle a few bars. If this sounds corny to you at first, that’s a good sign this will work.
+
+Approach this whole thing with patience.
+
+Reward yourself for catching one and forgive yourself for missing a hundred.
+
+Don't beat yourself up when you give in.
+
+Be persistent and you can choose your behavior instead of letting your behavior choose you.</mutableString>
+                                        <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="top" secondItem="vaC-32-gys" secondAttribute="top" constant="41" id="Mgt-Bh-nJj"/>
+                                    <constraint firstItem="ib3-17-t49" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="Rqx-ba-jtf"/>
+                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="top" constant="-20" id="S6d-G3-Fry"/>
+                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="top" secondItem="EyR-Hs-BzZ" secondAttribute="bottom" constant="20" id="eOL-m3-gEg"/>
+                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="fPf-ys-bX9"/>
+                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="leading" secondItem="vaC-32-gys" secondAttribute="leading" constant="20" id="oaU-2v-DkE"/>
+                                    <constraint firstAttribute="trailing" secondItem="E1l-4d-ZsX" secondAttribute="trailing" constant="20" id="vv4-nD-uho"/>
+                                    <constraint firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="bottom" constant="10" id="whe-9i-1Vd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80369073275862069" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="trailing" secondItem="ERi-dn-0KF" secondAttribute="trailingMargin" constant="-10" id="TnN-cX-A6c"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="centerY" secondItem="ERi-dn-0KF" secondAttribute="centerY" id="Xhu-Yb-Rfc"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="leading" secondItem="ERi-dn-0KF" secondAttribute="leadingMargin" constant="10" id="Xjj-AP-Pkd"/>
+                            <constraint firstItem="vaC-32-gys" firstAttribute="height" secondItem="ERi-dn-0KF" secondAttribute="height" multiplier="0.75" id="Z3q-MH-x01"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="E1l-4d-ZsX" id="STt-kD-DAf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1An-Tt-eKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="XRL-2n-PYG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="996"/>
         </scene>
     </scenes>
     <resources>

@@ -19,7 +19,6 @@ struct TPTNotification {
     static let MapPermissionsGranted = "Map permissions granted"
     static let ErrorLocationServicesDisabled = "Location Services Disabled"
     static let ErrorNoMapPermissions = "No map permissions"
-
 }
 
 struct TPTInterval {
