@@ -24,11 +24,14 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var mapLoadFailedLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     
+    @IBOutlet weak var selfieImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView!
+
     @IBAction func retryTapped(sender: UIButton) {
         dispatch_async(dispatch_get_main_queue()) {
             self.showLoading()
         }
-        attemptLoadImage()
+        attemptLoadMapImage()
     }
     
     override func awakeFromNib() {
@@ -36,23 +39,47 @@ class UrgeCell : UICollectionViewCell {
         showLoading()
         loadingSpinner.hidesWhenStopped = true
     }
-    
+        
     // is this the right place to do this display logic
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // TODO: skip this unless it's the final layout
+        // FIXME: skip this unless it's the final layout
         
         if (urge == nil) {
             NSLog("Urge not found for UrgeCell")
             return
         }
-
-
-        attemptLoadImage()
+        
+        attemptLoadMapImage()
+        loadPhotos()
     }
     
-    private func attemptLoadImage() {
+    private func loadPhotos() {
+        if let photoUrl = urge.photoImageUrl(Int(photoImageView.frame.width), height: Int(photoImageView.frame.height)) {
+            photoImageView.hnk_setImageFromURL(photoUrl, failure: { error in
+                print("Error loading photo!", photoUrl)
+            }, success: { image in
+                    self.photoImageView.opaque = false
+                    self.photoImageView.image = image
+            })
+        } else {
+            print("Invalid photo url", urge.photoImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)))
+        }
+
+        if let selfieUrl = urge.selfieImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)) {
+            selfieImageView.hnk_setImageFromURL(selfieUrl, failure: { error in
+                print("Error loading photo!", selfieUrl)
+            }, success: { image in
+                self.selfieImageView.opaque = false
+                self.selfieImageView.image = image
+            })
+        } else {
+            print("Invalid photo url", urge.photoImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)))
+        }
+    }
+    
+    private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
             mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
                 if( error?.code != -1009 ) {
