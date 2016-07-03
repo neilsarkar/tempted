@@ -87,6 +87,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-iF-ise" userLabel="SavedUrge">
                                             <rect key="frame" x="0.0" y="0.0" width="324" height="279"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                                                    <color key="backgroundColor" red="0.49387463669999998" green="0.373169643" blue="0.59539019339999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="height" multiplier="1:1" id="lPQ-Bz-Uto"/>
+                                                    </constraints>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-yk-BsW" userLabel="Map">
                                                     <rect key="frame" x="162" y="0.0" width="162" height="162"/>
                                                     <subviews>
@@ -190,12 +197,35 @@
                                                         <constraint firstItem="eNu-iF-k1y" firstAttribute="centerX" secondItem="YQ5-yk-BsW" secondAttribute="centerX" id="yHn-j1-WdD"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-u0-04f" userLabel="Photo">
+                                                    <rect key="frame" x="0.0" y="117" width="162" height="162"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Fz6-u0-04f" secondAttribute="height" multiplier="1:1" id="Ajr-hV-dpN"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-WH-xaD" userLabel="Selfie">
+                                                    <rect key="frame" x="162" y="117" width="162" height="162"/>
+                                                    <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Bal-WH-xaD" secondAttribute="height" multiplier="1:1" id="RId-6g-f3H"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="Bal-WH-xaD" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="44I-gv-1Wk"/>
+                                                <constraint firstItem="m2g-AK-OIW" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="7B1-yU-1kv"/>
+                                                <constraint firstItem="Fz6-u0-04f" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="Bgi-lx-hfZ"/>
                                                 <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="EqT-H0-Cer"/>
+                                                <constraint firstItem="m2g-AK-OIW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="QfB-zn-ww4"/>
+                                                <constraint firstItem="Fz6-u0-04f" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" id="Wd7-Lz-lJP"/>
+                                                <constraint firstItem="m2g-AK-OIW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="dpl-3a-Lqv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bal-WH-xaD" secondAttribute="trailing" id="dq4-pG-quP"/>
                                                 <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
                                                 <constraint firstAttribute="trailing" secondItem="YQ5-yk-BsW" secondAttribute="trailing" id="tM2-tA-0lz"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fz6-u0-04f" secondAttribute="bottom" id="zIS-9f-0iD"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bal-WH-xaD" secondAttribute="bottom" id="zv4-Ls-uWd"/>
                                             </constraints>
                                         </view>
                                     </subviews>
