@@ -340,7 +340,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
                                         <rect key="frame" x="20" y="102" width="500" height="289.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
+                                        <string key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
 
 1. Tap the button when you feel tempted.
 
@@ -356,7 +356,7 @@ Reward yourself for catching one and forgive yourself for missing a hundred.
 
 Don't beat yourself up when you give in.
 
-Be persistent and you can choose your behavior instead of letting your behavior choose you.</mutableString>
+Be persistent and you can choose your behavior instead of letting your behavior choose you.</string>
                                         <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
