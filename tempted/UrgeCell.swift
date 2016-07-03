@@ -27,6 +27,10 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var selfieImageView: UIImageView!
     @IBOutlet weak var photoImageView: UIImageView!
 
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
+    
+    
     @IBAction func retryTapped(sender: UIButton) {
         dispatch_async(dispatch_get_main_queue()) {
             self.showLoading()
@@ -53,6 +57,8 @@ class UrgeCell : UICollectionViewCell {
         
         attemptLoadMapImage()
         loadPhotos()
+        timeLabel.text = urge.humanTime()
+        dayLabel.text = urge.humanDay()
     }
     
     private func loadPhotos() {

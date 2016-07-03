@@ -42,7 +42,14 @@ class Urge:Object {
 
     func humanTime() -> String {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE, h:mm a"
+        formatter.dateFormat = "h:mm a"
+        
+        return formatter.stringFromDate(createdAt)
+    }
+    
+    func humanDay() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE"
         
         return formatter.stringFromDate(createdAt)
     }
