@@ -12,6 +12,7 @@ class ButtonCell : UICollectionViewCell {
     var timer: NSTimer?
     let releasedImage = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
     let pushedImage = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
+    let infoImage = UIImage(named: "QuestionMark")?.imageWithRenderingMode(.AlwaysOriginal)
     var isPushed = false
 
     @IBOutlet weak var scrollHint: UIImageView!
@@ -23,6 +24,8 @@ class ButtonCell : UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         button.setTitle("", forState: .Normal)
+        infoButton.setTitle("", forState: .Normal)
+        infoButton.setImage(infoImage, forState: .Normal)
         showReleased()
         scrollHint.hidden = true
         subscribe()
