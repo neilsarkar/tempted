@@ -42,10 +42,6 @@ class UrgesViewController : UICollectionViewController {
         return UIEdgeInsetsMake(0, 0, 15, 0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
-        return 0.0
-    }
-
 // MARK: Section and Cell Count
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
