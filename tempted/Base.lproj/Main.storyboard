@@ -38,7 +38,7 @@
                                                 <action selector="handleButtonTapped:" destination="hhc-pp-85I" eventType="touchUpInside" id="sVv-c4-YRJ"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="craving that thing?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06V-fc-Zt5">
                                             <rect key="frame" x="-26" y="50" width="252" height="41"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -47,9 +47,12 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
                                             <rect key="frame" x="51" y="134" width="98" height="26"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
                                             <rect key="frame" x="85" y="130" width="30" height="30"/>
-                                            <state key="normal" title="?"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
+                                            <state key="normal" title="?">
+                                                <color key="titleColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <segue destination="iYg-7Y-e5f" kind="presentation" modalPresentationStyle="overFullScreen" id="dhz-CN-K66"/>
                                             </connections>
@@ -307,7 +310,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
                                 <rect key="frame" x="30" y="75" width="540" height="450"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how's it work?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
                                         <rect key="frame" x="174" y="41" width="192.5" height="41"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -334,10 +337,26 @@
                                             <segue destination="XRL-2n-PYG" kind="unwind" unwindAction="unwindToHome:" id="rRE-04-ORA"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
                                         <rect key="frame" x="20" y="102" width="500" height="289.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <mutableString key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
+
+1. Tap the button when you feel tempted.
+
+2. That’s it.
+
+Over time, you’ll find a pattern that triggers your urge. Once you’ve identified the pattern, choose a substitute action for that trigger. 
+
+Choose a substitute that’s creative or constructive. Text a friend, do a few pushups, write or draw, freestyle a few bars. If this sounds corny to you at first, that’s a good sign this will work.
+
+Approach this whole thing with patience.
+
+Reward yourself for catching one and forgive yourself for missing a hundred.
+
+Don't beat yourself up when you give in.
+
+Be persistent and you can choose your behavior instead of letting your behavior choose you.</mutableString>
                                         <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
