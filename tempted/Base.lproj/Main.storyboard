@@ -90,14 +90,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
                                                     <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MQ-Gn-bUr">
-                                                            <rect key="frame" x="48" y="34" width="58" height="22"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MQ-Gn-bUr">
+                                                            <rect key="frame" x="49" y="34" width="58" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:20pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-U7-7nr">
-                                                            <rect key="frame" x="23.5" y="56.5" width="109.5" height="44"/>
+                                                            <rect key="frame" x="23" y="56" width="109.5" height="44"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="32"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -217,8 +217,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-u0-04f" userLabel="Selfie">
                                                     <rect key="frame" x="0.0" y="167" width="157" height="157"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jc6-Pk-bfS">
-                                                            <rect key="frame" x="-1" y="0.0" width="157" height="157"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jc6-Pk-bfS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
@@ -232,8 +232,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-WH-xaD" userLabel="Photo">
                                                     <rect key="frame" x="167" y="167" width="157" height="157"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-J0-5Pt">
-                                                            <rect key="frame" x="-1" y="0.0" width="157" height="157"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-J0-5Pt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>

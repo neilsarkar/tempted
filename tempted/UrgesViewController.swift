@@ -21,8 +21,9 @@ class UrgesViewController : UICollectionViewController {
     var creator:UrgeSaver!
 
     // FIXME: not our responsibility
-    var photoSession: AVCaptureSession?
     let photoQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
+    var photoSession: AVCaptureSession?
+    var photoOutput: AVCaptureStillImageOutput?
     let sessionRunningContext = UnsafeMutablePointer<Void>(nil)
     
     override func viewDidLoad() {
@@ -33,6 +34,35 @@ class UrgesViewController : UICollectionViewController {
 
         // FIXME: not our responsibility
         startRecordingSession()
+        
+        dispatch_async(photoQueue, {
+            // FIXME: check if success
+//            if ( self.setupResult != AVCamSetupResultSuccess ) {
+//                return;
+//            }
+
+            
+            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+            var device = devices[0]
+            
+            for otherDevice in devices {
+                if( device.position == AVCaptureDevicePosition.Back ) {
+                    device = otherDevice
+                }
+            }
+            let session = self.photoSession!
+            
+            session.beginConfiguration()
+            let stillImageOutput = AVCaptureStillImageOutput()
+            if( session.canAddOutput(stillImageOutput) ) {
+                stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+                session.addOutput(stillImageOutput)
+                self.photoOutput = stillImageOutput
+            } else {
+                print("Can't add still image output!")
+            }
+            session.commitConfiguration()
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -122,6 +152,9 @@ class UrgesViewController : UICollectionViewController {
 // MARK: Event Handling
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
+
+        noteCenter.addObserver(self, selector: #selector(handlePoop), name: TPTNotification.CreateUrge, object: nil)
+
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
@@ -129,6 +162,23 @@ class UrgesViewController : UICollectionViewController {
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
     }
     
+    internal func handlePoop() {
+        dispatch_async(photoQueue, {
+            let output = self.photoOutput!
+            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+            
+            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+                if( error != nil ) {
+                    print("Error!", error)
+                    return
+                }
+                
+                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                
+            })
+        })
+    }
+
     internal func showPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
