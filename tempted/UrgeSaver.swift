@@ -42,80 +42,47 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     func save() {
-        // TODO: make this a separate function with callback handler that gives selfie data, photo data and error.
-        dispatch_async(photoQueue, {
-            let output = self.photoOutput!
-            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-            
-            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-                if( error != nil ) {
-                    print("Error!", error)
-                    return
+        takePhotos({err, selfieData, photoData in
+            // TODO: only do UI work on the main thread -- https://github.com/realm/realm-cocoa/issues/1445
+            dispatch_async(dispatch_get_main_queue(), {
+                let urge = Urge();
+                
+                // TODO: do this in initialization
+                urge.createdAt = NSDate();
+                let uuid = NSUUID().UUIDString
+                urge.id = uuid
+                if( self.latlng != nil ) {
+                    urge.lat = self.latlng.latitude
+                    urge.lng = self.latlng.longitude
                 }
                 
-                self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let documentsDirectory = paths[0]
                 
-                let session = self.photoSession!
-                session.beginConfiguration()
-                session.removeInput(self.selfieInput)
-                if( session.canAddInput(self.photoInput) ) {
-                    session.addInput(self.photoInput)
-                } else {
-                    print("cannot add photo input!")
+                
+                if( selfieData != nil ) {
+                    let filename = documentsDirectory.stringByAppendingString("/\(uuid)-selfie.jpg")
+                    selfieData!.writeToFile(filename, atomically: true)
+                    urge.selfieFile = filename
                 }
-                session.commitConfiguration()
-                dispatch_async(self.photoQueue, {
-                    let output = self.photoOutput!
-                    let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-                    
-                    
-                    output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-                        if( error != nil ) {
-                            print("Error!", error)
-                            return
-                        }
-                        
-                        self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                        
-                        let urge = Urge();
-                        
-                        // TODO: do this in initialization
-                        urge.createdAt = NSDate();
-                        let uuid = NSUUID().UUIDString
-                        urge.id = uuid
-                        if( self.latlng != nil ) {
-                            urge.lat = self.latlng.latitude
-                            urge.lng = self.latlng.longitude
-                        }
-                        
-                        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                        let documentsDirectory = paths[0]
-                        
-                        
-                        if( self.photoData != nil ) {
-                            let filename = documentsDirectory.stringByAppendingString("/\(uuid)-photo.jpg")
-                            self.photoData!.writeToFile(filename, atomically: true)
-                            urge.photoFile = filename
-                        }
-                        
-                        if( self.selfieData != nil ) {
-                            let filename = documentsDirectory.stringByAppendingString("/\(uuid)-selfie.jpg")
-                            self.selfieData!.writeToFile(filename, atomically: true)
-                            urge.selfieFile = filename
-                        }
-                        
-                        let realm = try! Realm()
-                        
-                        try! realm.write {
-                            realm.add(urge);
-                        }
-                        
-                        self.selfieData = nil
-                        self.photoData = nil
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: self)
-                    })
-                })
+                
+                if( photoData != nil ) {
+                    let filename = documentsDirectory.stringByAppendingString("/\(uuid)-photo.jpg")
+                    photoData!.writeToFile(filename, atomically: true)
+                    urge.photoFile = filename
+                }
+                
+                
+                let realm = try! Realm()
+                
+                try! realm.write {
+                    realm.add(urge);
+                }
+                
+                self.selfieData = nil
+                self.photoData = nil
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: self)
             })
         })
     }
@@ -135,6 +102,74 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         if( status == .AuthorizedWhenInUse && latlng == nil ) {
             captureLocation()
         }
+    }
+    
+    private func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
+        if( self.photoInput == nil || self.selfieInput == nil ) {
+            // TODO: return special error type
+            dispatch_async(photoQueue, {
+                return cb(nil, selfieData: nil, photoData: nil)
+            })
+            return
+        }
+        
+        dispatch_async(photoQueue, {
+            let output = self.photoOutput!
+            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+            
+            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+                if( error != nil ) {
+                    return cb(error, selfieData: nil, photoData: nil)
+                }
+                
+                // TODO: don't store on self
+                self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                
+                let session = self.photoSession!
+                session.beginConfiguration()
+                session.removeInput(self.selfieInput)
+                if( !session.canAddInput(self.photoInput) ) {
+                    // TODO: set up real error codes
+                    let err = NSError(domain: "tempted", code: 1, userInfo: [
+                        NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
+                        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Couldn't add photo input", comment: "internal error reason for not being able to add photo input")
+                    ])
+                    return cb(err, selfieData: self.selfieData, photoData: nil)
+                }
+
+                session.addInput(self.photoInput)
+                session.commitConfiguration()
+                dispatch_async(self.photoQueue, {
+                    if( self.photoOutput == nil ) {
+                        let err = NSError(domain: "tempted", code: 2, userInfo: [
+                            NSLocalizedDescriptionKey: NSLocalizedString("Error using photo output", comment: "internal error description for outputting photos"),
+                            NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo output was nil", comment: "internal error reason for not being able to add photo input")
+                        ])
+                        return cb(err, selfieData: nil, photoData: nil)
+                    }
+
+                    let output = self.photoOutput!
+                    let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+                    
+                    if( connection == nil ) {
+                        let err = NSError(domain: "tempted", code: 2, userInfo: [
+                            NSLocalizedDescriptionKey: NSLocalizedString("Unable to establish output connection", comment: "internal error description for establishing output connection"),
+                            NSLocalizedFailureReasonErrorKey: NSLocalizedString("connection was nil", comment: "internal error reason for not being able to add photo input")
+                        ])
+                        return cb(err, selfieData: nil, photoData: nil)
+                    }
+                    
+                    output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, err in
+                        if( err != nil ) {
+                            return cb(err, selfieData: self.selfieData, photoData: nil)
+                        }
+                        
+                        self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                        return cb(nil, selfieData: self.selfieData, photoData: self.photoData)
+                    })
+                })
+            })
+        })
     }
     
     private func subscribe() {
@@ -180,6 +215,10 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         
         dispatch_async(photoQueue, {
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+            if( devices.count == 0 ) {
+                return
+            }
+            
             var selfieDevice = devices[0]
             var photoDevice  = devices[0]
 
