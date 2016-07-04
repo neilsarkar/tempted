@@ -28,7 +28,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         self.captureLocation()
     }
     
-    func save() {
+    func save(photo: NSData?, selfie: NSData?) {
         let urge = Urge();
         
         // TODO: do this in initialization
@@ -38,6 +38,22 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         if( latlng != nil ) {
             urge.lat = latlng.latitude
             urge.lng = latlng.longitude
+        }
+
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+
+        
+        if( photo != nil ) {
+            let filename = documentsDirectory.stringByAppendingString("/\(uuid)-photo.jpg")
+            photo!.writeToFile(filename, atomically: true)
+            urge.photoFile = filename
+        }
+        
+        if( selfie != nil ) {
+            let filename = documentsDirectory.stringByAppendingString("/\(uuid)-selfie.jpg")
+            selfie!.writeToFile(filename, atomically: true)
+            urge.selfieFile = filename
         }
         
         let realm = try! Realm()

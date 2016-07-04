@@ -17,6 +17,9 @@ class Urge:Object {
     dynamic var lat = 0.0
     dynamic var lng = 0.0
     
+    dynamic var photoFile=""
+    dynamic var selfieFile=""
+    
     override class func primaryKey() -> String? {
         return "id"
     }
@@ -56,13 +59,20 @@ class Urge:Object {
     
     static func migrate() {
         let config = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             
             migrationBlock: { migration, oldSchemaVersion in
                 if( oldSchemaVersion < 1 ) {
                     migration.enumerate(Urge.className()) { oldObject, newObject in
                         let oldId = oldObject!["id"]
                         newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
+                    }
+                }
+                
+                if( oldSchemaVersion < 3 ) {
+                    migration.enumerate(Urge.className()) { oldObject, newObject in
+                        newObject!["photoFile"] = ""
+                        newObject!["selfieFile"] = ""
                     }
                 }
             }

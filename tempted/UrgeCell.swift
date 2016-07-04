@@ -61,17 +61,12 @@ class UrgeCell : UICollectionViewCell {
         dayLabel.text = urge.humanDay()
     }
     
-    private func loadPhotos() {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = paths[0]
-        let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
-        
+    private func loadPhotos() {        
         self.photoImageView.opaque = false
-        self.photoImageView.image = UIImage(contentsOfFile: filename)
+        self.photoImageView.image = UIImage(contentsOfFile: urge.photoFile)
         
-        let selfieFilename = documentsDirectory.stringByAppendingString("/selfie.jpg")
         self.selfieImageView.opaque = false
-        self.selfieImageView.image = UIImage(contentsOfFile: selfieFilename)        
+        self.selfieImageView.image = UIImage(contentsOfFile: urge.selfieFile)
     }
     
     private func attemptLoadMapImage() {

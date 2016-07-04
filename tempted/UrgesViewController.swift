@@ -30,6 +30,9 @@ class UrgesViewController : UICollectionViewController {
     var selfieInput: AVCaptureInput?
     var selfieOutput: AVCaptureStillImageOutput?
     
+    var photoData: NSData?
+    var selfieData: NSData?
+    
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
@@ -228,13 +231,8 @@ class UrgesViewController : UICollectionViewController {
                     return
                 }
                 
-                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                 
-                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                let documentsDirectory = paths[0]
-                let filename = documentsDirectory.stringByAppendingString("/selfie.jpg")
-                imageData.writeToFile(filename, atomically: true)
-
                 let session = self.selfieSession!
                 session.beginConfiguration()
                 session.removeInput(self.selfieInput)
@@ -255,12 +253,9 @@ class UrgesViewController : UICollectionViewController {
                             return
                         }
                         
-                        let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                        self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                         
-                        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                        let documentsDirectory = paths[0]
-                        let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
-                        imageData.writeToFile(filename, atomically: true)
+                        self.creator.save(self.photoData, selfie: self.selfieData)
                     })
                 })
             })
