@@ -62,17 +62,13 @@ class UrgeCell : UICollectionViewCell {
     }
     
     private func loadPhotos() {
-        if let photoUrl = urge.photoImageUrl(Int(photoImageView.frame.width), height: Int(photoImageView.frame.height)) {
-            photoImageView.hnk_setImageFromURL(photoUrl, failure: { error in
-                print("Error loading photo!", photoUrl)
-            }, success: { image in
-                    self.photoImageView.opaque = false
-                    self.photoImageView.image = image
-            })
-        } else {
-            print("Invalid photo url", urge.photoImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)))
-        }
-
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
+        
+        self.photoImageView.opaque = false
+        self.photoImageView.image = UIImage(contentsOfFile: filename)
+        
         if let selfieUrl = urge.selfieImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)) {
             selfieImageView.hnk_setImageFromURL(selfieUrl, failure: { error in
                 print("Error loading photo!", selfieUrl)

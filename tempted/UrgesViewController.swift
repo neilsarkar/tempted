@@ -46,13 +46,32 @@ class UrgesViewController : UICollectionViewController {
             var device = devices[0]
             
             for otherDevice in devices {
-                if( device.position == AVCaptureDevicePosition.Back ) {
+                if( device.position == AVCaptureDevicePosition.Front ) {
                     device = otherDevice
                 }
             }
+            
             let session = self.photoSession!
             
             session.beginConfiguration()
+
+            var videoDeviceInput: AVCaptureInput?
+            do {
+                videoDeviceInput = try AVCaptureDeviceInput.init(device: device as! AVCaptureDevice)
+            } catch {
+                print(error)
+            }
+            // FIXME: catch error
+            if( videoDeviceInput == nil ) {
+                print("Could not create video device")
+            }
+            
+            if( session.canAddInput(videoDeviceInput) ) {
+                session.addInput(videoDeviceInput)
+            } else {
+                print("Could not add video input!")
+            }
+            
             let stillImageOutput = AVCaptureStillImageOutput()
             if( session.canAddOutput(stillImageOutput) ) {
                 stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
@@ -166,6 +185,7 @@ class UrgesViewController : UICollectionViewController {
         dispatch_async(photoQueue, {
             let output = self.photoOutput!
             let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+
             
             output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
                 if( error != nil ) {
@@ -175,6 +195,10 @@ class UrgesViewController : UICollectionViewController {
                 
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                 
+                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let documentsDirectory = paths[0]
+                let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
+                imageData.writeToFile(filename, atomically: true)
             })
         })
     }
