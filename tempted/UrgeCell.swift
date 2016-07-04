@@ -69,16 +69,9 @@ class UrgeCell : UICollectionViewCell {
         self.photoImageView.opaque = false
         self.photoImageView.image = UIImage(contentsOfFile: filename)
         
-        if let selfieUrl = urge.selfieImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)) {
-            selfieImageView.hnk_setImageFromURL(selfieUrl, failure: { error in
-                print("Error loading photo!", selfieUrl)
-            }, success: { image in
-                self.selfieImageView.opaque = false
-                self.selfieImageView.image = image
-            })
-        } else {
-            print("Invalid photo url", urge.photoImageUrl(Int(selfieImageView.frame.width), height: Int(selfieImageView.frame.height)))
-        }
+        let selfieFilename = documentsDirectory.stringByAppendingString("/selfie.jpg")
+        self.selfieImageView.opaque = false
+        self.selfieImageView.image = UIImage(contentsOfFile: selfieFilename)        
     }
     
     private func attemptLoadMapImage() {

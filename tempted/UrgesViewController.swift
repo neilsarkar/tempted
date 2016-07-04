@@ -21,10 +21,16 @@ class UrgesViewController : UICollectionViewController {
     var creator:UrgeSaver!
 
     // FIXME: not our responsibility
-    let photoQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
-    var photoSession: AVCaptureSession?
-    var photoOutput: AVCaptureStillImageOutput?
+    let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
     let sessionRunningContext = UnsafeMutablePointer<Void>(nil)
+    var photoSession: AVCaptureSession?
+    var photoInput: AVCaptureInput?
+    var photoOutput: AVCaptureStillImageOutput?
+    
+    let selfieQueue = dispatch_queue_create("selfie queue", DISPATCH_QUEUE_SERIAL)
+    var selfieSession: AVCaptureSession?
+    var selfieInput: AVCaptureInput?
+    var selfieOutput: AVCaptureStillImageOutput?
     
     override func viewDidLoad() {
         let realm = try! Realm()
@@ -34,6 +40,47 @@ class UrgesViewController : UICollectionViewController {
 
         // FIXME: not our responsibility
         startRecordingSession()
+
+        dispatch_async(selfieQueue, {
+            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+            var selfieDevice = devices[0]
+            
+            for otherDevice in devices {
+                if( otherDevice.position == AVCaptureDevicePosition.Back ) {
+                    selfieDevice = otherDevice
+                }
+            }
+            
+            let session = self.selfieSession!
+            
+            session.beginConfiguration()
+            
+            do {
+                self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice as! AVCaptureDevice)
+            } catch {
+                print(error)
+            }
+            // FIXME: catch error
+            if( self.selfieInput == nil ) {
+                print("Could not create video device")
+            }
+            
+            if( session.canAddInput(self.selfieInput) ) {
+                session.addInput(self.selfieInput)
+            } else {
+                print("Could not add video input!")
+            }
+            
+            let stillImageOutput = AVCaptureStillImageOutput()
+            if( session.canAddOutput(stillImageOutput) ) {
+                stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+                session.addOutput(stillImageOutput)
+                self.selfieOutput = stillImageOutput
+            } else {
+                print("Can't add still image output!")
+            }
+            session.commitConfiguration()
+        })
         
         dispatch_async(photoQueue, {
             // FIXME: check if success
@@ -43,44 +90,23 @@ class UrgesViewController : UICollectionViewController {
 
             
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-            var device = devices[0]
+            var photoDevice = devices[0]
             
             for otherDevice in devices {
-                if( device.position == AVCaptureDevicePosition.Front ) {
-                    device = otherDevice
+                if( otherDevice.position == AVCaptureDevicePosition.Front ) {
+                    photoDevice = otherDevice
                 }
             }
             
-            let session = self.photoSession!
-            
-            session.beginConfiguration()
-
-            var videoDeviceInput: AVCaptureInput?
             do {
-                videoDeviceInput = try AVCaptureDeviceInput.init(device: device as! AVCaptureDevice)
+                self.photoInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
             } catch {
                 print(error)
             }
             // FIXME: catch error
-            if( videoDeviceInput == nil ) {
+            if( self.photoInput == nil ) {
                 print("Could not create video device")
             }
-            
-            if( session.canAddInput(videoDeviceInput) ) {
-                session.addInput(videoDeviceInput)
-            } else {
-                print("Could not add video input!")
-            }
-            
-            let stillImageOutput = AVCaptureStillImageOutput()
-            if( session.canAddOutput(stillImageOutput) ) {
-                stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-                session.addOutput(stillImageOutput)
-                self.photoOutput = stillImageOutput
-            } else {
-                print("Can't add still image output!")
-            }
-            session.commitConfiguration()
         })
     }
     
@@ -90,6 +116,13 @@ class UrgesViewController : UICollectionViewController {
         photoSession?.startRunning()
         if( !photoSession!.running ) {
             print("session not running!")
+        }
+        
+        selfieSession?.startRunning()
+        if( !selfieSession!.running ) {
+            print("selfie session not running!")
+        } else {
+            print("selfie session running")
         }
     }
     
@@ -103,6 +136,8 @@ class UrgesViewController : UICollectionViewController {
     
     private func startRecordingSession() {
         photoSession = AVCaptureSession()
+
+        selfieSession = AVCaptureSession()
         
         // TODO: AVMediaTypeCamera?
         switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
@@ -110,9 +145,11 @@ class UrgesViewController : UICollectionViewController {
             break
         case .NotDetermined:
             dispatch_suspend(photoQueue)
+            dispatch_suspend(selfieQueue)
             AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
                 print("auth", success)
                 dispatch_resume(self.photoQueue)
+                dispatch_resume(self.selfieQueue)
             })
         default:
             // FIXME: error states
@@ -182,10 +219,10 @@ class UrgesViewController : UICollectionViewController {
     }
     
     internal func handlePoop() {
-        dispatch_async(photoQueue, {
-            let output = self.photoOutput!
+        dispatch_async(selfieQueue, {
+            let output = self.selfieOutput!
             let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-
+            
             
             output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
                 if( error != nil ) {
@@ -197,8 +234,37 @@ class UrgesViewController : UICollectionViewController {
                 
                 let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
                 let documentsDirectory = paths[0]
-                let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
+                let filename = documentsDirectory.stringByAppendingString("/selfie.jpg")
                 imageData.writeToFile(filename, atomically: true)
+
+                let session = self.selfieSession!
+                session.beginConfiguration()
+                session.removeInput(self.selfieInput)
+                if( session.canAddInput(self.photoInput) ) {
+                    session.addInput(self.photoInput)
+                } else {
+                    print("cannot add photo input!")
+                }
+                session.commitConfiguration()
+                dispatch_async(self.photoQueue, {
+                    let output = self.selfieOutput!
+                    let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+                    
+                    
+                    output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+                        if( error != nil ) {
+                            print("Error!", error)
+                            return
+                        }
+                        
+                        let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                        
+                        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                        let documentsDirectory = paths[0]
+                        let filename = documentsDirectory.stringByAppendingString("/halp.jpg")
+                        imageData.writeToFile(filename, atomically: true)
+                    })
+                })
             })
         })
     }
