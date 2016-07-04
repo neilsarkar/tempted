@@ -9,17 +9,48 @@
 import UIKit
 import RealmSwift
 
+// FIXME: not our responsibility
+// TODO: do we need both of these?
+import AVKit
+import AVFoundation
+
 class UrgesViewController : UICollectionViewController {
     let topIdentifier   = "ButtonCell"
     let reuseIdentifier = "UrgeCell"
     var urges: Results<Urge>?
     var creator:UrgeSaver!
+
+    // FIXME: not our responsibility
+    var photoSession: AVCaptureSession?
+    var photoQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
     
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         subscribe()
         creator = UrgeSaver()
+
+        // FIXME: not our responsibility
+        startRecordingSession()
+    }
+    
+    private func startRecordingSession() {
+        photoSession = AVCaptureSession()
+        
+        // TODO: AVMediaTypeCamera?
+        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
+        case .Authorized:
+            break
+        case .NotDetermined:
+            dispatch_suspend(photoQueue)
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
+                print("auth", success)
+                dispatch_resume(self.photoQueue)
+            })
+        default:
+            // FIXME: error states
+            print("Permissions denied!")
+        }
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
