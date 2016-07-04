@@ -18,144 +18,11 @@ class UrgesViewController : UICollectionViewController {
     var urges: Results<Urge>?
     var creator:UrgeSaver!
 
-    // FIXME: not our responsibility
-    let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
-    let sessionRunningContext = UnsafeMutablePointer<Void>(nil)
-    var photoSession: AVCaptureSession?
-    var photoInput: AVCaptureInput?
-    var photoOutput: AVCaptureStillImageOutput?
-    
-    let selfieQueue = dispatch_queue_create("selfie queue", DISPATCH_QUEUE_SERIAL)
-    var selfieSession: AVCaptureSession?
-    var selfieInput: AVCaptureInput?
-    var selfieOutput: AVCaptureStillImageOutput?
-    
-    var photoData: NSData?
-    var selfieData: NSData?
-    
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         subscribe()
         creator = UrgeSaver()
-
-        // FIXME: not our responsibility
-        startRecordingSession()
-
-        dispatch_async(selfieQueue, {
-            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-            var selfieDevice = devices[0]
-            
-            for otherDevice in devices {
-                if( otherDevice.position == AVCaptureDevicePosition.Back ) {
-                    selfieDevice = otherDevice
-                }
-            }
-            
-            let session = self.selfieSession!
-            
-            session.beginConfiguration()
-            
-            do {
-                self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice as! AVCaptureDevice)
-            } catch {
-                print(error)
-            }
-            // FIXME: catch error
-            if( self.selfieInput == nil ) {
-                print("Could not create video device")
-            }
-            
-            if( session.canAddInput(self.selfieInput) ) {
-                session.addInput(self.selfieInput)
-            } else {
-                print("Could not add video input!")
-            }
-            
-            let stillImageOutput = AVCaptureStillImageOutput()
-            if( session.canAddOutput(stillImageOutput) ) {
-                stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-                session.addOutput(stillImageOutput)
-                self.selfieOutput = stillImageOutput
-            } else {
-                print("Can't add still image output!")
-            }
-            session.commitConfiguration()
-        })
-        
-        dispatch_async(photoQueue, {
-            // FIXME: check if success
-//            if ( self.setupResult != AVCamSetupResultSuccess ) {
-//                return;
-//            }
-
-            
-            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-            var photoDevice = devices[0]
-            
-            for otherDevice in devices {
-                if( otherDevice.position == AVCaptureDevicePosition.Front ) {
-                    photoDevice = otherDevice
-                }
-            }
-            
-            do {
-                self.photoInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
-            } catch {
-                print(error)
-            }
-            // FIXME: catch error
-            if( self.photoInput == nil ) {
-                print("Could not create video device")
-            }
-        })
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        // TODO: will this cause a mem leak?
-        photoSession?.addObserver(self, forKeyPath: "running", options: NSKeyValueObservingOptions.New, context: sessionRunningContext)
-        photoSession?.startRunning()
-        if( !photoSession!.running ) {
-            print("session not running!")
-        }
-        
-        selfieSession?.startRunning()
-        if( !selfieSession!.running ) {
-            print("selfie session not running!")
-        } else {
-            print("selfie session running")
-        }
-    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if( context == sessionRunningContext ) {
-            print("session running")
-        } else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-        }
-    }
-    
-    private func startRecordingSession() {
-        photoSession = AVCaptureSession()
-
-        selfieSession = AVCaptureSession()
-        
-        // TODO: AVMediaTypeCamera?
-        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
-        case .Authorized:
-            break
-        case .NotDetermined:
-            dispatch_suspend(photoQueue)
-            dispatch_suspend(selfieQueue)
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
-                print("auth", success)
-                dispatch_resume(self.photoQueue)
-                dispatch_resume(self.selfieQueue)
-            })
-        default:
-            // FIXME: error states
-            print("Permissions denied!")
-        }
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -210,8 +77,6 @@ class UrgesViewController : UICollectionViewController {
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
 
-        noteCenter.addObserver(self, selector: #selector(handlePoop), name: TPTNotification.CreateUrge, object: nil)
-
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
@@ -219,49 +84,6 @@ class UrgesViewController : UICollectionViewController {
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
     }
     
-    internal func handlePoop() {
-        dispatch_async(selfieQueue, {
-            let output = self.selfieOutput!
-            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-            
-            
-            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-                if( error != nil ) {
-                    print("Error!", error)
-                    return
-                }
-                
-                self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                
-                let session = self.selfieSession!
-                session.beginConfiguration()
-                session.removeInput(self.selfieInput)
-                if( session.canAddInput(self.photoInput) ) {
-                    session.addInput(self.photoInput)
-                } else {
-                    print("cannot add photo input!")
-                }
-                session.commitConfiguration()
-                dispatch_async(self.photoQueue, {
-                    let output = self.selfieOutput!
-                    let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-                    
-                    
-                    output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-                        if( error != nil ) {
-                            print("Error!", error)
-                            return
-                        }
-                        
-                        self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                        
-                        self.creator.save(self.photoData, selfie: self.selfieData)
-                    })
-                })
-            })
-        })
-    }
-
     internal func showPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
