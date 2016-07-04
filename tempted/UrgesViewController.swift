@@ -22,7 +22,8 @@ class UrgesViewController : UICollectionViewController {
 
     // FIXME: not our responsibility
     var photoSession: AVCaptureSession?
-    var photoQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
+    let photoQueue = dispatch_queue_create( "session queue", DISPATCH_QUEUE_SERIAL );
+    let sessionRunningContext = UnsafeMutablePointer<Void>(nil)
     
     override func viewDidLoad() {
         let realm = try! Realm()
@@ -32,6 +33,23 @@ class UrgesViewController : UICollectionViewController {
 
         // FIXME: not our responsibility
         startRecordingSession()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // TODO: will this cause a mem leak?
+        photoSession?.addObserver(self, forKeyPath: "running", options: NSKeyValueObservingOptions.New, context: sessionRunningContext)
+        photoSession?.startRunning()
+        if( !photoSession!.running ) {
+            print("session not running!")
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if( context == sessionRunningContext ) {
+            print("session running")
+        } else {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
     }
     
     private func startRecordingSession() {
