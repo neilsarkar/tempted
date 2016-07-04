@@ -13,24 +13,22 @@ import UIKit
 import AVFoundation
 
 class UrgeSaver: NSObject, CLLocationManagerDelegate {
+    // TODO: refactor location service that deals with capturing location
     var locationManager:CLLocationManager!
     var latlng:CLLocationCoordinate2D!
-
     var isCapturingLocation = false
     
+    // TODO: refactor service object that deals with taking both photos
     let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
-    let sessionRunningContext = UnsafeMutablePointer<Void>(nil)
     var photoSession: AVCaptureSession?
     var photoInput: AVCaptureInput?
-    var photoOutput: AVCaptureStillImageOutput?
-    
-    let selfieQueue = dispatch_queue_create("selfie queue", DISPATCH_QUEUE_SERIAL)
-    var selfieSession: AVCaptureSession?
     var selfieInput: AVCaptureInput?
-    var selfieOutput: AVCaptureStillImageOutput?
-    
+    var photoOutput: AVCaptureStillImageOutput?
     var photoData: NSData?
     var selfieData: NSData?
+
+    // TODO: refactor service object that deals with getting permissions for both location and photos
+    
     
     override init() {
         super.init()
@@ -44,10 +42,10 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     func save() {
-        dispatch_async(selfieQueue, {
-            let output = self.selfieOutput!
+        // TODO: make this a separate function with callback handler that gives selfie data, photo data and error.
+        dispatch_async(photoQueue, {
+            let output = self.photoOutput!
             let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-            
             
             output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
                 if( error != nil ) {
@@ -57,7 +55,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 
                 self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                 
-                let session = self.selfieSession!
+                let session = self.photoSession!
                 session.beginConfiguration()
                 session.removeInput(self.selfieInput)
                 if( session.canAddInput(self.photoInput) ) {
@@ -67,7 +65,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 }
                 session.commitConfiguration()
                 dispatch_async(self.photoQueue, {
-                    let output = self.selfieOutput!
+                    let output = self.photoOutput!
                     let connection = output.connectionWithMediaType(AVMediaTypeVideo)
                     
                     
@@ -164,7 +162,6 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     
     private func prepCameras() {
         photoSession = AVCaptureSession()
-        selfieSession = AVCaptureSession()
         
         // TODO: AVMediaTypeCamera?
         switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
@@ -194,7 +191,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 }
             }
             
-            let session = self.selfieSession!
+            let session = self.photoSession!
             
             session.beginConfiguration()
             
@@ -228,7 +225,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             if( session.canAddOutput(stillImageOutput) ) {
                 stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
                 session.addOutput(stillImageOutput)
-                self.selfieOutput = stillImageOutput
+                self.photoOutput = stillImageOutput
             } else {
                 print("Can't add still image output!")
             }
