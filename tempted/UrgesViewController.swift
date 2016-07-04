@@ -10,8 +10,6 @@ import UIKit
 import RealmSwift
 
 // FIXME: not our responsibility
-// TODO: do we need both of these?
-import AVKit
 import AVFoundation
 
 class UrgesViewController : UICollectionViewController {
