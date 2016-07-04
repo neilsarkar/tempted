@@ -69,7 +69,6 @@ class UrgesViewController : UICollectionViewController {
         let urge = urges![indexPath.row]
         
         cell.urge = urge
-        cell.urgeId = urge.id
         return cell
     }
 
@@ -106,6 +105,7 @@ class UrgesViewController : UICollectionViewController {
     
     internal func handleUrgeDelete(note:NSNotification) {
         if( note.userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
+
         let id = note.userInfo!["id"] as! String
         
         let realm = try! Realm()
@@ -114,8 +114,6 @@ class UrgesViewController : UICollectionViewController {
             realm.delete(badUrge)
         }
         
-        // TODO: splice urges array instead of recalculating
-        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
     }
     

@@ -11,12 +11,12 @@ import Crashlytics
 import Haneke
 
 class UrgeCell : UICollectionViewCell {
-    var urgeId = ""
-    var urge: Urge!
+    var urge: Urge! {
+        didSet { render() }
+    }
     
     @IBAction func handleDelete(sender: AnyObject) {
-        if( urgeId == "" ) { return print("UrgeID not set!") }
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urgeId])
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
     }
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
@@ -30,6 +30,7 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     
+    @IBOutlet weak var debugLabel: UILabel!
     
     @IBAction func retryTapped(sender: UIButton) {
         dispatch_async(dispatch_get_main_queue()) {
@@ -41,27 +42,20 @@ class UrgeCell : UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         showLoading()
+        
         loadingSpinner.hidesWhenStopped = true
     }
-        
-    // is this the right place to do this display logic
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        // FIXME: skip this unless it's the final layout
-        
-        if (urge == nil) {
-            NSLog("Urge not found for UrgeCell")
-            return
-        }
-        
+    
+    private func render() {
         attemptLoadMapImage()
         loadPhotos()
         timeLabel.text = urge.humanTime()
         dayLabel.text = urge.humanDay()
+        // TODO: display debug label if debug build
+        debugLabel.text = urge.id.componentsSeparatedByString("-")[0]
     }
     
-    private func loadPhotos() {        
+    private func loadPhotos() {
         self.photoImageView.opaque = false
         self.photoImageView.image = UIImage(contentsOfFile: urge.photoFile)
         

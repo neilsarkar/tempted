@@ -57,6 +57,10 @@ class Urge:Object {
         return formatter.stringFromDate(createdAt)
     }
     
+    func debugId() -> String {
+        return id.componentsSeparatedByString("-")[0]
+    }
+    
     static func migrate() {
         let config = Realm.Configuration(
             schemaVersion: 3,

@@ -244,10 +244,17 @@
                                                         <constraint firstItem="9Ib-J0-5Pt" firstAttribute="centerX" secondItem="Bal-WH-xaD" secondAttribute="centerX" id="mE5-ZK-qIe"/>
                                                     </constraints>
                                                 </view>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exe-7f-UxR">
+                                                    <rect key="frame" x="113.5" y="295" width="97" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Bal-WH-xaD" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="44I-gv-1Wk"/>
+                                                <constraint firstItem="exe-7f-UxR" firstAttribute="centerX" secondItem="2w3-iF-ise" secondAttribute="centerX" id="5I8-of-qGo"/>
                                                 <constraint firstItem="m2g-AK-OIW" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="7B1-yU-1kv"/>
                                                 <constraint firstItem="Fz6-u0-04f" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="Bgi-lx-hfZ"/>
                                                 <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="EqT-H0-Cer"/>
@@ -255,6 +262,7 @@
                                                 <constraint firstItem="Fz6-u0-04f" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-5" id="Wd7-Lz-lJP"/>
                                                 <constraint firstItem="m2g-AK-OIW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="dpl-3a-Lqv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bal-WH-xaD" secondAttribute="trailing" id="dq4-pG-quP"/>
+                                                <constraint firstAttribute="bottom" secondItem="exe-7f-UxR" secondAttribute="bottom" constant="8" id="ftB-Zx-HcL"/>
                                                 <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
                                                 <constraint firstAttribute="trailing" secondItem="YQ5-yk-BsW" secondAttribute="trailing" id="tM2-tA-0lz"/>
                                                 <constraint firstAttribute="bottom" secondItem="Fz6-u0-04f" secondAttribute="bottom" id="zIS-9f-0iD"/>
@@ -274,6 +282,7 @@
                                 <size key="customSize" width="324" height="324"/>
                                 <connections>
                                     <outlet property="dayLabel" destination="4MQ-Gn-bUr" id="o5w-Sc-RxX"/>
+                                    <outlet property="debugLabel" destination="exe-7f-UxR" id="VFJ-7S-VtV"/>
                                     <outlet property="deleteButton" destination="WSN-Ww-DQT" id="OLV-zD-0J0"/>
                                     <outlet property="loadingSpinner" destination="byr-w0-5Ue" id="gh3-iH-Gz4"/>
                                     <outlet property="mapImageView" destination="4At-iF-6AR" id="uJA-BI-wIu"/>

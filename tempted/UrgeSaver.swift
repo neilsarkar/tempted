@@ -107,10 +107,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     private func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
         if( self.photoInput == nil || self.selfieInput == nil ) {
             // TODO: return special error type
-            dispatch_async(photoQueue, {
-                return cb(nil, selfieData: nil, photoData: nil)
-            })
-            return
+            return cb(nil, selfieData: nil, photoData: nil)
         }
         
         dispatch_async(photoQueue, {
