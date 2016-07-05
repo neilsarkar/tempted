@@ -67,7 +67,7 @@ class Urge:Object {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "HH"
 
-        return Int(formatter.stringFromDate(createdAt)) > 20
+        return Int(formatter.stringFromDate(createdAt)) >= 20
     }
     
     static func migrate() {
