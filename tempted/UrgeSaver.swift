@@ -23,6 +23,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     var photoSession: AVCaptureSession?
     var photoInput: AVCaptureInput?
     var selfieInput: AVCaptureInput?
+    var isSelfie = true
     var photoOutput: AVCaptureStillImageOutput?
     var photoData: NSData?
     var selfieData: NSData?
@@ -114,20 +115,10 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 // TODO: don't store on self
                 self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                 
-                let session = self.photoSession!
-                session.beginConfiguration()
-                session.removeInput(self.selfieInput)
-                if( !session.canAddInput(self.photoInput) ) {
-                    // TODO: set up real error codes
-                    let err = NSError(domain: "tempted", code: 1, userInfo: [
-                        NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
-                        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Couldn't add photo input", comment: "internal error reason for not being able to add photo input")
-                    ])
+                let err = self.switchCameras()
+                if( err != nil ) {
                     return cb(err, selfieData: self.selfieData, photoData: nil)
                 }
-
-                session.addInput(self.photoInput)
-                session.commitConfiguration()
                 dispatch_async(self.photoQueue, {
                     if( self.photoOutput == nil ) {
                         let err = NSError(domain: "tempted", code: 2, userInfo: [
@@ -154,11 +145,46 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                         }
                         
                         self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+                        
+                        // TODO: handle this error
+                        let err = self.switchCameras()
+                        print("Camera switch error", err)
                         return cb(nil, selfieData: self.selfieData, photoData: self.photoData)
                     })
                 })
             })
         })
+    }
+    
+    private func switchCameras() -> NSError? {
+        let session = self.photoSession!
+        session.beginConfiguration()
+        
+        var oldInput: AVCaptureInput?
+        var newInput: AVCaptureInput?
+
+        if( isSelfie ) {
+            oldInput = self.selfieInput
+            newInput = self.photoInput
+        } else {
+            oldInput = self.photoInput
+            newInput = self.selfieInput
+        }
+        
+        session.removeInput(oldInput)
+        if( !session.canAddInput(newInput) ) {
+            // TODO: set up real error codes
+            let err = NSError(domain: "tempted", code: 1, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Couldn't add photo input", comment: "internal error reason for not being able to add photo input")
+                ])
+            return err
+        }
+        
+        session.addInput(newInput)
+        session.commitConfiguration()
+        isSelfie = !isSelfie        
+        return nil
     }
     
     private func subscribe() {
