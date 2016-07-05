@@ -19,11 +19,10 @@ struct TPTNotification {
     static let MapPermissionsGranted = "Map permissions granted"
     static let ErrorLocationServicesDisabled = "Location Services Disabled"
     static let ErrorNoMapPermissions = "No map permissions"
-
 }
 
 struct TPTInterval {
-    static let Respawn = 2.0
+    static let Respawn = 10.0
     static let PushReaction = 1.0
 }
 

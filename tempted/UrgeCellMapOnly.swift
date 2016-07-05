@@ -1,5 +1,5 @@
 //
-//  UrgeCell.swift
+//  UrgeCellMapOnly.swift
 //  tempted
 //
 //  Created by Neil Sarkar on 6/5/16.
@@ -10,30 +10,26 @@ import UIKit
 import Crashlytics
 import Haneke
 
-class UrgeCell : UICollectionViewCell {
+// FIXME: refactor this to use inheritance instead of just copying the other thing
+class UrgeCellMapOnly : UICollectionViewCell {
     var urge: Urge! {
         didSet { render() }
     }
     
-    @IBAction func handleDelete(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
-    }
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var mapLoadFailedLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     
-    @IBOutlet weak var selfieImageView: UIImageView!
-    @IBOutlet weak var photoImageView: UIImageView!
-
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var timeBGImageView: UIImageView!
-    
-    @IBOutlet weak var debugLabel: UILabel!
+
+    @IBAction func handleDelete(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
+    }
     
     @IBAction func retryTapped(sender: UIButton) {
+        // TODO: should be no need to specify main thread
         dispatch_async(dispatch_get_main_queue()) {
             self.showLoading()
         }
@@ -49,28 +45,7 @@ class UrgeCell : UICollectionViewCell {
     
     private func render() {
         attemptLoadMapImage()
-        loadPhotos()
-        timeLabel.text = urge.humanTime()
-        dayLabel.text = urge.humanDay()
-        if( urge.isNight() ) {
-            timeBGImageView.image = UIImage(named: "NightBG")
-        } else {
-            timeBGImageView.image = UIImage(named: "DayBG")
-        }
-        // TODO: display debug label if debug build
-        debugLabel.text = urge.id.componentsSeparatedByString("-")[0]
-    }
-    
-    private func loadPhotos() {
-        if( urge.photo != nil ) {
-            self.photoImageView.opaque = false
-            self.photoImageView.image = UIImage(data: urge.photo!)
-        }
-
-        if( urge.selfie != nil ) {
-            self.selfieImageView.opaque = false
-            self.selfieImageView.image = UIImage(data: urge.selfie!)
-        }
+        timeLabel.text = urge.humanDay() + ", " + urge.humanTime()
     }
     
     private func attemptLoadMapImage() {
@@ -82,21 +57,21 @@ class UrgeCell : UICollectionViewCell {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.showLoadFailed()
                 }
-
-            }, success: { image in
-                self.mapImageView.opaque = false
-                self.mapImageView.image = image
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showLoaded()
-                }
+                
+                }, success: { image in
+                    self.mapImageView.opaque = false
+                    self.mapImageView.image = image
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showLoaded()
+                    }
             })
         } else {
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
         }
     }
     
-// MARK: interface state changes
-
+    // MARK: interface state changes
+    
     private func showLoading() {
         loadingSpinner.startAnimating()
         mapImageView.hidden = true

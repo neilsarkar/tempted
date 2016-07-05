@@ -16,6 +16,10 @@ class Urge:Object {
     dynamic var selfie: NSData? = nil
     dynamic var lat = 0.0
     dynamic var lng = 0.0
+
+    // TODO: use data properties directly
+    dynamic var photoFile=""
+    dynamic var selfieFile=""
     
     override class func primaryKey() -> String? {
         return "id"
@@ -32,20 +36,46 @@ class Urge:Object {
     
     func humanTime() -> String {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE, h:mm a"
+        formatter.dateFormat = "h:mm a"
         
         return formatter.stringFromDate(createdAt)
     }
     
+    func humanDay() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE"
+        
+        return formatter.stringFromDate(createdAt)
+    }
+    
+    func debugId() -> String {
+        return id.componentsSeparatedByString("-")[0]
+    }
+    
+    func isNight() -> Bool {
+        // TODO: do this without converting to a string
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH"
+
+        return Int(formatter.stringFromDate(createdAt)) >= 20
+    }
+    
     static func migrate() {
         let config = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             
             migrationBlock: { migration, oldSchemaVersion in
                 if( oldSchemaVersion < 1 ) {
                     migration.enumerate(Urge.className()) { oldObject, newObject in
                         let oldId = oldObject!["id"]
                         newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
+                    }
+                }
+                
+                if( oldSchemaVersion < 3 ) {
+                    migration.enumerate(Urge.className()) { oldObject, newObject in
+                        newObject!["photoFile"] = ""
+                        newObject!["selfieFile"] = ""
                     }
                 }
             }

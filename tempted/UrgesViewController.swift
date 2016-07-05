@@ -11,10 +11,12 @@ import RealmSwift
 
 class UrgesViewController : UICollectionViewController {
     let topIdentifier   = "ButtonCell"
-    let reuseIdentifier = "UrgeCell"
+    let urgeIdentifier = "UrgeCell"
+    let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
+    
     var urges: Results<Urge>?
     var creator:UrgeSaver!
-    
+
     override func viewDidLoad() {
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
@@ -33,8 +35,7 @@ class UrgesViewController : UICollectionViewController {
         }
 
         let width = self.view.frame.width - 40
-//      TODO: don't set height explicitly
-        let height = self.view.frame.width + 22
+        let height = width
         return CGSize(width: width, height: height)
     }
     
@@ -43,10 +44,6 @@ class UrgesViewController : UICollectionViewController {
         return UIEdgeInsetsMake(0, 0, 15, 0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: NSInteger) -> CGFloat {
-        return 0.0
-    }
-
 // MARK: Section and Cell Count
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -65,20 +62,25 @@ class UrgesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
             return cell
         }
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
 
         let urge = urges![indexPath.row]
-        
-        cell.urge = urge
-        cell.urgeId = urge.id
-        cell.timeLabel.text = urge.humanTime()
-        return cell
+
+        // TODO: share cell.urge = urge and return cell below
+        if( urge.photo == nil && urge.selfie == nil ) {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
+            cell.urge = urge
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeIdentifier, forIndexPath: indexPath) as! UrgeCell
+            cell.urge = urge
+            return cell
+        }
     }
 
-    // MARK: Event Handling
+// MARK: Event Handling
     internal func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
+
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
@@ -96,8 +98,7 @@ class UrgesViewController : UICollectionViewController {
     internal func handleUrgeCreateFailed() {
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
-        // TODO: how to provide nil block?
-        let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in }
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true) {}
     }
@@ -109,6 +110,7 @@ class UrgesViewController : UICollectionViewController {
     
     internal func handleUrgeDelete(note:NSNotification) {
         if( note.userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
+
         let id = note.userInfo!["id"] as! String
         
         let realm = try! Realm()
@@ -117,8 +119,11 @@ class UrgesViewController : UICollectionViewController {
             realm.delete(badUrge)
         }
         
-        // TODO: splice urges array instead of recalculating
-        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.collectionView?.reloadData()
+    }
+    
+// MARK: Unwind Segue
+    
+    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
 }
