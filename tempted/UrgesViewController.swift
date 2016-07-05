@@ -9,9 +9,6 @@
 import UIKit
 import RealmSwift
 
-// FIXME: not our responsibility
-import AVFoundation
-
 class UrgesViewController : UICollectionViewController {
     let topIdentifier   = "ButtonCell"
     let urgeIdentifier = "UrgeCell"
