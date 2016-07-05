@@ -29,6 +29,7 @@ class UrgeCell : UICollectionViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var timeBGImageView: UIImageView!
     
     @IBOutlet weak var debugLabel: UILabel!
     
@@ -51,6 +52,11 @@ class UrgeCell : UICollectionViewCell {
         loadPhotos()
         timeLabel.text = urge.humanTime()
         dayLabel.text = urge.humanDay()
+        if( urge.isNight() ) {
+            timeBGImageView.image = UIImage(named: "NightBG")
+        } else {
+            timeBGImageView.image = UIImage(named: "DayBG")
+        }
         // TODO: display debug label if debug build
         debugLabel.text = urge.id.componentsSeparatedByString("-")[0]
     }

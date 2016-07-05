@@ -62,6 +62,14 @@ class Urge:Object {
         return id.componentsSeparatedByString("-")[0]
     }
     
+    func isNight() -> Bool {
+        // TODO: do this without converting to a string
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH"
+
+        return Int(formatter.stringFromDate(createdAt)) > 20
+    }
+    
     static func migrate() {
         let config = Realm.Configuration(
             schemaVersion: 3,

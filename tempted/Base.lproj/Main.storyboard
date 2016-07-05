@@ -90,25 +90,32 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
                                                     <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DayBG" translatesAutoresizingMaskIntoConstraints="NO" id="xug-sh-m2v">
+                                                            <rect key="frame" x="-0.5" y="0.5" width="157" height="157"/>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MQ-Gn-bUr">
                                                             <rect key="frame" x="49" y="34" width="58" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:20pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-U7-7nr">
                                                             <rect key="frame" x="23" y="56" width="109.5" height="44"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="32"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="xug-sh-m2v" firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="width" id="1to-TT-6mO"/>
                                                         <constraint firstItem="4MQ-Gn-bUr" firstAttribute="centerX" secondItem="Py8-U7-7nr" secondAttribute="centerX" id="5Ty-B9-s56"/>
+                                                        <constraint firstItem="xug-sh-m2v" firstAttribute="centerX" secondItem="m2g-AK-OIW" secondAttribute="centerX" id="A8z-Li-A6X"/>
+                                                        <constraint firstItem="xug-sh-m2v" firstAttribute="centerY" secondItem="m2g-AK-OIW" secondAttribute="centerY" id="FGf-5Z-Vst"/>
                                                         <constraint firstItem="Py8-U7-7nr" firstAttribute="centerY" secondItem="m2g-AK-OIW" secondAttribute="centerY" id="Gby-je-wty"/>
                                                         <constraint firstItem="Py8-U7-7nr" firstAttribute="top" secondItem="4MQ-Gn-bUr" secondAttribute="bottom" id="bDl-2F-t7B"/>
                                                         <constraint firstItem="Py8-U7-7nr" firstAttribute="centerX" secondItem="m2g-AK-OIW" secondAttribute="centerX" id="hSo-Jv-Lxu"/>
                                                         <constraint firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="height" multiplier="1:1" id="lPQ-Bz-Uto"/>
+                                                        <constraint firstItem="xug-sh-m2v" firstAttribute="height" secondItem="m2g-AK-OIW" secondAttribute="height" id="plP-w8-JUU"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-yk-BsW" userLabel="Map">
@@ -245,7 +252,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exe-7f-UxR">
-                                                    <rect key="frame" x="113.5" y="295" width="97" height="21"/>
+                                                    <rect key="frame" x="113" y="295" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -290,6 +297,7 @@
                                     <outlet property="photoImageView" destination="9Ib-J0-5Pt" id="rrn-xL-Pg8"/>
                                     <outlet property="retryButton" destination="eNu-iF-k1y" id="kuG-Mx-Fco"/>
                                     <outlet property="selfieImageView" destination="jc6-Pk-bfS" id="74c-UX-Efi"/>
+                                    <outlet property="timeBGImageView" destination="xug-sh-m2v" id="y3k-Vt-JtO"/>
                                     <outlet property="timeLabel" destination="Py8-U7-7nr" id="s3P-2h-YH3"/>
                                 </connections>
                             </collectionViewCell>
@@ -615,6 +623,7 @@ Be persistent and you can choose your behavior instead of letting your behavior 
         </scene>
     </scenes>
     <resources>
+        <image name="DayBG" width="332" height="332"/>
         <image name="Delete" width="56" height="56"/>
         <image name="DownArrow" width="98" height="26"/>
     </resources>
