@@ -14,7 +14,9 @@ import AVFoundation
 
 class UrgesViewController : UICollectionViewController {
     let topIdentifier   = "ButtonCell"
-    let reuseIdentifier = "UrgeCell"
+    let urgeIdentifier = "UrgeCell"
+    let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
+    
     var urges: Results<Urge>?
     var creator:UrgeSaver!
 
@@ -63,13 +65,19 @@ class UrgesViewController : UICollectionViewController {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
             return cell
         }
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UrgeCell
 
         let urge = urges![indexPath.row]
-        
-        cell.urge = urge
-        return cell
+
+        // TODO: share cell.urge = urge and return cell below
+        if( urge.photoFile == "" && urge.selfieFile == "" ) {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
+            cell.urge = urge
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeIdentifier, forIndexPath: indexPath) as! UrgeCell
+            cell.urge = urge
+            return cell
+        }
     }
 
 // MARK: Event Handling

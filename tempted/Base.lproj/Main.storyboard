@@ -78,7 +78,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="210" y="0.0" width="324" height="324"/>
+                                <rect key="frame" x="276" y="0.0" width="324" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="324" height="324"/>
@@ -291,6 +291,165 @@
                                     <outlet property="retryButton" destination="eNu-iF-k1y" id="kuG-Mx-Fco"/>
                                     <outlet property="selfieImageView" destination="jc6-Pk-bfS" id="74c-UX-Efi"/>
                                     <outlet property="timeLabel" destination="Py8-U7-7nr" id="s3P-2h-YH3"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCellMapOnly" id="LZB-vP-opR" userLabel="UrgeCellMapOnly" customClass="UrgeCellMapOnly" customModule="Tempted" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="354" width="200" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="257"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKp-hl-L2A" userLabel="Line">
+                                            <rect key="frame" x="0.0" y="32" width="200" height="1"/>
+                                            <color key="backgroundColor" red="0.81960785390000002" green="0.81960785390000002" blue="0.81960785390000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="uco-ww-KSv"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKo-D9-N3Y" customClass="PaddedLabel" customModule="Tempted" customModuleProvider="target">
+                                            <rect key="frame" x="70" y="23" width="59" height="18"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tkJ-VW-eYT">
+                                            <rect key="frame" x="0.0" y="63" width="200" height="200"/>
+                                            <color key="backgroundColor" red="0.83529412749999998" green="0.83529412749999998" blue="0.83529412749999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="tkJ-VW-eYT" secondAttribute="height" multiplier="1:1" id="kyg-Or-wti"/>
+                                            </constraints>
+                                        </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pjS-F9-rWF">
+                                            <rect key="frame" x="90" y="153" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbD-JS-Z0f">
+                                            <rect key="frame" x="-7" y="150" width="213" height="25"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                            <color key="textColor" red="0.49019607900000001" green="0.49019607900000001" blue="0.49019607900000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="baB-Df-0zj">
+                                            <rect key="frame" x="81" y="175.5" width="38" height="28.5"/>
+                                            <state key="normal">
+                                                <attributedString key="attributedTitle">
+                                                    <fragment content="RETRY">
+                                                        <attributes>
+                                                            <font key="NSFont" size="12" name="Avenir-Black"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                <tabStops>
+                                                                    <textTab alignment="left" location="36">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="72">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="108">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="144">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="180">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="216">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="252">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="288">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="324">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="360">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="396">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                    <textTab alignment="left" location="432">
+                                                                        <options/>
+                                                                    </textTab>
+                                                                </tabStops>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                            <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                            </state>
+                                            <connections>
+                                                <action selector="retryTapped:" destination="LZB-vP-opR" eventType="touchUpInside" id="5bO-2t-kts"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRE-C3-Jel">
+                                            <rect key="frame" x="133" y="74" width="56" height="56"/>
+                                            <state key="normal" image="Delete">
+                                                <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="handleDelete:" destination="LZB-vP-opR" eventType="touchUpInside" id="EDZ-iX-yXA"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="HKo-D9-N3Y" firstAttribute="centerX" secondItem="NKp-hl-L2A" secondAttribute="centerX" id="051-Km-gOx"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="centerY" secondItem="LZB-vP-opR" secondAttribute="centerY" constant="24" id="2Ow-sa-AHt"/>
+                                    <constraint firstItem="HKo-D9-N3Y" firstAttribute="centerY" secondItem="NKp-hl-L2A" secondAttribute="centerY" id="2ne-fJ-ugZ"/>
+                                    <constraint firstItem="NKp-hl-L2A" firstAttribute="width" secondItem="LZB-vP-opR" secondAttribute="width" id="BKw-ZJ-92W"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="height" secondItem="tkJ-VW-eYT" secondAttribute="height" multiplier="0.5" id="FXD-zy-Lk5"/>
+                                    <constraint firstItem="tkJ-VW-eYT" firstAttribute="leading" secondItem="LZB-vP-opR" secondAttribute="leadingMargin" id="PSa-NR-Let"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="centerY" secondItem="tkJ-VW-eYT" secondAttribute="centerY" id="Qt0-rs-cmN"/>
+                                    <constraint firstItem="FbD-JS-Z0f" firstAttribute="centerX" secondItem="tkJ-VW-eYT" secondAttribute="centerX" id="RH4-P0-iDq"/>
+                                    <constraint firstItem="FbD-JS-Z0f" firstAttribute="centerY" secondItem="tkJ-VW-eYT" secondAttribute="centerY" id="Vzf-d8-Hc4"/>
+                                    <constraint firstItem="tkJ-VW-eYT" firstAttribute="top" secondItem="HKo-D9-N3Y" secondAttribute="bottom" constant="22" id="Wyi-V2-K20"/>
+                                    <constraint firstItem="baB-Df-0zj" firstAttribute="centerX" secondItem="FbD-JS-Z0f" secondAttribute="centerX" id="aSN-UF-dTt"/>
+                                    <constraint firstItem="gRE-C3-Jel" firstAttribute="top" secondItem="tkJ-VW-eYT" secondAttribute="top" constant="11" id="csI-Rh-Yx5"/>
+                                    <constraint firstItem="NKp-hl-L2A" firstAttribute="top" secondItem="LZB-vP-opR" secondAttribute="topMargin" constant="24" id="iWd-lx-u6k"/>
+                                    <constraint firstItem="NKp-hl-L2A" firstAttribute="centerX" secondItem="LZB-vP-opR" secondAttribute="centerX" id="kC6-E9-jLk"/>
+                                    <constraint firstItem="baB-Df-0zj" firstAttribute="top" secondItem="FbD-JS-Z0f" secondAttribute="bottom" id="kvo-bL-ck0"/>
+                                    <constraint firstItem="tkJ-VW-eYT" firstAttribute="centerX" secondItem="LZB-vP-opR" secondAttribute="centerX" id="l3b-t7-ADP"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="centerX" secondItem="tkJ-VW-eYT" secondAttribute="centerX" id="pna-GD-OOe"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="centerX" secondItem="LZB-vP-opR" secondAttribute="centerX" id="v0s-0x-Ai7"/>
+                                    <constraint firstItem="tkJ-VW-eYT" firstAttribute="trailing" secondItem="LZB-vP-opR" secondAttribute="trailingMargin" id="vYN-6H-QOZ"/>
+                                    <constraint firstItem="gRE-C3-Jel" firstAttribute="trailing" secondItem="tkJ-VW-eYT" secondAttribute="trailing" constant="-11" id="xCu-Ss-Q1q"/>
+                                    <constraint firstItem="tkJ-VW-eYT" firstAttribute="width" secondItem="LZB-vP-opR" secondAttribute="width" id="xiD-hu-BZa"/>
+                                    <constraint firstItem="pjS-F9-rWF" firstAttribute="baseline" secondItem="tkJ-VW-eYT" secondAttribute="baseline" id="zVe-ZS-vvV"/>
+                                </constraints>
+                                <size key="customSize" width="200" height="257"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="vYN-6H-QOZ"/>
+                                        <exclude reference="PSa-NR-Let"/>
+                                        <exclude reference="FXD-zy-Lk5"/>
+                                        <exclude reference="zVe-ZS-vvV"/>
+                                        <exclude reference="v0s-0x-Ai7"/>
+                                        <exclude reference="2Ow-sa-AHt"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="deleteButton" destination="gRE-C3-Jel" id="KCN-SH-aG1"/>
+                                    <outlet property="loadingSpinner" destination="pjS-F9-rWF" id="Z5n-b2-3BW"/>
+                                    <outlet property="mapImageView" destination="tkJ-VW-eYT" id="OMq-gp-zco"/>
+                                    <outlet property="mapLoadFailedLabel" destination="FbD-JS-Z0f" id="u41-JT-Ti6"/>
+                                    <outlet property="retryButton" destination="baB-Df-0zj" id="0yU-PQ-LmF"/>
+                                    <outlet property="timeLabel" destination="HKo-D9-N3Y" id="cAh-oy-m3j"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
