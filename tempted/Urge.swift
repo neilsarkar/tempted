@@ -16,7 +16,8 @@ class Urge:Object {
     dynamic var selfie: NSData? = nil
     dynamic var lat = 0.0
     dynamic var lng = 0.0
-    
+
+    // TODO: use data properties directly
     dynamic var photoFile=""
     dynamic var selfieFile=""
     

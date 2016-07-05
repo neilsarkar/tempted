@@ -56,20 +56,12 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                     urge.lng = self.latlng.longitude
                 }
                 
-                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                let documentsDirectory = paths[0]
-                
-                
                 if( selfieData != nil ) {
-                    let filename = documentsDirectory.stringByAppendingString("/\(uuid)-selfie.jpg")
-                    selfieData!.writeToFile(filename, atomically: true)
-                    urge.selfieFile = filename
+                    urge.selfie = selfieData
                 }
                 
                 if( photoData != nil ) {
-                    let filename = documentsDirectory.stringByAppendingString("/\(uuid)-photo.jpg")
-                    photoData!.writeToFile(filename, atomically: true)
-                    urge.photoFile = filename
+                    urge.photo = photoData
                 }
                 
                 

@@ -56,11 +56,15 @@ class UrgeCell : UICollectionViewCell {
     }
     
     private func loadPhotos() {
-        self.photoImageView.opaque = false
-        self.photoImageView.image = UIImage(contentsOfFile: urge.photoFile)
-        
-        self.selfieImageView.opaque = false
-        self.selfieImageView.image = UIImage(contentsOfFile: urge.selfieFile)
+        if( urge.photo != nil ) {
+            self.photoImageView.opaque = false
+            self.photoImageView.image = UIImage(data: urge.photo!)
+        }
+
+        if( urge.selfie != nil ) {
+            self.selfieImageView.opaque = false
+            self.selfieImageView.image = UIImage(data: urge.selfie!)
+        }
     }
     
     private func attemptLoadMapImage() {

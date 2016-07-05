@@ -69,7 +69,7 @@ class UrgesViewController : UICollectionViewController {
         let urge = urges![indexPath.row]
 
         // TODO: share cell.urge = urge and return cell below
-        if( urge.photoFile == "" && urge.selfieFile == "" ) {
+        if( urge.photo == nil && urge.selfie == nil ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
             cell.urge = urge
             return cell
