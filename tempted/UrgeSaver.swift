@@ -19,6 +19,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     var isCapturingLocation = false
     
     // TODO: refactor service object that deals with taking both photos
+    var hasPhotoPermissions = false
     let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
     var photoSession: AVCaptureSession?
     var photoInput: AVCaptureInput?
@@ -98,7 +99,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     private func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
-        if( self.photoInput == nil || self.selfieInput == nil ) {
+        if( !hasPhotoPermissions || self.photoInput == nil || self.selfieInput == nil ) {
             // TODO: return special error type
             return cb(nil, selfieData: nil, photoData: nil)
         }
@@ -183,7 +184,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         
         session.addInput(newInput)
         session.commitConfiguration()
-        isSelfie = !isSelfie        
+        isSelfie = !isSelfie
         return nil
     }
     
@@ -213,20 +214,24 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     private func prepCameras() {
         photoSession = AVCaptureSession()
         
-        // TODO: AVMediaTypeCamera?
         switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
         case .Authorized:
+            hasPhotoPermissions = true
             break
         case .NotDetermined:
             dispatch_suspend(photoQueue)
             AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
-                print("auth", success)
-                dispatch_resume(self.photoQueue)
+                self.hasPhotoPermissions = success
+                if( success ) {
+                    dispatch_resume(self.photoQueue)
+                }
             })
         default:
-            // FIXME: error states
-            print("Permissions denied!")
+            hasPhotoPermissions = false
         }
+
+        // TODO: upsell user
+        if( !hasPhotoPermissions ) { return }
         
         dispatch_async(photoQueue, {
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
