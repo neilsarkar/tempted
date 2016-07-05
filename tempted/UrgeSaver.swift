@@ -148,8 +148,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                         self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                         
                         // TODO: handle this error
-                        let err = self.switchCameras()
-                        print("Camera switch error", err)
+                        self.switchCameras()
                         return cb(nil, selfieData: self.selfieData, photoData: self.photoData)
                     })
                 })
@@ -292,9 +291,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
 
             session.startRunning()
             if( !session.running ) {
-                print("photo session not running!")
-            } else {
-                print("photo session running")
+                // TODO: bubble error up
+                print("Photo session failed to start")
             }
         })
     }
