@@ -476,12 +476,12 @@
                                 <size key="customSize" width="200" height="257"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="vYN-6H-QOZ"/>
                                         <exclude reference="PSa-NR-Let"/>
-                                        <exclude reference="FXD-zy-Lk5"/>
-                                        <exclude reference="zVe-ZS-vvV"/>
-                                        <exclude reference="v0s-0x-Ai7"/>
+                                        <exclude reference="vYN-6H-QOZ"/>
                                         <exclude reference="2Ow-sa-AHt"/>
+                                        <exclude reference="FXD-zy-Lk5"/>
+                                        <exclude reference="v0s-0x-Ai7"/>
+                                        <exclude reference="zVe-ZS-vvV"/>
                                     </mask>
                                 </variation>
                                 <connections>
