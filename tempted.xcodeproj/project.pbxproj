@@ -94,6 +94,7 @@
 		3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
 		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3FD4669E1D31CFF2005AF2CF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		3F1F6FA01D0D197400AD75BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FD4669E1D31CFF2005AF2CF /* Reveal.framework */,
 				3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */,
 				3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */,
 				3F1D51181D07CE6B00A9B230 /* Haneke.framework.dSYM */,
@@ -547,6 +549,12 @@
 				INFOPLIST_FILE = tempted/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.tempted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
