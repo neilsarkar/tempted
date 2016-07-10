@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class UrgesViewController : UICollectionViewController {
+class UrgesViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let topIdentifier   = "ButtonCell"
     let urgeIdentifier = "UrgeCell"
     let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
@@ -35,9 +35,16 @@ class UrgesViewController : UICollectionViewController {
         if( indexPath.section == 0 ) {
             return self.view.frame.size
         }
-        
+
+        let urge = urgeForIndexPath(indexPath)
         let width = self.view.frame.width - (TPTPadding.CellLeft + TPTPadding.CellRight)
-        let height = width
+        let height : CGFloat
+        if( urge.photo == nil && urge.selfie == nil ) {
+            height = width + 29
+        } else {
+            height = width
+        }
+
         return CGSize(width: width, height: height)
     }
     
@@ -56,7 +63,7 @@ class UrgesViewController : UICollectionViewController {
         if( section == 0 ) { return 1; }
         return urges == nil ? 0 : urges!.count
     }
-
+    
 // MARK: Cell Initialization
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -65,7 +72,7 @@ class UrgesViewController : UICollectionViewController {
             return cell
         }
 
-        let urge = urges![indexPath.row]
+        let urge = urgeForIndexPath(indexPath)
 
         // TODO: share cell.urge = urge and return cell below
         // FIXME: simulator should use stock images
@@ -78,6 +85,10 @@ class UrgesViewController : UICollectionViewController {
             cell.urge = urge
             return cell
         }
+    }
+    
+    func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
+        return urges![indexPath.row]
     }
 
 // MARK: Event Handling
