@@ -79,6 +79,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if( indexPath.section == 0 ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
+            cell.showReleased()
             return cell
         }
 

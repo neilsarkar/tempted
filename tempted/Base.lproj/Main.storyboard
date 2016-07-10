@@ -44,8 +44,8 @@
                                             <color key="textColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
-                                            <rect key="frame" x="51" y="134" width="98" height="26"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlideHint" translatesAutoresizingMaskIntoConstraints="NO" id="Ffz-1a-IQJ">
+                                            <rect key="frame" x="61" y="148" width="78" height="12"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIY-Ct-8Of">
                                             <rect key="frame" x="85" y="107" width="30" height="53"/>
@@ -660,6 +660,6 @@ Stick with it, and you can choose your behavior instead of letting your behavior
         <image name="DayBG" width="332" height="332"/>
         <image name="DeadMosquittoDetail" width="50" height="50"/>
         <image name="Delete" width="56" height="58"/>
-        <image name="DownArrow" width="98" height="26"/>
+        <image name="SlideHint" width="78" height="12"/>
     </resources>
 </document>
