@@ -54,7 +54,7 @@
                                                 <color key="titleColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <segue destination="iYg-7Y-e5f" kind="presentation" modalPresentationStyle="overFullScreen" id="dhz-CN-K66"/>
+                                                <segue destination="iYg-7Y-e5f" kind="presentation" identifier="ShowOnboardingVC" modalPresentationStyle="overFullScreen" id="dhz-CN-K66"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -602,23 +602,19 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
                                         <rect key="frame" x="20" y="102" width="500" height="289"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">A surprising amount of what we do is automatic. Want to kick a habit? Catch a new one:
+                                        <mutableString key="text">Want to kick a habit? Catch a new one:
 
-1. Tap the button when you feel tempted.
+1. Tap the mosquitto when you feel tempted.
 
-2. That’s it.
+2. The app will take discreet photos of your environment and record your time and location as a private diary entry on your phone.
 
-Over time, you’ll find a pattern that triggers your urge. Once you’ve identified the pattern, choose a substitute action for that trigger. 
+3. Over time, you’ll find a pattern that triggers your urge.
 
-Choose a substitute that’s creative or constructive. Text a friend, do a few pushups, write or draw, freestyle a few bars. If this sounds corny to you at first, that’s a good sign this will work.
+4. Once you’ve identified the pattern, choose a substitute action for that trigger. 
 
-Approach this whole thing with patience.
+Be patient. Reward yourself for catching one and forgive yourself for missing a hundred. Don't beat yourself up when you give in.
 
-Reward yourself for catching one and forgive yourself for missing a hundred.
-
-Don't beat yourself up when you give in.
-
-Be persistent and you can choose your behavior instead of letting your behavior choose you.</string>
+Stick with it and you can choose your behavior instead of letting your behavior choose you.</mutableString>
                                         <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

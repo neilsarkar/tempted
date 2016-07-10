@@ -23,7 +23,17 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
-        creator = UrgeSaver()
+        creator = UrgeSaver()        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = NSUserDefaults.standardUserDefaults()
+
+        if( !defaults.boolForKey("com.superserious.tempted.onboarded") ) {
+            self.performSegueWithIdentifier("ShowOnboardingVC", sender: self)
+            defaults.setBool(true, forKey: "com.superserious.tempted.onboarded")
+        }
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
