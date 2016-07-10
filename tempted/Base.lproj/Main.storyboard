@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KQB-UD-Hc2">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="24" minimumInteritemSpacing="0.0" id="KQB-UD-Hc2">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -85,16 +85,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTJ-jh-k3d" userLabel="PaddedUrge">
-                                            <rect key="frame" x="12" y="12" width="296" height="296"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-iF-ise" userLabel="SavedUrge">
-                                                    <rect key="frame" x="6" y="6" width="284" height="284"/>
+                                                    <rect key="frame" x="6" y="6" width="308" height="308"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-AK-OIW" userLabel="Time">
-                                                            <rect key="frame" x="0.0" y="0.0" width="138" height="138.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DayBG" translatesAutoresizingMaskIntoConstraints="NO" id="xug-sh-m2v">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="138.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150.5"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                             <integer key="value" value="5"/>
@@ -102,13 +102,13 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MQ-Gn-bUr">
-                                                                    <rect key="frame" x="40" y="37" width="58" height="22"/>
+                                                                    <rect key="frame" x="46" y="43" width="58" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:20pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-U7-7nr">
-                                                                    <rect key="frame" x="14" y="59" width="109.5" height="44"/>
+                                                                    <rect key="frame" x="20" y="65" width="109.5" height="44"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="32"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -127,19 +127,19 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQ5-yk-BsW" userLabel="Map">
-                                                            <rect key="frame" x="146" y="0.0" width="138" height="138.5"/>
+                                                            <rect key="frame" x="158" y="0.0" width="150" height="150.5"/>
                                                             <subviews>
                                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="byr-w0-5Ue">
-                                                                    <rect key="frame" x="59" y="59" width="20" height="20"/>
+                                                                    <rect key="frame" x="65" y="65" width="20" height="20"/>
                                                                 </activityIndicatorView>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Currently Unavailable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iay-Lf-0rp">
-                                                                    <rect key="frame" x="-14" y="59" width="166" height="19.5"/>
+                                                                    <rect key="frame" x="-8" y="65" width="166" height="19.5"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                                     <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNu-iF-k1y">
-                                                                    <rect key="frame" x="50" y="79" width="38" height="28.5"/>
+                                                                    <rect key="frame" x="56" y="85" width="38" height="28.5"/>
                                                                     <state key="normal">
                                                                         <attributedString key="attributedTitle">
                                                                             <fragment content="RETRY">
@@ -196,7 +196,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                                                    <rect key="frame" x="0.0" y="0.5" width="138" height="138"/>
+                                                                    <rect key="frame" x="0.0" y="0.5" width="150" height="150"/>
                                                                     <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
@@ -208,7 +208,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSN-Ww-DQT">
-                                                                    <rect key="frame" x="106" y="7" width="25" height="25"/>
+                                                                    <rect key="frame" x="118" y="7" width="25" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="WSN-Ww-DQT" secondAttribute="height" multiplier="1:1" id="6mS-5U-1Km"/>
                                                                         <constraint firstAttribute="width" constant="25" id="NO9-Gr-NYu"/>
@@ -238,10 +238,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fz6-u0-04f" userLabel="Selfie">
-                                                            <rect key="frame" x="0.0" y="146" width="138" height="137.5"/>
+                                                            <rect key="frame" x="0.0" y="158" width="150" height="149.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jc6-Pk-bfS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="137.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="149.5"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                             <integer key="value" value="5"/>
@@ -258,10 +258,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bal-WH-xaD" userLabel="Photo">
-                                                            <rect key="frame" x="146" y="146" width="138" height="137.5"/>
+                                                            <rect key="frame" x="158" y="158" width="150" height="149.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-J0-5Pt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="138" height="137.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="149.5"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                             <integer key="value" value="5"/>
@@ -278,13 +278,13 @@
                                                             </constraints>
                                                         </view>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exe-7f-UxR">
-                                                            <rect key="frame" x="93" y="263" width="97" height="21"/>
+                                                            <rect key="frame" x="105" y="287" width="97" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DeadMosquittoDetail" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-BU-GMO">
-                                                            <rect key="frame" x="129" y="129" width="25" height="24.5"/>
+                                                            <rect key="frame" x="141" y="141" width="25" height="24.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="2sg-BU-GMO" secondAttribute="height" multiplier="1:1" id="DB8-xx-FUG"/>
                                                                 <constraint firstAttribute="width" constant="25" id="Rci-VK-3tz"/>
@@ -335,7 +335,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="fTJ-jh-k3d" firstAttribute="centerX" secondItem="FlK-65-c39" secondAttribute="centerX" id="JfV-MO-fz2"/>
-                                    <constraint firstItem="fTJ-jh-k3d" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" constant="-24" id="sfK-QX-4X8"/>
+                                    <constraint firstItem="fTJ-jh-k3d" firstAttribute="width" secondItem="FlK-65-c39" secondAttribute="width" id="sfK-QX-4X8"/>
                                     <constraint firstItem="fTJ-jh-k3d" firstAttribute="centerY" secondItem="FlK-65-c39" secondAttribute="centerY" id="zJi-CB-VZw"/>
                                 </constraints>
                                 <size key="customSize" width="320" height="320"/>
@@ -355,7 +355,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCellMapOnly" id="LZB-vP-opR" userLabel="UrgeCellMapOnly" customClass="UrgeCellMapOnly" customModule="Tempted" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="320" width="200" height="257"/>
+                                <rect key="frame" x="0.0" y="344" width="200" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="257"/>

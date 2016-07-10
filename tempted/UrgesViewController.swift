@@ -36,7 +36,7 @@ class UrgesViewController : UICollectionViewController {
             return self.view.frame.size
         }
         
-        let width = self.view.frame.width
+        let width = self.view.frame.width - (TPTPadding.CellLeft + TPTPadding.CellRight)
         let height = width
         return CGSize(width: width, height: height)
     }

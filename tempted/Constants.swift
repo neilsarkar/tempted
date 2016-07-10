@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 struct TPTNotification {
 // MARK: Urge Lifecycle
@@ -24,6 +25,12 @@ struct TPTNotification {
 struct TPTInterval {
     static let Respawn = 10.0
     static let PushReaction = 1.0
+}
+
+struct TPTPadding {
+    static let CellLeft: CGFloat = 12.0
+    static let CellRight: CGFloat = 12.0
+    static let CellBottom: CGFloat = 6.0
 }
 
 struct TPTString {
