@@ -18,8 +18,10 @@ class UrgesViewController : UICollectionViewController {
     var creator:UrgeSaver!
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
+        self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
         creator = UrgeSaver()
     }
@@ -33,15 +35,15 @@ class UrgesViewController : UICollectionViewController {
         if( indexPath.section == 0 ) {
             return self.view.frame.size
         }
-
-        let width = self.view.frame.width - 40
+        
+        let width = self.view.frame.width
         let height = width
         return CGSize(width: width, height: height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
         if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
-        return UIEdgeInsetsMake(0, 0, 15, 0)
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
 // MARK: Section and Cell Count
@@ -66,6 +68,7 @@ class UrgesViewController : UICollectionViewController {
         let urge = urges![indexPath.row]
 
         // TODO: share cell.urge = urge and return cell below
+        // FIXME: simulator should use stock images
         if( urge.photo == nil && urge.selfie == nil ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
             cell.urge = urge
