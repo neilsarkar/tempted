@@ -604,17 +604,17 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <mutableString key="text">Want to kick a habit? Catch a new one:
 
-1. Tap the mosquitto when you feel tempted.
+1. Tap the mosquito whenever you feel tempted.
 
 2. The app will take discreet photos of your environment and record your time and location as a private diary entry on your phone.
 
-3. Over time, you’ll find a pattern that triggers your urge.
+3. Once you've squashed the mosquito a few times, scroll down and start looking for patterns. Try and find what triggers your brain to want that thing.
 
-4. Once you’ve identified the pattern, choose a substitute action for that trigger. 
+4. Once you've identified a pattern, choose a substitute action for that trigger. 
 
-Be patient. Reward yourself for catching one and forgive yourself for missing a hundred. Don't beat yourself up when you give in.
+That's it! Be patient. Reward yourself for catching one and forgive yourself for missing a hundred. Don't beat yourself up when you give in.
 
-Stick with it and you can choose your behavior instead of letting your behavior choose you.</mutableString>
+Stick with it, and you can choose your behavior instead of letting your behavior choose you.</mutableString>
                                         <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
