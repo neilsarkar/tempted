@@ -107,8 +107,8 @@
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:20pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-U7-7nr">
-                                                                    <rect key="frame" x="20" y="65" width="109.5" height="44"/>
+                                                                <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:20pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Py8-U7-7nr">
+                                                                    <rect key="frame" x="20.5" y="65.5" width="109.5" height="44"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="32"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -119,7 +119,8 @@
                                                                 <constraint firstItem="4MQ-Gn-bUr" firstAttribute="centerX" secondItem="Py8-U7-7nr" secondAttribute="centerX" id="5Ty-B9-s56"/>
                                                                 <constraint firstItem="xug-sh-m2v" firstAttribute="centerX" secondItem="m2g-AK-OIW" secondAttribute="centerX" id="A8z-Li-A6X"/>
                                                                 <constraint firstItem="xug-sh-m2v" firstAttribute="centerY" secondItem="m2g-AK-OIW" secondAttribute="centerY" id="FGf-5Z-Vst"/>
-                                                                <constraint firstItem="Py8-U7-7nr" firstAttribute="centerY" secondItem="m2g-AK-OIW" secondAttribute="centerY" constant="12" id="Gby-je-wty"/>
+                                                                <constraint firstItem="Py8-U7-7nr" firstAttribute="width" relation="lessThanOrEqual" secondItem="m2g-AK-OIW" secondAttribute="width" constant="-24" id="KcM-Lg-9Gr"/>
+                                                                <constraint firstItem="Py8-U7-7nr" firstAttribute="centerY" secondItem="m2g-AK-OIW" secondAttribute="centerY" constant="12" id="VAC-8X-28r"/>
                                                                 <constraint firstItem="Py8-U7-7nr" firstAttribute="top" secondItem="4MQ-Gn-bUr" secondAttribute="bottom" id="bDl-2F-t7B"/>
                                                                 <constraint firstItem="Py8-U7-7nr" firstAttribute="centerX" secondItem="m2g-AK-OIW" secondAttribute="centerX" id="hSo-Jv-Lxu"/>
                                                                 <constraint firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="height" multiplier="1:1" id="lPQ-Bz-Uto"/>
@@ -196,7 +197,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iF-6AR">
-                                                                    <rect key="frame" x="0.0" y="0.5" width="150" height="150"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                                     <color key="backgroundColor" red="0.83529412746429443" green="0.83529412746429443" blue="0.83529412746429443" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="4At-iF-6AR" secondAttribute="height" multiplier="1:1" id="NLK-dL-Cot"/>
