@@ -27,6 +27,7 @@
 		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
+		3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
 		3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB61D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1F6F9E1D0D063700AD75BE /* UrgeSaver.swift */,
+				3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				3F1574861D20F709004BCEE7 /* OnboardingViewController.swift in Sources */,
 				3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */,
 				3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */,
+				3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */,
 				3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */,
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */,
