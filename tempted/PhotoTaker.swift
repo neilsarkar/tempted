@@ -9,34 +9,53 @@
 import AVFoundation
 
 class PhotoTaker: NSObject {
-    var hasPhotoPermissions = false
+    // AV resources
     let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
     var photoSession: AVCaptureSession?
     var photoInput: AVCaptureInput?
     var selfieInput: AVCaptureInput?
-    var isSelfie = true
     var photoOutput: AVCaptureStillImageOutput?
     var photoData: NSData?
-    var shouldFail = 3
     var selfieData: NSData?
+
+    // State
+    var hasPhotoPermissions = false
+    var isSelfie = true
+    var isInitialized = false
+    var initializationError: NSError?
     
     override init() {
         super.init()
         prepCameras({err in
             if( err != nil ) {
-                //              TODO: don't try to take photos if this fails
+                self.initializationError = err
                 print(err)
+                return
             }
+            self.isInitialized = true
             print("Finished prepping cameras")
         })
     }
     
     func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
+        if( initializationError != nil ) {
+            return cb(initializationError!, selfieData: nil, photoData: nil)
+        }
+        
+        if( !isInitialized ) {
+            let err = NSError(domain: "tempted", code: 2, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Cameras not initialized", comment: "internal error reason for initialization not complete"),
+                NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Gah, I'm still trying to find your camera! Try back soon :/", comment: "recovery message for user tapping the urge button before we're ready")
+            ])
+            return cb(err, selfieData: nil, photoData: nil)
+        }
+        
         if( !hasPhotoPermissions ) {
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("No permissions", comment: "internal error reason for not having permissions")
-                ])
+            ])
             
             return cb(err, selfieData: nil, photoData: nil)
         }
