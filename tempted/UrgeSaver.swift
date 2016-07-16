@@ -39,6 +39,10 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         photoTaker.takePhotos({err, selfieData, photoData in
             if( err != nil ) {
                 print(err)
+                dispatch_async(dispatch_get_main_queue(), {
+                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self)
+                })
+                return
             }
             
             // TODO: only do UI work on the main thread -- https://github.com/realm/realm-cocoa/issues/1445

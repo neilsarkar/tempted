@@ -17,6 +17,7 @@ class PhotoTaker: NSObject {
     var isSelfie = true
     var photoOutput: AVCaptureStillImageOutput?
     var photoData: NSData?
+    var shouldFail = 3
     var selfieData: NSData?
     
     override init() {
@@ -44,7 +45,7 @@ class PhotoTaker: NSObject {
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("One of the inputs is nil", comment: "internal error reason for nil photo inputs")
-                ])
+            ])
             
             return cb(err, selfieData: nil, photoData: nil)
         }
@@ -141,7 +142,7 @@ class PhotoTaker: NSObject {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("No AVCapture devices.", comment: "internal error reason for no devices found")
-                    ])
+                ])
                 
                 return cb(err)
             }
@@ -226,15 +227,15 @@ class PhotoTaker: NSObject {
         }
         
         session.removeInput(oldInput)
-        if( !session.canAddInput(newInput) ) {
+        shouldFail -= 1
+        if( shouldFail == 0 || !session.canAddInput(newInput) ) {
             // TODO: set up real error codes
             let err = NSError(domain: "tempted", code: 1, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Couldn't add photo input", comment: "internal error reason for not being able to add photo input")
-                ])
+            ])
             return err
         }
-        
         session.addInput(newInput)
         session.commitConfiguration()
         isSelfie = !isSelfie
