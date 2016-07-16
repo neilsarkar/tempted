@@ -71,32 +71,28 @@ class PhotoTaker: NSObject {
         }
         
         
-        dispatch_async(photoQueue, {
+        takePhoto({ err, data in
+            if( err != nil) { return cb(err, selfieData: nil, photoData: nil) }
+
+            // TODO: don't store on self
+            self.selfieData = data
+            let err = self.switchCameras()
+            if( err != nil ) {
+                return cb(err, selfieData: self.selfieData, photoData: nil)
+            }
+
             self.takePhoto({ err, data in
-                if( err != nil) { return cb(err, selfieData: nil, photoData: nil) }
+                if( err != nil ) {
+                    return cb(err, selfieData: self.selfieData, photoData: nil)
+                }
                 
-                // TODO: don't store on self
-                self.selfieData = data
+                self.photoData = data
                 let err = self.switchCameras()
                 if( err != nil ) {
                     return cb(err, selfieData: self.selfieData, photoData: nil)
                 }
-
-                dispatch_async(self.photoQueue, {
-                    self.takePhoto({ err, data in
-                        if( err != nil ) {
-                            return cb(err, selfieData: self.selfieData, photoData: nil)
-                        }
-                        
-                        self.photoData = data
-                        let err = self.switchCameras()
-                        if( err != nil ) {
-                            return cb(err, selfieData: self.selfieData, photoData: nil)
-                        }
-                        
-                        return cb(err, selfieData: self.selfieData, photoData: self.photoData)
-                    })
-                })
+                
+                return cb(err, selfieData: self.selfieData, photoData: self.photoData)
             })
         })
     }
@@ -109,23 +105,27 @@ class PhotoTaker: NSObject {
             ])
             return cb(err, data: nil)
         }
-        let output = self.photoOutput!
-        let connection = output.connectionWithMediaType(AVMediaTypeVideo)
         
-        if( connection == nil ) {
-            let err = NSError(domain: "tempted", code: 2, userInfo: [
-                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
-                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Selfie connection is nil", comment: "internal error reason for nil output connection")
-            ])
-            return cb(err, data: nil)
-        }
-        
-        output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-            if( error != nil ) {
-                return cb(error, data: nil)
+        dispatch_async(photoQueue, {
+            
+            let output = self.photoOutput!
+            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+            
+            if( connection == nil ) {
+                let err = NSError(domain: "tempted", code: 2, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("Selfie connection is nil", comment: "internal error reason for nil output connection")
+                ])
+                return cb(err, data: nil)
             }
             
-            return cb(nil, data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
+            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+                if( error != nil ) {
+                    return cb(error, data: nil)
+                }
+                
+                return cb(nil, data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
+            })
         })
     }
     
