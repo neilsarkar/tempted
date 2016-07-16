@@ -59,6 +59,7 @@ class PhotoTaker: NSObject {
             
             return cb(err, selfieData: nil, photoData: nil)
         }
+        
         if( self.photoInput == nil || self.selfieInput == nil ) {
             // TODO: return inputs in user info
             let err = NSError(domain: "tempted", code: 2, userInfo: [
@@ -71,65 +72,60 @@ class PhotoTaker: NSObject {
         
         
         dispatch_async(photoQueue, {
-            let output = self.photoOutput!
-            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-            
-            if( connection == nil ) {
-                let err = NSError(domain: "tempted", code: 2, userInfo: [
-                    NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
-                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("Selfie connection is nil", comment: "internal error reason for nil output connection")
-                    ])
-                return cb(err, selfieData: nil, photoData: nil)
-            }
-            
-            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
-                if( error != nil ) {
-                    return cb(error, selfieData: nil, photoData: nil)
-                }
+            self.takePhoto({ err, data in
+                if( err != nil) { return cb(err, selfieData: nil, photoData: nil) }
                 
                 // TODO: don't store on self
-                self.selfieData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                
+                self.selfieData = data
                 let err = self.switchCameras()
                 if( err != nil ) {
                     return cb(err, selfieData: self.selfieData, photoData: nil)
                 }
+
                 dispatch_async(self.photoQueue, {
-                    if( self.photoOutput == nil ) {
-                        let err = NSError(domain: "tempted", code: 2, userInfo: [
-                            NSLocalizedDescriptionKey: NSLocalizedString("Error using photo output", comment: "internal error description for outputting photos"),
-                            NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo output was nil", comment: "internal error reason for not being able to add photo input")
-                            ])
-                        return cb(err, selfieData: nil, photoData: nil)
-                    }
-                    
-                    let output = self.photoOutput!
-                    let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-                    
-                    if( connection == nil ) {
-                        let err = NSError(domain: "tempted", code: 2, userInfo: [
-                            NSLocalizedDescriptionKey: NSLocalizedString("Unable to establish output connection", comment: "internal error description for establishing output connection"),
-                            NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo connection was nil", comment: "internal error reason for not being able to add photo input")
-                            ])
-                        return cb(err, selfieData: nil, photoData: nil)
-                    }
-                    
-                    output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, err in
+                    self.takePhoto({ err, data in
                         if( err != nil ) {
                             return cb(err, selfieData: self.selfieData, photoData: nil)
                         }
                         
-                        self.photoData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-                        
+                        self.photoData = data
                         let err = self.switchCameras()
-
-//                        TODO: dealloc selfieData and photoData
-//                        self.selfieData = nil
-//                        self.photoData = nil
+                        if( err != nil ) {
+                            return cb(err, selfieData: self.selfieData, photoData: nil)
+                        }
+                        
                         return cb(err, selfieData: self.selfieData, photoData: self.photoData)
                     })
                 })
             })
+        })
+    }
+    
+    private func takePhoto(cb: (NSError?, data: NSData?) -> Void) {
+        if( photoOutput == nil ) {
+            let err = NSError(domain: "tempted", code: 2, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo output is nil", comment: "internal error reason for nil output connection")
+            ])
+            return cb(err, data: nil)
+        }
+        let output = self.photoOutput!
+        let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+        
+        if( connection == nil ) {
+            let err = NSError(domain: "tempted", code: 2, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Selfie connection is nil", comment: "internal error reason for nil output connection")
+            ])
+            return cb(err, data: nil)
+        }
+        
+        output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+            if( error != nil ) {
+                return cb(error, data: nil)
+            }
+            
+            return cb(nil, data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
         })
     }
     
@@ -246,8 +242,7 @@ class PhotoTaker: NSObject {
         }
         
         session.removeInput(oldInput)
-        shouldFail -= 1
-        if( shouldFail == 0 || !session.canAddInput(newInput) ) {
+        if( !session.canAddInput(newInput) ) {
             // TODO: set up real error codes
             let err = NSError(domain: "tempted", code: 1, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
