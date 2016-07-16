@@ -39,12 +39,23 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
-        prepCameras()
+        prepCameras({err in
+            if( err != nil ) {
+//              TODO: don't try to take photos if this fails
+                print(err)
+            }
+            
+            print("Finished prepping cameras")
+        })
         captureLocation()
     }
     
     func save() {
         takePhotos({err, selfieData, photoData in
+            if( err != nil ) {
+                print(err)
+            }
+            
             // TODO: only do UI work on the main thread -- https://github.com/realm/realm-cocoa/issues/1445
             dispatch_async(dispatch_get_main_queue(), {
                 let urge = Urge();
@@ -99,10 +110,24 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     private func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
-        if( !hasPhotoPermissions || self.photoInput == nil || self.selfieInput == nil ) {
-            // TODO: return special error type
-            return cb(nil, selfieData: nil, photoData: nil)
+        if( !hasPhotoPermissions ) {
+            let err = NSError(domain: "tempted", code: 2, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("No permissions", comment: "internal error reason for not having permissions")
+            ])
+
+            return cb(err, selfieData: nil, photoData: nil)
         }
+        if( self.photoInput == nil || self.selfieInput == nil ) {
+            // TODO: return inputs in user info
+            let err = NSError(domain: "tempted", code: 2, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("One of the inputs is nil", comment: "internal error reason for nil photo inputs")
+            ])
+            
+            return cb(err, selfieData: nil, photoData: nil)
+        }
+
         
         dispatch_async(photoQueue, {
             let output = self.photoOutput!
@@ -177,7 +202,7 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             let err = NSError(domain: "tempted", code: 1, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Couldn't add photo input", comment: "internal error reason for not being able to add photo input")
-                ])
+            ])
             return err
         }
         
@@ -209,8 +234,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             notifyLocationStatus(authStatus)
         }
     }
-    
-    private func prepCameras() {
+
+    private func prepCameras(cb: (NSError?) -> Void) {
         photoSession = AVCaptureSession()
         
         switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
@@ -235,7 +260,12 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         dispatch_async(photoQueue, {
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
             if( devices.count == 0 ) {
-                return
+                let err = NSError(domain: "tempted", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("No AVCapture devices.", comment: "internal error reason for no devices found")
+                ])
+
+                return cb(err)
             }
             
             var selfieDevice = devices[0]
@@ -252,31 +282,34 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
             let session = self.photoSession!
             
             session.beginConfiguration()
-            
+
+            // FIXME: catch error
             do {
                 self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice as! AVCaptureDevice)
             } catch {
                 print(error)
             }
-            // FIXME: catch error
             if( self.selfieInput == nil ) {
                 print("Could not create video device")
+                return cb(nil)
             }
 
+            // FIXME: catch error
             do {
                 self.photoInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
             } catch {
                 print(error)
             }
-            // FIXME: catch error
             if( self.photoInput == nil ) {
                 print("Could not create video device")
+                return cb(nil)
             }
 
             if( session.canAddInput(self.selfieInput) ) {
                 session.addInput(self.selfieInput)
             } else {
                 print("Could not add video input!")
+                return cb(nil)
             }
             
             let stillImageOutput = AVCaptureStillImageOutput()
@@ -294,6 +327,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 // TODO: bubble error up
                 print("Photo session failed to start")
             }
+            
+            return cb(nil)
         })
     }
     
