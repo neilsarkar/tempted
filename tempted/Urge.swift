@@ -53,7 +53,6 @@ class Urge:Object {
     }
     
     func isNight() -> Bool {
-        // TODO: do this without converting to a string
         let formatter = NSDateFormatter()
         formatter.dateFormat = "HH"
 
