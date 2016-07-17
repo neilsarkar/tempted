@@ -177,49 +177,51 @@ class PhotoTaker: NSObject {
             
             session.beginConfiguration()
             
-            // FIXME: catch error
             do {
                 self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice as! AVCaptureDevice)
-            } catch {
-                print(error)
-            }
-            if( self.selfieInput == nil ) {
-                print("Could not create video device")
-                return cb(nil)
+            } catch let err as NSError {
+                return cb(err)
             }
             
-            // FIXME: catch error
             do {
+                // rename photoInput to rearInput
                 self.photoInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
-            } catch {
-                print(error)
-            }
-            if( self.photoInput == nil ) {
-                print("Could not create video device")
-                return cb(nil)
+            } catch let err as NSError {
+                return cb(err)
             }
             
-            if( session.canAddInput(self.selfieInput) ) {
-                session.addInput(self.selfieInput)
-            } else {
-                print("Could not add video input!")
-                return cb(nil)
+            if( !session.canAddInput(self.selfieInput) ) {
+                let err = NSError(domain: "tempted", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("Can't add selfie input.", comment: "internal error reason for not being able to add selfie input")
+                ])
+
+                return cb(err)
             }
+            session.addInput(self.selfieInput)
             
             let stillImageOutput = AVCaptureStillImageOutput()
-            if( session.canAddOutput(stillImageOutput) ) {
-                stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-                session.addOutput(stillImageOutput)
-                self.photoOutput = stillImageOutput
-            } else {
-                print("Can't add still image output!")
+            if( !session.canAddOutput(stillImageOutput) ) {
+                let err = NSError(domain: "tempted", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("Can't add photo output.", comment: "internal error reason for not being able to add photo output")
+                ])
+
+                return cb(err)
             }
+            stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            session.addOutput(stillImageOutput)
+            self.photoOutput = stillImageOutput
+
             session.commitConfiguration()
-            
             session.startRunning()
             if( !session.running ) {
-                // TODO: bubble error up
-                print("Photo session failed to start")
+                let err = NSError(domain: "tempted", code: 1, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo session didn't start.", comment: "internal error reason for not being able to start camera session")
+                ])
+                
+                return cb(err)
             }
             
             return cb(nil)
