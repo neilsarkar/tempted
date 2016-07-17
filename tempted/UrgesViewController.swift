@@ -33,7 +33,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         super.viewDidAppear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        creator = UrgeSaver()
+        if( creator == nil ) { creator = UrgeSaver() }
         if( !defaults.boolForKey("com.superserious.tempted.onboarded") ) {
             self.performSegueWithIdentifier("ShowOnboardingVC", sender: self)
             defaults.setBool(true, forKey: "com.superserious.tempted.onboarded")
