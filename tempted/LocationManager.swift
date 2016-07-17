@@ -21,11 +21,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
-        // TODO: probably shouldn't do this
-        captureLocation()
+
+        let authStatus = CLLocationManager.authorizationStatus()
+        switch(authStatus) {
+        case .AuthorizedWhenInUse:
+            captureLocation()
+            break
+        case .NotDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        default:
+            notifyLocationStatus(authStatus)
+        }
         subscribe()
     }
-
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
@@ -34,7 +43,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print("auth status changed to", status)
         notifyLocationStatus(status)
         if( status == .AuthorizedWhenInUse && latlng == nil ) {
             captureLocation()
@@ -56,7 +64,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if( isCapturingLocation ) { return }
         
         if( !CLLocationManager.locationServicesEnabled() ) {
-            print("notifying with location services disabled")
             return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
         }
         
@@ -64,9 +71,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if( authStatus == .AuthorizedWhenInUse) {
             isCapturingLocation = true
             locationManager.startUpdatingLocation()
-        } else {
-            print("notifying location status from capture location")
-            notifyLocationStatus(authStatus)
         }
     }
     
@@ -87,3 +91,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 }
+
+// location should always try to cache position when initialized if it has perms
+// location should always try to cache position when foregrounded if it has perms
+// location should always try to cache position when perms are granted
+
+// location should not notify twice that there are no perms
+
+// location should notify when permissions are declined
+// location should notify when permissions are revoked
+// location should notify when foregrounded and it has no permissions
+// location should notify when permissions are
