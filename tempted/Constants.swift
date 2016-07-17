@@ -44,15 +44,25 @@ struct TPTString {
 }
 
 struct TPTError {
-    static let PhotoNoPermissions = NSError(domain: "tempted", code: 66, userInfo: [
-        NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
-        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not granted.", comment: "internal error reason for no permissions"),
+    static let PhotoPermissionsDeclined = NSError(domain: "tempted", code: 66, userInfo: [
+        NSLocalizedDescriptionKey: NSLocalizedString("Error using cameras", comment: "internal error description for initializing cameras"),
+        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions declined.", comment: "internal error reason for no permissions"),
         NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Please grant photo permissions in your settings", comment: "User-facing recovery suggestions")
     ])
+    static let PhotoPermissionsNotDetermined = NSError(domain: "tempted", code: 67, userInfo: [
+        NSLocalizedDescriptionKey: NSLocalizedString("Error using cameras", comment: "internal error description for initializing cameras"),
+        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not determined.", comment: "internal error reason for no permissions"),
+        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Present permissions dialog", comment: "internal recovery suggestions")
+    ])
     
-    static let MapNoPermissions = NSError(domain: "tempted", code: 67, userInfo: [
+    static let MapPermissionsDeclined = NSError(domain: "tempted", code: 68, userInfo: [
         NSLocalizedDescriptionKey: NSLocalizedString("Error getting latlng", comment: "internal error description for capturing location"),
         NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not granted.", comment: "internal error reason for no permissions"),
         NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Please grant location permissions in your settings", comment: "User-facing recovery suggestions")
+    ])
+    static let MapPermissionsNotDetermined = NSError(domain: "tempted", code: 69, userInfo: [
+        NSLocalizedDescriptionKey: NSLocalizedString("Error getting latlng", comment: "internal error description for initializing cameras"),
+        NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not determined.", comment: "internal error reason for no permissions"),
+        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Present permissions dialog", comment: "internal recovery suggestions")
     ])
 }

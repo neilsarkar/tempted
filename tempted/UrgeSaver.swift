@@ -15,38 +15,46 @@ import Crashlytics
 class UrgeSaver: NSObject {
     var locationManager: LocationManager!
     var photoTaker: PhotoTaker!
+    var permissions: Permissions!
     
-    // TODO: refactor service object that deals with getting permissions for both location and photos
     override init() {
         super.init()
-        subscribe()
 
         locationManager = LocationManager()
         photoTaker = PhotoTaker()
+        permissions = Permissions()
     }
     
-    func save() {
+    func save(cb: (NSError?) -> Void) {
+        return cb(TPTError.MapPermissionsNotDetermined)
+        if( !permissions.hasPhoto() ) {
+            if( permissions.canRequestPhoto() ) {
+                return cb(TPTError.PhotoPermissionsNotDetermined)
+            } else {
+                return cb(TPTError.PhotoPermissionsDeclined)
+            }
+        }
+        
+        if( !permissions.hasLocation() ) {
+            if( permissions.canRequestLocation() ) {
+                return cb(TPTError.MapPermissionsNotDetermined)
+            } else {
+                cb(TPTError.MapPermissionsDeclined)
+                return
+            }
+        }
+        
         photoTaker.takePhotos({err, selfieData, rearData in
             if( err != nil ) {
                 // if there's an error, just throw out our PhotoTaker and spin up a new one
                 self.photoTaker = PhotoTaker()
-                dispatch_async(dispatch_get_main_queue(), {
-                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self, userInfo: [
-                        "err": err!
-                    ])
-                })
-                if( err?.code != TPTError.PhotoNoPermissions.code ) {
-                    print(err)
-                    Crashlytics.sharedInstance().recordError(err!)
-                }
-                return
+                return cb(err)
             }
             
             // TODO: only do UI work on the main thread -- https://github.com/realm/realm-cocoa/issues/1445
             dispatch_async(dispatch_get_main_queue(), {
                 let urge = Urge();
                 
-                // TODO: do this in initialization
                 urge.createdAt = NSDate();
                 let uuid = NSUUID().UUIDString
                 urge.id = uuid
@@ -69,11 +77,7 @@ class UrgeSaver: NSObject {
                         realm.add(urge)
                     }
                 } catch let err as NSError {
-                    print(err)
-                    Crashlytics.sharedInstance().recordError(err)
-                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self, userInfo: [
-                        "err": err
-                    ])
+                    return cb(err)
                 }
 
                 
@@ -82,8 +86,11 @@ class UrgeSaver: NSObject {
         })
     }
     
-    private func subscribe() {
-        let noteCenter = NSNotificationCenter.defaultCenter()
-        noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
+    func requestPhotoPermissions() {
+        photoTaker.requestPermissions()
+    }
+    
+    func requestMapPermissions() {
+        locationManager.requestPermissions()
     }
 }

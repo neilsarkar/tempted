@@ -85,6 +85,15 @@ class PhotoTaker: NSObject {
             })
         })
     }
+
+    func requestPermissions() {
+        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
+            self.hasPhotoPermissions = success
+            if( success ) {
+                dispatch_resume(self.photoQueue)
+            }
+        })
+    }
     
     private func takePhoto(cb: (NSError?, data: NSData?) -> Void) {
         if( photoOutput == nil ) {
@@ -127,20 +136,13 @@ class PhotoTaker: NSObject {
             break
         case .NotDetermined:
             dispatch_suspend(photoQueue)
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
-                self.hasPhotoPermissions = success
-                if( success ) {
-                    dispatch_resume(self.photoQueue)
-                }
-                
-            })
         default:
             hasPhotoPermissions = false
         }
         
         dispatch_async(photoQueue, {
             if( !self.hasPhotoPermissions ) {
-                let err = TPTError.PhotoNoPermissions
+                let err = TPTError.PhotoPermissionsDeclined
                 return cb(err)
             }
 

@@ -20,9 +20,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
         subscribe()
-        processState()
+
+        if( canCaptureLocation() ) {
+            captureLocation()
+        }
+    }
+
+    func requestPermissions() {
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -32,7 +38,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        processState()
+        switch(status) {
+        case .AuthorizedWhenInUse:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
+            captureLocation()
+            break
+        case .NotDetermined:
+            break
+        default:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
+        }
     }
 
     internal func handleForeground(note: NSNotification) {
@@ -52,34 +67,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if( isCapturingLocation ) { return }
         isCapturingLocation = true
         locationManager.startUpdatingLocation()
-    }
-
-    private func processState() {
-        if( !CLLocationManager.locationServicesEnabled() ) {
-            return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-        }
-        
-        let status = CLLocationManager.authorizationStatus()
-
-        switch(status) {
-        case .AuthorizedWhenInUse:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
-            break
-        case .Denied:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
-            return
-        case .Restricted:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-            return
-        case .NotDetermined:
-            return
-        default:
-            print("Unknown location status!", status)
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-            return
-        }
-        
-        captureLocation()
     }
     
     private func canCaptureLocation() -> Bool {
