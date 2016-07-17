@@ -26,19 +26,21 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
-        creator = UrgeSaver()        
     }
     
+//  TODO: move to containing VC
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
-
+        
+        creator = UrgeSaver()
         if( !defaults.boolForKey("com.superserious.tempted.onboarded") ) {
             self.performSegueWithIdentifier("ShowOnboardingVC", sender: self)
             defaults.setBool(true, forKey: "com.superserious.tempted.onboarded")
         }
     }
     
+//  TODO: move to containing VC
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
@@ -132,7 +134,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
         }
     }
-    
+//  TODO: move this to containing view controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("preparing for segue", segue.identifier)
         super.prepareForSegue(segue, sender: sender)
