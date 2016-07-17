@@ -18,6 +18,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     var creator:UrgeSaver!
     
     var permissionNeeded: String?
+    var isDisplayingPermissionsDialog = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,10 +134,11 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("preparing for segue", segue.identifier)
         super.prepareForSegue(segue, sender: sender)
         if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
             let vc = segue.destinationViewController as! PermissionsNeededViewController
-            vc.setReason(permissionNeeded!)
+            vc.reason = permissionNeeded!
         }
     }
     
