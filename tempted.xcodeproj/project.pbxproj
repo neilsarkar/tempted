@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */; };
 		3F0ADC9A1D0D4FF00069D80B /* TemptedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */; };
 		3F0ADCA21D0D50300069D80B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADCA11D0D50300069D80B /* SnapshotHelper.swift */; };
 		3F1574861D20F709004BCEE7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1574851D20F709004BCEE7 /* OnboardingViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3F0ADC971D0D4FF00069D80B /* TemptedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemptedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemptedUITests.swift; sourceTree = "<group>"; };
 		3F0ADC9B1D0D4FF00069D80B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				3F1F6F9E1D0D063700AD75BE /* UrgeSaver.swift */,
 				3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */,
+				3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
 				3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
+				3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */,
 				3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */,
 				3F1F6F9F1D0D063700AD75BE /* UrgeSaver.swift in Sources */,
 				3FF4B3D11D2B359A0055A8C1 /* UrgeCellMapOnly.swift in Sources */,

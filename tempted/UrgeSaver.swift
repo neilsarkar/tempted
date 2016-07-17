@@ -7,33 +7,22 @@
 //
 
 import Foundation
-import CoreLocation
 import RealmSwift
 import UIKit
 import AVFoundation
 import Crashlytics
 
-class UrgeSaver: NSObject, CLLocationManagerDelegate {
-    // TODO: refactor location service that deals with capturing location
-    var locationManager:CLLocationManager!
-    var latlng:CLLocationCoordinate2D!
-    var isCapturingLocation = false
-    
+class UrgeSaver: NSObject {
+    var locationManager: LocationManager!
     var photoTaker: PhotoTaker!
     
     // TODO: refactor service object that deals with getting permissions for both location and photos
-    
-    
     override init() {
         super.init()
         subscribe()
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        
+
+        locationManager = LocationManager()
         photoTaker = PhotoTaker()
-        captureLocation()
     }
     
     func save() {
@@ -61,9 +50,9 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 urge.createdAt = NSDate();
                 let uuid = NSUUID().UUIDString
                 urge.id = uuid
-                if( self.latlng != nil ) {
-                    urge.lat = self.latlng.latitude
-                    urge.lng = self.latlng.longitude
+                if( self.locationManager.latlng != nil ) {
+                    urge.lat = self.locationManager.latlng.latitude
+                    urge.lng = self.locationManager.latlng.longitude
                 }
                 
                 if( selfieData != nil ) {
@@ -74,7 +63,6 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                     urge.photo = rearData
                 }
                 
-                // FIXME: catch errors heres
                 let realm = try! Realm()
                 do {
                     try realm.write {
@@ -94,63 +82,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         })
     }
     
-    internal func handleForeground(note: NSNotification) {
-        captureLocation()
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latlng = manager.location!.coordinate
-        manager.stopUpdatingLocation()
-        isCapturingLocation = false
-    }
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        notifyLocationStatus(status)
-        if( status == .AuthorizedWhenInUse && latlng == nil ) {
-            captureLocation()
-        }
-    }
-    
-    private func takePhotos(cb: (NSError?, selfieData: NSData?, rearData: NSData?) -> Void) {
-        return cb(nil, selfieData: nil, rearData: nil)
-    }
-    
     private func subscribe() {
         let noteCenter = NSNotificationCenter.defaultCenter()
-        // TODO: feels like a bad separation of concerns to have to include UIKit
-        noteCenter.addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
         noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
-    }
-    
-    private func captureLocation() {
-        if( isCapturingLocation ) { return }
-        
-        if( !CLLocationManager.locationServicesEnabled() ) {
-            return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-        }
-
-        let authStatus = CLLocationManager.authorizationStatus()
-        if( authStatus == .AuthorizedWhenInUse) {
-            isCapturingLocation = true
-            locationManager.startUpdatingLocation()
-        } else {
-            notifyLocationStatus(authStatus)
-        }
-    }
-    
-    private func notifyLocationStatus(status: CLAuthorizationStatus) {
-        switch(status) {
-        case .Denied:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
-            break
-        case .Restricted:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-            break
-        case .AuthorizedWhenInUse:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
-            break
-        default:
-            return
-        }
     }
 }
