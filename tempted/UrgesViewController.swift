@@ -16,6 +16,8 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     
     var urges: Results<Urge>?
     var creator:UrgeSaver!
+    
+    var permissionNeeded: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,15 +114,41 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
     }
-    
+
+//  TODO: move this to containing view controller
     internal func showPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
+            self.permissionNeeded = TPTString.LocationReason
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
         }
     }
 
-    internal func handleUrgeCreateFailed() {
+//  TODO: move this to containing view controller
+    private func showPhotoPermissionNeeded() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.permissionNeeded = TPTString.PhotoReason
+            self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
+            let vc = segue.destinationViewController as! PermissionsNeededViewController
+            vc.setReason(permissionNeeded!)
+        }
+    }
+    
+    internal func handleUrgeCreateFailed(note:NSNotification) {
+        if( note.userInfo?["err"] != nil ) {
+            let err = note.userInfo!["err"] as! NSError
+            if( err.code == TPTError.PhotoNoPermissions.code ) {
+                showPhotoPermissionNeeded()
+                return
+            }
+        }
+        
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)

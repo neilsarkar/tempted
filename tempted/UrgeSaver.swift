@@ -43,7 +43,9 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                 // if there's an error, just throw out our PhotoTaker and spin up a new one
                 self.photoTaker = PhotoTaker()
                 dispatch_async(dispatch_get_main_queue(), {
-                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self)
+                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self, userInfo: [
+                        "err": err!
+                    ])
                 })
                 return
             }
@@ -69,9 +71,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                     urge.photo = photoData
                 }
                 
-                
+                // FIXME: catch errors heres
                 let realm = try! Realm()
-                
                 try! realm.write {
                     realm.add(urge);
                 }

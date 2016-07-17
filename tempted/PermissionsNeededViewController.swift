@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PermissionsNeededViewController : UIViewController {
 
@@ -14,25 +15,50 @@ class PermissionsNeededViewController : UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
 
     var appSettings: NSURL?
+    var labelText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         subscribe()
-// TODO: center both label and button
         appSettings = NSURL(string: UIApplicationOpenSettingsURLString)
 
         if( appSettings == nil ) {
             settingsButton.hidden = true
         }
+        
+        if( labelText != nil ) {
+            label.text = labelText
+        }
+    }
+    
+    func setReason(reason: String) {
+        if( reason == TPTString.LocationReason ) {
+            labelText = TPTString.LocationPermissionsWarning
+        } else if( reason == TPTString.PhotoReason ) {
+            labelText = TPTString.PhotoPermissionsWarning
+        }
     }
     
     private func subscribe() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkPermissions), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     internal func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    internal func checkPermissions() {
+        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
+        case .Authorized:
+            dismiss()
+            break
+        case .NotDetermined:
+            dismiss()
+            break
+        default: break
+        }
     }
     
     @IBAction func settingsButtonTapped(sender: UIButton) {
