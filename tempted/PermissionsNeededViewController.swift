@@ -33,10 +33,10 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     func setReason(reason: String) {
-        if( reason == "map" ) {
-            labelText = "Tempted is useless without location services"
-        } else if( reason == "photos" ) {
-            labelText = "Tempted is useless without photo services"
+        if( reason == TPTString.LocationReason ) {
+            labelText = TPTString.LocationPermissionsWarning
+        } else if( reason == TPTString.PhotoReason ) {
+            labelText = TPTString.PhotoPermissionsWarning
         }
     }
     

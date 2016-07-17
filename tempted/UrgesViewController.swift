@@ -114,23 +114,21 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
         noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
     }
-    
+
+//  TODO: move this to containing view controller
     internal func showPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
-//          TODO: constantize
-            self.permissionNeeded = "map"
+            self.permissionNeeded = TPTString.LocationReason
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
-            self.permissionNeeded = ""
         }
     }
-    
+
+//  TODO: move this to containing view controller
     private func showPhotoPermissionNeeded() {
         dispatch_async(dispatch_get_main_queue()) {
-//          TODO: constantize
-            self.permissionNeeded = "photos"
+            self.permissionNeeded = TPTString.PhotoReason
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
-            self.permissionNeeded = ""
         }
     }
     
