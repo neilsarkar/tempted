@@ -506,7 +506,6 @@
                     </collectionView>
                     <connections>
                         <segue destination="gml-0z-4pA" kind="show" identifier="ShowPermissionsNeededVC" id="FJf-Ac-Pau"/>
-                        <segue destination="3WQ-60-rPi" kind="show" identifier="ShowPhotoPermissionsNeededVC" id="PbO-Sd-1SZ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -556,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqK-QX-J6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="-447"/>
+            <point key="canvasLocation" x="1583" y="159"/>
         </scene>
         <!--Onboarding Controller-->
         <scene sceneID="XTl-KK-Hh7">
@@ -655,51 +654,6 @@ Stick with it, and you can choose your behavior instead of letting your behavior
                 <exit id="XRL-2n-PYG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="645" y="996"/>
-        </scene>
-        <!--Permissions Needed View Controller-->
-        <scene sceneID="Ny3-Jp-48A">
-            <objects>
-                <viewController id="3WQ-60-rPi" customClass="PermissionsNeededViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MMa-Ay-nhv"/>
-                        <viewControllerLayoutGuide type="bottom" id="8vz-cC-dSA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ulv-q2-Ieu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9j-yl-0Tt">
-                                <rect key="frame" x="251" y="312" width="98" height="33"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Open Settings"/>
-                                <connections>
-                                    <action selector="settingsButtonTapped:" destination="3WQ-60-rPi" eventType="touchUpInside" id="lMa-ZL-q7d"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempted is useless without photos." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qD-2p-c7d">
-                                <rect key="frame" x="102" y="288.5" width="396" height="24"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="9qD-2p-c7d" firstAttribute="width" secondItem="ulv-q2-Ieu" secondAttribute="width" multiplier="0.66" id="71j-pn-2ft"/>
-                            <constraint firstItem="P9j-yl-0Tt" firstAttribute="top" secondItem="9qD-2p-c7d" secondAttribute="bottom" id="IMx-em-n7B"/>
-                            <constraint firstItem="P9j-yl-0Tt" firstAttribute="centerX" secondItem="9qD-2p-c7d" secondAttribute="centerX" id="P18-4W-IDH"/>
-                            <constraint firstItem="9qD-2p-c7d" firstAttribute="centerX" secondItem="ulv-q2-Ieu" secondAttribute="centerX" id="Yv8-et-sI9"/>
-                            <constraint firstItem="9qD-2p-c7d" firstAttribute="centerY" secondItem="ulv-q2-Ieu" secondAttribute="centerY" id="kdd-3g-Vao"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="label" destination="9qD-2p-c7d" id="z42-Md-Djp"/>
-                        <outlet property="settingsButton" destination="P9j-yl-0Tt" id="HzV-0R-Ann"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CEL-nm-UwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1607" y="253"/>
         </scene>
     </scenes>
     <resources>

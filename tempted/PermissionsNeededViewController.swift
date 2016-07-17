@@ -15,6 +15,7 @@ class PermissionsNeededViewController : UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
 
     var appSettings: NSURL?
+    var labelText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,18 @@ class PermissionsNeededViewController : UIViewController {
 
         if( appSettings == nil ) {
             settingsButton.hidden = true
+        }
+        
+        if( labelText != nil ) {
+            label.text = labelText
+        }
+    }
+    
+    func setReason(reason: String) {
+        if( reason == "map" ) {
+            labelText = "Tempted is useless without location services"
+        } else if( reason == "photos" ) {
+            labelText = "Tempted is useless without photo services"
         }
     }
     

@@ -16,6 +16,8 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     
     var urges: Results<Urge>?
     var creator:UrgeSaver!
+    
+    var permissionNeeded: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,16 +118,30 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     internal func showPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
+//          TODO: constantize
+            self.permissionNeeded = "map"
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+            self.permissionNeeded = ""
         }
     }
     
     private func showPhotoPermissionNeeded() {
         dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("ShowPhotoPermissionsNeededVC", sender: self)
+//          TODO: constantize
+            self.permissionNeeded = "photos"
+            self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+            self.permissionNeeded = ""
         }
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
+            let vc = segue.destinationViewController as! PermissionsNeededViewController
+            vc.setReason(permissionNeeded!)
+        }
+    }
+    
     internal func handleUrgeCreateFailed(note:NSNotification) {
         if( note.userInfo?["err"] != nil ) {
             let err = note.userInfo!["err"] as! NSError
