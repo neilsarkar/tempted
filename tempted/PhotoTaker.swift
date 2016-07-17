@@ -138,11 +138,7 @@ class PhotoTaker: NSObject {
         }
         
         if( !hasPhotoPermissions ) {
-            let err = NSError(domain: "tempted", code: 66, userInfo: [
-                NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
-                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not granted.", comment: "internal error reason for no permissions"),
-                NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Please grant photo permissions in your settings", comment: "User-facing recovery suggestions")
-            ])
+            let err = TPTError.PhotoNoPermissions
             return cb(err)
         }
         

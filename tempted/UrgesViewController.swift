@@ -129,7 +129,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     internal func handleUrgeCreateFailed(note:NSNotification) {
         if( note.userInfo?["err"] != nil ) {
             let err = note.userInfo!["err"] as! NSError
-            if( err.code == 66 ) {
+            if( err.code == TPTError.PhotoNoPermissions.code ) {
                 showPhotoPermissionNeeded()
                 return
             }
