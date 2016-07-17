@@ -33,14 +33,14 @@ struct TPTPadding {
     static let CellBottom: CGFloat = 6.0
 }
 
+struct TPTString {
+    static let LocationServicesDisabled = NSLocalizedString("Location services are disabled on your phone.", comment: "Error text when location services are disabled on the phone")
+}
+
 struct TPTError {
     static let PhotoNoPermissions = NSError(domain: "tempted", code: 66, userInfo: [
         NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
         NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not granted.", comment: "internal error reason for no permissions"),
         NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Please grant photo permissions in your settings", comment: "User-facing recovery suggestions")
     ])
-}
-
-struct TPTString {
-    static let LocationServicesDisabled = NSLocalizedString("Location services are disabled on your phone.", comment: "Error text when location services are disabled on the phone")
 }

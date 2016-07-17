@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PermissionsNeededViewController : UIViewController {
 
@@ -28,10 +29,23 @@ class PermissionsNeededViewController : UIViewController {
     
     private func subscribe() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkPermissions), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     internal func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    internal func checkPermissions() {
+        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
+        case .Authorized:
+            dismiss()
+            break
+        case .NotDetermined:
+            dismiss()
+            break
+        default: break
+        }
     }
     
     @IBAction func settingsButtonTapped(sender: UIButton) {
