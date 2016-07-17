@@ -129,8 +129,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     internal func handleUrgeAdded() {
-        let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
-        self.collectionView?.insertItemsAtIndexPaths([indexPath])
+        collectionView?.reloadData()
     }
     
     internal func handleUrgeDelete(note:NSNotification) {
@@ -144,7 +143,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             realm.delete(badUrge)
         }
         
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
 // MARK: Unwind Segue
