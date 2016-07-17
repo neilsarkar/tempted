@@ -12,11 +12,11 @@ class PhotoTaker: NSObject {
     // AV resources
     let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
     var photoSession: AVCaptureSession?
-    var photoInput: AVCaptureInput?
-    var selfieInput: AVCaptureInput?
     var photoOutput: AVCaptureStillImageOutput?
-    var photoData: NSData?
+    var selfieInput: AVCaptureInput?
     var selfieData: NSData?
+    var rearInput: AVCaptureInput?
+    var rearData: NSData?
 
     // State
     var hasPhotoPermissions = false
@@ -35,9 +35,9 @@ class PhotoTaker: NSObject {
         })
     }
     
-    func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
+    func takePhotos(cb: (NSError?, selfieData: NSData?, rearData: NSData?) -> Void) {
         if( initializationError != nil ) {
-            return cb(initializationError!, selfieData: nil, photoData: nil)
+            return cb(initializationError!, selfieData: nil, rearData: nil)
         }
         
         if( !isInitialized ) {
@@ -46,42 +46,42 @@ class PhotoTaker: NSObject {
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Cameras not initialized", comment: "internal error reason for initialization not complete"),
                 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Gah, I'm still trying to find your camera! Try back soon :/", comment: "recovery message for user tapping the urge button before we're ready")
             ])
-            return cb(err, selfieData: nil, photoData: nil)
+            return cb(err, selfieData: nil, rearData: nil)
         }
         
-        if( self.photoInput == nil || self.selfieInput == nil ) {
+        if( self.rearInput == nil || self.selfieInput == nil ) {
             // TODO: return inputs in user info
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("One of the inputs is nil", comment: "internal error reason for nil photo inputs")
             ])
             
-            return cb(err, selfieData: nil, photoData: nil)
+            return cb(err, selfieData: nil, rearData: nil)
         }
         
         
         takePhoto({ err, data in
-            if( err != nil) { return cb(err, selfieData: nil, photoData: nil) }
+            if( err != nil) { return cb(err, selfieData: nil, rearData: nil) }
 
             // TODO: don't store on self
             self.selfieData = data
             let err = self.switchCameras()
             if( err != nil ) {
-                return cb(err, selfieData: self.selfieData, photoData: nil)
+                return cb(err, selfieData: self.selfieData, rearData: nil)
             }
 
             self.takePhoto({ err, data in
                 if( err != nil ) {
-                    return cb(err, selfieData: self.selfieData, photoData: nil)
+                    return cb(err, selfieData: self.selfieData, rearData: nil)
                 }
                 
-                self.photoData = data
+                self.rearData = data
                 let err = self.switchCameras()
                 if( err != nil ) {
-                    return cb(err, selfieData: self.selfieData, photoData: nil)
+                    return cb(err, selfieData: self.selfieData, rearData: nil)
                 }
                 
-                return cb(err, selfieData: self.selfieData, photoData: self.photoData)
+                return cb(err, selfieData: self.selfieData, rearData: self.rearData)
             })
         })
     }
@@ -176,8 +176,7 @@ class PhotoTaker: NSObject {
             }
             
             do {
-                // rename photoInput to rearInput
-                self.photoInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
+                self.rearInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
             } catch let err as NSError {
                 return cb(err)
             }
@@ -229,9 +228,9 @@ class PhotoTaker: NSObject {
         
         if( isSelfie ) {
             oldInput = self.selfieInput
-            newInput = self.photoInput
+            newInput = self.rearInput
         } else {
-            oldInput = self.photoInput
+            oldInput = self.rearInput
             newInput = self.selfieInput
         }
         

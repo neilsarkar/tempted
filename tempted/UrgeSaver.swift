@@ -11,6 +11,7 @@ import CoreLocation
 import RealmSwift
 import UIKit
 import AVFoundation
+import Crashlytics
 
 class UrgeSaver: NSObject, CLLocationManagerDelegate {
     // TODO: refactor location service that deals with capturing location
@@ -36,10 +37,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
     }
     
     func save() {
-        photoTaker.takePhotos({err, selfieData, photoData in
+        photoTaker.takePhotos({err, selfieData, rearData in
             if( err != nil ) {
-//              TODO: report to crashlytics
-                print(err)
                 // if there's an error, just throw out our PhotoTaker and spin up a new one
                 self.photoTaker = PhotoTaker()
                 dispatch_async(dispatch_get_main_queue(), {
@@ -47,6 +46,10 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                         "err": err!
                     ])
                 })
+                if( err?.code != TPTError.PhotoNoPermissions.code ) {
+                    print(err)
+                    Crashlytics.sharedInstance().recordError(err!)
+                }
                 return
             }
             
@@ -67,15 +70,24 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
                     urge.selfie = selfieData
                 }
                 
-                if( photoData != nil ) {
-                    urge.photo = photoData
+                if( rearData != nil ) {
+                    urge.photo = rearData
                 }
                 
                 // FIXME: catch errors heres
                 let realm = try! Realm()
-                try! realm.write {
-                    realm.add(urge);
+                do {
+                    try realm.write {
+                        realm.add(urge)
+                    }
+                } catch let err as NSError {
+                    print(err)
+                    Crashlytics.sharedInstance().recordError(err)
+                    NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self, userInfo: [
+                        "err": err
+                    ])
                 }
+
                 
                 NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: self)
             })
@@ -99,8 +111,8 @@ class UrgeSaver: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func takePhotos(cb: (NSError?, selfieData: NSData?, photoData: NSData?) -> Void) {
-        return cb(nil, selfieData: nil, photoData: nil)
+    private func takePhotos(cb: (NSError?, selfieData: NSData?, rearData: NSData?) -> Void) {
+        return cb(nil, selfieData: nil, rearData: nil)
     }
     
     private func subscribe() {
