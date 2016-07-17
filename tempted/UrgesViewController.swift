@@ -138,7 +138,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         super.prepareForSegue(segue, sender: sender)
         if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
             let vc = segue.destinationViewController as! PermissionsNeededViewController
-            vc.setReason(permissionNeeded!)
+            vc.reason = permissionNeeded!
         }
     }
     

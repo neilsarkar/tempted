@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
 class PermissionsNeededViewController : UIViewController {
 
@@ -16,7 +17,11 @@ class PermissionsNeededViewController : UIViewController {
 
     var appSettings: NSURL?
     var labelText: String?
-    
+
+    var reason: String? {
+        didSet { setLabelText() }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +37,7 @@ class PermissionsNeededViewController : UIViewController {
         }
     }
     
-    func setReason(reason: String) {
+    func setLabelText() {
         if( reason == TPTString.LocationReason ) {
             labelText = TPTString.LocationPermissionsWarning
         } else if( reason == TPTString.PhotoReason ) {
@@ -50,14 +55,17 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     internal func checkPermissions() {
-        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
-        case .Authorized:
-            dismiss()
-            break
-        case .NotDetermined:
-            dismiss()
-            break
-        default: break
+        if( reason == TPTString.PhotoReason ) {
+            if( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized ) {
+                dismiss()
+            }
+        } else if( reason == TPTString.LocationReason ) {
+            if( CLLocationManager.locationServicesEnabled() &&
+                CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse ) {
+                dismiss()
+            }
+        } else {
+            print("Unknown Reason! Not dismissing")
         }
     }
     

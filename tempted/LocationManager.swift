@@ -21,19 +21,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
-
-        let authStatus = CLLocationManager.authorizationStatus()
-        switch(authStatus) {
-        case .AuthorizedWhenInUse:
-            captureLocation()
-            break
-        case .NotDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        default:
-            notifyLocationStatus(authStatus)
-        }
         subscribe()
+        processState()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -43,14 +32,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        notifyLocationStatus(status)
-        if( status == .AuthorizedWhenInUse && latlng == nil ) {
-            captureLocation()
-        }
+        processState()
     }
 
     internal func handleForeground(note: NSNotification) {
-        captureLocation()
+        if( canCaptureLocation() ) {
+            captureLocation()
+        }
     }
     
     private func subscribe() {
@@ -62,43 +50,37 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private func captureLocation() {
         if( isCapturingLocation ) { return }
-        
+        isCapturingLocation = true
+        locationManager.startUpdatingLocation()
+    }
+
+    private func processState() {
         if( !CLLocationManager.locationServicesEnabled() ) {
             return NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
         }
         
-        let authStatus = CLLocationManager.authorizationStatus()
-        if( authStatus == .AuthorizedWhenInUse) {
-            isCapturingLocation = true
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    private func notifyLocationStatus(status: CLAuthorizationStatus) {
-        print("notifying location status", status)
+        let status = CLLocationManager.authorizationStatus()
+
         switch(status) {
-        case .Denied:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
-            break
-        case .Restricted:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
-            break
         case .AuthorizedWhenInUse:
             NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
             break
+        case .Denied:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
+            return
+        case .Restricted:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
+            return
         default:
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
             return
         }
+        
+        captureLocation()
+    }
+    
+    private func canCaptureLocation() -> Bool {
+        if( !CLLocationManager.locationServicesEnabled() ) { return false }
+        return CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse
     }
 }
-
-// location should always try to cache position when initialized if it has perms
-// location should always try to cache position when foregrounded if it has perms
-// location should always try to cache position when perms are granted
-
-// location should not notify twice that there are no perms
-
-// location should notify when permissions are declined
-// location should notify when permissions are revoked
-// location should notify when foregrounded and it has no permissions
-// location should notify when permissions are
