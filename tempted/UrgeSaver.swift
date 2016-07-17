@@ -26,7 +26,6 @@ class UrgeSaver: NSObject {
     }
     
     func save(cb: (NSError?) -> Void) {
-        return cb(TPTError.MapPermissionsNotDetermined)
         if( !permissions.hasPhoto() ) {
             if( permissions.canRequestPhoto() ) {
                 return cb(TPTError.PhotoPermissionsNotDetermined)

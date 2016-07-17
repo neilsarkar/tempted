@@ -25,6 +25,7 @@ struct TPTNotification {
 struct TPTInterval {
     static let Respawn = 10.0
     static let PushReaction = 1.0
+    static let PhotoSwitchDelay = Int64(100 * NSEC_PER_MSEC)
 }
 
 struct TPTPadding {

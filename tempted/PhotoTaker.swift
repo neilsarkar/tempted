@@ -70,18 +70,20 @@ class PhotoTaker: NSObject {
                 return cb(err, selfieData: self.selfieData, rearData: nil)
             }
 
-            self.takePhoto({ err, data in
-                if( err != nil ) {
-                    return cb(err, selfieData: self.selfieData, rearData: nil)
-                }
-                
-                self.rearData = data
-                let err = self.switchCameras()
-                if( err != nil ) {
-                    return cb(err, selfieData: self.selfieData, rearData: nil)
-                }
-                
-                return cb(err, selfieData: self.selfieData, rearData: self.rearData)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TPTInterval.PhotoSwitchDelay), self.photoQueue, {
+                self.takePhoto({ err, data in
+                    if( err != nil ) {
+                        return cb(err, selfieData: self.selfieData, rearData: nil)
+                    }
+                    
+                    self.rearData = data
+                    let err = self.switchCameras()
+                    if( err != nil ) {
+                        return cb(err, selfieData: self.selfieData, rearData: nil)
+                    }
+                    
+                    return cb(err, selfieData: self.selfieData, rearData: self.rearData)
+                })
             })
         })
     }
