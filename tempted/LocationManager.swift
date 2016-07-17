@@ -71,7 +71,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         case .Restricted:
             NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
             return
+        case .NotDetermined:
+            return
         default:
+            print("Unknown location status!", status)
             NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorLocationServicesDisabled, object: self)
             return
         }
