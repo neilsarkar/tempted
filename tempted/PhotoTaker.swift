@@ -29,11 +29,9 @@ class PhotoTaker: NSObject {
         prepCameras({err in
             if( err != nil ) {
                 self.initializationError = err
-                print(err)
                 return
             }
             self.isInitialized = true
-            print("Finished prepping cameras")
         })
     }
     
@@ -48,15 +46,6 @@ class PhotoTaker: NSObject {
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Cameras not initialized", comment: "internal error reason for initialization not complete"),
                 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Gah, I'm still trying to find your camera! Try back soon :/", comment: "recovery message for user tapping the urge button before we're ready")
             ])
-            return cb(err, selfieData: nil, photoData: nil)
-        }
-        
-        if( !hasPhotoPermissions ) {
-            let err = NSError(domain: "tempted", code: 2, userInfo: [
-                NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
-                NSLocalizedFailureReasonErrorKey: NSLocalizedString("No permissions", comment: "internal error reason for not having permissions")
-            ])
-            
             return cb(err, selfieData: nil, photoData: nil)
         }
         
@@ -148,8 +137,14 @@ class PhotoTaker: NSObject {
             hasPhotoPermissions = false
         }
         
-        // TODO: upsell user
-        if( !hasPhotoPermissions ) { return }
+        if( !hasPhotoPermissions ) {
+            let err = NSError(domain: "tempted", code: 66, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString("Permissions not granted.", comment: "internal error reason for no permissions"),
+                NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Please grant photo permissions in your settings", comment: "User-facing recovery suggestions")
+            ])
+            return cb(err)
+        }
         
         dispatch_async(photoQueue, {
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)

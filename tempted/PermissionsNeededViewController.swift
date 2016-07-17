@@ -19,7 +19,6 @@ class PermissionsNeededViewController : UIViewController {
         super.viewDidLoad()
         
         subscribe()
-// TODO: center both label and button
         appSettings = NSURL(string: UIApplicationOpenSettingsURLString)
 
         if( appSettings == nil ) {

@@ -119,8 +119,22 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
         }
     }
+    
+    private func showPhotoPermissionNeeded() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("ShowPhotoPermissionsNeededVC", sender: self)
+        }
+    }
 
-    internal func handleUrgeCreateFailed() {
+    internal func handleUrgeCreateFailed(note:NSNotification) {
+        if( note.userInfo?["err"] != nil ) {
+            let err = note.userInfo!["err"] as! NSError
+            if( err.code == 66 ) {
+                showPhotoPermissionNeeded()
+                return
+            }
+        }
+        
         let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
 
         let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
