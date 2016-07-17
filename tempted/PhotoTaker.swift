@@ -132,17 +132,18 @@ class PhotoTaker: NSObject {
                 if( success ) {
                     dispatch_resume(self.photoQueue)
                 }
+                
             })
         default:
             hasPhotoPermissions = false
         }
         
-        if( !hasPhotoPermissions ) {
-            let err = TPTError.PhotoNoPermissions
-            return cb(err)
-        }
-        
         dispatch_async(photoQueue, {
+            if( !self.hasPhotoPermissions ) {
+                let err = TPTError.PhotoNoPermissions
+                return cb(err)
+            }
+
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
             if( devices.count == 0 ) {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
