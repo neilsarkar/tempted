@@ -31,6 +31,8 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeBGImageView: UIImageView!
     
+    // TODO: don't use an entire view just to get padding
+    @IBOutlet weak var container: UIView!
     @IBOutlet weak var debugLabel: UILabel!
     
     @IBAction func retryTapped(sender: UIButton) {
@@ -44,6 +46,10 @@ class UrgeCell : UICollectionViewCell {
         super.awakeFromNib()
         showLoading()
         
+        container.layer.cornerRadius = 5.0
+        container.layer.masksToBounds = false
+        container.layer.borderWidth = 1.0
+        container.layer.borderColor = UIColor.tmpWhiteFBColor().CGColor
         loadingSpinner.hidesWhenStopped = true
     }
     

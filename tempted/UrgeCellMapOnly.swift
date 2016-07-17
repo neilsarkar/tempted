@@ -10,7 +10,7 @@ import UIKit
 import Crashlytics
 import Haneke
 
-// FIXME: refactor this to use inheritance instead of just copying the other thing
+// TODO: refactor this to use inheritance instead of just copying the other thing
 class UrgeCellMapOnly : UICollectionViewCell {
     var urge: Urge! {
         didSet { render() }

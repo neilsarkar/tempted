@@ -27,4 +27,8 @@ extension UIColor {
 	class func tmpWhiteColor() -> UIColor {
 		return UIColor(white: 255.0 / 255.0, alpha: 1.0)
 	}
+    
+    class func tmpWhiteFBColor() -> UIColor {
+        return UIColor(white: 231.0/255.0, alpha: 1.0)
+    }
 }

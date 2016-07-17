@@ -71,6 +71,8 @@ class ButtonCell : UICollectionViewCell {
         
         isPushed = false
         label.text = defaultText
+        scrollHint.hidden = true
+        infoButton.hidden = false
 
         if( wasPushed ) {
             dispatch_async(dispatch_get_main_queue(), {

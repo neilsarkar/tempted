@@ -53,11 +53,11 @@ class Urge:Object {
     }
     
     func isNight() -> Bool {
-        // TODO: do this without converting to a string
         let formatter = NSDateFormatter()
         formatter.dateFormat = "HH"
 
-        return Int(formatter.stringFromDate(createdAt)) >= 20
+        let hour = Int(formatter.stringFromDate(createdAt))
+        return hour <= 6 || hour >= 20
     }
     
     static func migrate() {

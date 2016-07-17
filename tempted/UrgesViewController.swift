@@ -8,22 +8,40 @@
 
 import UIKit
 import RealmSwift
+import Crashlytics
 
-class UrgesViewController : UICollectionViewController {
+class UrgesViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let topIdentifier   = "ButtonCell"
     let urgeIdentifier = "UrgeCell"
     let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
     
     var urges: Results<Urge>?
     var creator:UrgeSaver!
+    
+    var permissionNeeded: String?
+    var isDisplayingPermissionsDialog = false
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         let realm = try! Realm()
         urges = realm.objects(Urge).sorted("createdAt", ascending: false)
+        self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
-        creator = UrgeSaver()
     }
     
+//  TODO: move to containing VC
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if( creator == nil ) { creator = UrgeSaver() }
+        if( !defaults.boolForKey("com.superserious.tempted.onboarded") ) {
+            self.performSegueWithIdentifier("ShowOnboardingVC", sender: self)
+            defaults.setBool(true, forKey: "com.superserious.tempted.onboarded")
+        }
+    }
+    
+//  TODO: move to containing VC
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
@@ -34,14 +52,21 @@ class UrgesViewController : UICollectionViewController {
             return self.view.frame.size
         }
 
-        let width = self.view.frame.width - 40
-        let height = width
+        let urge = urgeForIndexPath(indexPath)
+        let width = self.view.frame.width - (TPTPadding.CellLeft + TPTPadding.CellRight)
+        let height : CGFloat
+        if( urge.photo == nil && urge.selfie == nil ) {
+            height = width + 29
+        } else {
+            height = width
+        }
+
         return CGSize(width: width, height: height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
         if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
-        return UIEdgeInsetsMake(0, 0, 15, 0)
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
 // MARK: Section and Cell Count
@@ -54,18 +79,20 @@ class UrgesViewController : UICollectionViewController {
         if( section == 0 ) { return 1; }
         return urges == nil ? 0 : urges!.count
     }
-
+    
 // MARK: Cell Initialization
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if( indexPath.section == 0 ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
+            cell.showReleased()
             return cell
         }
 
-        let urge = urges![indexPath.row]
+        let urge = urgeForIndexPath(indexPath)
 
         // TODO: share cell.urge = urge and return cell below
+        // FIXME: simulator should use stock images
         if( urge.photo == nil && urge.selfie == nil ) {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
             cell.urge = urge
@@ -76,6 +103,10 @@ class UrgesViewController : UICollectionViewController {
             return cell
         }
     }
+    
+    func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
+        return urges![indexPath.row]
+    }
 
 // MARK: Event Handling
     internal func subscribe() {
@@ -83,29 +114,100 @@ class UrgesViewController : UICollectionViewController {
 
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
-        noteCenter.addObserver(self, selector: #selector(handleUrgeCreateFailed), name: TPTNotification.UrgeCreateFailed, object: nil)
-        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
-        noteCenter.addObserver(self, selector: #selector(showPermissionNeeded), name: TPTNotification.ErrorLocationServicesDisabled, object: nil)
+        noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
+        noteCenter.addObserver(self, selector: #selector(showMapPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
+    }
+
+//  TODO: move this to containing view controller
+    internal func save() {
+        creator.save({ err in
+            if( err == nil ) { return }
+
+            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self)
+            switch(err!.code) {
+            case TPTError.MapPermissionsDeclined.code:
+                self.showMapPermissionNeeded()
+                break
+            case TPTError.PhotoPermissionsDeclined.code:
+                self.showPhotoPermissionNeeded()
+                break
+            case TPTError.PhotoPermissionsNotDetermined.code:
+                let alertController = UIAlertController(title: "Let me take a photo", message: "I need this.", preferredStyle: .Alert)
+                
+//              TODO: make this an NSLocalized string
+                let cancelAction = UIAlertAction(title: "Nope", style: .Default, handler: nil)
+                let okAction = UIAlertAction(title: "Ugh, fine", style: .Default, handler: { action in
+                    self.creator.requestPhotoPermissions()
+                })
+                alertController.addAction(cancelAction)
+                alertController.addAction(okAction)
+                if #available(iOS 9, *) {
+                    alertController.preferredAction = okAction
+                }
+                self.presentViewController(alertController, animated: true) {}
+                break
+            case TPTError.MapPermissionsNotDetermined.code:
+                let alertController = UIAlertController(title: "What about maps?", message: "Can we do maps too?", preferredStyle: .Alert)
+//              TODO: make this an NSLocalized string
+                let cancelAction = UIAlertAction(title: "Oh hell no", style: .Default, handler: nil)
+                let okAction = UIAlertAction(title: "This better be worth it", style: .Cancel, handler: { action in
+                    self.creator.requestMapPermissions()
+                })
+                alertController.addAction(cancelAction)
+                alertController.addAction(okAction)
+                if #available(iOS 9, *) {
+                    alertController.preferredAction = okAction
+                }
+                self.presentViewController(alertController, animated: true) {}
+                break
+            default:
+                let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true) {}
+                
+                print(err)
+                Crashlytics.sharedInstance().recordError(err!)
+            }
+            
+        })
     }
     
-    internal func showPermissionNeeded() {
+//  TODO: move this to containing view controller
+    internal func showMapPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         dispatch_async(dispatch_get_main_queue()) {
+            self.permissionNeeded = TPTString.LocationReason
             self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
         }
     }
 
-    internal func handleUrgeCreateFailed() {
-        let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
-
-        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true) {}
+//  TODO: move this to containing view controller
+    private func showPhotoPermissionNeeded() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.permissionNeeded = TPTString.PhotoReason
+            self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+        }
+    }
+//  TODO: move this to containing view controller
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("preparing for segue", segue.identifier)
+        super.prepareForSegue(segue, sender: sender)
+        if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
+            let vc = segue.destinationViewController as! PermissionsNeededViewController
+            vc.reason = permissionNeeded!
+        }
     }
     
     internal func handleUrgeAdded() {
-        let indexPath = NSIndexPath(forItem: self.urges!.count - 1, inSection: 1)
-        self.collectionView?.insertItemsAtIndexPaths([indexPath])
+        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems()
+        // if only the button cell is visible, no need to reload data since it will be available once the user scrolls
+        if( indexPathsForVisibleItems?.count == 1 &&
+            indexPathsForVisibleItems?[0].section == 0 ) {
+            return
+        }
+        collectionView?.reloadData()
     }
     
     internal func handleUrgeDelete(note:NSNotification) {
@@ -119,7 +221,7 @@ class UrgesViewController : UICollectionViewController {
             realm.delete(badUrge)
         }
         
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
 // MARK: Unwind Segue

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import CoreLocation
 
 class PermissionsNeededViewController : UIViewController {
 
@@ -14,25 +16,57 @@ class PermissionsNeededViewController : UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
 
     var appSettings: NSURL?
-    
+    var labelText: String?
+
+    var reason: String? {
+        didSet { setLabelText() }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         subscribe()
-// TODO: center both label and button
         appSettings = NSURL(string: UIApplicationOpenSettingsURLString)
 
         if( appSettings == nil ) {
             settingsButton.hidden = true
         }
+        
+        if( labelText != nil ) {
+            label.text = labelText
+        }
+    }
+    
+    func setLabelText() {
+        if( reason == TPTString.LocationReason ) {
+            labelText = TPTString.LocationPermissionsWarning
+        } else if( reason == TPTString.PhotoReason ) {
+            labelText = TPTString.PhotoPermissionsWarning
+        }
     }
     
     private func subscribe() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkPermissions), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
     internal func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    internal func checkPermissions() {
+        if( reason == TPTString.PhotoReason ) {
+            if( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized ) {
+                dismiss()
+            }
+        } else if( reason == TPTString.LocationReason ) {
+            if( CLLocationManager.locationServicesEnabled() &&
+                CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse ) {
+                dismiss()
+            }
+        } else {
+            print("Unknown Reason! Not dismissing")
+        }
     }
     
     @IBAction func settingsButtonTapped(sender: UIButton) {

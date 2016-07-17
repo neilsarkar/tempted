@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */; };
+		3F016FBE1D3BD17600A83B21 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F016FBD1D3BD17600A83B21 /* Permissions.swift */; };
 		3F0ADC9A1D0D4FF00069D80B /* TemptedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */; };
 		3F0ADCA21D0D50300069D80B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ADCA11D0D50300069D80B /* SnapshotHelper.swift */; };
 		3F1574861D20F709004BCEE7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1574851D20F709004BCEE7 /* OnboardingViewController.swift */; };
@@ -27,6 +29,7 @@
 		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
+		3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
 		3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */; };
@@ -73,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3F016FBD1D3BD17600A83B21 /* Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		3F0ADC971D0D4FF00069D80B /* TemptedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemptedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0ADC991D0D4FF00069D80B /* TemptedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemptedUITests.swift; sourceTree = "<group>"; };
 		3F0ADC9B1D0D4FF00069D80B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,9 +99,11 @@
 		3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
 		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3FD4669E1D31CFF2005AF2CF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FF41EB61D04B02F0063CA80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				3F1F6F9E1D0D063700AD75BE /* UrgeSaver.swift */,
+				3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */,
+				3F016FBB1D3B5DDD00A83B21 /* LocationManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -147,6 +156,7 @@
 		3F1F6FA01D0D197400AD75BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FD4669E1D31CFF2005AF2CF /* Reveal.framework */,
 				3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */,
 				3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */,
 				3F1D51181D07CE6B00A9B230 /* Haneke.framework.dSYM */,
@@ -165,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6B9AB41D04C1A3002CA04D /* Urge.swift */,
+				3F016FBD1D3BD17600A83B21 /* Permissions.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -377,12 +388,15 @@
 				3F1574861D20F709004BCEE7 /* OnboardingViewController.swift in Sources */,
 				3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */,
 				3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */,
+				3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */,
 				3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */,
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
 				3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
+				3F016FBE1D3BD17600A83B21 /* Permissions.swift in Sources */,
+				3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */,
 				3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */,
 				3F1F6F9F1D0D063700AD75BE /* UrgeSaver.swift in Sources */,
 				3FF4B3D11D2B359A0055A8C1 /* UrgeCellMapOnly.swift in Sources */,
@@ -536,8 +550,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Neil Sarkar (98A3GYAKXR)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Neil Sarkar (98A3GYAKXR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,6 +561,12 @@
 				INFOPLIST_FILE = tempted/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.tempted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -557,8 +577,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Neil Sarkar (SL8THA84AW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neil Sarkar (SL8THA84AW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
