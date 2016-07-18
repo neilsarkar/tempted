@@ -292,11 +292,13 @@
 				TargetAttributes = {
 					3F0ADC961D0D4FF00069D80B = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 3FF41EAD1D04B02F0063CA80;
 					};
 					3FF41EAD1D04B02F0063CA80 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = SL8THA84AW;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -442,6 +444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.TemptedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Tempted;
 			};
 			name = Debug;
@@ -455,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.TemptedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Tempted;
 			};
 			name = Release;
@@ -570,6 +574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.tempted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -590,6 +595,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.superserious.tempted;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

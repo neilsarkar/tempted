@@ -24,13 +24,13 @@ class UrgeCellMapOnly : UICollectionViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
 
-    @IBAction func handleDelete(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
+    @IBAction func handleDelete(_ sender: AnyObject) {
+        NotificationCenter.default().post(name: Notification.Name(rawValue: TPTNotification.UrgeDeleted), object: self, userInfo: ["id": urge.id])
     }
     
-    @IBAction func retryTapped(sender: UIButton) {
+    @IBAction func retryTapped(_ sender: UIButton) {
         // TODO: should be no need to specify main thread
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.showLoading()
         }
         attemptLoadMapImage()
@@ -54,14 +54,14 @@ class UrgeCellMapOnly : UICollectionViewCell {
                 if( error?.code != -1009 ) {
                     print("Unknown error", error)
                 }
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.showLoadFailed()
                 }
                 
                 }, success: { image in
-                    self.mapImageView.opaque = false
+                    self.mapImageView.isOpaque = false
                     self.mapImageView.image = image
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         self.showLoaded()
                     }
             })
@@ -74,22 +74,22 @@ class UrgeCellMapOnly : UICollectionViewCell {
     
     private func showLoading() {
         loadingSpinner.startAnimating()
-        mapImageView.hidden = true
-        deleteButton.hidden = true
-        retryButton.hidden = true
-        mapLoadFailedLabel.hidden = true
+        mapImageView.isHidden = true
+        deleteButton.isHidden = true
+        retryButton.isHidden = true
+        mapLoadFailedLabel.isHidden = true
     }
     
     private func showLoaded() {
         loadingSpinner.stopAnimating()
-        mapImageView.hidden = false
-        deleteButton.hidden = false
+        mapImageView.isHidden = false
+        deleteButton.isHidden = false
     }
     
     private func showLoadFailed() {
         // TODO: should this use a different cell? is there a cleaner way of hiding one whole and showing the other?
-        mapLoadFailedLabel.hidden = false
-        retryButton.hidden = false
+        mapLoadFailedLabel.isHidden = false
+        retryButton.isHidden = false
         loadingSpinner.stopAnimating()
     }
 }

@@ -10,13 +10,13 @@ import AVFoundation
 
 class PhotoTaker: NSObject {
     // AV resources
-    let photoQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL)
+    let photoQueue = DispatchQueue(label: "session queue", attributes: DispatchQueueAttributes.serial)
     var photoSession: AVCaptureSession?
     var photoOutput: AVCaptureStillImageOutput?
     var selfieInput: AVCaptureInput?
-    var selfieData: NSData?
+    var selfieData: Data?
     var rearInput: AVCaptureInput?
-    var rearData: NSData?
+    var rearData: Data?
 
     // State
     var hasPhotoPermissions = false
@@ -35,7 +35,7 @@ class PhotoTaker: NSObject {
         })
     }
     
-    func takePhotos(cb: (NSError?, selfieData: NSData?, rearData: NSData?) -> Void) {
+    func takePhotos(_ cb: (NSError?, selfieData: Data?, rearData: Data?) -> Void) {
         if( initializationError != nil ) {
             return cb(initializationError!, selfieData: nil, rearData: nil)
         }
@@ -70,7 +70,7 @@ class PhotoTaker: NSObject {
                 return cb(err, selfieData: self.selfieData, rearData: nil)
             }
 
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, TPTInterval.PhotoSwitchDelay), self.photoQueue, {
+            self.photoQueue.after(when: DispatchTime.now() + Double(TPTInterval.PhotoSwitchDelay) / Double(NSEC_PER_SEC), block: {
                 self.takePhoto({ err, data in
                     if( err != nil ) {
                         return cb(err, selfieData: self.selfieData, rearData: nil)
@@ -89,15 +89,15 @@ class PhotoTaker: NSObject {
     }
 
     func requestPermissions() {
-        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { success in
+        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { success in
             self.hasPhotoPermissions = success
             if( success ) {
-                dispatch_resume(self.photoQueue)
+                self.photoQueue.resume()
             }
         })
     }
     
-    private func takePhoto(cb: (NSError?, data: NSData?) -> Void) {
+    private func takePhoto(_ cb: (NSError?, data: Data?) -> Void) {
         if( photoOutput == nil ) {
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
@@ -106,10 +106,10 @@ class PhotoTaker: NSObject {
             return cb(err, data: nil)
         }
         
-        dispatch_async(photoQueue, {
+        photoQueue.async(execute: {
             
             let output = self.photoOutput!
-            let connection = output.connectionWithMediaType(AVMediaTypeVideo)
+            let connection = output.connection(withMediaType: AVMediaTypeVideo)
             
             if( connection == nil ) {
                 let err = NSError(domain: "tempted", code: 2, userInfo: [
@@ -119,7 +119,7 @@ class PhotoTaker: NSObject {
                 return cb(err, data: nil)
             }
             
-            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { buffer, error in
+            output.captureStillImageAsynchronously(from: connection, completionHandler: { buffer, error in
                 if( error != nil ) {
                     return cb(error, data: nil)
                 }
@@ -129,27 +129,27 @@ class PhotoTaker: NSObject {
         })
     }
     
-    private func prepCameras(cb: (NSError?) -> Void) {
+    private func prepCameras(_ cb: (NSError?) -> Void) {
         photoSession = AVCaptureSession()
         
-        switch( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ) {
-        case .Authorized:
+        switch( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ) {
+        case .authorized:
             hasPhotoPermissions = true
             break
-        case .NotDetermined:
-            dispatch_suspend(photoQueue)
+        case .notDetermined:
+            photoQueue.suspend()
         default:
             hasPhotoPermissions = false
         }
         
-        dispatch_async(photoQueue, {
+        photoQueue.async(execute: {
             if( !self.hasPhotoPermissions ) {
                 let err = TPTError.PhotoPermissionsDeclined
                 return cb(err)
             }
 
-            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-            if( devices.count == 0 ) {
+            let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+            if( devices?.count == 0 ) {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("No AVCapture devices.", comment: "internal error reason for no devices found")
@@ -158,13 +158,13 @@ class PhotoTaker: NSObject {
                 return cb(err)
             }
             
-            var selfieDevice = devices[0]
-            var photoDevice  = devices[0]
+            var selfieDevice = devices?[0]
+            var photoDevice  = devices?[0]
             
-            for device in devices {
-                if( device.position == AVCaptureDevicePosition.Back ) {
+            for device in devices! {
+                if( device.position == AVCaptureDevicePosition.back ) {
                     photoDevice = device
-                } else if( device.position == AVCaptureDevicePosition.Front ) {
+                } else if( device.position == AVCaptureDevicePosition.front ) {
                     selfieDevice = device
                 }
             }
@@ -210,7 +210,7 @@ class PhotoTaker: NSObject {
 
             session.commitConfiguration()
             session.startRunning()
-            if( !session.running ) {
+            if( !session.isRunning ) {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo session didn't start.", comment: "internal error reason for not being able to start camera session")

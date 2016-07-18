@@ -9,11 +9,11 @@
 import Foundation
 import RealmSwift
 
-class Urge:Object {
+class Urge:RealmSwift.Object {
     dynamic var id=""
-    dynamic var createdAt = NSDate(timeIntervalSince1970: 1)
-    dynamic var photo: NSData? = nil
-    dynamic var selfie: NSData? = nil
+    dynamic var createdAt = Date(timeIntervalSince1970: 1)
+    dynamic var photo: Data? = nil
+    dynamic var selfie: Data? = nil
     dynamic var lat = 0.0
     dynamic var lng = 0.0
 
@@ -29,34 +29,34 @@ class Urge:Object {
         return ["createdAt", "id"]
     }
     
-    func mapImageUrl(width: Int, height: Int) -> NSURL? {
+    func mapImageUrl(_ width: Int, height: Int) -> URL? {
         let str = "https://maps.googleapis.com/maps/api/staticmap?center=\(lat)+\(lng)&size=\(width*2)x\(height*2)&sensor=false&markers=\(lat)+\(lng)"
-        return NSURL(string: str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+        return URL(string: str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
     }
     
     func humanTime() -> String {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         
-        return formatter.stringFromDate(createdAt)
+        return formatter.string(from: createdAt)
     }
     
     func humanDay() -> String {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
         
-        return formatter.stringFromDate(createdAt)
+        return formatter.string(from: createdAt)
     }
     
     func debugId() -> String {
-        return id.componentsSeparatedByString("-")[0]
+        return id.components(separatedBy: "-")[0]
     }
     
     func isNight() -> Bool {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "HH"
 
-        let hour = Int(formatter.stringFromDate(createdAt))
+        let hour = Int(formatter.string(from: createdAt))
         return hour <= 6 || hour >= 20
     }
     
@@ -68,7 +68,7 @@ class Urge:Object {
                 if( oldSchemaVersion < 1 ) {
                     migration.enumerate(Urge.className()) { oldObject, newObject in
                         let oldId = oldObject!["id"]
-                        newObject!["id"] = oldId == nil ? NSUUID().UUIDString : oldId
+                        newObject!["id"] = oldId == nil ? UUID().uuidString : oldId
                     }
                 }
                 

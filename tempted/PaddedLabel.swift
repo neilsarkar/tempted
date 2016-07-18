@@ -14,9 +14,9 @@ import UIKit
     @IBInspectable var leftInset: CGFloat = 10.0
     @IBInspectable var rightInset: CGFloat = 10.0
 
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
     
     override func intrinsicContentSize() -> CGSize {

@@ -15,7 +15,7 @@ class PermissionsNeededViewController : UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
 
-    var appSettings: NSURL?
+    var appSettings: URL?
     var labelText: String?
 
     var reason: String? {
@@ -26,10 +26,10 @@ class PermissionsNeededViewController : UIViewController {
         super.viewDidLoad()
         
         subscribe()
-        appSettings = NSURL(string: UIApplicationOpenSettingsURLString)
+        appSettings = URL(string: UIApplicationOpenSettingsURLString)
 
         if( appSettings == nil ) {
-            settingsButton.hidden = true
+            settingsButton.isHidden = true
         }
         
         if( labelText != nil ) {
@@ -46,22 +46,22 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     private func subscribe() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(checkPermissions), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     internal func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     internal func checkPermissions() {
         if( reason == TPTString.PhotoReason ) {
-            if( AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized ) {
+            if( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized ) {
                 dismiss()
             }
         } else if( reason == TPTString.LocationReason ) {
             if( CLLocationManager.locationServicesEnabled() &&
-                CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse ) {
+                CLLocationManager.authorizationStatus() == .authorizedWhenInUse ) {
                 dismiss()
             }
         } else {
@@ -69,7 +69,7 @@ class PermissionsNeededViewController : UIViewController {
         }
     }
     
-    @IBAction func settingsButtonTapped(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(appSettings!)
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {
+        UIApplication.shared().openURL(appSettings!)
     }
 }
