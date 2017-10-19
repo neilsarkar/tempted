@@ -8,7 +8,6 @@
 
 import UIKit
 import Crashlytics
-import Haneke
 
 // TODO: refactor this to use inheritance instead of just copying the other thing
 class UrgeCellMapOnly : UICollectionViewCell {
@@ -50,21 +49,22 @@ class UrgeCellMapOnly : UICollectionViewCell {
     
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
-                if( error?.code != -1009 ) {
-                    print("Unknown error", error)
-                }
-                DispatchQueue.main.async {
-                    self.showLoadFailed()
-                }
-                
-                }, success: { image in
-                    self.mapImageView.isOpaque = false
-                    self.mapImageView.image = image
-                    DispatchQueue.main.async {
-                        self.showLoaded()
-                    }
-            })
+            print("Fuck legacy users")
+//            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
+//                if( error?.code != -1009 ) {
+//                    print("Unknown error", error)
+//                }
+//                DispatchQueue.main.async {
+//                    self.showLoadFailed()
+//                }
+//
+//                }, success: { image in
+//                    self.mapImageView.isOpaque = false
+//                    self.mapImageView.image = image
+//                    DispatchQueue.main.async {
+//                        self.showLoaded()
+//                    }
+//            })
         } else {
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
         }

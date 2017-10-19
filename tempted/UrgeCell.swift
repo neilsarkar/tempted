@@ -8,7 +8,6 @@
 
 import UIKit
 import Crashlytics
-import Haneke
 
 class UrgeCell : UICollectionViewCell {
     var urge: Urge! {
@@ -81,21 +80,22 @@ class UrgeCell : UICollectionViewCell {
     
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
-                if( error?.code != -1009 ) {
-                    print("Unknown error", error)
-                }
-                DispatchQueue.main.async {
-                    self.showLoadFailed()
-                }
-
-            }, success: { image in
-                self.mapImageView.isOpaque = false
-                self.mapImageView.image = image
-                DispatchQueue.main.async {
-                    self.showLoaded()
-                }
-            })
+            print("Skipping mapImageView")
+//            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
+//                if( error?.code != -1009 ) {
+//                    print("Unknown error", error)
+//                }
+//                DispatchQueue.main.async {
+//                    self.showLoadFailed()
+//                }
+//
+//            }, success: { image in
+//                self.mapImageView.isOpaque = false
+//                self.mapImageView.image = image
+//                DispatchQueue.main.async {
+//                    self.showLoaded()
+//                }
+//            })
         } else {
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
         }
