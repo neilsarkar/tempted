@@ -121,7 +121,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
 
 //  TODO: move this to containing view controller
-    internal func save() {
+    @objc internal func save() {
         creator.save({ err in
             if( err == nil ) { return }
 
@@ -177,7 +177,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
 //  TODO: move this to containing view controller
-    internal func showMapPermissionNeeded() {
+    @objc internal func showMapPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
         DispatchQueue.main.async {
             self.permissionNeeded = TPTString.LocationReason
@@ -202,7 +202,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
     }
     
-    internal func handleUrgeAdded() {
+    @objc internal func handleUrgeAdded() {
         let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems
         // if only the button cell is visible, no need to reload data since it will be available once the user scrolls
         if( indexPathsForVisibleItems?.count == 1 &&
@@ -212,7 +212,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         collectionView?.reloadData()
     }
     
-    internal func handleUrgeDelete(_ note:Foundation.Notification) {
+    @objc internal func handleUrgeDelete(_ note:Foundation.Notification) {
         if( (note as NSNotification).userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
 
         let id = (note as NSNotification).userInfo!["id"] as! String

@@ -89,7 +89,7 @@ class PhotoTaker: NSObject {
     }
 
     func requestPermissions() {
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { success in
+        AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { success in
             self.hasPhotoPermissions = success
             if( success ) {
                 self.photoQueue.resume()
@@ -109,7 +109,7 @@ class PhotoTaker: NSObject {
         photoQueue.async(execute: {
             
             let output = self.photoOutput!
-            let connection = output.connection(withMediaType: AVMediaTypeVideo)
+            let connection = output.connection(with: AVMediaType.video)
             
             if( connection == nil ) {
                 let err = NSError(domain: "tempted", code: 2, userInfo: [
@@ -119,12 +119,12 @@ class PhotoTaker: NSObject {
                 return cb(err, nil)
             }
             
-            output.captureStillImageAsynchronously(from: connection, completionHandler: { buffer, error in
+            output.captureStillImageAsynchronously(from: connection!, completionHandler: { buffer, error in
                 if( error != nil ) {
                     return cb(error! as NSError, nil)
                 }
                 
-                return cb(nil, AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
+                return cb(nil, AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer!))
             })
         })
     }
@@ -132,7 +132,7 @@ class PhotoTaker: NSObject {
     private func prepCameras(_ cb: @escaping (NSError?) -> Void) {
         photoSession = AVCaptureSession()
         
-        switch( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ) {
+        switch( AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ) {
         case .authorized:
             hasPhotoPermissions = true
             break
@@ -148,8 +148,8 @@ class PhotoTaker: NSObject {
                 return cb(err)
             }
 
-            let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
-            if( devices?.count == 0 ) {
+            let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+            if( devices.count == 0 ) {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("No AVCapture devices.", comment: "internal error reason for no devices found")
@@ -158,13 +158,13 @@ class PhotoTaker: NSObject {
                 return cb(err)
             }
             
-            var selfieDevice = devices?[0]
-            var photoDevice  = devices?[0]
+            var selfieDevice = devices[0]
+            var photoDevice  = devices[0]
             
-            for device in devices! {
-                if( (device as! AVCaptureDevice).position == .back ) {
+            for device in devices {
+                if( (device ).position == .back ) {
                     photoDevice = device
-                } else if( (device as! AVCaptureDevice).position == .front ) {
+                } else if( (device ).position == .front ) {
                     selfieDevice = device
                 }
             }
@@ -174,18 +174,18 @@ class PhotoTaker: NSObject {
             session.beginConfiguration()
             
             do {
-                self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice as! AVCaptureDevice)
+                self.selfieInput = try AVCaptureDeviceInput.init(device: selfieDevice )
             } catch let err as NSError {
                 return cb(err)
             }
             
             do {
-                self.rearInput = try AVCaptureDeviceInput.init(device: photoDevice as! AVCaptureDevice)
+                self.rearInput = try AVCaptureDeviceInput.init(device: photoDevice )
             } catch let err as NSError {
                 return cb(err)
             }
             
-            if( !session.canAddInput(self.selfieInput) ) {
+            if( !session.canAddInput(self.selfieInput!) ) {
                 let err = NSError(domain: "tempted", code: 1, userInfo: [
                     NSLocalizedDescriptionKey: NSLocalizedString("Error prepping cameras", comment: "internal error description for initializing cameras"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("Can't add selfie input.", comment: "internal error reason for not being able to add selfie input")
@@ -193,7 +193,7 @@ class PhotoTaker: NSObject {
 
                 return cb(err)
             }
-            session.addInput(self.selfieInput)
+            session.addInput(self.selfieInput!)
             
             let stillImageOutput = AVCaptureStillImageOutput()
             if( !session.canAddOutput(stillImageOutput) ) {
@@ -238,8 +238,8 @@ class PhotoTaker: NSObject {
             newInput = self.selfieInput
         }
         
-        session.removeInput(oldInput)
-        if( !session.canAddInput(newInput) ) {
+        session.removeInput(oldInput!)
+        if( !session.canAddInput(newInput!) ) {
             // TODO: set up real error codes
             let err = NSError(domain: "tempted", code: 1, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error switching camera inputs", comment: "internal error description for switching from front facing camera to rear facing camera"),
@@ -247,7 +247,7 @@ class PhotoTaker: NSObject {
             ])
             return err
         }
-        session.addInput(newInput)
+        session.addInput(newInput!)
         session.commitConfiguration()
         isSelfie = !isSelfie
         return nil

@@ -13,11 +13,11 @@ import AVFoundation
 // TODO: manage requesting permissions from here and send events (how to hook into delegate method of location manager?)
 class Permissions: NSObject {
     func hasPhoto() -> Bool {
-        return AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized
+        return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized
     }
     
     func canRequestPhoto() -> Bool {
-        return AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .notDetermined
+        return AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .notDetermined
     }
     
     func hasLocation() -> Bool {

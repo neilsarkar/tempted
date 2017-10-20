@@ -65,7 +65,7 @@ class ButtonCell : UICollectionViewCell {
         })
     }
 
-    internal func showReleased() {
+    @objc internal func showReleased() {
         let wasPushed = isPushed
         let defaultText = NSLocalizedString("catch a habit", comment: "Onboarding text to contextualize main button press")
         

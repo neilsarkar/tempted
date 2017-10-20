@@ -50,13 +50,13 @@ class PermissionsNeededViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    internal func dismissSelf() {
+    @objc internal func dismissSelf() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    internal func checkPermissions() {
+    @objc internal func checkPermissions() {
         if( reason == TPTString.PhotoReason ) {
-            if( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized ) {
+            if( AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized ) {
                 dismissSelf()
             }
         } else if( reason == TPTString.LocationReason ) {

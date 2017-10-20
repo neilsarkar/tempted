@@ -10,16 +10,16 @@ import Foundation
 import RealmSwift
 
 class Urge:RealmSwift.Object {
-    dynamic var id=""
-    dynamic var createdAt = Date(timeIntervalSince1970: 1)
-    dynamic var photo: Data? = nil
-    dynamic var selfie: Data? = nil
-    dynamic var lat = 0.0
-    dynamic var lng = 0.0
+    @objc dynamic var id=""
+    @objc dynamic var createdAt = Date(timeIntervalSince1970: 1)
+    @objc dynamic var photo: Data? = nil
+    @objc dynamic var selfie: Data? = nil
+    @objc dynamic var lat = 0.0
+    @objc dynamic var lng = 0.0
 
     // TODO: use data properties directly
-    dynamic var photoFile=""
-    dynamic var selfieFile=""
+    @objc dynamic var photoFile=""
+    @objc dynamic var selfieFile=""
     
     override class func primaryKey() -> String? {
         return "id"

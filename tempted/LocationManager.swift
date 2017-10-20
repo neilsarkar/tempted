@@ -50,7 +50,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    internal func handleForeground(_ note: Notification) {
+    @objc internal func handleForeground(_ note: Notification) {
         if( canCaptureLocation() ) {
             captureLocation()
         }
