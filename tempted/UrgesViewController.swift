@@ -24,7 +24,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
+        urges = realm.objects(Urge.self).sorted(byKeyPath: "createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
     }
@@ -125,7 +125,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         creator.save({ err in
             if( err == nil ) { return }
 
-            NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: TPTNotification.UrgeCreateFailed), object: self)
+            NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)
             switch(err!.code) {
             case TPTError.MapPermissionsDeclined.code:
                 self.showMapPermissionNeeded()
