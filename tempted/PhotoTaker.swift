@@ -70,19 +70,19 @@ class PhotoTaker: NSObject {
                 return cb(err, self.selfieData, nil)
             }
 
-            self.photoQueue.after(when: DispatchTime.now() + Double(TPTInterval.PhotoSwitchDelay) / Double(NSEC_PER_SEC), block: {
+            self.photoQueue.asyncAfter(deadline: DispatchTime.now() + Double(TPTInterval.PhotoSwitchDelay) / Double(NSEC_PER_SEC), execute: {
                 self.takePhoto({ err, data in
                     if( err != nil ) {
-                        return cb(err, selfieData: self.selfieData, rearData: nil)
+                        return cb(err, self.selfieData, nil)
                     }
                     
                     self.rearData = data
                     let err = self.switchCameras()
                     if( err != nil ) {
-                        return cb(err, selfieData: self.selfieData, rearData: nil)
+                        return cb(err, self.selfieData, nil)
                     }
                     
-                    return cb(err, selfieData: self.selfieData, rearData: self.rearData)
+                    return cb(err, self.selfieData, self.rearData)
                 })
             })
         })
@@ -129,7 +129,7 @@ class PhotoTaker: NSObject {
         })
     }
     
-    private func prepCameras(_ cb: (NSError?) -> Void) {
+    private func prepCameras(_ cb: @escaping (NSError?) -> Void) {
         photoSession = AVCaptureSession()
         
         switch( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) ) {
@@ -162,9 +162,9 @@ class PhotoTaker: NSObject {
             var photoDevice  = devices?[0]
             
             for device in devices! {
-                if( device.position == AVCaptureDevicePosition.back ) {
+                if( (device as! AVCaptureDevice).position == .back ) {
                     photoDevice = device
-                } else if( device.position == AVCaptureDevicePosition.front ) {
+                } else if( (device as! AVCaptureDevice).position == .front ) {
                     selfieDevice = device
                 }
             }
