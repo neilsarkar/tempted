@@ -80,7 +80,7 @@ class UrgeCell : UICollectionViewCell {
     
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            print("Skipping mapImageView")
+            print("Skipping mapImageView", mapUrl)
 //            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
 //                if( error?.code != -1009 ) {
 //                    print("Unknown error", error)
@@ -97,7 +97,7 @@ class UrgeCell : UICollectionViewCell {
 //                }
 //            })
         } else {
-            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
+            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) ?? "unknown map URL")
         }
     }
     

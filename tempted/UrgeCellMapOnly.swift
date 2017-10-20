@@ -49,7 +49,7 @@ class UrgeCellMapOnly : UICollectionViewCell {
     
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            print("Fuck legacy users")
+            print("Fuck legacy users", mapUrl)
 //            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
 //                if( error?.code != -1009 ) {
 //                    print("Unknown error", error)
@@ -66,7 +66,7 @@ class UrgeCellMapOnly : UICollectionViewCell {
 //                    }
 //            })
         } else {
-            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
+            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) ?? "unknown URL")
         }
     }
     

@@ -56,7 +56,7 @@ class Urge:RealmSwift.Object {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH"
 
-        let hour = Int(formatter.string(from: createdAt))
+        let hour = Int(formatter.string(from: createdAt))!
         return hour <= 6 || hour >= 20
     }
     
@@ -66,17 +66,17 @@ class Urge:RealmSwift.Object {
             
             migrationBlock: { migration, oldSchemaVersion in
                 if( oldSchemaVersion < 1 ) {
-                    migration.enumerate(Urge.className()) { oldObject, newObject in
+                    migration.enumerateObjects(ofType: Urge.className(), { oldObject, newObject in
                         let oldId = oldObject!["id"]
                         newObject!["id"] = oldId == nil ? UUID().uuidString : oldId
-                    }
+                    })
                 }
                 
                 if( oldSchemaVersion < 3 ) {
-                    migration.enumerate(Urge.className()) { oldObject, newObject in
+                    migration.enumerateObjects(ofType: Urge.className(), { oldObject, newObject in
                         newObject!["photoFile"] = ""
                         newObject!["selfieFile"] = ""
-                    }
+                    })
                 }
             }
         )
