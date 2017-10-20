@@ -19,10 +19,12 @@ import UIKit
         super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        var size = super.intrinsicContentSize()
-        size.height += topInset + bottomInset
-        size.width  += leftInset + rightInset
-        return size
+    override public var intrinsicContentSize: CGSize {
+        get {
+            var size = super.intrinsicContentSize
+            size.height += topInset + bottomInset
+            size.width  += leftInset + rightInset
+            return size
+        }
     }
 }

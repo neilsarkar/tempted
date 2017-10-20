@@ -32,7 +32,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
 //  TODO: move to containing VC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let defaults = UserDefaults.standard()
+        let defaults = UserDefaults.standard
         
         if( creator == nil ) { creator = UrgeSaver() }
         if( !defaults.bool(forKey: "com.superserious.tempted.onboarded") ) {
@@ -42,8 +42,10 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
 //  TODO: move to containing VC
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .portrait
+        }
     }
     
 // MARK: CollectionView Layout
@@ -110,7 +112,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
 
 // MARK: Event Handling
     internal func subscribe() {
-        let noteCenter = NotificationCenter.default()
+        let noteCenter = NotificationCenter.default
 
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
@@ -123,7 +125,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         creator.save({ err in
             if( err == nil ) { return }
 
-            NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: TPTNotification.UrgeCreateFailed), object: self)
+            NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: TPTNotification.UrgeCreateFailed), object: self)
             switch(err!.code) {
             case TPTError.MapPermissionsDeclined.code:
                 self.showMapPermissionNeeded()
@@ -167,7 +169,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
                 alertController.addAction(cancelAction)
                 self.present(alertController, animated: true) {}
                 
-                print(err)
+                print(err!)
                 Crashlytics.sharedInstance().recordError(err!)
             }
             
@@ -191,17 +193,17 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
     }
 //  TODO: move this to containing view controller
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("preparing for segue", segue.identifier)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("preparing for segue", segue.identifier ?? "unknown identifier")
         super.prepare(for: segue, sender: sender)
-        if( segue.destinationViewController.isKind(PermissionsNeededViewController) ) {
-            let vc = segue.destinationViewController as! PermissionsNeededViewController
+        if( segue.destination.isKind(of: PermissionsNeededViewController.self) ) {
+            let vc = segue.destination as! PermissionsNeededViewController
             vc.reason = permissionNeeded!
         }
     }
     
     internal func handleUrgeAdded() {
-        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems()
+        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems
         // if only the button cell is visible, no need to reload data since it will be available once the user scrolls
         if( indexPathsForVisibleItems?.count == 1 &&
             ((indexPathsForVisibleItems?[0])! as NSIndexPath).section == 0 ) {
@@ -216,9 +218,9 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         let id = (note as NSNotification).userInfo!["id"] as! String
         
         let realm = try! Realm()
-        let badUrge = realm.objectForPrimaryKey(Urge.self, key: id)!
+        let badUrge = realm.object(ofType: Urge.self, forPrimaryKey: id)
         try! realm.write {
-            realm.delete(badUrge)
+            realm.delete(badUrge!)
         }
         
         collectionView?.reloadData()

@@ -10,7 +10,7 @@ import AVFoundation
 
 class PhotoTaker: NSObject {
     // AV resources
-    let photoQueue = DispatchQueue(label: "session queue", attributes: DispatchQueueAttributes.serial)
+    let photoQueue = DispatchQueue(label: "session queue")
     var photoSession: AVCaptureSession?
     var photoOutput: AVCaptureStillImageOutput?
     var selfieInput: AVCaptureInput?
@@ -35,9 +35,9 @@ class PhotoTaker: NSObject {
         })
     }
     
-    func takePhotos(_ cb: (NSError?, selfieData: Data?, rearData: Data?) -> Void) {
+    func takePhotos(_ cb: @escaping (NSError?, _ selfieData: Data?, _ rearData: Data?) -> Void) {
         if( initializationError != nil ) {
-            return cb(initializationError!, selfieData: nil, rearData: nil)
+            return cb(initializationError!, nil, nil)
         }
         
         if( !isInitialized ) {
@@ -46,7 +46,7 @@ class PhotoTaker: NSObject {
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Cameras not initialized", comment: "internal error reason for initialization not complete"),
                 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString("Gah, I'm still trying to find your camera! Try back soon :/", comment: "recovery message for user tapping the urge button before we're ready")
             ])
-            return cb(err, selfieData: nil, rearData: nil)
+            return cb(err, nil, nil)
         }
         
         if( self.rearInput == nil || self.selfieInput == nil ) {
@@ -56,18 +56,18 @@ class PhotoTaker: NSObject {
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("One of the inputs is nil", comment: "internal error reason for nil photo inputs")
             ])
             
-            return cb(err, selfieData: nil, rearData: nil)
+            return cb(err, nil, nil)
         }
         
         
         takePhoto({ err, data in
-            if( err != nil) { return cb(err, selfieData: nil, rearData: nil) }
+            if( err != nil) { return cb(err, nil, nil) }
 
             // TODO: don't store on self
             self.selfieData = data
             let err = self.switchCameras()
             if( err != nil ) {
-                return cb(err, selfieData: self.selfieData, rearData: nil)
+                return cb(err, self.selfieData, nil)
             }
 
             self.photoQueue.after(when: DispatchTime.now() + Double(TPTInterval.PhotoSwitchDelay) / Double(NSEC_PER_SEC), block: {
@@ -97,13 +97,13 @@ class PhotoTaker: NSObject {
         })
     }
     
-    private func takePhoto(_ cb: (NSError?, data: Data?) -> Void) {
+    private func takePhoto(_ cb: (NSError?, _ data: Data?) -> Void) {
         if( photoOutput == nil ) {
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
                 NSLocalizedFailureReasonErrorKey: NSLocalizedString("Photo output is nil", comment: "internal error reason for nil output connection")
             ])
-            return cb(err, data: nil)
+            return cb(err, nil)
         }
         
         photoQueue.async(execute: {
