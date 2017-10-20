@@ -38,6 +38,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Mapping your temptations will help find patterns.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use your camera to capture a snapshot of your environment.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
