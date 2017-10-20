@@ -51,7 +51,7 @@ class ButtonCell : UICollectionViewCell {
         infoButton.isHidden = true
         scrollHint.alpha = 0.0
 
-        timer = Timer.scheduledTimer(timeInterval: TPTInterval.Respawn, target: self, selector: #selector(showReleased as (Void) -> Void), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: TPTInterval.Respawn, target: self, selector: #selector(showReleased as () -> Void), userInfo: nil, repeats: false)
 
         DispatchQueue.main.async(execute: {
             UIView.transition(with: self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {

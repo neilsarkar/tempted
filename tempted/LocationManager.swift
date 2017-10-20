@@ -31,7 +31,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
         manager.stopUpdatingLocation()
         isCapturingLocation = false
