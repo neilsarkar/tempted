@@ -97,7 +97,7 @@ class PhotoTaker: NSObject {
         })
     }
     
-    private func takePhoto(_ cb: (NSError?, _ data: Data?) -> Void) {
+    private func takePhoto(_ cb: @escaping (NSError?, _ data: Data?) -> Void) {
         if( photoOutput == nil ) {
             let err = NSError(domain: "tempted", code: 2, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
@@ -116,15 +116,15 @@ class PhotoTaker: NSObject {
                     NSLocalizedDescriptionKey: NSLocalizedString("Error taking photo", comment: "internal error description for taking photos"),
                     NSLocalizedFailureReasonErrorKey: NSLocalizedString("Selfie connection is nil", comment: "internal error reason for nil output connection")
                 ])
-                return cb(err, data: nil)
+                return cb(err, nil)
             }
             
             output.captureStillImageAsynchronously(from: connection, completionHandler: { buffer, error in
                 if( error != nil ) {
-                    return cb(error, data: nil)
+                    return cb(error! as NSError, nil)
                 }
                 
-                return cb(nil, data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
+                return cb(nil, AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer))
             })
         })
     }
