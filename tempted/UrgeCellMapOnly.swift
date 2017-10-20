@@ -24,7 +24,7 @@ class UrgeCellMapOnly : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
 
     @IBAction func handleDelete(_ sender: AnyObject) {
-        NotificationCenter.default().post(name: Notification.Name(rawValue: TPTNotification.UrgeDeleted), object: self, userInfo: ["id": urge.id])
+        NotificationCenter.default.post(name: TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
     }
     
     @IBAction func retryTapped(_ sender: UIButton) {

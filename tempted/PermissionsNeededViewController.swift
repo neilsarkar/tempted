@@ -46,23 +46,23 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     private func subscribe() {
-        NotificationCenter.default().addObserver(self, selector: #selector(dismiss), name: TPTNotification.MapPermissionsGranted, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dismissSelf), name: TPTNotification.MapPermissionsGranted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    internal func dismiss() {
+    internal func dismissSelf() {
         self.dismiss(animated: true, completion: nil)
     }
     
     internal func checkPermissions() {
         if( reason == TPTString.PhotoReason ) {
             if( AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .authorized ) {
-                dismiss()
+                dismissSelf()
             }
         } else if( reason == TPTString.LocationReason ) {
             if( CLLocationManager.locationServicesEnabled() &&
                 CLLocationManager.authorizationStatus() == .authorizedWhenInUse ) {
-                dismiss()
+                dismissSelf()
             }
         } else {
             print("Unknown Reason! Not dismissing")
@@ -70,6 +70,6 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
-        UIApplication.shared().openURL(appSettings!)
+        UIApplication.shared.openURL(appSettings!)
     }
 }

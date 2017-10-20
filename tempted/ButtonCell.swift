@@ -35,11 +35,11 @@ class ButtonCell : UICollectionViewCell {
         if( isPushed ) { return }
         isPushed = true
         showPushed()
-        NotificationCenter.default().post(name: Notification.Name(rawValue: TPTNotification.CreateUrge), object: self)
+        NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
     }
     
     private func subscribe() {
-        let noteCenter = NotificationCenter.default()
+        let noteCenter = NotificationCenter.default
         noteCenter.addObserver(self, selector: #selector(showReleased), name: TPTNotification.UrgeCreateFailed, object: nil)
     }
     

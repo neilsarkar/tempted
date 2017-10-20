@@ -40,13 +40,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch(status) {
         case .authorizedWhenInUse:
-            NotificationCenter.default().post(name: Notification.Name(rawValue: TPTNotification.MapPermissionsGranted), object: self)
+            NotificationCenter.default.post(name: TPTNotification.MapPermissionsGranted, object: self)
             captureLocation()
             break
         case .notDetermined:
             break
         default:
-            NotificationCenter.default().post(name: Notification.Name(rawValue: TPTNotification.ErrorNoMapPermissions), object: self)
+            NotificationCenter.default.post(name: TPTNotification.ErrorNoMapPermissions, object: self)
         }
     }
 
@@ -57,7 +57,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func subscribe() {
-        let noteCenter = NotificationCenter.default()
+        let noteCenter = NotificationCenter.default
 
         // TODO: feels like a bad separation of concerns to have to include UIKit
         noteCenter.addObserver(self, selector: #selector(handleForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)

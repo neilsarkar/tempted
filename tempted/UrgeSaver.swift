@@ -80,7 +80,7 @@ class UrgeSaver: NSObject {
                 }
 
                 
-                NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: TPTNotification.UrgeCreated), object: self)
+                NotificationCenter.default.post(name: TPTNotification.UrgeCreated, object: self)
             })
         })
     }
