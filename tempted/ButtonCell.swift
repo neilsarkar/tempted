@@ -9,10 +9,10 @@
 import UIKit
 
 class ButtonCell : UICollectionViewCell {
-    var timer: NSTimer?
-    let releasedImage = UIImage(named: "LiveMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
-    let pushedImage = UIImage(named: "DeadMosquitto")?.imageWithRenderingMode(.AlwaysOriginal)
-    let infoImage = UIImage(named: "QuestionMark")?.imageWithRenderingMode(.AlwaysOriginal)
+    var timer: Timer?
+    let releasedImage = UIImage(named: "LiveMosquitto")?.withRenderingMode(.alwaysOriginal)
+    let pushedImage = UIImage(named: "DeadMosquitto")?.withRenderingMode(.alwaysOriginal)
+    let infoImage = UIImage(named: "QuestionMark")?.withRenderingMode(.alwaysOriginal)
     var isPushed = false
 
     @IBOutlet weak var scrollHint: UIImageView!
@@ -23,70 +23,70 @@ class ButtonCell : UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        button.setTitle("", forState: .Normal)
-        infoButton.setTitle("", forState: .Normal)
-        infoButton.setImage(infoImage, forState: .Normal)
+        button.setTitle("", for: UIControlState())
+        infoButton.setTitle("", for: UIControlState())
+        infoButton.setImage(infoImage, for: UIControlState())
         showReleased()
-        scrollHint.hidden = true
+        scrollHint.isHidden = true
         subscribe()
     }
     
-    @IBAction func handleButtonTapped(sender: UIButton) {
+    @IBAction func handleButtonTapped(_ sender: UIButton) {
         if( isPushed ) { return }
         isPushed = true
         showPushed()
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.CreateUrge, object: self)
+        NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
     }
     
     private func subscribe() {
-        let noteCenter = NSNotificationCenter.defaultCenter()
+        let noteCenter = NotificationCenter.default
         noteCenter.addObserver(self, selector: #selector(showReleased), name: TPTNotification.UrgeCreateFailed, object: nil)
     }
     
     internal func showPushed() {
-        button.setImage(pushedImage, forState: .Normal)
+        button.setImage(pushedImage, for: UIControlState())
         label.text = NSLocalizedString("saved.", comment: "Confirmation text after successful button press")
         label.textColor = UIColor.tmpGrey7DColor()
-        scrollHint.hidden = false
-        infoButton.hidden = true
+        scrollHint.isHidden = false
+        infoButton.isHidden = true
         scrollHint.alpha = 0.0
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(TPTInterval.Respawn, target: self, selector: #selector(showReleased as Void -> Void), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: TPTInterval.Respawn, target: self, selector: #selector(showReleased as () -> Void), userInfo: nil, repeats: false)
 
-        dispatch_async(dispatch_get_main_queue(), {
-            UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+        DispatchQueue.main.async(execute: {
+            UIView.transition(with: self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
                 self.label.textColor = UIColor.tmpGreyd5Color()
             }, completion: nil)
             
-            UIView.animateWithDuration(TPTInterval.PushReaction, animations: {
+            UIView.animate(withDuration: TPTInterval.PushReaction, animations: {
                 self.scrollHint.alpha = 1.0
             }, completion: nil)
 
         })
     }
 
-    internal func showReleased() {
+    @objc internal func showReleased() {
         let wasPushed = isPushed
         let defaultText = NSLocalizedString("catch a habit", comment: "Onboarding text to contextualize main button press")
         
         isPushed = false
         label.text = defaultText
-        scrollHint.hidden = true
-        infoButton.hidden = false
+        scrollHint.isHidden = true
+        infoButton.isHidden = false
 
         if( wasPushed ) {
-            dispatch_async(dispatch_get_main_queue(), {
-                UIView.transitionWithView(self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            DispatchQueue.main.async(execute: {
+                UIView.transition(with: self.label, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
                     self.label.text = defaultText
                 }, completion: nil)
                 
-                UIView.transitionWithView(self.button, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
-                    self.button.setImage(self.releasedImage, forState: .Normal)
+                UIView.transition(with: self.button, duration: TPTInterval.PushReaction, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    self.button.setImage(self.releasedImage, for: UIControlState())
                 }, completion: nil)                
             })
         } else {
             self.label.text = defaultText
-            self.button.setImage(self.releasedImage, forState: .Normal)
+            self.button.setImage(self.releasedImage, for: UIControlState())
         }
     }
 }

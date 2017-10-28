@@ -25,7 +25,7 @@ class UrgeSaver: NSObject {
         permissions = Permissions()
     }
     
-    func save(cb: (NSError?) -> Void) {
+    func save(_ cb: @escaping (NSError?) -> Void) {
         if( !permissions.hasPhoto() ) {
             if( permissions.canRequestPhoto() ) {
                 return cb(TPTError.PhotoPermissionsNotDetermined)
@@ -51,11 +51,11 @@ class UrgeSaver: NSObject {
             }
             
             // TODO: only do UI work on the main thread -- https://github.com/realm/realm-cocoa/issues/1445
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 let urge = Urge();
                 
-                urge.createdAt = NSDate();
-                let uuid = NSUUID().UUIDString
+                urge.createdAt = Date();
+                let uuid = UUID().uuidString
                 urge.id = uuid
                 if( self.locationManager.latlng != nil ) {
                     urge.lat = self.locationManager.latlng.latitude
@@ -80,7 +80,7 @@ class UrgeSaver: NSObject {
                 }
 
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreated, object: self)
+                NotificationCenter.default.post(name: TPTNotification.UrgeCreated, object: self)
             })
         })
     }

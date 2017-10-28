@@ -8,15 +8,14 @@
 
 import UIKit
 import Crashlytics
-import Haneke
 
 class UrgeCell : UICollectionViewCell {
     var urge: Urge! {
         didSet { render() }
     }
     
-    @IBAction func handleDelete(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
+    @IBAction func handleDelete(_ sender: AnyObject) {
+        NotificationCenter.default.post(name: TPTNotification.UrgeDeleted, object: self, userInfo: ["id": urge.id])
     }
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
@@ -35,8 +34,8 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var debugLabel: UILabel!
     
-    @IBAction func retryTapped(sender: UIButton) {
-        dispatch_async(dispatch_get_main_queue()) {
+    @IBAction func retryTapped(_ sender: UIButton) {
+        DispatchQueue.main.async {
             self.showLoading()
         }
         attemptLoadMapImage()
@@ -49,7 +48,7 @@ class UrgeCell : UICollectionViewCell {
         container.layer.cornerRadius = 5.0
         container.layer.masksToBounds = false
         container.layer.borderWidth = 1.0
-        container.layer.borderColor = UIColor.tmpWhiteFBColor().CGColor
+        container.layer.borderColor = UIColor.tmpWhiteFBColor().cgColor
         loadingSpinner.hidesWhenStopped = true
     }
     
@@ -64,40 +63,41 @@ class UrgeCell : UICollectionViewCell {
             timeBGImageView.image = UIImage(named: "DayBG")
         }
         // TODO: display debug label if debug build
-        debugLabel.text = urge.id.componentsSeparatedByString("-")[0]
+        debugLabel.text = urge.id.components(separatedBy: "-")[0]
     }
     
     private func loadPhotos() {
         if( urge.photo != nil ) {
-            self.photoImageView.opaque = false
-            self.photoImageView.image = UIImage(data: urge.photo!)
+            self.photoImageView.isOpaque = false
+            self.photoImageView.image = UIImage(data: urge.photo! as Data)
         }
 
         if( urge.selfie != nil ) {
-            self.selfieImageView.opaque = false
-            self.selfieImageView.image = UIImage(data: urge.selfie!)
+            self.selfieImageView.isOpaque = false
+            self.selfieImageView.image = UIImage(data: urge.selfie! as Data)
         }
     }
     
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
-                if( error?.code != -1009 ) {
-                    print("Unknown error", error)
-                }
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showLoadFailed()
-                }
-
-            }, success: { image in
-                self.mapImageView.opaque = false
-                self.mapImageView.image = image
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showLoaded()
-                }
-            })
+            print("Skipping mapImageView", mapUrl)
+//            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
+//                if( error?.code != -1009 ) {
+//                    print("Unknown error", error)
+//                }
+//                DispatchQueue.main.async {
+//                    self.showLoadFailed()
+//                }
+//
+//            }, success: { image in
+//                self.mapImageView.isOpaque = false
+//                self.mapImageView.image = image
+//                DispatchQueue.main.async {
+//                    self.showLoaded()
+//                }
+//            })
         } else {
-            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)))
+            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) ?? "unknown map URL")
         }
     }
     
@@ -105,22 +105,22 @@ class UrgeCell : UICollectionViewCell {
 
     private func showLoading() {
         loadingSpinner.startAnimating()
-        mapImageView.hidden = true
-        deleteButton.hidden = true
-        retryButton.hidden = true
-        mapLoadFailedLabel.hidden = true
+        mapImageView.isHidden = true
+        deleteButton.isHidden = true
+        retryButton.isHidden = true
+        mapLoadFailedLabel.isHidden = true
     }
     
     private func showLoaded() {
         loadingSpinner.stopAnimating()
-        mapImageView.hidden = false
-        deleteButton.hidden = false
+        mapImageView.isHidden = false
+        deleteButton.isHidden = false
     }
     
     private func showLoadFailed() {
         // TODO: should this use a different cell? is there a cleaner way of hiding one whole and showing the other?
-        mapLoadFailedLabel.hidden = false
-        retryButton.hidden = false
+        mapLoadFailedLabel.isHidden = false
+        retryButton.isHidden = false
         loadingSpinner.stopAnimating()
     }
 }

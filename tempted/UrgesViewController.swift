@@ -24,31 +24,33 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        urges = realm.objects(Urge).sorted("createdAt", ascending: false)
+        urges = realm.objects(Urge.self).sorted(byKeyPath: "createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
     }
     
 //  TODO: move to containing VC
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
         if( creator == nil ) { creator = UrgeSaver() }
-        if( !defaults.boolForKey("com.superserious.tempted.onboarded") ) {
-            self.performSegueWithIdentifier("ShowOnboardingVC", sender: self)
-            defaults.setBool(true, forKey: "com.superserious.tempted.onboarded")
+        if( !defaults.bool(forKey: "com.superserious.tempted.onboarded") ) {
+            self.performSegue(withIdentifier: "ShowOnboardingVC", sender: self)
+            defaults.set(true, forKey: "com.superserious.tempted.onboarded")
         }
     }
     
 //  TODO: move to containing VC
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .portrait
+        }
     }
     
 // MARK: CollectionView Layout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        if( indexPath.section == 0 ) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if( (indexPath as NSIndexPath).section == 0 ) {
             return self.view.frame.size
         }
 
@@ -64,27 +66,27 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: NSInteger) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: NSInteger) -> UIEdgeInsets {
         if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
 // MARK: Section and Cell Count
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if( section == 0 ) { return 1; }
         return urges == nil ? 0 : urges!.count
     }
     
 // MARK: Cell Initialization
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if( indexPath.section == 0 ) {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(topIdentifier, forIndexPath: indexPath) as! ButtonCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if( (indexPath as NSIndexPath).section == 0 ) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topIdentifier, for: indexPath) as! ButtonCell
             cell.showReleased()
             return cell
         }
@@ -94,23 +96,23 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         // TODO: share cell.urge = urge and return cell below
         // FIXME: simulator should use stock images
         if( urge.photo == nil && urge.selfie == nil ) {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeMapOnlyIdentifier, forIndexPath: indexPath) as! UrgeCellMapOnly
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeMapOnlyIdentifier, for: indexPath) as! UrgeCellMapOnly
             cell.urge = urge
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(urgeIdentifier, forIndexPath: indexPath) as! UrgeCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeIdentifier, for: indexPath) as! UrgeCell
             cell.urge = urge
             return cell
         }
     }
     
-    func urgeForIndexPath(indexPath: NSIndexPath) -> Urge {
-        return urges![indexPath.row]
+    func urgeForIndexPath(_ indexPath: IndexPath) -> Urge {
+        return urges![(indexPath as NSIndexPath).row]
     }
 
 // MARK: Event Handling
     internal func subscribe() {
-        let noteCenter = NSNotificationCenter.defaultCenter()
+        let noteCenter = NotificationCenter.default
 
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
@@ -119,11 +121,11 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
 
 //  TODO: move this to containing view controller
-    internal func save() {
+    @objc internal func save() {
         creator.save({ err in
             if( err == nil ) { return }
 
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.UrgeCreateFailed, object: self)
+            NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)
             switch(err!.code) {
             case TPTError.MapPermissionsDeclined.code:
                 self.showMapPermissionNeeded()
@@ -132,11 +134,11 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
                 self.showPhotoPermissionNeeded()
                 break
             case TPTError.PhotoPermissionsNotDetermined.code:
-                let alertController = UIAlertController(title: "Let me take a photo", message: "I need this.", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Let me take a photo", message: "I need this.", preferredStyle: .alert)
                 
 //              TODO: make this an NSLocalized string
-                let cancelAction = UIAlertAction(title: "Nope", style: .Default, handler: nil)
-                let okAction = UIAlertAction(title: "Ugh, fine", style: .Default, handler: { action in
+                let cancelAction = UIAlertAction(title: "Nope", style: .default, handler: nil)
+                let okAction = UIAlertAction(title: "Ugh, fine", style: .default, handler: { action in
                     self.creator.requestPhotoPermissions()
                 })
                 alertController.addAction(cancelAction)
@@ -144,13 +146,13 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
                 if #available(iOS 9, *) {
                     alertController.preferredAction = okAction
                 }
-                self.presentViewController(alertController, animated: true) {}
+                self.present(alertController, animated: true) {}
                 break
             case TPTError.MapPermissionsNotDetermined.code:
-                let alertController = UIAlertController(title: "What about maps?", message: "Can we do maps too?", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "What about maps?", message: "Can we do maps too?", preferredStyle: .alert)
 //              TODO: make this an NSLocalized string
-                let cancelAction = UIAlertAction(title: "Oh hell no", style: .Default, handler: nil)
-                let okAction = UIAlertAction(title: "This better be worth it", style: .Cancel, handler: { action in
+                let cancelAction = UIAlertAction(title: "Oh hell no", style: .default, handler: nil)
+                let okAction = UIAlertAction(title: "This better be worth it", style: .cancel, handler: { action in
                     self.creator.requestMapPermissions()
                 })
                 alertController.addAction(cancelAction)
@@ -158,16 +160,16 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
                 if #available(iOS 9, *) {
                     alertController.preferredAction = okAction
                 }
-                self.presentViewController(alertController, animated: true) {}
+                self.present(alertController, animated: true) {}
                 break
             default:
-                let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .alert)
                 
-                let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(cancelAction)
-                self.presentViewController(alertController, animated: true) {}
+                self.present(alertController, animated: true) {}
                 
-                print(err)
+                print(err!)
                 Crashlytics.sharedInstance().recordError(err!)
             }
             
@@ -175,50 +177,50 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
 //  TODO: move this to containing view controller
-    internal func showMapPermissionNeeded() {
+    @objc internal func showMapPermissionNeeded() {
         // TODO: why is this needed, since NSThread.isMainThread() returns true
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.permissionNeeded = TPTString.LocationReason
-            self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+            self.performSegue(withIdentifier: "ShowPermissionsNeededVC", sender: self)
         }
     }
 
 //  TODO: move this to containing view controller
     private func showPhotoPermissionNeeded() {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.permissionNeeded = TPTString.PhotoReason
-            self.performSegueWithIdentifier("ShowPermissionsNeededVC", sender: self)
+            self.performSegue(withIdentifier: "ShowPermissionsNeededVC", sender: self)
         }
     }
 //  TODO: move this to containing view controller
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("preparing for segue", segue.identifier)
-        super.prepareForSegue(segue, sender: sender)
-        if( segue.destinationViewController.isKindOfClass(PermissionsNeededViewController) ) {
-            let vc = segue.destinationViewController as! PermissionsNeededViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("preparing for segue", segue.identifier ?? "unknown identifier")
+        super.prepare(for: segue, sender: sender)
+        if( segue.destination.isKind(of: PermissionsNeededViewController.self) ) {
+            let vc = segue.destination as! PermissionsNeededViewController
             vc.reason = permissionNeeded!
         }
     }
     
-    internal func handleUrgeAdded() {
-        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems()
+    @objc internal func handleUrgeAdded() {
+        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems
         // if only the button cell is visible, no need to reload data since it will be available once the user scrolls
         if( indexPathsForVisibleItems?.count == 1 &&
-            indexPathsForVisibleItems?[0].section == 0 ) {
+            ((indexPathsForVisibleItems?[0])! as NSIndexPath).section == 0 ) {
             return
         }
         collectionView?.reloadData()
     }
     
-    internal func handleUrgeDelete(note:NSNotification) {
-        if( note.userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
+    @objc internal func handleUrgeDelete(_ note:Foundation.Notification) {
+        if( (note as NSNotification).userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
 
-        let id = note.userInfo!["id"] as! String
+        let id = (note as NSNotification).userInfo!["id"] as! String
         
         let realm = try! Realm()
-        let badUrge = realm.objectForPrimaryKey(Urge.self, key: id)!
+        let badUrge = realm.object(ofType: Urge.self, forPrimaryKey: id)
         try! realm.write {
-            realm.delete(badUrge)
+            realm.delete(badUrge!)
         }
         
         collectionView?.reloadData()
@@ -226,6 +228,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     
 // MARK: Unwind Segue
     
-    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
+    @IBAction func unwindToHome(_ sender: UIStoryboardSegue) {
     }
 }

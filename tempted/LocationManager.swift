@@ -31,36 +31,36 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         latlng = manager.location!.coordinate
         manager.stopUpdatingLocation()
         isCapturingLocation = false
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch(status) {
-        case .AuthorizedWhenInUse:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.MapPermissionsGranted, object: self)
+        case .authorizedWhenInUse:
+            NotificationCenter.default.post(name: TPTNotification.MapPermissionsGranted, object: self)
             captureLocation()
             break
-        case .NotDetermined:
+        case .notDetermined:
             break
         default:
-            NSNotificationCenter.defaultCenter().postNotificationName(TPTNotification.ErrorNoMapPermissions, object: self)
+            NotificationCenter.default.post(name: TPTNotification.ErrorNoMapPermissions, object: self)
         }
     }
 
-    internal func handleForeground(note: NSNotification) {
+    @objc internal func handleForeground(_ note: Notification) {
         if( canCaptureLocation() ) {
             captureLocation()
         }
     }
     
     private func subscribe() {
-        let noteCenter = NSNotificationCenter.defaultCenter()
+        let noteCenter = NotificationCenter.default
 
         // TODO: feels like a bad separation of concerns to have to include UIKit
-        noteCenter.addObserver(self, selector: #selector(handleForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        noteCenter.addObserver(self, selector: #selector(handleForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     private func captureLocation() {
@@ -71,6 +71,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private func canCaptureLocation() -> Bool {
         if( !CLLocationManager.locationServicesEnabled() ) { return false }
-        return CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse
+        return CLLocationManager.authorizationStatus() == .authorizedWhenInUse
     }
 }

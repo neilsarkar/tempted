@@ -11,15 +11,15 @@ import CoreGraphics
 
 struct TPTNotification {
 // MARK: Urge Lifecycle
-    static let CreateUrge = "Create Urge"
-    static let UrgeCreated = "Urge Created"
-    static let UrgeCreateFailed = "Urge Create Failed"
-    static let UrgeDeleted = "Urge Deleted"
+    static let CreateUrge = NSNotification.Name("Create Urge")
+    static let UrgeCreated = NSNotification.Name("Urge Created")
+    static let UrgeCreateFailed = NSNotification.Name("Urge Create Failed")
+    static let UrgeDeleted = NSNotification.Name("Urge Deleted")
     
 // MARK: Location
-    static let MapPermissionsGranted = "Map permissions granted"
-    static let ErrorLocationServicesDisabled = "Location Services Disabled"
-    static let ErrorNoMapPermissions = "No map permissions"
+    static let MapPermissionsGranted = NSNotification.Name("Map permissions granted")
+    static let ErrorLocationServicesDisabled = NSNotification.Name("Location Services Disabled")
+    static let ErrorNoMapPermissions = NSNotification.Name("No map permissions")
 }
 
 struct TPTInterval {
