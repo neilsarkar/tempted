@@ -38,10 +38,15 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     func setLabelText() {
-        if( reason == TPTString.LocationReason ) {
+        switch(reason!) {
+        case TPTString.LocationReason:
             labelText = TPTString.LocationPermissionsWarning
-        } else if( reason == TPTString.PhotoReason ) {
+            break;
+        case TPTString.PhotoReason:
             labelText = TPTString.PhotoPermissionsWarning
+            break;
+        default:
+            labelText = "Sorry, something went wrong when checking permissions."
         }
     }
     
@@ -55,16 +60,19 @@ class PermissionsNeededViewController : UIViewController {
     }
     
     @objc internal func checkPermissions() {
-        if( reason == TPTString.PhotoReason ) {
-            if( AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized ) {
-                dismissSelf()
-            }
-        } else if( reason == TPTString.LocationReason ) {
+        switch(reason!) {
+        case TPTString.LocationReason:
             if( CLLocationManager.locationServicesEnabled() &&
                 CLLocationManager.authorizationStatus() == .authorizedWhenInUse ) {
                 dismissSelf()
             }
-        } else {
+            break;
+        case TPTString.PhotoReason:
+            if( AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized ) {
+                dismissSelf()
+            }
+            break;
+        default:
             print("Unknown Reason! Not dismissing")
         }
     }
