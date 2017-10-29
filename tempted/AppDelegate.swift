@@ -25,6 +25,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if( url.host != "urge" ) {
+            print("Unknown url", url.absoluteString)
+            return false
+        }
+        
+        guard let urge = Int(String(url.path.dropFirst())) else {
+            return false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            print("capturing urge \(urge)")
+            NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
+        }
+        
+        return true
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

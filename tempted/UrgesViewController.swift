@@ -203,12 +203,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     @objc internal func handleUrgeAdded() {
-        let indexPathsForVisibleItems = collectionView?.indexPathsForVisibleItems
-        // if only the button cell is visible, no need to reload data since it will be available once the user scrolls
-        if( indexPathsForVisibleItems?.count == 1 &&
-            ((indexPathsForVisibleItems?[0])! as NSIndexPath).section == 0 ) {
-            return
-        }
         collectionView?.reloadData()
     }
     

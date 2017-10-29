@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyP-Nq-bR0">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="18.5"/>
+                                <state key="normal" title="🍺"/>
+                                <connections>
+                                    <action selector="touchBeer:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="vmP-cA-zwl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-8g-58S">
+                                <rect key="frame" x="0.0" y="18.5" width="160" height="18.5"/>
+                                <state key="normal" title="🚬"/>
+                                <connections>
+                                    <action selector="touchSmoke:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="ty7-4R-wob"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NY9-yo-Hdg">
+                                <rect key="frame" x="160" y="0.0" width="160" height="18.5"/>
+                                <state key="normal" title="📲"/>
+                                <connections>
+                                    <action selector="touchPhone:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="5Jg-ZY-9eO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQq-9e-In9">
+                                <rect key="frame" x="160" y="18.5" width="160" height="18.5"/>
+                                <state key="normal" title="🥖"/>
+                                <connections>
+                                    <action selector="touchBread:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Yva-zj-ffb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="24Z-Rz-ZRo"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="top" secondItem="tyP-Nq-bR0" secondAttribute="top" id="2Xa-NF-zOT"/>
+                            <constraint firstItem="TQq-9e-In9" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="Dlc-K0-e59"/>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="FfL-AZ-dQB"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="TQq-9e-In9" secondAttribute="bottom" id="Kqm-W1-XKG"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="PYh-AG-hQG"/>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="Rat-pe-zte"/>
+                            <constraint firstItem="tyP-Nq-bR0" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="Rw7-Zu-AeK"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="Qmr-8g-58S" secondAttribute="bottom" id="UqA-Aj-NDU"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="TQq-9e-In9" secondAttribute="trailing" id="ddn-ZB-B7Y"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="leading" secondItem="tyP-Nq-bR0" secondAttribute="leading" id="dyF-gK-iIV"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="NY9-yo-Hdg" secondAttribute="trailing" id="fhZ-UA-hcp"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="gfb-42-OhW"/>
+                            <constraint firstItem="TQq-9e-In9" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="o0X-dn-JbI"/>
+                            <constraint firstItem="tyP-Nq-bR0" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="p8Z-Rm-G11"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="zoi-p5-XBW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="37"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
