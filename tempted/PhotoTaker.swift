@@ -7,6 +7,8 @@
 //
 
 import AVFoundation
+import CoreGraphics
+import UIKit
 
 class PhotoTaker: NSObject {
     // AV resources
@@ -26,18 +28,26 @@ class PhotoTaker: NSObject {
     
     override init() {
         super.init()
-        prepCameras({err in
-            if( err != nil ) {
-                self.initializationError = err
-                return
-            }
+        #if IOS_SIMULATOR
             self.isInitialized = true
-        })
+        #else
+            prepCameras({err in
+                if( err != nil ) {
+                    self.initializationError = err
+                    return
+                }
+                self.isInitialized = true
+            })
+        #endif
     }
     
     func takePhotos(_ cb: @escaping (NSError?, _ selfieData: Data?, _ rearData: Data?) -> Void) {
+        #if IOS_SIMULATOR
+            return cb(nil, dummyPhoto(.purple), dummyPhoto(.orange))
+        #endif
+        
         if( initializationError != nil ) {
-            return cb(initializationError!, nil, nil)
+            return cb(initializationError, nil, nil)
         }
         
         if( !isInitialized ) {
@@ -251,5 +261,20 @@ class PhotoTaker: NSObject {
         session.commitConfiguration()
         isSelfie = !isSelfie
         return nil
+    }
+    
+    private func dummyPhoto(_ color: UIColor = UIColor.cyan) -> Data? {
+        let rect = CGRect(origin: .zero, size: CGSize(width: 2448, height: 3264))
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if( img == nil ) {
+            return nil
+        }
+        
+        return UIImagePNGRepresentation(img!)
     }
 }
