@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if( url.host != "urge" ) {
             print("Unknown url", url.absoluteString)
+            Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Opened via unknown url", comment: url.absoluteString)
+            ]))
+
             return false
         }
         

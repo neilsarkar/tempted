@@ -207,7 +207,14 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     @objc internal func handleUrgeDelete(_ note:Foundation.Notification) {
-        if( (note as NSNotification).userInfo == nil ) { return print("UserInfo is nil in handleUrgeDelete!") }
+        if( (note as NSNotification).userInfo == nil ) {
+            print("UserInfo is nil in handleUrgeDelete!")
+            
+            Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("UserInfo is nil in handleUrgeDelete!", comment: "whatever")
+            ]))
+            return
+        }
 
         let id = (note as NSNotification).userInfo!["id"] as! String
         

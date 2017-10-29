@@ -97,7 +97,11 @@ class UrgeCell : UICollectionViewCell {
 //                }
 //            })
         } else {
-            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) ?? "unknown map URL")
+            Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Invalid map URL", comment: urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) as? String ?? "unknown map URL")
+            ]))
+
+            print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) as? String ?? "unknown map URL")
         }
     }
     

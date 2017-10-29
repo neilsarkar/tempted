@@ -73,6 +73,10 @@ class PermissionsNeededViewController : UIViewController {
             }
             break;
         default:
+            Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
+                NSLocalizedDescriptionKey: NSLocalizedString("Unknown permissions reason. Not dismissing", comment: "nope")
+            ]))
+
             print("Unknown Reason! Not dismissing")
         }
     }
