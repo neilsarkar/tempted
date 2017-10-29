@@ -17,20 +17,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func touchBeer(_ sender: Any) {
-        print("booze u lose")
+        extensionContext?.open(URL(string: "tempted://urge/1")!)
     }
     
     @IBAction func touchSmoke(_ sender: Any) {
-        print("smokes lets go")
+        extensionContext?.open(URL(string: "tempted://urge/2")!)
     }
     
     @IBAction func touchPhone(_ sender: Any) {
-        print("phone home")
+        extensionContext?.open(URL(string: "tempted://urge/3")!)
     }
     
     @IBAction func touchBread(_ sender: Any) {
-        print("fatty")
-    }    
+        extensionContext?.open(URL(string: "tempted://urge/4")!)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
