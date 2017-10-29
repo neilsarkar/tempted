@@ -35,12 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            print("capturing urge \(urge)")
+            NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
+        }
         
-        print("Going to go to urge \(urge)")
-        let alertController = UIAlertController(title: "Recording urge", message: "number \(urge).", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
         return true
     }
     
