@@ -264,7 +264,8 @@ class PhotoTaker: NSObject {
     }
     
     private func dummyPhoto(_ color: UIColor = UIColor.cyan) -> Data? {
-        let rect = CGRect(origin: .zero, size: CGSize(width: 2448, height: 3264))
+        let bounds = UIScreen.main.bounds
+        let rect = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height))
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
         color.setFill()
         UIRectFill(rect)
