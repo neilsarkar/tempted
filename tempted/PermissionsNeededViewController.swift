@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreLocation
+import Crashlytics
 
 class PermissionsNeededViewController : UIViewController {
 
