@@ -19,84 +19,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JL-f7-FAI" userLabel="Container 1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyP-Nq-bR0">
                                 <rect key="frame" x="0.0" y="0.0" width="160" height="18.5"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍺" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                        <rect key="frame" x="68.5" y="-1.5" width="23" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="5JL-f7-FAI" secondAttribute="centerX" id="igV-Za-L79"/>
-                                    <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="5JL-f7-FAI" secondAttribute="centerY" id="lMP-ku-saF"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zun-2w-Hod" userLabel="Container 2">
-                                <rect key="frame" x="160" y="0.0" width="160" height="18.5"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📲" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NR6-eP-VGJ">
-                                        <rect key="frame" x="68.5" y="-1.5" width="23" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="NR6-eP-VGJ" firstAttribute="centerX" secondItem="zun-2w-Hod" secondAttribute="centerX" id="KVX-ZA-dKy"/>
-                                    <constraint firstItem="NR6-eP-VGJ" firstAttribute="centerY" secondItem="zun-2w-Hod" secondAttribute="centerY" id="nAQ-t7-jdC"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Oh-EW-KEA" userLabel="Container 3">
+                                <state key="normal" title="🍺"/>
+                                <connections>
+                                    <action selector="touchBeer:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="vmP-cA-zwl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qmr-8g-58S">
                                 <rect key="frame" x="0.0" y="18.5" width="160" height="18.5"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🚬" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="kJt-5E-tUP">
-                                        <rect key="frame" x="68.5" y="-1.5" width="23" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="kJt-5E-tUP" firstAttribute="centerY" secondItem="3Oh-EW-KEA" secondAttribute="centerY" id="TfG-oM-cVG"/>
-                                    <constraint firstItem="kJt-5E-tUP" firstAttribute="centerX" secondItem="3Oh-EW-KEA" secondAttribute="centerX" id="ola-DS-vEm"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMT-D7-k1k" userLabel="Container 4">
+                                <state key="normal" title="🚬"/>
+                                <connections>
+                                    <action selector="touchSmoke:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="ty7-4R-wob"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NY9-yo-Hdg">
+                                <rect key="frame" x="160" y="0.0" width="160" height="18.5"/>
+                                <state key="normal" title="📲"/>
+                                <connections>
+                                    <action selector="touchPhone:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="5Jg-ZY-9eO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQq-9e-In9">
                                 <rect key="frame" x="160" y="18.5" width="160" height="18.5"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥖" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Vc3-ec-dmu">
-                                        <rect key="frame" x="68.5" y="-1.5" width="23" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Vc3-ec-dmu" firstAttribute="centerY" secondItem="rMT-D7-k1k" secondAttribute="centerY" id="QZj-FV-qab"/>
-                                    <constraint firstItem="Vc3-ec-dmu" firstAttribute="centerX" secondItem="rMT-D7-k1k" secondAttribute="centerX" id="lpe-aZ-E6i"/>
-                                </constraints>
-                            </view>
+                                <state key="normal" title="🥖"/>
+                                <connections>
+                                    <action selector="touchBread:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Yva-zj-ffb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="zun-2w-Hod" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="5vC-MY-a5U"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="top" secondItem="5JL-f7-FAI" secondAttribute="top" id="8RW-mE-Q2D"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="leading" secondItem="5JL-f7-FAI" secondAttribute="leading" id="8ut-xC-Lpu"/>
-                            <constraint firstItem="rMT-D7-k1k" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="KXO-eX-8zH"/>
-                            <constraint firstItem="3Oh-EW-KEA" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="L5z-bR-mj0"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="3Oh-EW-KEA" secondAttribute="bottom" id="NUE-4S-AyM"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="rMT-D7-k1k" secondAttribute="bottom" id="Uqx-9V-4IR"/>
-                            <constraint firstItem="zun-2w-Hod" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="Y3i-wG-adW"/>
-                            <constraint firstItem="3Oh-EW-KEA" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="aws-vK-wSP"/>
-                            <constraint firstItem="rMT-D7-k1k" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="eWW-ed-cHy"/>
-                            <constraint firstItem="3Oh-EW-KEA" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="ejU-TP-tyq"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="top" secondItem="zun-2w-Hod" secondAttribute="top" id="gns-ff-FBk"/>
-                            <constraint firstItem="5JL-f7-FAI" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="szo-DV-KPO"/>
-                            <constraint firstItem="zun-2w-Hod" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="vmg-gg-poe"/>
-                            <constraint firstItem="5JL-f7-FAI" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="yHf-4F-p8j"/>
-                            <constraint firstItem="rMT-D7-k1k" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="yyb-Gl-GaV"/>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="24Z-Rz-ZRo"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="top" secondItem="tyP-Nq-bR0" secondAttribute="top" id="2Xa-NF-zOT"/>
+                            <constraint firstItem="TQq-9e-In9" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="Dlc-K0-e59"/>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="FfL-AZ-dQB"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="TQq-9e-In9" secondAttribute="bottom" id="Kqm-W1-XKG"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="PYh-AG-hQG"/>
+                            <constraint firstItem="NY9-yo-Hdg" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="Rat-pe-zte"/>
+                            <constraint firstItem="tyP-Nq-bR0" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="Rw7-Zu-AeK"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="Qmr-8g-58S" secondAttribute="bottom" id="UqA-Aj-NDU"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="TQq-9e-In9" secondAttribute="trailing" id="ddn-ZB-B7Y"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="leading" secondItem="tyP-Nq-bR0" secondAttribute="leading" id="dyF-gK-iIV"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="NY9-yo-Hdg" secondAttribute="trailing" id="fhZ-UA-hcp"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="gfb-42-OhW"/>
+                            <constraint firstItem="TQq-9e-In9" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="o0X-dn-JbI"/>
+                            <constraint firstItem="tyP-Nq-bR0" firstAttribute="width" secondItem="ssy-KU-ocm" secondAttribute="width" multiplier="1/2" id="p8Z-Rm-G11"/>
+                            <constraint firstItem="Qmr-8g-58S" firstAttribute="height" secondItem="ssy-KU-ocm" secondAttribute="height" multiplier="1/2" id="zoi-p5-XBW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
                     </view>

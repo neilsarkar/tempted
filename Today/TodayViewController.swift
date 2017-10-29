@@ -16,6 +16,22 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view from its nib.
     }
     
+    @IBAction func touchBeer(_ sender: Any) {
+        print("booze u lose")
+    }
+    
+    @IBAction func touchSmoke(_ sender: Any) {
+        print("smokes lets go")
+    }
+    
+    @IBAction func touchPhone(_ sender: Any) {
+        print("phone home")
+    }
+    
+    @IBAction func touchBread(_ sender: Any) {
+        print("fatty")
+    }    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
