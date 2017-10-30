@@ -87,6 +87,9 @@ class UrgeCell : UICollectionViewCell {
             ]))
             
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))?.absoluteString ?? "unknown map URL")
+            DispatchQueue.main.async {
+                self.showLoadFailed()
+            }
             return
         }
 
