@@ -17,6 +17,8 @@
 		3F1D511B1D07CE7100A9B230 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */; };
 		3F1D511D1D07CE7600A9B230 /* RealmSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */; };
 		3F1F6F9F1D0D063700AD75BE /* UrgeSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F6F9E1D0D063700AD75BE /* UrgeSaver.swift */; };
+		3F3099211FA6E38300BF8909 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F30991F1FA6E38300BF8909 /* Alamofire.framework */; };
+		3F3099221FA6E38300BF8909 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3099201FA6E38300BF8909 /* AlamofireImage.framework */; };
 		3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E8BA01D0E2C5D00446561 /* PermissionsNeededViewController.swift */; };
 		3F5701A01FA44E8300AAF6E5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F57019F1FA44E8300AAF6E5 /* NotificationCenter.framework */; };
 		3F5701A31FA44E8300AAF6E5 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5701A21FA44E8300AAF6E5 /* TodayViewController.swift */; };
@@ -108,6 +110,8 @@
 		3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
 		3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/iOS/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
 		3F1F6F9E1D0D063700AD75BE /* UrgeSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeSaver.swift; sourceTree = "<group>"; };
+		3F30991F1FA6E38300BF8909 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		3F3099201FA6E38300BF8909 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		3F4E8BA01D0E2C5D00446561 /* PermissionsNeededViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsNeededViewController.swift; sourceTree = "<group>"; };
 		3F57019E1FA44E8200AAF6E5 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F57019F1FA44E8300AAF6E5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -156,6 +160,8 @@
 			files = (
 				3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */,
 				3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */,
+				3F3099211FA6E38300BF8909 /* Alamofire.framework in Frameworks */,
+				3F3099221FA6E38300BF8909 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +191,8 @@
 		3F1F6FA01D0D197400AD75BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F30991F1FA6E38300BF8909 /* Alamofire.framework */,
+				3F3099201FA6E38300BF8909 /* AlamofireImage.framework */,
 				3FD4669E1D31CFF2005AF2CF /* Reveal.framework */,
 				3F1D511C1D07CE7600A9B230 /* RealmSwift.framework.dSYM */,
 				3F1D511A1D07CE7100A9B230 /* Realm.framework.dSYM */,
@@ -423,6 +431,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 			);

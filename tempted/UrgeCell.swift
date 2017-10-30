@@ -8,6 +8,8 @@
 
 import UIKit
 import Crashlytics
+import Alamofire
+import AlamofireImage
 
 class UrgeCell : UICollectionViewCell {
     var urge: Urge! {
@@ -79,32 +81,34 @@ class UrgeCell : UICollectionViewCell {
     }
     
     private func attemptLoadMapImage() {
-        if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
-            print("Skipping mapImageView", mapUrl)
-            DispatchQueue.main.async {
-                self.showLoaded()
-            }
-//            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
-//                if( error?.code != -1009 ) {
-//                    print("Unknown error", error)
-//                }
-//                DispatchQueue.main.async {
-//                    self.showLoadFailed()
-//                }
-//
-//            }, success: { image in
-//                self.mapImageView.isOpaque = false
-//                self.mapImageView.image = image
-//                DispatchQueue.main.async {
-//                    self.showLoaded()
-//                }
-//            })
-        } else {
+        guard let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) else {
             Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Invalid map URL", comment: urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))?.absoluteString ?? "unknown map URL")
-            ]))
-
+                ]))
+            
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))?.absoluteString ?? "unknown map URL")
+            return
+        }
+
+        Alamofire.request(mapUrl).responseImage { response in
+            print(response.response?.statusCode)
+            
+            if( response.response?.statusCode != 200 ) {
+                print(response.response)
+            }
+            
+            if let image = response.result.value {
+                self.mapImageView.isOpaque = false
+                self.mapImageView.image = image
+                DispatchQueue.main.async {
+                    self.showLoaded()
+                }
+            } else {
+                debugPrint(response.result)
+                DispatchQueue.main.async {
+                    self.showLoadFailed()
+                }
+            }
         }
     }
     
