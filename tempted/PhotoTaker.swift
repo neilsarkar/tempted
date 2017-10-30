@@ -101,9 +101,14 @@ class PhotoTaker: NSObject {
     func requestPermissions() {
         AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { success in
             self.hasPhotoPermissions = success
-            if( success ) {
-                self.photoQueue.resume()
-            }
+
+            #if IOS_SIMULATOR
+                return
+            #else
+                if( success ) {
+                    self.photoQueue.resume()
+                }
+            #endif
         })
     }
     
