@@ -81,6 +81,9 @@ class UrgeCell : UICollectionViewCell {
     private func attemptLoadMapImage() {
         if let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) {
             print("Skipping mapImageView", mapUrl)
+            DispatchQueue.main.async {
+                self.showLoaded()
+            }
 //            mapImageView.hnk_setImageFromURL(mapUrl, failure: { error in
 //                if( error?.code != -1009 ) {
 //                    print("Unknown error", error)
