@@ -84,30 +84,48 @@ class UrgeCell : UICollectionViewCell {
         guard let mapUrl = urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height)) else {
             Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
                 NSLocalizedDescriptionKey: NSLocalizedString("Invalid map URL", comment: urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))?.absoluteString ?? "unknown map URL")
-                ]))
+            ]))
             
             print("Invalid map URL", urge.mapImageUrl(Int(mapImageView.frame.width), height: Int(mapImageView.frame.height))?.absoluteString ?? "unknown map URL")
             return
         }
 
         Alamofire.request(mapUrl).responseImage { response in
-            print(response.response?.statusCode)
-            
-            if( response.response?.statusCode != 200 ) {
-                print(response.response)
-            }
-            
-            if let image = response.result.value {
-                self.mapImageView.isOpaque = false
-                self.mapImageView.image = image
-                DispatchQueue.main.async {
-                    self.showLoaded()
+            guard !response.result.isFailure else {
+                if let err = response.result.error as NSError? {
+                    // -1009: no internet
+                    // -1200: ssl failed (might need wifi verification)
+                    if( err.code != -1009 || err.code != -1200 ) {
+                        Crashlytics.sharedInstance().recordError(err)
+                    }
+                } else {
+                    Crashlytics.sharedInstance().recordError(response.result.error!)
                 }
-            } else {
-                debugPrint(response.result)
+
                 DispatchQueue.main.async {
                     self.showLoadFailed()
                 }
+
+                return
+            }
+
+            guard let image = response.result.value else {
+                Crashlytics.sharedInstance().recordError(NSError(domain: "tempted", code: 69, userInfo: [
+                    NSLocalizedDescriptionKey: NSLocalizedString("Image is nil in UrgeCell", comment: "whatever")
+                ]))
+                
+                DispatchQueue.main.async {
+                    self.showLoadFailed()
+                }
+                
+                return
+            }
+
+            debugPrint(response.result)
+            self.mapImageView.isOpaque = false
+            self.mapImageView.image = image
+            DispatchQueue.main.async {
+                self.showLoaded()
             }
         }
     }
