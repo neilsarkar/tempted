@@ -24,8 +24,12 @@ class UrgeSaver: NSObject {
         photoTaker = PhotoTaker()
         permissions = Permissions()
     }
-    
+
     func save(_ cb: @escaping (NSError?) -> Void) {
+        save([AnyHashable: Any](), cb)
+    }
+    
+    func save(_ payload: [AnyHashable:Any], _ cb: @escaping (NSError?) -> Void) {
         if( !permissions.hasPhoto() ) {
             if( permissions.canRequestPhoto() ) {
                 return cb(TPTError.PhotoPermissionsNotDetermined)
@@ -57,6 +61,9 @@ class UrgeSaver: NSObject {
                 urge.createdAt = Date();
                 let uuid = UUID().uuidString
                 urge.id = uuid
+                if let viceId = payload["viceId"] as? Int {
+                    urge.viceId = viceId
+                }
                 if( self.locationManager.latlng != nil ) {
                     urge.lat = self.locationManager.latlng.latitude
                     urge.lng = self.locationManager.latlng.longitude

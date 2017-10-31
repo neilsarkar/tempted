@@ -16,6 +16,7 @@ class Urge:RealmSwift.Object {
     @objc dynamic var selfie: Data? = nil
     @objc dynamic var lat = 0.0
     @objc dynamic var lng = 0.0
+    @objc dynamic var viceId = 0
 
     // TODO: use data properties directly
     @objc dynamic var photoFile=""
@@ -26,7 +27,7 @@ class Urge:RealmSwift.Object {
     }
     
     override static func indexedProperties() -> [String] {
-        return ["createdAt", "id"]
+        return ["createdAt", "id", "viceId"]
     }
     
     func mapImageUrl(_ width: Int, height: Int) -> URL? {
@@ -62,7 +63,7 @@ class Urge:RealmSwift.Object {
     
     static func migrate() {
         let config = Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: 4,
             
             migrationBlock: { migration, oldSchemaVersion in
                 if( oldSchemaVersion < 1 ) {

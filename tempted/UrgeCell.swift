@@ -31,7 +31,8 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeBGImageView: UIImageView!
-    
+    @IBOutlet weak var viceLabel: UILabel!
+
     // TODO: don't use an entire view just to get padding
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var debugLabel: UILabel!
@@ -59,6 +60,7 @@ class UrgeCell : UICollectionViewCell {
         loadPhotos()
         timeLabel.text = urge.humanTime()
         dayLabel.text = urge.humanDay()
+        viceLabel.text = viceString(urge.viceId)
         if( urge.isNight() ) {
             timeBGImageView.image = UIImage(named: "NightBG")
         } else {
@@ -77,6 +79,21 @@ class UrgeCell : UICollectionViewCell {
         if( urge.selfie != nil ) {
             self.selfieImageView.isOpaque = false
             self.selfieImageView.image = UIImage(data: urge.selfie! as Data)
+        }
+    }
+    
+    private func viceString(_ viceId: Int) -> String {
+        switch(viceId) {
+        case 1:
+            return "🍺"
+        case 2:
+            return "🚬"
+        case 3:
+            return "🥖"
+        case 4:
+            return "📲"
+        default:
+            return "🗿"
         }
     }
     

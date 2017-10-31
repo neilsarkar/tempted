@@ -35,13 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         
-        guard let urge = Int(String(url.path.dropFirst())) else {
+        guard let viceId = Int(String(url.path.dropFirst())) else {
             return false
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            print("capturing urge \(urge)")
-            NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
+            NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self, userInfo: ["viceId": viceId])
         }
         
         return true

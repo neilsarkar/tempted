@@ -121,8 +121,10 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
 
 //  TODO: move this to containing view controller
-    @objc internal func save() {
-        creator.save({ err in
+    @objc internal func save(_ notification: NSNotification) {
+        let data = notification.userInfo ?? [AnyHashable: Any]()
+
+        creator.save(data, { err in
             if( err == nil ) { return }
 
             NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)

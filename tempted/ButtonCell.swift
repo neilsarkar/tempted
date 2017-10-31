@@ -35,7 +35,7 @@ class ButtonCell : UICollectionViewCell {
         if( isPushed ) { return }
         isPushed = true
         showPushed()
-        NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self)
+        NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self, userInfo: ["cool": "nice"])
     }
     
     private func subscribe() {
