@@ -28,7 +28,6 @@
 		3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */; };
 		3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */; };
 		3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B401D0CF0A1003F73C6 /* Constants.swift */; };
-		3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
 		3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */; };
@@ -121,7 +120,6 @@
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
 		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3FD4669E1D31CFF2005AF2CF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
-		3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 			children = (
 				3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */,
 				3F6B9AB91D04D692002CA04D /* UrgeCell.swift */,
-				3FD7D5AB1D0536CA000E98A9 /* ButtonCell.swift */,
 				3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */,
 				3F4E8BA01D0E2C5D00446561 /* PermissionsNeededViewController.swift */,
 				3F1574851D20F709004BCEE7 /* OnboardingViewController.swift */,
@@ -481,7 +478,6 @@
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
-				3FD7D5AC1D0536CA000E98A9 /* ButtonCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
 				3F016FBE1D3BD17600A83B21 /* Permissions.swift in Sources */,
 				3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */,

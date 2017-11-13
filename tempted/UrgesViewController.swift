@@ -11,7 +11,6 @@ import RealmSwift
 import Crashlytics
 
 class UrgesViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    let topIdentifier   = "ButtonCell"
     let urgeIdentifier = "UrgeCell"
     let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
     
@@ -29,7 +28,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         subscribe()
     }
     
-//  TODO: move to containing VC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let defaults = UserDefaults.standard
@@ -41,19 +39,8 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
     }
     
-//  TODO: move to containing VC
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return .portrait
-        }
-    }
-    
 // MARK: CollectionView Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if( (indexPath as NSIndexPath).section == 0 ) {
-            return self.view.frame.size
-        }
-
         let urge = urgeForIndexPath(indexPath)
         let width = self.view.frame.width - (TPTPadding.CellLeft + TPTPadding.CellRight)
         let height : CGFloat
@@ -67,34 +54,25 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: NSInteger) -> UIEdgeInsets {
-        if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
 // MARK: Section and Cell Count
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if( section == 0 ) { return 1; }
         return urges == nil ? 0 : urges!.count
     }
     
 // MARK: Cell Initialization
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if( (indexPath as NSIndexPath).section == 0 ) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topIdentifier, for: indexPath) as! ButtonCell
-            cell.showReleased()
-            return cell
-        }
-
         let urge = urgeForIndexPath(indexPath)
 
         // TODO: share cell.urge = urge and return cell below
-        // FIXME: simulator should use stock images
         if( urge.photo == nil && urge.selfie == nil ) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeMapOnlyIdentifier, for: indexPath) as! UrgeCellMapOnly
             cell.urge = urge
