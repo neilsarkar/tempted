@@ -43,8 +43,7 @@ class PhotoTaker: NSObject {
     
     func takePhotos(_ cb: @escaping (NSError?, _ selfieData: Data?, _ rearData: Data?) -> Void) {
         #if IOS_SIMULATOR
-            return cb(nil, nil, nil)
-//            return cb(nil, dummyPhoto(.purple), dummyPhoto(.orange))
+            return cb(nil, dummyPhoto(.purple), dummyPhoto(.orange))
         #endif
         
         if( initializationError != nil ) {

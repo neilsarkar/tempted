@@ -94,9 +94,13 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     @objc internal func save(_ notification: NSNotification) {
         let data = notification.userInfo ?? [AnyHashable: Any]()
 
+        print("Saving")
+        
         creator.save(data, { err in
             if( err == nil ) { return }
 
+            print("Save failed")
+            
             NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)
             switch(err!.code) {
             case TPTError.MapPermissionsDeclined.code:
@@ -175,6 +179,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     @objc internal func handleUrgeAdded() {
+        print("Save succeeded.")
         collectionView?.reloadData()
     }
     
