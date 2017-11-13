@@ -114,10 +114,12 @@ class UrgeCell : UICollectionViewCell {
             guard !response.result.isFailure else {
                 if let err = response.result.error as NSError? {
                     // -1009: no internet
+                    // -1001: timeout
                     // -1200: ssl failed (might need wifi verification)
-                    if( err.code != -1009 || err.code != -1200 ) {
+                    if( err.code != -1009 && err.code != -1200 && err.code != -1001) {
                         Crashlytics.sharedInstance().recordError(err)
                     }
+                    print("Internet connection failed", err)
                 } else {
                     Crashlytics.sharedInstance().recordError(response.result.error!)
                 }
