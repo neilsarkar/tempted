@@ -41,18 +41,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-VK-Oan">
-                                            <rect key="frame" x="69" y="89" width="61" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JLn-4T-tAH">
+                                            <rect key="frame" x="50" y="50" width="100" height="100"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="xdc-VK-Oan" firstAttribute="centerY" secondItem="WdC-rh-jXO" secondAttribute="centerY" id="4bD-7H-EvQ"/>
-                                    <constraint firstItem="xdc-VK-Oan" firstAttribute="centerX" secondItem="WdC-rh-jXO" secondAttribute="centerX" id="NBs-6A-vhN"/>
+                                    <constraint firstItem="JLn-4T-tAH" firstAttribute="width" secondItem="WdC-rh-jXO" secondAttribute="width" multiplier="1/2" id="AWh-cU-uLZ"/>
+                                    <constraint firstItem="JLn-4T-tAH" firstAttribute="height" secondItem="WdC-rh-jXO" secondAttribute="height" multiplier="1/2" id="SVB-ur-jrj"/>
+                                    <constraint firstItem="JLn-4T-tAH" firstAttribute="centerX" secondItem="WdC-rh-jXO" secondAttribute="centerX" id="Wk9-lB-mIK"/>
+                                    <constraint firstItem="JLn-4T-tAH" firstAttribute="centerY" secondItem="WdC-rh-jXO" secondAttribute="centerY" id="bMt-Tl-aPt"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="loadingSpinner" destination="JLn-4T-tAH" id="UX4-ud-fAb"/>
+                                </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UrgeCell" id="FlK-65-c39" customClass="UrgeCell" customModule="Tempted" customModuleProvider="target">
                                 <rect key="frame" x="27.5" y="224" width="320" height="320"/>

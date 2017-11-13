@@ -10,5 +10,11 @@ import UIKit
 import Crashlytics
 
 class PreviewCell : UICollectionViewCell {
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        loadingSpinner.startAnimating()
+    }
 }
 

@@ -77,7 +77,8 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     func urgeForIndexPath(_ indexPath: IndexPath) -> Urge {
-        return urges![(indexPath as NSIndexPath).row]
+        let index = (indexPath as NSIndexPath).row - (isSaving ? 1 : 0)
+        return urges![index]
     }
 
 // MARK: Event Handling
