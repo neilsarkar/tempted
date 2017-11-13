@@ -12,7 +12,6 @@ import Crashlytics
 
 class UrgesViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let urgeIdentifier = "UrgeCell"
-    let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
     
     var urges: Results<Urge>?
     var creator:UrgeSaver!
@@ -23,7 +22,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        urges = realm.objects(Urge.self).sorted(byKeyPath: "createdAt", ascending: false)
+        urges = realm.objects(Urge.self).filter("selfie != nil").sorted(byKeyPath: "createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
     }
@@ -72,16 +71,9 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let urge = urgeForIndexPath(indexPath)
 
-        // TODO: share cell.urge = urge and return cell below
-        if( urge.photo == nil && urge.selfie == nil ) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeMapOnlyIdentifier, for: indexPath) as! UrgeCellMapOnly
-            cell.urge = urge
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeIdentifier, for: indexPath) as! UrgeCell
-            cell.urge = urge
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeIdentifier, for: indexPath) as! UrgeCell
+        cell.urge = urge
+        return cell
     }
     
     func urgeForIndexPath(_ indexPath: IndexPath) -> Urge {
