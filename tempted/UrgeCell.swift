@@ -89,9 +89,9 @@ class UrgeCell : UICollectionViewCell {
         case 2:
             return "🚬"
         case 3:
-            return "🥖"
-        case 4:
             return "📲"
+        case 4:
+            return "🥖"
         default:
             return "🗿"
         }

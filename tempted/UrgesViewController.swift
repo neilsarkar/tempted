@@ -11,25 +11,24 @@ import RealmSwift
 import Crashlytics
 
 class UrgesViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    let topIdentifier   = "ButtonCell"
     let urgeIdentifier = "UrgeCell"
-    let urgeMapOnlyIdentifier = "UrgeCellMapOnly"
+    let previewIdentifier = "PreviewCell"
     
     var urges: Results<Urge>?
     var creator:UrgeSaver!
     
     var permissionNeeded: String?
     var isDisplayingPermissionsDialog = false
+    var isSaving = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
-        urges = realm.objects(Urge.self).sorted(byKeyPath: "createdAt", ascending: false)
+        urges = realm.objects(Urge.self).filter("selfie != nil").sorted(byKeyPath: "createdAt", ascending: false)
         self.automaticallyAdjustsScrollViewInsets = false
         subscribe()
     }
     
-//  TODO: move to containing VC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let defaults = UserDefaults.standard
@@ -41,73 +40,45 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
     }
     
-//  TODO: move to containing VC
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return .portrait
-        }
-    }
-    
 // MARK: CollectionView Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if( (indexPath as NSIndexPath).section == 0 ) {
-            return self.view.frame.size
-        }
-
-        let urge = urgeForIndexPath(indexPath)
         let width = self.view.frame.width - (TPTPadding.CellLeft + TPTPadding.CellRight)
-        let height : CGFloat
-        if( urge.photo == nil && urge.selfie == nil ) {
-            height = width + 29
-        } else {
-            height = width
-        }
-
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: NSInteger) -> UIEdgeInsets {
-        if( section == 0 ) { return UIEdgeInsetsMake(0, 0, 0, 0) }
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
 // MARK: Section and Cell Count
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if( section == 0 ) { return 1; }
-        return urges == nil ? 0 : urges!.count
+        var count = urges == nil ? 0 : urges!.count
+        if( isSaving ) { count += 1 }
+        return count
     }
     
 // MARK: Cell Initialization
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if( (indexPath as NSIndexPath).section == 0 ) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topIdentifier, for: indexPath) as! ButtonCell
-            cell.showReleased()
+        if( isSaving && indexPath.row == 0 ) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: previewIdentifier, for: indexPath)
             return cell
         }
-
         let urge = urgeForIndexPath(indexPath)
 
-        // TODO: share cell.urge = urge and return cell below
-        // FIXME: simulator should use stock images
-        if( urge.photo == nil && urge.selfie == nil ) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeMapOnlyIdentifier, for: indexPath) as! UrgeCellMapOnly
-            cell.urge = urge
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeIdentifier, for: indexPath) as! UrgeCell
-            cell.urge = urge
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: urgeIdentifier, for: indexPath) as! UrgeCell
+        cell.urge = urge
+        return cell
     }
     
     func urgeForIndexPath(_ indexPath: IndexPath) -> Urge {
-        return urges![(indexPath as NSIndexPath).row]
+        let index = (indexPath as NSIndexPath).row - (isSaving ? 1 : 0)
+        return urges![index]
     }
 
 // MARK: Event Handling
@@ -124,8 +95,14 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     @objc internal func save(_ notification: NSNotification) {
         let data = notification.userInfo ?? [AnyHashable: Any]()
 
+        isSaving = true
+        collectionView?.reloadData()
+
         creator.save(data, { err in
             if( err == nil ) { return }
+
+            self.isSaving = false
+            self.collectionView?.reloadData()
 
             NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)
             switch(err!.code) {
@@ -196,7 +173,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
 //  TODO: move this to containing view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("preparing for segue", segue.identifier ?? "unknown identifier")
         super.prepare(for: segue, sender: sender)
         if( segue.destination.isKind(of: PermissionsNeededViewController.self) ) {
             let vc = segue.destination as! PermissionsNeededViewController
@@ -205,6 +181,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     }
     
     @objc internal func handleUrgeAdded() {
+        isSaving = false
         collectionView?.reloadData()
     }
     
