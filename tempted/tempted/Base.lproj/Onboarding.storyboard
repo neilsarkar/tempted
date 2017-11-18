@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pez-nH-XWk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,27 +20,45 @@
                         <viewControllerLayoutGuide type="bottom" id="jqR-6U-DUx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b0p-Wy-DLB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lS1-ll-IIB">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="168" y="597" width="39" height="30"/>
+                                <state key="normal" title="How?"/>
                                 <connections>
-                                    <segue destination="jcJ-Qn-OMe" kind="show" id="xRN-xh-TUi"/>
+                                    <segue destination="XlX-Vx-4NF" kind="showDetail" id="jsF-WT-fyi"/>
                                 </connections>
                             </button>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="hAX-aa-QZT">
+                                <rect key="frame" x="67" y="91" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="gRB-lH-gy7"/>
+                                    <constraint firstAttribute="width" secondItem="hAX-aa-QZT" secondAttribute="height" multiplier="1:1" id="pfw-gm-Tel"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tempted helps you find the triggers for your addictive behaviors." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a09-Pu-3r8">
+                                <rect key="frame" x="47" y="556.5" width="281" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lS1-ll-IIB" firstAttribute="centerY" secondItem="b0p-Wy-DLB" secondAttribute="centerY" id="WGl-0o-3Hd"/>
-                            <constraint firstItem="lS1-ll-IIB" firstAttribute="centerX" secondItem="b0p-Wy-DLB" secondAttribute="centerX" id="chx-V3-d4i"/>
+                            <constraint firstItem="a09-Pu-3r8" firstAttribute="centerX" secondItem="b0p-Wy-DLB" secondAttribute="centerX" id="GSg-iL-ptS"/>
+                            <constraint firstItem="lS1-ll-IIB" firstAttribute="top" secondItem="a09-Pu-3r8" secondAttribute="bottom" constant="20" id="MSq-II-HTC"/>
+                            <constraint firstItem="jqR-6U-DUx" firstAttribute="top" secondItem="lS1-ll-IIB" secondAttribute="bottom" constant="40" id="QUL-eq-BW5"/>
+                            <constraint firstItem="hAX-aa-QZT" firstAttribute="top" secondItem="NWq-fa-bvQ" secondAttribute="bottom" constant="71" id="Tjl-Nf-PtL"/>
+                            <constraint firstItem="lS1-ll-IIB" firstAttribute="centerX" secondItem="b0p-Wy-DLB" secondAttribute="centerX" id="Uyx-OD-EUn"/>
+                            <constraint firstItem="hAX-aa-QZT" firstAttribute="centerX" secondItem="b0p-Wy-DLB" secondAttribute="centerX" id="hLi-5b-cgL"/>
+                            <constraint firstItem="a09-Pu-3r8" firstAttribute="width" secondItem="b0p-Wy-DLB" secondAttribute="width" multiplier="3/4" id="zBz-Ej-eIS"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mN3-83-riS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130" y="158"/>
+            <point key="canvasLocation" x="-572" y="159"/>
         </scene>
         <!--UICollectionViewController-x0J-Yn-BzT-->
         <scene sceneID="Ljs-OU-pFD">
@@ -42,7 +66,60 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UICollectionViewController-x0J-Yn-BzT" id="jcJ-Qn-OMe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfX-ot-4Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="159"/>
+            <point key="canvasLocation" x="2133" y="158"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TgH-Lt-LWa">
+            <objects>
+                <viewController id="XlX-Vx-4NF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fcc-Hp-j0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Zo-eT-d2o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cfI-PQ-tP9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoC-Ru-86m">
+                                <rect key="frame" x="160.5" y="597" width="54" height="30"/>
+                                <state key="normal" title="O...K...?"/>
+                                <connections>
+                                    <segue destination="jcJ-Qn-OMe" kind="showDetail" id="8Ne-Ea-lgf"/>
+                                </connections>
+                            </button>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodayPreview" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-yQ-tr0">
+                                <rect key="frame" x="67" y="91" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="BQA-9H-kCw"/>
+                                    <constraint firstAttribute="width" secondItem="0Xd-yQ-tr0" secondAttribute="height" multiplier="1:1" id="c5a-gm-er6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="When you feel an urge, tap the emoji." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yy-S9Y">
+                                <rect key="frame" x="47" y="556.5" width="281" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Zo-eT-d2o" firstAttribute="top" secondItem="QoC-Ru-86m" secondAttribute="bottom" constant="40" id="2Y0-m0-cWT"/>
+                            <constraint firstItem="0Xd-yQ-tr0" firstAttribute="top" secondItem="Fcc-Hp-j0e" secondAttribute="bottom" constant="71" id="4aT-Dz-eg8"/>
+                            <constraint firstItem="QoC-Ru-86m" firstAttribute="top" secondItem="OpE-yy-S9Y" secondAttribute="bottom" constant="20" id="9u2-WV-6gR"/>
+                            <constraint firstItem="0Xd-yQ-tr0" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="BtA-vP-KcA"/>
+                            <constraint firstItem="OpE-yy-S9Y" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="Os3-Ef-4gm"/>
+                            <constraint firstItem="OpE-yy-S9Y" firstAttribute="width" secondItem="cfI-PQ-tP9" secondAttribute="width" multiplier="3/4" id="kwb-Fb-ZiL"/>
+                            <constraint firstItem="QoC-Ru-86m" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="whz-Pw-uvm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vER-oM-Vsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="159"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Avatar" width="341" height="341"/>
+        <image name="TodayPreview" width="666" height="330"/>
+    </resources>
 </document>
