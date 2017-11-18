@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pez-nH-XWk">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Jcq-Jd-ikY">
+            <objects>
+                <viewController id="Pez-nH-XWk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NWq-fa-bvQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jqR-6U-DUx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b0p-Wy-DLB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lS1-ll-IIB">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="jcJ-Qn-OMe" kind="show" id="xRN-xh-TUi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lS1-ll-IIB" firstAttribute="centerY" secondItem="b0p-Wy-DLB" secondAttribute="centerY" id="WGl-0o-3Hd"/>
+                            <constraint firstItem="lS1-ll-IIB" firstAttribute="centerX" secondItem="b0p-Wy-DLB" secondAttribute="centerX" id="chx-V3-d4i"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mN3-83-riS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-130" y="158"/>
+        </scene>
+        <!--UICollectionViewController-x0J-Yn-BzT-->
+        <scene sceneID="Ljs-OU-pFD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UICollectionViewController-x0J-Yn-BzT" id="jcJ-Qn-OMe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfX-ot-4Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="159"/>
+        </scene>
+    </scenes>
+</document>

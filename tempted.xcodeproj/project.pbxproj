@@ -31,6 +31,7 @@
 		3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B401D0CF0A1003F73C6 /* Constants.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
+		3FDFD5851FC003F600E541BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDFD5831FC003F600E541BC /* Onboarding.storyboard */; };
 		3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
@@ -123,6 +124,7 @@
 		3FD4669E1D31CFF2005AF2CF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		3FDFD5841FC003F600E541BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tempted/Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				3FD24B3F1D0CDDA0003F73C6 /* Extensions */,
 				3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */,
 				3FF41EB51D04B02F0063CA80 /* Main.storyboard */,
+				3FDFD5831FC003F600E541BC /* Onboarding.storyboard */,
 				3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */,
 				3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */,
 				3FF41EC01D04B02F0063CA80 /* Info.plist */,
@@ -410,6 +413,7 @@
 				3FF41EBF1D04B02F0063CA80 /* LaunchScreen.storyboard in Resources */,
 				3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */,
 				3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */,
+				3FDFD5851FC003F600E541BC /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +513,14 @@
 				3F5701A51FA44E8300AAF6E5 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		3FDFD5831FC003F600E541BC /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FDFD5841FC003F600E541BC /* Base */,
+			);
+			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 		3FF41EB51D04B02F0063CA80 /* Main.storyboard */ = {

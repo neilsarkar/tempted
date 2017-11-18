@@ -21,7 +21,7 @@
         <!--Urges View Controller-->
         <scene sceneID="kn1-Iv-Mvt">
             <objects>
-                <collectionViewController id="x0J-Yn-BzT" customClass="UrgesViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="UICollectionViewController-x0J-Yn-BzT" id="x0J-Yn-BzT" customClass="UrgesViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Fk3-tZ-pXq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
