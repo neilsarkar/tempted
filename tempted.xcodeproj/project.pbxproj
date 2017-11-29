@@ -26,6 +26,8 @@
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
 		3FBF33891FB9667C00E39605 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF33881FB9667C00E39605 /* PreviewCell.swift */; };
+		3FCE8ECD1FCE3CD200F0620D /* tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */; };
+		3FCE8ECF1FCE3D1F00F0620D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */; };
 		3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */; };
 		3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */; };
 		3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B401D0CF0A1003F73C6 /* Constants.swift */; };
@@ -118,6 +120,8 @@
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
 		3FBF33881FB9667C00E39605 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = tutorial.mov; sourceTree = "<group>"; };
+		3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
 		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				3F4E8BA01D0E2C5D00446561 /* PermissionsNeededViewController.swift */,
 				3F1574851D20F709004BCEE7 /* OnboardingViewController.swift */,
 				3FBF33881FB9667C00E39605 /* PreviewCell.swift */,
+				3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */,
 				3FF41EC01D04B02F0063CA80 /* Info.plist */,
 				3FD24B401D0CF0A1003F73C6 /* Constants.swift */,
+				3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */,
 			);
 			path = tempted;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */,
 				3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */,
 				3FDFD5851FC003F600E541BC /* Onboarding.storyboard in Resources */,
+				3FCE8ECD1FCE3CD200F0620D /* tutorial.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +489,7 @@
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
+				3FCE8ECF1FCE3D1F00F0620D /* VideoViewController.swift in Sources */,
 				3FBF33891FB9667C00E39605 /* PreviewCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
 				3F016FBE1D3BD17600A83B21 /* Permissions.swift in Sources */,
