@@ -11,6 +11,8 @@ import AVKit
 import AVFoundation
 
 class VideoViewController : UIViewController {
+    var playerLooper: NSObject?
+
     @IBOutlet weak var videoView: UIView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -22,9 +24,15 @@ class VideoViewController : UIViewController {
             print("Couldn't find tutorial.mov")
             return
         }
-        
-        let player = AVPlayer(url: URL(fileURLWithPath: path))
+
+        let playerItem = AVPlayerItem(url: URL(fileURLWithPath: path))
+        let player = AVQueuePlayer(items: [playerItem])
         let playerLayer = AVPlayerLayer(player: player)
+
+        if #available(iOS 10.0, *) {
+            self.playerLooper = AVPlayerLooper(player: player, templateItem: playerItem)
+        }
+
         playerLayer.frame = videoView.bounds
         videoView.layer.addSublayer(playerLayer)
         player.play()
