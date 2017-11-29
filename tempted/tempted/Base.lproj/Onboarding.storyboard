@@ -328,13 +328,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqn-IA-qXb">
                                 <rect key="frame" x="172.5" y="597" width="30" height="30"/>
                             </button>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NotesPreview" translatesAutoresizingMaskIntoConstraints="NO" id="D30-FU-JwR">
-                                <rect key="frame" x="67.5" y="20" width="240" height="425"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zm-11-GgK">
+                                <rect key="frame" x="67" y="40" width="240" height="425"/>
+                                <color key="backgroundColor" red="0.49387463669999998" green="0.373169643" blue="0.59539019339999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="D30-FU-JwR" secondAttribute="height" multiplier="1:1.77" id="OPZ-vp-aZP"/>
-                                    <constraint firstAttribute="width" constant="240" id="fbD-Dc-THc"/>
+                                    <constraint firstAttribute="width" secondItem="8zm-11-GgK" secondAttribute="height" multiplier="1:1.77" id="JOS-zC-BXO"/>
+                                    <constraint firstAttribute="width" constant="240" id="PMg-OB-zIs"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="You interact with Tempted through your lock screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ5-hO-HG1">
                                 <rect key="frame" x="47" y="557" width="281" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -352,16 +353,19 @@
                         <constraints>
                             <constraint firstItem="dqn-IA-qXb" firstAttribute="top" secondItem="hJ5-hO-HG1" secondAttribute="bottom" constant="20" id="3js-5J-EuG"/>
                             <constraint firstItem="hJ5-hO-HG1" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="7dp-EM-yTD"/>
+                            <constraint firstItem="8zm-11-GgK" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="CfE-Pu-t2A"/>
                             <constraint firstItem="dqn-IA-qXb" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="EWL-h2-532"/>
                             <constraint firstItem="SMo-e1-nd3" firstAttribute="top" secondItem="dqn-IA-qXb" secondAttribute="bottom" constant="40" id="JO8-mT-h9v"/>
-                            <constraint firstItem="D30-FU-JwR" firstAttribute="top" secondItem="pma-Co-H9k" secondAttribute="top" constant="20" id="Ji7-i1-ycg"/>
                             <constraint firstItem="KGb-Bo-k3G" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="LpS-9M-DPE"/>
-                            <constraint firstItem="D30-FU-JwR" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="NgX-gi-ejG"/>
                             <constraint firstItem="KGb-Bo-k3G" firstAttribute="top" secondItem="hJ5-hO-HG1" secondAttribute="bottom" constant="20" id="OLC-HH-jRS"/>
                             <constraint firstItem="SMo-e1-nd3" firstAttribute="top" secondItem="KGb-Bo-k3G" secondAttribute="bottom" constant="40" id="Sdp-oD-31D"/>
+                            <constraint firstItem="8zm-11-GgK" firstAttribute="top" secondItem="dYR-pO-9T9" secondAttribute="bottom" constant="20" id="jzl-aO-EXQ"/>
                             <constraint firstItem="hJ5-hO-HG1" firstAttribute="width" secondItem="pma-Co-H9k" secondAttribute="width" multiplier="3/4" id="tle-N6-nXZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="videoView" destination="8zm-11-GgK" id="IRq-3J-5tb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryU-hG-7DB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 
 class VideoViewController : UIViewController {
+    @IBOutlet weak var videoView: UIView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         playVideo()
@@ -23,10 +24,9 @@ class VideoViewController : UIViewController {
         }
         
         let player = AVPlayer(url: URL(fileURLWithPath: path))
-        let playerController = AVPlayerViewController()
-        playerController.player = player
-        present(playerController, animated: true) {
-            player.play()
-        }
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = videoView.bounds
+        videoView.layer.addSublayer(playerLayer)
+        player.play()
     }
 }
