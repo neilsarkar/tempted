@@ -16,10 +16,16 @@ class VideoViewController : UIViewController {
     @IBOutlet weak var videoView: UIView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("view did appear")
         playVideo()
+        subscribe()
     }
     
-    private func playVideo() {
+    private func subscribe() {
+        NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    @objc private func playVideo() {
         guard let path = Bundle.main.path(forResource: "tutorial", ofType: "mov") else {
             print("Couldn't find tutorial.mov")
             return
