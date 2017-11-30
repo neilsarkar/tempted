@@ -223,7 +223,7 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="I1v-J9-XLt"/>
-                        <segue destination="mC8-Ky-Uio" kind="showDetail" id="nhK-WU-jb9"/>
+                        <segue destination="mC8-Ky-Uio" kind="showDetail" identifier="nextSegue" id="nhK-WU-jb9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-7s-ip0" userLabel="First Responder" sceneMemberID="firstResponder"/>

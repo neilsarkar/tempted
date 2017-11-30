@@ -172,13 +172,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
     }
 //  TODO: move this to containing view controller
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if( segue.destination.isKind(of: PermissionsNeededViewController.self) ) {
-            let vc = segue.destination as! PermissionsNeededViewController
-            vc.reason = permissionNeeded!
-        }
-    }
     
     @objc internal func handleUrgeAdded() {
         isSaving = false
