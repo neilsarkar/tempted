@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -351,156 +350,20 @@
                         </connections>
                     </collectionView>
                     <connections>
-                        <segue destination="gml-0z-4pA" kind="show" identifier="ShowPermissionsNeededVC" id="FJf-Ac-Pau"/>
-                        <segue destination="iYg-7Y-e5f" kind="presentation" identifier="ShowOnboardingVC" id="xBs-Q1-Lmk"/>
+                        <segue destination="Xjx-Cw-bAP" kind="showDetail" identifier="ShowOnboardingVC" id="WCM-ds-2Zk"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="645" y="159"/>
         </scene>
-        <!--Permissions Needed View Controller-->
-        <scene sceneID="4ZH-Le-Vms">
+        <!--Onboarding-->
+        <scene sceneID="303-PJ-JsN">
             <objects>
-                <viewController id="gml-0z-4pA" customClass="PermissionsNeededViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SCB-4K-aNs"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fh4-xF-bdg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oxl-0v-ETg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQe-58-b7A">
-                                <rect key="frame" x="138.5" y="345.5" width="98" height="33"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Open Settings"/>
-                                <connections>
-                                    <action selector="settingsButtonTapped:" destination="gml-0z-4pA" eventType="touchUpInside" id="2JO-d1-j6o"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempted is useless without location services." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY6-jj-kKX">
-                                <rect key="frame" x="64" y="322" width="247.5" height="23.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="iY6-jj-kKX" firstAttribute="centerX" secondItem="oxl-0v-ETg" secondAttribute="centerX" id="LFa-Bs-dI7"/>
-                            <constraint firstItem="jQe-58-b7A" firstAttribute="top" secondItem="iY6-jj-kKX" secondAttribute="bottom" id="PYa-gJ-HJY"/>
-                            <constraint firstItem="jQe-58-b7A" firstAttribute="centerX" secondItem="iY6-jj-kKX" secondAttribute="centerX" id="baI-dH-P3G"/>
-                            <constraint firstItem="iY6-jj-kKX" firstAttribute="centerY" secondItem="oxl-0v-ETg" secondAttribute="centerY" id="hf9-We-Xfq"/>
-                            <constraint firstItem="iY6-jj-kKX" firstAttribute="width" secondItem="oxl-0v-ETg" secondAttribute="width" multiplier="0.66" id="o4f-Zr-tKT"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="label" destination="iY6-jj-kKX" id="Kiz-nj-7zR"/>
-                        <outlet property="settingsButton" destination="jQe-58-b7A" id="7Of-tB-Kjk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cqK-QX-J6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="Xjx-Cw-bAP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fug-vs-kO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1583" y="159"/>
-        </scene>
-        <!--Onboarding Controller-->
-        <scene sceneID="XTl-KK-Hh7">
-            <objects>
-                <viewController id="iYg-7Y-e5f" userLabel="Onboarding Controller" customClass="OnboardingViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j1U-u3-45P"/>
-                        <viewControllerLayoutGuide type="bottom" id="VBI-Mr-LH6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ERi-dn-0KF" userLabel="Overlay">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaC-32-gys" userLabel="Modal">
-                                <rect key="frame" x="26" y="83.5" width="323" height="500"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="catch a habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-Hs-BzZ">
-                                        <rect key="frame" x="74.5" y="41" width="173" height="41"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ib3-17-t49">
-                                        <rect key="frame" x="138.5" y="461" width="46" height="29"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="GOT IT!">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="12" name="Avenir-Black"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="1" defaultTabInterval="28" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <integer key="NSUnderline" value="1"/>
-                                                        <color key="NSUnderlineColor" red="0.20784313725490197" green="0.20784313725490197" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <connections>
-                                            <segue destination="XRL-2n-PYG" kind="unwind" unwindAction="unwindToHome:" id="rRE-04-ORA"/>
-                                        </connections>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-4d-ZsX">
-                                        <rect key="frame" x="20" y="102" width="283" height="339"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Want to kick a habit? Catch a new one:
-
-1. Tap the mosquito whenever you feel tempted.
-
-2. The app will take discreet photos of your environment and record your time and location as a private diary entry on your phone.
-
-3. Once you've squashed the mosquito a few times, scroll down and start looking for patterns. Try and find what triggers your brain to want that thing.
-
-4. Once you've identified a pattern, choose a substitute action for that trigger. 
-
-That's it! Be patient. Reward yourself for catching one and forgive yourself for missing a hundred. Don't beat yourself up when you give in.
-
-Stick with it, and you can choose your behavior instead of letting your behavior choose you.</string>
-                                        <color key="textColor" red="0.49019607901573181" green="0.49019607901573181" blue="0.49019607901573181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="top" secondItem="vaC-32-gys" secondAttribute="top" constant="41" id="Mgt-Bh-nJj"/>
-                                    <constraint firstItem="ib3-17-t49" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="Rqx-ba-jtf"/>
-                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="top" constant="-20" id="S6d-G3-Fry"/>
-                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="top" secondItem="EyR-Hs-BzZ" secondAttribute="bottom" constant="20" id="eOL-m3-gEg"/>
-                                    <constraint firstItem="EyR-Hs-BzZ" firstAttribute="centerX" secondItem="vaC-32-gys" secondAttribute="centerX" id="fPf-ys-bX9"/>
-                                    <constraint firstItem="E1l-4d-ZsX" firstAttribute="leading" secondItem="vaC-32-gys" secondAttribute="leading" constant="20" id="oaU-2v-DkE"/>
-                                    <constraint firstAttribute="trailing" secondItem="E1l-4d-ZsX" secondAttribute="trailing" constant="20" id="vv4-nD-uho"/>
-                                    <constraint firstAttribute="bottom" secondItem="ib3-17-t49" secondAttribute="bottom" constant="10" id="whe-9i-1Vd"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80369073275862069" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="trailing" secondItem="ERi-dn-0KF" secondAttribute="trailingMargin" constant="-10" id="TnN-cX-A6c"/>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="centerY" secondItem="ERi-dn-0KF" secondAttribute="centerY" id="Xhu-Yb-Rfc"/>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="leading" secondItem="ERi-dn-0KF" secondAttribute="leadingMargin" constant="10" id="Xjj-AP-Pkd"/>
-                            <constraint firstItem="vaC-32-gys" firstAttribute="height" secondItem="ERi-dn-0KF" secondAttribute="height" multiplier="0.75" id="Z3q-MH-x01"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="textView" destination="E1l-4d-ZsX" id="STt-kD-DAf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1An-Tt-eKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="XRL-2n-PYG" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="645" y="996"/>
+            <point key="canvasLocation" x="1255" y="158"/>
         </scene>
     </scenes>
     <resources>

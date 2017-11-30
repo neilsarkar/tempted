@@ -17,8 +17,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     var urges: Results<Urge>?
     var creator:UrgeSaver!
     
-    var permissionNeeded: String?
-    var isDisplayingPermissionsDialog = false
     var isSaving = false
 
     override func viewDidLoad() {
@@ -31,12 +29,11 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let defaults = UserDefaults.standard
-        
         if( creator == nil ) { creator = UrgeSaver() }
-        if( !defaults.bool(forKey: "com.superserious.tempted.onboarded") ) {
+        let defaults = UserDefaults.standard
+        if( !defaults.bool(forKey: "com.superserious.tempted.wasOnboarded") ) {
             self.performSegue(withIdentifier: "ShowOnboardingVC", sender: self)
-            defaults.set(true, forKey: "com.superserious.tempted.onboarded")
+            defaults.set(true, forKey: "com.superserious.tempted.wasOnboarded")
         }
     }
     
@@ -141,10 +138,5 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
         
         collectionView?.reloadData()
-    }
-    
-// MARK: Unwind Segue
-    
-    @IBAction func unwindToHome(_ sender: UIStoryboardSegue) {
     }
 }
