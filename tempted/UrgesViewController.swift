@@ -88,7 +88,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
-        noteCenter.addObserver(self, selector: #selector(showMapPermissionNeeded), name: TPTNotification.ErrorNoMapPermissions, object: nil)
     }
 
 //  TODO: move this to containing view controller
@@ -105,72 +104,17 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             self.collectionView?.reloadData()
 
             NotificationCenter.default.post(name: TPTNotification.UrgeCreateFailed, object: self)
-            switch(err!.code) {
-            case TPTError.MapPermissionsDeclined.code:
-                self.showMapPermissionNeeded()
-                break
-            case TPTError.PhotoPermissionsDeclined.code:
-                self.showPhotoPermissionNeeded()
-                break
-            case TPTError.PhotoPermissionsNotDetermined.code:
-                let alertController = UIAlertController(title: "Let me take a photo", message: "I need this.", preferredStyle: .alert)
-                
-//              TODO: make this an NSLocalized string
-                let cancelAction = UIAlertAction(title: "Nope", style: .default, handler: nil)
-                let okAction = UIAlertAction(title: "Ugh, fine", style: .default, handler: { action in
-                    self.creator.requestPhotoPermissions()
-                })
-                alertController.addAction(cancelAction)
-                alertController.addAction(okAction)
-                if #available(iOS 9, *) {
-                    alertController.preferredAction = okAction
-                }
-                self.present(alertController, animated: true) {}
-                break
-            case TPTError.MapPermissionsNotDetermined.code:
-                let alertController = UIAlertController(title: "What about maps?", message: "Can we do maps too?", preferredStyle: .alert)
-//              TODO: make this an NSLocalized string
-                let cancelAction = UIAlertAction(title: "Oh hell no", style: .default, handler: nil)
-                let okAction = UIAlertAction(title: "This better be worth it", style: .cancel, handler: { action in
-                    self.creator.requestMapPermissions()
-                })
-                alertController.addAction(cancelAction)
-                alertController.addAction(okAction)
-                if #available(iOS 9, *) {
-                    alertController.preferredAction = okAction
-                }
-                self.present(alertController, animated: true) {}
-                break
-            default:
-                let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .alert)
-                
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true) {}
-                
-                print(err!)
-                Crashlytics.sharedInstance().recordError(err!)
-            }
+            let alertController = UIAlertController(title: "Sorry", message: "Something went wrong.", preferredStyle: .alert)
             
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            self.present(alertController, animated: true) {}
+            
+            print(err!)
+            Crashlytics.sharedInstance().recordError(err!)
         })
     }
     
-//  TODO: move this to containing view controller
-    @objc internal func showMapPermissionNeeded() {
-        // TODO: why is this needed, since NSThread.isMainThread() returns true
-        DispatchQueue.main.async {
-            self.permissionNeeded = TPTString.LocationReason
-            self.performSegue(withIdentifier: "ShowPermissionsNeededVC", sender: self)
-        }
-    }
-
-//  TODO: move this to containing view controller
-    private func showPhotoPermissionNeeded() {
-        DispatchQueue.main.async {
-            self.permissionNeeded = TPTString.PhotoReason
-            self.performSegue(withIdentifier: "ShowPermissionsNeededVC", sender: self)
-        }
-    }
 //  TODO: move this to containing view controller
     
     @objc internal func handleUrgeAdded() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FRS-QL-jeC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mC8-Ky-Uio">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -138,7 +138,7 @@
                                 <rect key="frame" x="156" y="597" width="63" height="30"/>
                                 <state key="normal" title="Is that it?"/>
                                 <connections>
-                                    <segue destination="FRS-QL-jeC" kind="showDetail" id="8fF-SE-2dv"/>
+                                    <segue destination="mC8-Ky-Uio" kind="showDetail" id="GBn-Sb-hua"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tempted records the day and time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra9-6o-7eQ">
@@ -223,17 +223,17 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="I1v-J9-XLt"/>
-                        <segue destination="mC8-Ky-Uio" kind="showDetail" identifier="nextSegue" id="nhK-WU-jb9"/>
+                        <segue destination="mBV-OQ-fDu" kind="showDetail" identifier="nextSegue" id="OFq-LP-n3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-7s-ip0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="159"/>
+            <point key="canvasLocation" x="2956" y="159"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera Perms View Controller-->
         <scene sceneID="WuI-ak-Xde">
             <objects>
-                <viewController id="mC8-Ky-Uio" sceneMemberID="viewController">
+                <viewController id="mC8-Ky-Uio" customClass="CameraPermsViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hxN-sU-yfc"/>
                         <viewControllerLayoutGuide type="bottom" id="oMf-SR-Uue"/>
@@ -246,7 +246,7 @@
                                 <rect key="frame" x="94.5" y="597" width="186" height="30"/>
                                 <state key="normal" title="This had better be worth it."/>
                                 <connections>
-                                    <segue destination="mBV-OQ-fDu" kind="showDetail" id="4sO-DE-R3a"/>
+                                    <action selector="requestPerms:" destination="mC8-Ky-Uio" eventType="touchUpInside" id="EZo-VT-Hxv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tempted records photos of your environment." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnj-Th-v4u">
@@ -279,11 +279,12 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="VVn-VV-y1f"/>
+                        <segue destination="FRS-QL-jeC" kind="showDetail" identifier="nextSegue" id="g6V-Yb-tug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slw-pU-h3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2990" y="159"/>
+            <point key="canvasLocation" x="2105" y="159"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vui-Bk-zdP">
