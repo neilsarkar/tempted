@@ -21,6 +21,12 @@ class LocationPermsViewController : UIViewController {
         subscribe()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if( permissions.hasLocation() ) {
+            return loadNext()
+        }
+    }
+    
     @IBAction func requestPerms(_ sender: Any) {
         if( permissions.hasLocation() ) {
             return loadNext()
