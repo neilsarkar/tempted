@@ -16,7 +16,6 @@ class VideoViewController : UIViewController {
     @IBOutlet weak var videoView: UIView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear")
         playVideo()
         subscribe()
     }

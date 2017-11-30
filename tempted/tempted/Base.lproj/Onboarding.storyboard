@@ -187,8 +187,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpP-fQ-nRf">
-                                <rect key="frame" x="152" y="597" width="71" height="30"/>
-                                <state key="normal" title="I'll allow it."/>
+                                <rect key="frame" x="94.5" y="597" width="186" height="30"/>
+                                <state key="normal" title="This had better be worth it."/>
                                 <connections>
                                     <action selector="requestPerms:" destination="FRS-QL-jeC" eventType="touchUpInside" id="sJF-B8-4rm"/>
                                 </connections>
@@ -243,8 +243,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-aI-8fR">
-                                <rect key="frame" x="94.5" y="597" width="186" height="30"/>
-                                <state key="normal" title="This had better be worth it."/>
+                                <rect key="frame" x="152" y="597" width="71" height="30"/>
+                                <state key="normal" title="I'll allow it."/>
                                 <connections>
                                     <action selector="requestPerms:" destination="mC8-Ky-Uio" eventType="touchUpInside" id="EZo-VT-Hxv"/>
                                 </connections>
@@ -299,8 +299,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H32-bs-CFc">
-                                <rect key="frame" x="161" y="597" width="53" height="30"/>
-                                <state key="normal" title="I guess."/>
+                                <rect key="frame" x="169.5" y="597" width="36" height="30"/>
+                                <state key="normal" title="Sure."/>
                                 <connections>
                                     <segue destination="jcJ-Qn-OMe" kind="showDetail" id="kqG-Ui-Tiz"/>
                                 </connections>
