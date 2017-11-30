@@ -351,7 +351,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zm-11-GgK">
                                 <rect key="frame" x="67" y="40" width="240" height="425"/>
-                                <color key="backgroundColor" red="0.49387463669999998" green="0.373169643" blue="0.59539019339999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8zm-11-GgK" secondAttribute="height" multiplier="1:1.77" id="JOS-zC-BXO"/>
                                     <constraint firstAttribute="width" constant="240" id="PMg-OB-zIs"/>
