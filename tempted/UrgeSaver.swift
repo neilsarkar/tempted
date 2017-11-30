@@ -15,14 +15,12 @@ import Crashlytics
 class UrgeSaver: NSObject {
     var locationManager: LocationManager!
     var photoTaker: PhotoTaker!
-    var permissions: Permissions!
     
     override init() {
         super.init()
 
         locationManager = LocationManager()
         photoTaker = PhotoTaker()
-        permissions = Permissions()
     }
 
     func save(_ cb: @escaping (NSError?) -> Void) {
@@ -30,23 +28,6 @@ class UrgeSaver: NSObject {
     }
     
     func save(_ payload: [AnyHashable:Any], _ cb: @escaping (NSError?) -> Void) {
-        if( !permissions.hasPhoto() ) {
-            if( permissions.canRequestPhoto() ) {
-                return cb(TPTError.PhotoPermissionsNotDetermined)
-            } else {
-                return cb(TPTError.PhotoPermissionsDeclined)
-            }
-        }
-        
-        if( !permissions.hasLocation() ) {
-            if( permissions.canRequestLocation() ) {
-                return cb(TPTError.MapPermissionsNotDetermined)
-            } else {
-                cb(TPTError.MapPermissionsDeclined)
-                return
-            }
-        }
-        
         photoTaker.takePhotos({err, selfieData, rearData in
             if( err != nil ) {
                 // if there's an error, just throw out our PhotoTaker and spin up a new one
@@ -90,13 +71,5 @@ class UrgeSaver: NSObject {
                 NotificationCenter.default.post(name: TPTNotification.UrgeCreated, object: self)
             })
         })
-    }
-    
-    func requestPhotoPermissions() {
-        photoTaker.requestPermissions()
-    }
-    
-    func requestMapPermissions() {
-        locationManager.requestPermissions()
     }
 }

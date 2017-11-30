@@ -97,20 +97,6 @@ class PhotoTaker: NSObject {
             })
         })
     }
-
-    func requestPermissions() {
-        AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { success in
-            self.hasPhotoPermissions = success
-
-            #if IOS_SIMULATOR
-                return
-            #else
-                if( success ) {
-                    self.photoQueue.resume()
-                }
-            #endif
-        })
-    }
     
     private func takePhoto(_ cb: @escaping (NSError?, _ data: Data?) -> Void) {
         if( photoOutput == nil ) {

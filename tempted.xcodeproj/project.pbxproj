@@ -25,12 +25,17 @@
 		3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB41D04C1A3002CA04D /* Urge.swift */; };
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
+		3F8468621FCF95F100B61049 /* LocationPermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8468611FCF95F100B61049 /* LocationPermsViewController.swift */; };
+		3FBE58E31FCFA59100EAFAF2 /* CameraPermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE58E21FCFA59100EAFAF2 /* CameraPermsViewController.swift */; };
 		3FBF33891FB9667C00E39605 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF33881FB9667C00E39605 /* PreviewCell.swift */; };
+		3FCE8ECD1FCE3CD200F0620D /* tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */; };
+		3FCE8ECF1FCE3D1F00F0620D /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */; };
 		3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */; };
 		3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */; };
 		3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD24B401D0CF0A1003F73C6 /* Constants.swift */; };
 		3FD7D5B01D0555D9000E98A9 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */; };
 		3FD7D5B11D0555D9000E98A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */; };
+		3FDFD5851FC003F600E541BC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FDFD5831FC003F600E541BC /* Onboarding.storyboard */; };
 		3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */; };
 		3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */; };
 		3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF41EB51D04B02F0063CA80 /* Main.storyboard */; };
@@ -116,13 +121,18 @@
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
+		3F8468611FCF95F100B61049 /* LocationPermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermsViewController.swift; sourceTree = "<group>"; };
+		3FBE58E21FCFA59100EAFAF2 /* CameraPermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermsViewController.swift; sourceTree = "<group>"; };
 		3FBF33881FB9667C00E39605 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = tutorial.mov; sourceTree = "<group>"; };
+		3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		3FD24B3B1D0CD945003F73C6 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		3FD24B3D1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TMPAdditions.swift"; sourceTree = "<group>"; };
 		3FD24B401D0CF0A1003F73C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3FD4669E1D31CFF2005AF2CF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		3FD7D5AE1D0555D9000E98A9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3FD7D5AF1D0555D9000E98A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		3FDFD5841FC003F600E541BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = tempted/Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		3FE375461D3AE61A00DF7085 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
 		3FF41EAE1D04B02F0063CA80 /* Tempted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +239,9 @@
 				3F4E8BA01D0E2C5D00446561 /* PermissionsNeededViewController.swift */,
 				3F1574851D20F709004BCEE7 /* OnboardingViewController.swift */,
 				3FBF33881FB9667C00E39605 /* PreviewCell.swift */,
+				3FCE8ECE1FCE3D1F00F0620D /* VideoViewController.swift */,
+				3F8468611FCF95F100B61049 /* LocationPermsViewController.swift */,
+				3FBE58E21FCFA59100EAFAF2 /* CameraPermsViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -271,10 +284,12 @@
 				3FD24B3F1D0CDDA0003F73C6 /* Extensions */,
 				3FF41EB11D04B02F0063CA80 /* AppDelegate.swift */,
 				3FF41EB51D04B02F0063CA80 /* Main.storyboard */,
+				3FDFD5831FC003F600E541BC /* Onboarding.storyboard */,
 				3FF41EBB1D04B02F0063CA80 /* Assets.xcassets */,
 				3FF41EBD1D04B02F0063CA80 /* LaunchScreen.storyboard */,
 				3FF41EC01D04B02F0063CA80 /* Info.plist */,
 				3FD24B401D0CF0A1003F73C6 /* Constants.swift */,
+				3FCE8ECC1FCE3CD200F0620D /* tutorial.mov */,
 			);
 			path = tempted;
 			sourceTree = "<group>";
@@ -410,6 +425,8 @@
 				3FF41EBF1D04B02F0063CA80 /* LaunchScreen.storyboard in Resources */,
 				3FF41EBC1D04B02F0063CA80 /* Assets.xcassets in Resources */,
 				3FF41EB71D04B02F0063CA80 /* Main.storyboard in Resources */,
+				3FDFD5851FC003F600E541BC /* Onboarding.storyboard in Resources */,
+				3FCE8ECD1FCE3CD200F0620D /* tutorial.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1574861D20F709004BCEE7 /* OnboardingViewController.swift in Sources */,
+				3F8468621FCF95F100B61049 /* LocationPermsViewController.swift in Sources */,
 				3FD24B3C1D0CD945003F73C6 /* PaddedLabel.swift in Sources */,
 				3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */,
 				3FE375471D3AE61A00DF7085 /* PhotoTaker.swift in Sources */,
@@ -478,8 +496,10 @@
 				3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */,
 				3F4E8BA11D0E2C5D00446561 /* PermissionsNeededViewController.swift in Sources */,
 				3FF41EB21D04B02F0063CA80 /* AppDelegate.swift in Sources */,
+				3FCE8ECF1FCE3D1F00F0620D /* VideoViewController.swift in Sources */,
 				3FBF33891FB9667C00E39605 /* PreviewCell.swift in Sources */,
 				3FD24B3E1D0CDD98003F73C6 /* UIColor+TMPAdditions.swift in Sources */,
+				3FBE58E31FCFA59100EAFAF2 /* CameraPermsViewController.swift in Sources */,
 				3F016FBE1D3BD17600A83B21 /* Permissions.swift in Sources */,
 				3F016FBC1D3B5DDD00A83B21 /* LocationManager.swift in Sources */,
 				3FD24B411D0CF0A1003F73C6 /* Constants.swift in Sources */,
@@ -509,6 +529,14 @@
 				3F5701A51FA44E8300AAF6E5 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		3FDFD5831FC003F600E541BC /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FDFD5841FC003F600E541BC /* Base */,
+			);
+			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 		3FF41EB51D04B02F0063CA80 /* Main.storyboard */ = {
