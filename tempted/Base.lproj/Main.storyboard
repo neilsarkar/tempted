@@ -351,6 +351,7 @@
                     </collectionView>
                     <connections>
                         <segue destination="Xjx-Cw-bAP" kind="showDetail" identifier="ShowOnboardingVC" id="WCM-ds-2Zk"/>
+                        <segue destination="W6o-yF-uUm" kind="show" identifier="EmptySegue" animates="NO" action="showDetailViewController:sender:" id="3dW-QC-na1"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -363,7 +364,50 @@
                 <viewControllerPlaceholder storyboardName="Onboarding" id="Xjx-Cw-bAP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fug-vs-kO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1255" y="158"/>
+            <point key="canvasLocation" x="644" y="-272"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="K9h-oO-4Qh">
+            <objects>
+                <viewController id="W6o-yF-uUm" customClass="VideoViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AOu-p3-kEe"/>
+                        <viewControllerLayoutGuide type="bottom" id="aF7-aX-Njk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zjv-Zc-lYI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbo-qh-5HP">
+                                <rect key="frame" x="67" y="40" width="240" height="425"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dbo-qh-5HP" secondAttribute="height" multiplier="1:1.77" id="QiH-hX-bK4"/>
+                                    <constraint firstAttribute="width" constant="240" id="fnx-eH-QLq"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="You interact with Tempted through your lock screen. I hope you find it useful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vad-vJ-1Ti">
+                                <rect key="frame" x="47" y="591" width="281" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dbo-qh-5HP" firstAttribute="top" secondItem="AOu-p3-kEe" secondAttribute="bottom" constant="20" id="0OW-zD-Qpa"/>
+                            <constraint firstItem="Vad-vJ-1Ti" firstAttribute="width" secondItem="Zjv-Zc-lYI" secondAttribute="width" multiplier="3/4" id="1S2-fC-LFd"/>
+                            <constraint firstItem="aF7-aX-Njk" firstAttribute="top" secondItem="Vad-vJ-1Ti" secondAttribute="bottom" constant="40" id="UfQ-HD-YKi"/>
+                            <constraint firstItem="dbo-qh-5HP" firstAttribute="centerX" secondItem="Zjv-Zc-lYI" secondAttribute="centerX" id="al3-Jl-lHx"/>
+                            <constraint firstItem="Vad-vJ-1Ti" firstAttribute="centerX" secondItem="Zjv-Zc-lYI" secondAttribute="centerX" id="sxp-Yi-6Sn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="videoView" destination="dbo-qh-5HP" id="BiJ-hT-xBX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJC-ks-6NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183" y="158"/>
         </scene>
     </scenes>
     <resources>

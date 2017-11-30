@@ -71,7 +71,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UICollectionViewController-x0J-Yn-BzT" id="jcJ-Qn-OMe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfX-ot-4Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5504" y="158"/>
+            <point key="canvasLocation" x="4803" y="158"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="TgH-Lt-LWa">
@@ -302,7 +302,7 @@
                                 <rect key="frame" x="161" y="597" width="53" height="30"/>
                                 <state key="normal" title="I guess."/>
                                 <connections>
-                                    <segue destination="xGw-23-2mQ" kind="showDetail" id="1Os-lr-Zi8"/>
+                                    <segue destination="jcJ-Qn-OMe" kind="showDetail" id="kqG-Ui-Tiz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Over time, you'll notice patterns that trigger your urges." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH3-qL-6jc">
@@ -337,49 +337,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBi-81-Hla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3857" y="159"/>
-        </scene>
-        <!--Video View Controller-->
-        <scene sceneID="J2v-YY-zfk">
-            <objects>
-                <viewController id="xGw-23-2mQ" customClass="VideoViewController" customModule="Tempted" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dYR-pO-9T9"/>
-                        <viewControllerLayoutGuide type="bottom" id="SMo-e1-nd3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pma-Co-H9k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zm-11-GgK">
-                                <rect key="frame" x="67" y="40" width="240" height="425"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8zm-11-GgK" secondAttribute="height" multiplier="1:1.77" id="JOS-zC-BXO"/>
-                                    <constraint firstAttribute="width" constant="240" id="PMg-OB-zIs"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="You interact with Tempted through your lock screen. I hope you find it useful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ5-hO-HG1">
-                                <rect key="frame" x="47" y="591" width="281" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hJ5-hO-HG1" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="7dp-EM-yTD"/>
-                            <constraint firstItem="8zm-11-GgK" firstAttribute="centerX" secondItem="pma-Co-H9k" secondAttribute="centerX" id="CfE-Pu-t2A"/>
-                            <constraint firstItem="SMo-e1-nd3" firstAttribute="top" secondItem="hJ5-hO-HG1" secondAttribute="bottom" constant="40" id="RTu-vA-uRl"/>
-                            <constraint firstItem="8zm-11-GgK" firstAttribute="top" secondItem="dYR-pO-9T9" secondAttribute="bottom" constant="20" id="jzl-aO-EXQ"/>
-                            <constraint firstItem="hJ5-hO-HG1" firstAttribute="width" secondItem="pma-Co-H9k" secondAttribute="width" multiplier="3/4" id="tle-N6-nXZ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="videoView" destination="8zm-11-GgK" id="IRq-3J-5tb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ryU-hG-7DB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4917.6000000000004" y="158.77061469265368"/>
         </scene>
         <!--Permissions Needed View Controller-->
         <scene sceneID="cDi-4g-hyf">
