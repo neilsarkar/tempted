@@ -18,10 +18,17 @@ class VideoViewController : UIViewController {
         super.viewDidAppear(animated)
         playVideo()
         subscribe()
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "com.superserious.tempted.wasOnboarded")
     }
     
     private func subscribe() {
         NotificationCenter.default.addObserver(self, selector: #selector(playVideo), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showUrges), name: TPTNotification.CreateUrge, object: nil)
+    }
+    
+    @objc private func showUrges() {
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc private func playVideo() {

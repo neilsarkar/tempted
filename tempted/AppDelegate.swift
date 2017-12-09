@@ -38,8 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let viceId = Int(String(url.path.dropFirst())) else {
             return false
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+
+        if let vc = self.window?.rootViewController as? UrgesViewController {
+            vc.willSave = true
+        }
+
+        // This has to be dispatched on a queue because we want to wait until the app is ready to accept
+        DispatchQueue.main.async {
             NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self, userInfo: ["viceId": viceId])
         }
         

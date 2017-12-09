@@ -18,6 +18,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
     var creator:UrgeSaver!
     
     var isSaving = false
+    var willSave = false // used from app delegate to tell this vc to save
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,9 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         super.viewDidAppear(animated)
         if( creator == nil ) { creator = UrgeSaver() }
         let defaults = UserDefaults.standard
+        if( willSave ) {
+            return
+        }
         if( !defaults.bool(forKey: "com.superserious.tempted.wasOnboarded") ) {
             self.performSegue(withIdentifier: "ShowOnboardingVC", sender: self)
             defaults.set(true, forKey: "com.superserious.tempted.wasOnboarded")
@@ -93,6 +97,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
 
 //  TODO: move this to containing view controller
     @objc internal func save(_ notification: NSNotification) {
+        if( isSaving ) { return }
         let data = notification.userInfo ?? [AnyHashable: Any]()
 
         isSaving = true
@@ -141,6 +146,10 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             realm.delete(badUrge!)
         }
         
-        collectionView?.reloadData()
+        if( urges?.count == 0 ) {
+            self.performSegue(withIdentifier: "EmptySegue", sender: self)
+        } else {
+            collectionView?.reloadData()
+        }
     }
 }

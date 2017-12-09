@@ -125,7 +125,7 @@
         <!--View Controller-->
         <scene sceneID="UYL-UV-KRG">
             <objects>
-                <viewController id="x4m-ew-wAG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClockVC" id="x4m-ew-wAG" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hn6-y4-Mni"/>
                         <viewControllerLayoutGuide type="bottom" id="Eke-d7-dZt"/>
