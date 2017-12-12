@@ -65,14 +65,6 @@
             </objects>
             <point key="canvasLocation" x="-572" y="159"/>
         </scene>
-        <!--UICollectionViewController-x0J-Yn-BzT-->
-        <scene sceneID="Ljs-OU-pFD">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UICollectionViewController-x0J-Yn-BzT" id="jcJ-Qn-OMe" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pfX-ot-4Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4803" y="158"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="TgH-Lt-LWa">
             <objects>
@@ -89,7 +81,7 @@
                                 <rect key="frame" x="159" y="597" width="57" height="30"/>
                                 <state key="normal" title="Mmkay?"/>
                                 <connections>
-                                    <segue destination="x4m-ew-wAG" kind="showDetail" id="TCf-yg-7gT"/>
+                                    <segue destination="x4m-ew-wAG" kind="show" id="TCf-yg-7gT"/>
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodayPreview" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-yQ-tr0">
@@ -138,7 +130,7 @@
                                 <rect key="frame" x="156" y="597" width="63" height="30"/>
                                 <state key="normal" title="Is that it?"/>
                                 <connections>
-                                    <segue destination="mC8-Ky-Uio" kind="showDetail" id="GBn-Sb-hua"/>
+                                    <segue destination="mC8-Ky-Uio" kind="show" id="xb9-O9-mgy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tempted records the day and time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra9-6o-7eQ">
@@ -216,7 +208,7 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="I1v-J9-XLt"/>
-                        <segue destination="mBV-OQ-fDu" kind="showDetail" identifier="nextSegue" id="OFq-LP-n3N"/>
+                        <segue destination="mBV-OQ-fDu" kind="show" identifier="nextSegue" id="cOr-9U-6cc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-7s-ip0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,7 +260,7 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="VVn-VV-y1f"/>
-                        <segue destination="FRS-QL-jeC" kind="showDetail" identifier="nextSegue" id="g6V-Yb-tug"/>
+                        <segue destination="FRS-QL-jeC" kind="show" identifier="nextSegue" id="3RQ-kL-VGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slw-pU-h3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,7 +283,7 @@
                                 <rect key="frame" x="169.5" y="597" width="36" height="30"/>
                                 <state key="normal" title="Sure."/>
                                 <connections>
-                                    <segue destination="jcJ-Qn-OMe" kind="showDetail" id="kqG-Ui-Tiz"/>
+                                    <segue destination="bT9-c6-IYa" kind="unwind" unwindAction="unwindToUrgesVCWithSender:" id="VQM-HZ-FJ1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Over time, you'll notice patterns that trigger your urges." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QH3-qL-6jc">
@@ -320,6 +312,7 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBi-81-Hla" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bT9-c6-IYa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3857" y="159"/>
         </scene>
@@ -378,6 +371,6 @@
         <image name="Traffic Light" width="201" height="446"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I1v-J9-XLt"/>
+        <segue reference="VVn-VV-y1f"/>
     </inferredMetricsTieBreakers>
 </document>

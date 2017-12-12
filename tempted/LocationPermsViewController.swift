@@ -11,7 +11,9 @@ import UIKit
 class LocationPermsViewController : UIViewController {
     var permissions: Permissions!
     var locationManager: LocationManager!
-
+    var isTransitioning = false
+    var unwinding = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,9 +23,16 @@ class LocationPermsViewController : UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if( permissions.hasLocation() ) {
+        super.viewDidAppear(animated)
+        if( !unwinding && permissions.hasLocation() ) {
+            print("loading from viewDidAppear")
             return loadNext()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let noteCenter = NotificationCenter.default
+        noteCenter.removeObserver(self)
     }
     
     @IBAction func requestPerms(_ sender: Any) {
@@ -43,6 +52,10 @@ class LocationPermsViewController : UIViewController {
     }
     
     @objc private func loadNext() {
+        // this lock is necessary because didChangeAuthorizationStatus will fire along with
+        // viewDidAppear in some cases but (possibly) not all
+        if( isTransitioning ) { return }
+        isTransitioning = true
         self.performSegue(withIdentifier: "nextSegue", sender: self)
     }
     
@@ -58,4 +71,8 @@ class LocationPermsViewController : UIViewController {
         }
     }
 
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
+        self.unwinding = true
+        return false
+    }
 }

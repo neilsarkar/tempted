@@ -356,7 +356,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMW-M5-Rxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645" y="159"/>
+            <point key="canvasLocation" x="644" y="158"/>
         </scene>
         <!--Onboarding-->
         <scene sceneID="303-PJ-JsN">
@@ -364,7 +364,7 @@
                 <viewControllerPlaceholder storyboardName="Onboarding" id="Xjx-Cw-bAP" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fug-vs-kO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-272"/>
+            <point key="canvasLocation" x="1214" y="157"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="K9h-oO-4Qh">
@@ -407,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJC-ks-6NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="158"/>
+            <point key="canvasLocation" x="1735" y="158"/>
         </scene>
     </scenes>
     <resources>

@@ -37,7 +37,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         }
         if( !defaults.bool(forKey: "com.superserious.tempted.wasOnboarded") ) {
             self.performSegue(withIdentifier: "ShowOnboardingVC", sender: self)
-            defaults.set(true, forKey: "com.superserious.tempted.wasOnboarded")
             return
         }
         if( urges?.count == 0 ) {
@@ -88,14 +87,18 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
 
 // MARK: Event Handling
     internal func subscribe() {
+        
         let noteCenter = NotificationCenter.default
-
+        
+        // this guards against double subscriptions that can happen when the vc is shown initially,
+        // then onboarding, then back to here.
+        noteCenter.removeObserver(self)
         noteCenter.addObserver(self, selector: #selector(handleUrgeAdded), name: TPTNotification.UrgeCreated, object: nil)
         noteCenter.addObserver(self, selector: #selector(handleUrgeDelete), name: TPTNotification.UrgeDeleted, object: nil)
         noteCenter.addObserver(self, selector: #selector(save), name: TPTNotification.CreateUrge, object: nil)
     }
 
-//  TODO: move this to containing view controller
+//  MARK: saving new urge
     @objc internal func save(_ notification: NSNotification) {
         if( isSaving ) { return }
         let data = notification.userInfo ?? [AnyHashable: Any]()
@@ -120,8 +123,6 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             Crashlytics.sharedInstance().recordError(err!)
         })
     }
-    
-//  TODO: move this to containing view controller
     
     @objc internal func handleUrgeAdded() {
         isSaving = false
@@ -151,5 +152,15 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
         } else {
             collectionView?.reloadData()
         }
+    }
+    
+    // https://developer.apple.com/library/content/technotes/tn2298/_index.html#//apple_ref/doc/uid/DTS40013591-CH1-DETDEST
+    @IBAction func unwindToUrgesVC(sender: UIStoryboardSegue) {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "com.superserious.tempted.wasOnboarded")
+//        if( segue.destination.isKind(of: PermissionsNeededViewController.self) ) {
+//            let vc = segue.destination as! PermissionsNeededViewController
+//            vc.reason = TPTString.PhotoReason
+//        }
     }
 }
