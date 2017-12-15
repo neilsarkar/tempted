@@ -11,9 +11,19 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
+    @IBOutlet weak var liquor: UIButton!
+    @IBOutlet weak var smokes: UIButton!
+    @IBOutlet weak var phone: UIButton!
+    @IBOutlet weak var carbs: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
+
+
+        liquor.imageView?.contentMode = .scaleAspectFit
+        smokes.imageView?.contentMode = .scaleAspectFit
+        phone.imageView?.contentMode  = .scaleAspectFit
+        carbs.imageView?.contentMode  = .scaleAspectFit
     }
     
     @IBAction func touchBeer(_ sender: Any) {

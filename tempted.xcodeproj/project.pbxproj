@@ -24,6 +24,7 @@
 		3F6B9AB51D04C1A3002CA04D /* Urge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB41D04C1A3002CA04D /* Urge.swift */; };
 		3F6B9AB71D04CFB3002CA04D /* UrgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */; };
 		3F6B9ABA1D04D692002CA04D /* UrgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6B9AB91D04D692002CA04D /* UrgeCell.swift */; };
+		3F75F3521FE3A4F7003395D3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F75F3511FE3A4F7003395D3 /* Media.xcassets */; };
 		3F8468621FCF95F100B61049 /* LocationPermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8468611FCF95F100B61049 /* LocationPermsViewController.swift */; };
 		3FBE58E31FCFA59100EAFAF2 /* CameraPermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE58E21FCFA59100EAFAF2 /* CameraPermsViewController.swift */; };
 		3FBF33891FB9667C00E39605 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF33881FB9667C00E39605 /* PreviewCell.swift */; };
@@ -119,6 +120,7 @@
 		3F6B9AB41D04C1A3002CA04D /* Urge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urge.swift; sourceTree = "<group>"; };
 		3F6B9AB61D04CFB3002CA04D /* UrgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgesViewController.swift; sourceTree = "<group>"; };
 		3F6B9AB91D04D692002CA04D /* UrgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrgeCell.swift; sourceTree = "<group>"; };
+		3F75F3511FE3A4F7003395D3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3F8468611FCF95F100B61049 /* LocationPermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermsViewController.swift; sourceTree = "<group>"; };
 		3FBE58E21FCFA59100EAFAF2 /* CameraPermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermsViewController.swift; sourceTree = "<group>"; };
 		3FBF33881FB9667C00E39605 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				3F5701A21FA44E8300AAF6E5 /* TodayViewController.swift */,
 				3F5701A41FA44E8300AAF6E5 /* MainInterface.storyboard */,
 				3F5701A71FA44E8300AAF6E5 /* Info.plist */,
+				3F75F3511FE3A4F7003395D3 /* Media.xcassets */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F75F3521FE3A4F7003395D3 /* Media.xcassets in Resources */,
 				3F5701A61FA44E8300AAF6E5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
