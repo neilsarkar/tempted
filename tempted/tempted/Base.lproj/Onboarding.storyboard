@@ -32,7 +32,7 @@
                                 <rect key="frame" x="168" y="597" width="39" height="30"/>
                                 <state key="normal" title="How?"/>
                                 <connections>
-                                    <segue destination="XlX-Vx-4NF" kind="showDetail" id="jsF-WT-fyi"/>
+                                    <segue destination="XlX-Vx-4NF" kind="custom" customClass="SegueFromLeft" customModule="Tempted" customModuleProvider="target" id="jsF-WT-fyi"/>
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Traffic Light" translatesAutoresizingMaskIntoConstraints="NO" id="hAX-aa-QZT">
@@ -81,7 +81,7 @@
                                 <rect key="frame" x="159" y="597" width="57" height="30"/>
                                 <state key="normal" title="Mmkay?"/>
                                 <connections>
-                                    <segue destination="x4m-ew-wAG" kind="show" id="TCf-yg-7gT"/>
+                                    <segue destination="x4m-ew-wAG" kind="custom" customClass="SegueFromLeft" customModule="Tempted" customModuleProvider="target" id="TCf-yg-7gT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="When you feel an urge, tap the symbol on your lockscreen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yy-S9Y">
@@ -174,7 +174,7 @@
                                 <rect key="frame" x="156" y="597" width="63" height="30"/>
                                 <state key="normal" title="Is that it?"/>
                                 <connections>
-                                    <segue destination="mC8-Ky-Uio" kind="show" id="xb9-O9-mgy"/>
+                                    <segue destination="mC8-Ky-Uio" kind="custom" customClass="SegueFromLeft" customModule="Tempted" customModuleProvider="target" id="xb9-O9-mgy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tempted records the day and time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ra9-6o-7eQ">
@@ -252,7 +252,7 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="I1v-J9-XLt"/>
-                        <segue destination="mBV-OQ-fDu" kind="show" identifier="nextSegue" id="cOr-9U-6cc"/>
+                        <segue destination="mBV-OQ-fDu" kind="custom" identifier="nextSegue" customClass="SegueFromLeft" customModule="Tempted" customModuleProvider="target" id="cOr-9U-6cc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkp-7s-ip0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,7 +304,7 @@
                     </view>
                     <connections>
                         <segue destination="vxw-d2-Mgy" kind="showDetail" identifier="permissionSegue" id="VVn-VV-y1f"/>
-                        <segue destination="FRS-QL-jeC" kind="show" identifier="nextSegue" id="3RQ-kL-VGJ"/>
+                        <segue destination="FRS-QL-jeC" kind="custom" identifier="nextSegue" customClass="SegueFromLeft" customModule="Tempted" customModuleProvider="target" id="3RQ-kL-VGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slw-pU-h3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
