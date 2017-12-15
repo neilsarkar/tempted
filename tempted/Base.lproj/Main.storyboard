@@ -263,11 +263,18 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liquor Icon" translatesAutoresizingMaskIntoConstraints="NO" id="bWH-sS-WHB">
-                                                            <rect key="frame" x="138" y="138.5" width="31" height="31"/>
+                                                            <rect key="frame" x="133.5" y="134" width="40" height="40"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="kty-2c-XlK"/>
                                                                 <constraint firstAttribute="width" secondItem="bWH-sS-WHB" secondAttribute="height" multiplier="1:1" id="mCl-wl-ZEm"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,7 +292,6 @@
                                                         <constraint firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="height" multiplier="1:1" id="erE-2x-0pd"/>
                                                         <constraint firstAttribute="bottom" secondItem="exe-7f-UxR" secondAttribute="bottom" id="ftB-Zx-HcL"/>
                                                         <constraint firstItem="bWH-sS-WHB" firstAttribute="centerX" secondItem="2w3-iF-ise" secondAttribute="centerX" id="oQH-1p-fry"/>
-                                                        <constraint firstItem="bWH-sS-WHB" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="1/10" id="puM-kh-J0t"/>
                                                         <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
                                                         <constraint firstAttribute="trailing" secondItem="YQ5-yk-BsW" secondAttribute="trailing" id="tM2-tA-0lz"/>
                                                         <constraint firstAttribute="bottom" secondItem="Fz6-u0-04f" secondAttribute="bottom" id="zIS-9f-0iD"/>

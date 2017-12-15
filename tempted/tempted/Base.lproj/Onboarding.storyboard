@@ -93,25 +93,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBS-Iw-ddc">
                                 <rect key="frame" x="19" y="60" width="337.5" height="337.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liquor Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-l6-oNM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liquor" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-l6-oNM">
                                         <rect key="frame" x="0.0" y="0.0" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fF6-l6-oNM" secondAttribute="height" multiplier="1:1" id="U3g-cz-pDh"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone Icon" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-A4-UZZ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-A4-UZZ">
                                         <rect key="frame" x="168.5" y="0.0" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="yW2-A4-UZZ" secondAttribute="height" multiplier="1:1" id="x1E-3b-kNJ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Donut Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-pw-82g">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Donut" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-pw-82g">
                                         <rect key="frame" x="168.5" y="168.5" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="Lul-EA-DhQ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cigarette Icon" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-Sl-Y5V">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cigarette" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-Sl-Y5V">
                                         <rect key="frame" x="0.0" y="168.5" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="rkg-be-5HM"/>
@@ -408,12 +408,12 @@
     </scenes>
     <resources>
         <image name="Camera" width="286" height="229"/>
-        <image name="Cigarette Icon" width="600" height="600"/>
+        <image name="Cigarette" width="600" height="600"/>
         <image name="Clock" width="320" height="320"/>
-        <image name="Donut Icon" width="600" height="600"/>
+        <image name="Donut" width="600" height="600"/>
         <image name="Light Bulb" width="498" height="573"/>
-        <image name="Liquor Icon" width="600" height="600"/>
-        <image name="Phone Icon" width="600" height="600"/>
+        <image name="Liquor" width="600" height="600"/>
+        <image name="Phone" width="600" height="600"/>
         <image name="Pin" width="313" height="474"/>
         <image name="Traffic Light" width="200" height="446"/>
     </resources>
