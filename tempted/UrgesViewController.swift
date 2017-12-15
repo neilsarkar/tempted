@@ -39,7 +39,7 @@ class UrgesViewController : UICollectionViewController, UICollectionViewDelegate
             self.performSegue(withIdentifier: "ShowOnboardingVC", sender: self)
             return
         }
-        if( urges?.count == 0 ) {
+        if( !defaults.bool(forKey: "com.superserious.tempted.createdUrge") || urges?.count == 0 ) {
             self.performSegue(withIdentifier: "EmptySegue", sender: self)
         }
     }

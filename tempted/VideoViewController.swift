@@ -28,6 +28,8 @@ class VideoViewController : UIViewController {
     }
     
     @objc private func showUrges() {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "com.superserious.tempted.createdUrge")
         self.dismiss(animated: false, completion: nil)
     }
     
