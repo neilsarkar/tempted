@@ -18,12 +18,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
         liquor.imageView?.contentMode = .scaleAspectFit
         smokes.imageView?.contentMode = .scaleAspectFit
         phone.imageView?.contentMode  = .scaleAspectFit
         carbs.imageView?.contentMode  = .scaleAspectFit
+    }
+    
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if( activeDisplayMode == NCWidgetDisplayMode.compact ) {
+            self.preferredContentSize = maxSize;
+        } else {
+            self.preferredContentSize = CGSize(width: 0, height: 400)
+        }
     }
     
     @IBAction func touchBeer(_ sender: Any) {
