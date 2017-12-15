@@ -84,27 +84,71 @@
                                     <segue destination="x4m-ew-wAG" kind="show" id="TCf-yg-7gT"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodayPreview" translatesAutoresizingMaskIntoConstraints="NO" id="0Xd-yQ-tr0">
-                                <rect key="frame" x="67.5" y="91" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="BQA-9H-kCw"/>
-                                    <constraint firstAttribute="width" secondItem="0Xd-yQ-tr0" secondAttribute="height" multiplier="1:1" id="c5a-gm-er6"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="When you feel an urge, tap the emoji on your lockscreen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yy-S9Y">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="When you feel an urge, tap the symbol on your lockscreen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yy-S9Y">
                                 <rect key="frame" x="47" y="541" width="281" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBS-Iw-ddc">
+                                <rect key="frame" x="19" y="60" width="337.5" height="337.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liquor Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fF6-l6-oNM">
+                                        <rect key="frame" x="0.0" y="0.0" width="169" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fF6-l6-oNM" secondAttribute="height" multiplier="1:1" id="U3g-cz-pDh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone IV" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-A4-UZZ">
+                                        <rect key="frame" x="168.5" y="0.0" width="169" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="yW2-A4-UZZ" secondAttribute="height" multiplier="1:1" id="x1E-3b-kNJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Donut Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-pw-82g">
+                                        <rect key="frame" x="168.5" y="168.5" width="169" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="Lul-EA-DhQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cigarette" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-Sl-Y5V">
+                                        <rect key="frame" x="0.0" y="168.5" width="169" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="rkg-be-5HM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="ALq-FD-4cI"/>
+                                    <constraint firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="height" multiplier="1:1" id="DXC-MN-Ima"/>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="Dbp-tS-fhE"/>
+                                    <constraint firstItem="fF6-l6-oNM" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="NIj-rZ-Uyl"/>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="Sdh-PH-Ev9"/>
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="Yf8-qD-OB6"/>
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="YuH-Si-7ff"/>
+                                    <constraint firstItem="yW2-A4-UZZ" firstAttribute="width" secondItem="yW2-A4-UZZ" secondAttribute="height" multiplier="1:1" id="d8q-o6-anK"/>
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="donut0" />
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="trailing" secondItem="ZBS-Iw-ddc" secondAttribute="trailing" id="donut1" userLabel="Donut.leading = leading"/>
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="bottom" secondItem="ZBS-Iw-ddc" secondAttribute="bottom" id="donut2" userLabel="Donut.top = top"/>
+                                    <constraint firstItem="fF6-l6-oNM" firstAttribute="leading" secondItem="ZBS-Iw-ddc" secondAttribute="leading" id="jVm-hK-WJi" userLabel="Liquor Icon.leading = leading"/>
+                                    <constraint firstItem="yW2-A4-UZZ" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="phone0"/>
+                                    <constraint firstItem="yW2-A4-UZZ" firstAttribute="trailing" secondItem="ZBS-Iw-ddc" secondAttribute="trailing" id="phone1" userLabel="Phone IV.leading = leading"/>
+                                    <constraint firstItem="yW2-A4-UZZ" firstAttribute="top" secondItem="ZBS-Iw-ddc" secondAttribute="top" id="phone2" userLabel="Phone IV.top = top"/>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="smoke0"/>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="leading" secondItem="ZBS-Iw-ddc" secondAttribute="leading" id="smoke1" userLabel="Cigarette.leading = leading"/>
+                                    <constraint firstItem="B3P-Sl-Y5V" firstAttribute="bottom" secondItem="ZBS-Iw-ddc" secondAttribute="bottom" id="smoke2" userLabel="Cigarette.top = top"/>
+                                    <constraint firstItem="fF6-l6-oNM" firstAttribute="top" secondItem="ZBS-Iw-ddc" secondAttribute="top" id="uPZ-v3-aVd" userLabel="Liquor Icon.top = top"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Zo-eT-d2o" firstAttribute="top" secondItem="QoC-Ru-86m" secondAttribute="bottom" constant="40" id="2Y0-m0-cWT"/>
-                            <constraint firstItem="0Xd-yQ-tr0" firstAttribute="top" secondItem="Fcc-Hp-j0e" secondAttribute="bottom" constant="71" id="4aT-Dz-eg8"/>
                             <constraint firstItem="QoC-Ru-86m" firstAttribute="top" secondItem="OpE-yy-S9Y" secondAttribute="bottom" constant="20" id="9u2-WV-6gR"/>
-                            <constraint firstItem="0Xd-yQ-tr0" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="BtA-vP-KcA"/>
+                            <constraint firstItem="ZBS-Iw-ddc" firstAttribute="width" secondItem="cfI-PQ-tP9" secondAttribute="width" multiplier="9/10" id="HNf-KQ-0SR"/>
                             <constraint firstItem="OpE-yy-S9Y" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="Os3-Ef-4gm"/>
+                            <constraint firstItem="ZBS-Iw-ddc" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="Q4c-RC-DFm"/>
+                            <constraint firstItem="ZBS-Iw-ddc" firstAttribute="top" secondItem="Fcc-Hp-j0e" secondAttribute="bottom" constant="40" id="fJ2-lu-pVG"/>
                             <constraint firstItem="OpE-yy-S9Y" firstAttribute="width" secondItem="cfI-PQ-tP9" secondAttribute="width" multiplier="3/4" id="kwb-Fb-ZiL"/>
                             <constraint firstItem="QoC-Ru-86m" firstAttribute="centerX" secondItem="cfI-PQ-tP9" secondAttribute="centerX" id="whz-Pw-uvm"/>
                         </constraints>
@@ -364,10 +408,13 @@
     </scenes>
     <resources>
         <image name="Camera" width="286" height="229"/>
+        <image name="Cigarette" width="600" height="600"/>
         <image name="Clock" width="306" height="306"/>
+        <image name="Donut Icon" width="600" height="600"/>
         <image name="Light Bulb" width="482" height="559"/>
+        <image name="Liquor Icon" width="600" height="600"/>
+        <image name="Phone IV" width="600" height="600"/>
         <image name="Pin" width="299" height="455"/>
-        <image name="TodayPreview" width="670" height="328"/>
         <image name="Traffic Light" width="201" height="446"/>
     </resources>
     <inferredMetricsTieBreakers>
