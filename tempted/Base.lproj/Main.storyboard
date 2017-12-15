@@ -262,23 +262,13 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEb-af-gKX">
-                                                            <rect key="frame" x="134" y="134" width="40" height="40"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Liquor Icon" translatesAutoresizingMaskIntoConstraints="NO" id="bWH-sS-WHB">
+                                                            <rect key="frame" x="138" y="138.5" width="31" height="31"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="oEb-af-gKX" secondAttribute="height" multiplier="1:1" id="XKy-8n-lsU"/>
-                                                                <constraint firstAttribute="width" constant="40" id="fGq-uV-kfH" userLabel="width = 24"/>
+                                                                <constraint firstAttribute="width" secondItem="bWH-sS-WHB" secondAttribute="height" multiplier="1:1" id="mCl-wl-ZEm"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="20"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -287,14 +277,15 @@
                                                         <constraint firstItem="m2g-AK-OIW" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="7B1-yU-1kv"/>
                                                         <constraint firstItem="Fz6-u0-04f" firstAttribute="leading" secondItem="2w3-iF-ise" secondAttribute="leading" id="Bgi-lx-hfZ"/>
                                                         <constraint firstItem="Bal-WH-xaD" firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="width" id="IxY-ic-qVG"/>
-                                                        <constraint firstItem="oEb-af-gKX" firstAttribute="centerX" secondItem="2w3-iF-ise" secondAttribute="centerX" id="LoR-Xk-y61"/>
+                                                        <constraint firstItem="bWH-sS-WHB" firstAttribute="centerY" secondItem="2w3-iF-ise" secondAttribute="centerY" id="L0K-pb-dhS"/>
                                                         <constraint firstItem="YQ5-yk-BsW" firstAttribute="width" secondItem="m2g-AK-OIW" secondAttribute="width" id="P4e-4A-roC"/>
                                                         <constraint firstItem="m2g-AK-OIW" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="0.5" constant="-4" id="QfB-zn-ww4"/>
-                                                        <constraint firstItem="oEb-af-gKX" firstAttribute="centerY" secondItem="2w3-iF-ise" secondAttribute="centerY" id="bqQ-D7-FTU"/>
                                                         <constraint firstItem="m2g-AK-OIW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="dpl-3a-Lqv"/>
                                                         <constraint firstAttribute="trailing" secondItem="Bal-WH-xaD" secondAttribute="trailing" id="dq4-pG-quP"/>
                                                         <constraint firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="height" multiplier="1:1" id="erE-2x-0pd"/>
                                                         <constraint firstAttribute="bottom" secondItem="exe-7f-UxR" secondAttribute="bottom" id="ftB-Zx-HcL"/>
+                                                        <constraint firstItem="bWH-sS-WHB" firstAttribute="centerX" secondItem="2w3-iF-ise" secondAttribute="centerX" id="oQH-1p-fry"/>
+                                                        <constraint firstItem="bWH-sS-WHB" firstAttribute="width" secondItem="2w3-iF-ise" secondAttribute="width" multiplier="1/10" id="puM-kh-J0t"/>
                                                         <constraint firstItem="YQ5-yk-BsW" firstAttribute="top" secondItem="2w3-iF-ise" secondAttribute="top" id="sLn-y6-ikU"/>
                                                         <constraint firstAttribute="trailing" secondItem="YQ5-yk-BsW" secondAttribute="trailing" id="tM2-tA-0lz"/>
                                                         <constraint firstAttribute="bottom" secondItem="Fz6-u0-04f" secondAttribute="bottom" id="zIS-9f-0iD"/>
@@ -340,7 +331,7 @@
                                     <outlet property="selfieImageView" destination="jc6-Pk-bfS" id="74c-UX-Efi"/>
                                     <outlet property="timeBGImageView" destination="xug-sh-m2v" id="y3k-Vt-JtO"/>
                                     <outlet property="timeLabel" destination="Py8-U7-7nr" id="s3P-2h-YH3"/>
-                                    <outlet property="viceLabel" destination="oEb-af-gKX" id="cLU-Ds-bRX"/>
+                                    <outlet property="viceImage" destination="bWH-sS-WHB" id="T5Z-yR-aCM"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -413,5 +404,6 @@
     <resources>
         <image name="DayBG" width="332" height="332"/>
         <image name="Delete" width="56" height="58"/>
+        <image name="Liquor Icon" width="600" height="600"/>
     </resources>
 </document>

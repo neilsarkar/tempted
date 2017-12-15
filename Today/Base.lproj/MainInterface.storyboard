@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecS-Nl-ghP" userLabel="Smokes">
-                                <rect key="frame" x="0.0" y="18.5" width="160" height="18.5"/>
+                                <rect key="frame" x="160" y="18.5" width="160" height="18.5"/>
                                 <state key="normal" image="Today Cigarette"/>
                                 <connections>
                                     <action selector="touchSmoke:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="XZq-hH-M1g"/>
@@ -35,13 +35,13 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DJ-oA-wJ7" userLabel="Phone">
                                 <rect key="frame" x="160" y="0.0" width="160" height="18.5"/>
-                                <state key="normal" image="Today Phone-1"/>
+                                <state key="normal" image="Today Phone"/>
                                 <connections>
                                     <action selector="touchPhone:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="78A-EE-qxE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQX-38-l5g" userLabel="Carbs">
-                                <rect key="frame" x="160" y="18.5" width="160" height="18.5"/>
+                                <rect key="frame" x="0.0" y="18.5" width="160" height="18.5"/>
                                 <state key="normal" image="Today Donut"/>
                                 <connections>
                                     <action selector="touchBread:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="8Mo-jJ-ITv"/>
@@ -86,6 +86,6 @@
         <image name="Today Cigarette" width="600" height="600"/>
         <image name="Today Donut" width="600" height="600"/>
         <image name="Today Liquor" width="600" height="600"/>
-        <image name="Today Phone-1" width="600" height="600"/>
+        <image name="Today Phone" width="600" height="600"/>
     </resources>
 </document>

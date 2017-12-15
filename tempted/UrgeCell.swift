@@ -31,11 +31,11 @@ class UrgeCell : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeBGImageView: UIImageView!
-    @IBOutlet weak var viceLabel: UILabel!
 
     // TODO: don't use an entire view just to get padding
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var viceImage: UIImageView!
     
     @IBAction func retryTapped(_ sender: UIButton) {
         DispatchQueue.main.async {
@@ -60,7 +60,8 @@ class UrgeCell : UICollectionViewCell {
         loadPhotos()
         timeLabel.text = urge.humanTime()
         dayLabel.text = urge.humanDay()
-        viceLabel.text = viceString(urge.viceId)
+        viceImage.image = viceSymbol(urge.viceId)
+
         if( urge.isNight() ) {
             timeBGImageView.image = UIImage(named: "NightBG")
         } else {
@@ -82,18 +83,18 @@ class UrgeCell : UICollectionViewCell {
         }
     }
     
-    private func viceString(_ viceId: Int) -> String {
+    private func viceSymbol(_ viceId: Int) -> UIImage? {
         switch(viceId) {
         case 1:
-            return "🍺"
+            return UIImage(named: "Liquor Icon")
         case 2:
-            return "🚬"
+            return UIImage(named: "Cigarette Icon")
         case 3:
-            return "📲"
+            return UIImage(named: "Phone Icon")
         case 4:
-            return "🥖"
+            return UIImage(named: "Donut Icon")
         default:
-            return "🗿"
+            return nil
         }
     }
     

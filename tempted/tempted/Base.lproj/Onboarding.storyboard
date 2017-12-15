@@ -99,7 +99,7 @@
                                             <constraint firstAttribute="width" secondItem="fF6-l6-oNM" secondAttribute="height" multiplier="1:1" id="U3g-cz-pDh"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone IV" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-A4-UZZ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone Icon" translatesAutoresizingMaskIntoConstraints="NO" id="yW2-A4-UZZ">
                                         <rect key="frame" x="168.5" y="0.0" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="yW2-A4-UZZ" secondAttribute="height" multiplier="1:1" id="x1E-3b-kNJ"/>
@@ -111,7 +111,7 @@
                                             <constraint firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="Lul-EA-DhQ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cigarette" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-Sl-Y5V">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cigarette Icon" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-Sl-Y5V">
                                         <rect key="frame" x="0.0" y="168.5" width="169" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="B3P-Sl-Y5V" secondAttribute="height" multiplier="1:1" id="rkg-be-5HM"/>
@@ -127,7 +127,7 @@
                                     <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="Yf8-qD-OB6"/>
                                     <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="JbW-pw-82g" secondAttribute="height" multiplier="1:1" id="YuH-Si-7ff"/>
                                     <constraint firstItem="yW2-A4-UZZ" firstAttribute="width" secondItem="yW2-A4-UZZ" secondAttribute="height" multiplier="1:1" id="d8q-o6-anK"/>
-                                    <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="donut0" />
+                                    <constraint firstItem="JbW-pw-82g" firstAttribute="width" secondItem="ZBS-Iw-ddc" secondAttribute="width" multiplier="1/2" id="donut0"/>
                                     <constraint firstItem="JbW-pw-82g" firstAttribute="trailing" secondItem="ZBS-Iw-ddc" secondAttribute="trailing" id="donut1" userLabel="Donut.leading = leading"/>
                                     <constraint firstItem="JbW-pw-82g" firstAttribute="bottom" secondItem="ZBS-Iw-ddc" secondAttribute="bottom" id="donut2" userLabel="Donut.top = top"/>
                                     <constraint firstItem="fF6-l6-oNM" firstAttribute="leading" secondItem="ZBS-Iw-ddc" secondAttribute="leading" id="jVm-hK-WJi" userLabel="Liquor Icon.leading = leading"/>
@@ -233,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="Nej-de-0tT">
-                                <rect key="frame" x="37.5" y="70" width="299" height="270"/>
+                                <rect key="frame" x="30.5" y="70" width="313" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="Rd6-qu-CZ5"/>
                                 </constraints>
@@ -337,7 +337,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light Bulb" translatesAutoresizingMaskIntoConstraints="NO" id="JQ8-dQ-Cz4">
-                                <rect key="frame" x="-54" y="40" width="482" height="300"/>
+                                <rect key="frame" x="-62" y="40" width="498" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="3eg-pg-7G0"/>
                                 </constraints>
@@ -408,14 +408,14 @@
     </scenes>
     <resources>
         <image name="Camera" width="286" height="229"/>
-        <image name="Cigarette" width="600" height="600"/>
-        <image name="Clock" width="306" height="306"/>
+        <image name="Cigarette Icon" width="600" height="600"/>
+        <image name="Clock" width="320" height="320"/>
         <image name="Donut Icon" width="600" height="600"/>
-        <image name="Light Bulb" width="482" height="559"/>
+        <image name="Light Bulb" width="498" height="573"/>
         <image name="Liquor Icon" width="600" height="600"/>
-        <image name="Phone IV" width="600" height="600"/>
-        <image name="Pin" width="299" height="455"/>
-        <image name="Traffic Light" width="201" height="446"/>
+        <image name="Phone Icon" width="600" height="600"/>
+        <image name="Pin" width="313" height="474"/>
+        <image name="Traffic Light" width="200" height="446"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VVn-VV-y1f"/>
