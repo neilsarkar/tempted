@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // This has to be dispatched on a queue because we want to wait until the app is ready to accept
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             NotificationCenter.default.post(name: TPTNotification.CreateUrge, object: self, userInfo: ["viceId": viceId])
         }
         
